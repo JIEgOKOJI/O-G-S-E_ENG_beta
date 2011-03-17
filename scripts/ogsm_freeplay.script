@@ -1,0 +1,419 @@
+----------------------- Функции фриплея для OGSM 2.x --------------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+
+-- Спавним левел-чейнджер
+-- Level Changer Spawn.
+function spawn_level_changer(sid, from_pos, from_level, dest_pos, dest_level, hint, mode, dest_dir)
+
+local vertexes = {
+l01_escape = {lvid=594266, gvid=0},
+l04_darkvalley = {lvid=121712, gvid=815},
+l11_pripyat = {lvid=142116, gvid=2270},
+l12_stancia = {lvid=405348, gvid=2400},
+l12_stancia_2 = {lvid=9914, gvid=2517},
+-- l12_stancia_2 = {lvid=227423, gvid=2635}
+esc_agr = {lvid=142809, gvid=165},
+agr_esc = {lvid=399846, gvid=692},
+val_rad = {lvid=390115, gvid=918},
+rad_val = {lvid=227063, gvid=1915},
+val_mil = {lvid=162014, gvid=903},
+mil_val = {lvid=399982, gvid=1565},
+agr_yan = {lvid=23067, gvid=593},
+yan_agr = {lvid=15229, gvid=1487},
+yan_rad = {lvid=29988, gvid=1500},
+rad_yan = {lvid=340, gvid=1959},
+ros_mil = {lvid=298, gvid=1360},
+mil_ros = {lvid=392, gvid = 1848}
+}
+
+local obj = alife():create("level_changer", from_pos, vertexes[from_level]["lvid"], vertexes[from_level]["gvid"])
+
+if obj then
+
+	level.map_add_object_spot(obj.id, "level_changer", hint)
+
+	local packet = net_packet()
+
+	obj:STATE_Write(packet)
+
+	-- свойства cse_alife_object
+	local game_vertex_id = packet:r_u16()
+	local cse_alife_object__unk1_f32 = packet:r_float()
+	local cse_alife_object__unk2_u32 = packet:r_s32()
+	local level_vertex_id = packet:r_s32()
+	local object_flags = packet:r_s32()
+	local custom_data = packet:r_stringZ()
+	local story_id = packet:r_s32()
+	local cse_alife_object__unk3_u32 = packet:r_s32()
+
+	-- свойства cse_shape
+	local shape_count = packet:r_u8()
+	local shape_type
+	local center
+	local radius
+
+	if shape_count == 0 then
+		shape_type = 0
+		center = vector():set(0,0,0)
+		radius = 10.0
+		shape_count = 1
+	else
+		for i=1,shape_count do
+			local shape_type = packet:r_u8()
+			if shape_type == 0 then
+				local center = packet:r_vec3()
+				local radius = packet:r_float()
+			else
+				local v1 = packet:r_vec3()
+				local v2 = packet:r_vec3()
+				local v3 = packet:r_vec3()
+				local v4 = packet:r_vec3()
+			end
+		end
+	end
+
+	-- свойства cse_alife_space_restrictor
+	local restrictor_type = packet:r_u8()
+
+	-- свойства cse_alife_level_changer
+	local dest_game_vertex_id = packet:r_u16()
+	local dest_level_vertex_id = packet:r_s32()
+	local dest_position = packet:r_vec3()
+	local dest_direction = packet:r_vec3()
+	local dest_level_name = packet:r_stringZ()
+	local dest_graph_point = packet:r_stringZ()
+	local silent_mode = packet:r_u8()
+
+	if packet:r_elapsed() ~= 0 then get_console():execute("left="..packet:r_elapsed()) end
+
+	-- свойства cse_alife_object
+	packet:w_u16(game_vertex_id)
+	packet:w_float(cse_alife_object__unk1_f32)
+	packet:w_s32(cse_alife_object__unk2_u32)
+	packet:w_s32(level_vertex_id)
+	packet:w_s32(object_flags)
+	packet:w_stringZ(custom_data)
+	packet:w_s32(sid)
+	packet:w_s32(cse_alife_object__unk3_u32)
+
+	-- свойства cse_shape
+	packet:w_u8(shape_count)
+
+	for i=1,shape_count do
+		packet:w_u8(shape_type)
+		if shape_type == 0 then
+			packet:w_vec3(vector():set(0,0,0))
+			packet:w_float(3)
+		else
+			packet:w_vec3(vector():set(3,0,0))
+			packet:w_vec3(vector():set(0,3,0))
+			packet:w_vec3(vector():set(0,0,3))
+			packet:w_vec3(vector():set(0,0,0))
+		end
+	end
+
+	-- свойства cse_alife_space_restrictor
+	packet:w_u8(restrictor_type)
+
+	-- свойства cse_alife_level_changer
+	packet:w_u16(vertexes[dest_level]["gvid"])
+	packet:w_s32(vertexes[dest_level]["lvid"])
+	packet:w_vec3(dest_pos)
+	if dest_dir then 
+		packet:w_vec3(dest_dir)
+	else
+		packet:w_vec3(dest_direction)
+	end
+	packet:w_stringZ(dest_level)
+	packet:w_stringZ(dest_graph_point)
+	packet:w_u8(mode)
+
+	obj:STATE_Read(packet, packet:w_tell()-packet:r_tell())
+
+end
+end
+
+
+-- Удаление левел-чейнджера в Саркофаг
+-- Deleting LC to Sarcofag.
+function disable_sar_entrance()
+for i=1,65535 do
+	local obj = alife():object(i)
+	if obj and obj:name()=="exit_to_sarcofag_01" then
+		alife():release(obj, true)
+	end
+end
+end
+
+
+-- Спавн всех нужных переходов
+-- Common LC spawn. Takes place after final credits. Actor teleports to NPP.
+function set_lc()
+
+if not db.actor or not has_alife_info("game_end") then
+	xr_effects.after_credits()
+else
+
+level.set_weather(amk.wthr)
+
+level.add_pp_effector("teleport.ppe", 2008, false)
+
+-- ЧАЭС - Припять
+--spawn_level_changer(6002, vector():set(918.1,-0.1,-401.96), "l12_stancia", vector():set(31.28,1.135,420.61), "l11_pripyat", "to_pripyat", 0, vector():set(0,-3.1,0))
+spawn_level_changer(6002, vector():set(918.1,-0.1,-401.96), "l12_stancia", vector():set(106.5,1.135,400), "l11_pripyat", "to_pripyat", 0, vector():set(0,-3.1,0))
+
+-- ЧАЭС2 - ЧАЭС
+-- spawn_level_changer(6003, vector():set(554.52,150,201), "l12_stancia_2", vector():set(117.6,-0.1,-76.3), "l12_stancia", "to_aes", 1, vector():set(0,-1.5,0))
+spawn_level_changer(6003, vector():set(-42.15,-0.02,56.03), "l12_stancia_2", vector():set(126,-0.1,-76.3), "l12_stancia", "to_aes", 0, vector():set(0,-1.5,0))
+
+-- ЧАЭС - ЧАЭС2
+spawn_level_changer(6004, vector():set(117.6,-0.1,-76.3), "l12_stancia", vector():set(-42.15,-0.02,64), "l12_stancia_2", "to_aes", 0)
+
+-- Удаление ЧАЭС - Саркофаг
+disable_sar_entrance()
+
+-- Перемещаем актора, засчитываем все задания
+db.actor:set_actor_position(vector():set(1035.12,-0.0999,229.564))
+set_complete_tasks()
+
+-- Спавним монстров
+ogsm_respawn.level_spawn()
+end
+
+end
+
+
+-- Отмечаем на карте новые точки перехода
+-- Making new map spots for LCs. Function is called from on_game_load() procedure.
+function mark_lc()
+local obj = alife():story_object(6002)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_pripyat")
+end
+local obj = alife():story_object(6003)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_aes")
+end
+local obj = alife():story_object(6004)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_aes")
+end
+if level.name()=="l11_pripyat" and has_alife_info("freeplay") and not has_alife_info("pri_trader_first_talk") then
+		amk.send_tip("Hello, Shooter! Look along the way, there is something to talk about... Find me in the eastern part of the city.","Dark Dealer",25,15)
+end
+end
+
+
+-- Засчитываем квестовые задания, удаляем квестовые предметы
+-- Completing storyline tasks.
+function set_complete_tasks()
+if has_alife_info("aes2_monolit_teleport_ready_final") and not has_alife_info("freeplay") and (level.name()=="l12_stancia" or level.name()=="l12_stancia_2") then
+	db.actor:iterate_inventory(del_q_items,db.actor)
+	db.actor:give_info_portion("cit_fail_first_task")
+	db.actor:give_info_portion("freeplay")
+	db.actor:disable_info_portion("game_end")
+	db.gameover_credits_started = false
+	amk.start_timer("fpl", 1)
+end
+end
+function del_q_items(npc, item)
+	if item==nil or alife():object(item:id())==nil then return end
+	local section = item:section()
+	if section=="gunslinger_flash" or 
+		section=="good_psy_helmet" or 
+		section=="bad_psy_helmet" or 
+		section=="decoder" or
+		section=="pri_decoder_documents" then
+			alife():release(alife():object(item:id()), true)
+	end
+end
+
+----------------------- Функции фриплея для OGSM 2.x --------------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--
+
+
+
+function set_lc2()
+
+level.add_pp_effector("teleport.ppe", 2008, false)
+
+-- Кордон - Агропром
+spawn_level_changer(6005, vector():set(-146.279,6.521,233.343), "esc_agr", vector():set(184.279, 0.034, -239.534), "agr_esc", "to_agroprom", 0)
+
+-- Агропром - Кордон
+spawn_level_changer(6006, vector():set(193.111, 0.326, -239.973), "agr_esc", vector():set(-141.535,5.592,231.286), "esc_agr", "to_escape", 0)
+
+-- Кордон - Темная долина
+spawn_level_changer(6001, vector():set(368.9,15.17,-42.65), "l01_escape", vector():set(-44.77, 0.43, -541.35), "l04_darkvalley", "to_darkvalley", 0)
+
+-- ТД - Радар
+ spawn_level_changer(6007, vector():set(197.971,5.420,-63.977 ), "val_rad", vector():set(660.082,-43.878,168.142), "rad_val","to_radar", 0)
+
+--Радар - ТД
+ spawn_level_changer(6008, vector():set(660.082,-43.878,168.142), "rad_val", vector():set(191.994,3.013,-62.703), "val_rad","to_darkvalley", 0)
+
+-- ТД - Милитари
+ spawn_level_changer(6009, vector():set(-10.667,7.969,107.547), "val_mil", vector():set(105.653,2.224,-38.340), "mil_val","to_military", 0)
+
+-- Милитари - ТД
+ spawn_level_changer(6010, vector():set(105.653,2.224,-38.340), "mil_val", vector():set(-10.667,7.969,107.547 ), "val_mil","to_darkvalley", 0)
+
+-- Агропром - Янтарь
+ spawn_level_changer(6011, vector():set(-214.000,22.146,191.241), "agr_yan", vector():set(-68.525,-1.049,-351.007), "yan_agr","to_yantar", 0)
+
+-- Янтарь - Агропром
+ spawn_level_changer(6012, vector():set(-68.419,2.082,-358.661), "yan_agr", vector():set(-211.739,20.951,183.71), "agr_yan","to_agroprom", 0)
+
+-- Янтарь - Радар
+ spawn_level_changer(6013, vector():set(-24.623,0.457,-0.0), "yan_rad", vector():set(-33.297,-1.044,-81.246), "rad_yan","to_radar", 0)
+
+-- Радар - Янтарь
+ spawn_level_changer(6014, vector():set(-33.297,-1.044,-81.246), "rad_yan", vector():set(-23.369,0.685,-16.380), "yan_rad","to_yantar", 0)
+
+-- Дикая Т. - Милитари
+ spawn_level_changer(6015, vector():set(-289.189,0.048,103.681), "ros_mil", vector():set(-376.949,-14.005,397.882), "mil_ros","to_military", 0)
+
+--Милитари - Дикая Т.
+ spawn_level_changer(6016, vector():set(-382.202,-14.034,399.057), "mil_ros", vector():set(-280.612,-0.048,97.683), "ros_mil","to_rostok", 0)
+
+end
+
+function mark_lc2()
+
+local obj = alife():story_object(6001)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_darkvalley")
+end
+local obj = alife():story_object(6005)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_agroprom")
+end
+local obj = alife():story_object(6006)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_escape")
+end
+local obj = alife():story_object(6007)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_radar")
+end
+local obj = alife():story_object(6008)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_darkvalley")
+end
+local obj = alife():story_object(6009)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_military")
+end
+local obj = alife():story_object(6010)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_darkvalley")
+end
+local obj = alife():story_object(6011)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_yantar")
+end
+local obj = alife():story_object(6012)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_agroprom")
+end
+local obj = alife():story_object(6013)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_radar")
+end
+local obj = alife():story_object(6014)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_yantar")
+end
+local obj = alife():story_object(6015)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_military")
+end
+local obj = alife():story_object(6016)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_rostok")
+end
+
+end
+
+function set_lc1_agr_esc()
+
+-- Кордон - Агропром
+spawn_level_changer(6005, vector():set(-146.279,6.521,233.343), "esc_agr", vector():set(184.279, 0.034, -239.534), "agr_esc", "to_agroprom", 0)
+
+-- Агропром - Кордон
+spawn_level_changer(6006, vector():set(193.111, 0.326, -239.973), "agr_esc", vector():set(-141.535,5.592,231.286), "esc_agr", "to_escape", 0)
+
+end
+
+function set_lc2_esc_val()
+
+-- Кордон - Темная долина
+spawn_level_changer(6001, vector():set(368.9,15.17,-42.65), "l01_escape", vector():set(-44.77, 0.43, -541.35), "l04_darkvalley", "to_darkvalley", 0)
+
+end
+
+function set_lc3_yan_agr()
+
+-- Агропром - Янтарь
+ spawn_level_changer(6011, vector():set(-214.000,22.146,191.241), "agr_yan", vector():set(-68.525,-1.049,-351.007), "yan_agr","to_yantar", 0)
+
+-- Янтарь - Агропром
+ spawn_level_changer(6012, vector():set(-68.419,2.082,-358.661), "yan_agr", vector():set(-211.739,20.951,183.71), "agr_yan","to_agroprom", 0)
+
+end
+
+function set_lc4_mil_ros()
+
+-- Дикая Т. - Милитари
+ spawn_level_changer(6015, vector():set(-289.189,0.048,103.681), "ros_mil", vector():set(-376.949,-14.005,397.882), "mil_ros","to_military", 0)
+
+--Милитари - Дикая Т.
+ spawn_level_changer(6016, vector():set(-382.202,-14.034,399.057), "mil_ros", vector():set(-280.612,-0.048,97.683), "ros_mil","to_rostok", 0)
+
+end
+
+function set_lc5_mil_val()
+
+-- ТД - Милитари
+ spawn_level_changer(6009, vector():set(-10.667,7.969,107.547), "val_mil", vector():set(105.653,2.224,-38.340), "mil_val","to_military", 0)
+
+-- Милитари - ТД
+ spawn_level_changer(6010, vector():set(105.653,2.224,-38.340), "mil_val", vector():set(-10.667,7.969,107.547 ), "val_mil","to_darkvalley", 0)
+
+end
+
+function set_lc6_rad_xy()
+
+-- Янтарь - Радар
+ spawn_level_changer(6013, vector():set(-24.623,0.457,-0.0), "yan_rad", vector():set(-33.297,-1.044,-81.246), "rad_yan","to_radar", 0)
+
+-- Радар - Янтарь
+ spawn_level_changer(6014, vector():set(-33.297,-1.044,-81.246), "rad_yan", vector():set(-23.369,0.685,-16.380), "yan_rad","to_yantar", 0)
+ 
+ 
+-- ТД - Радар
+ spawn_level_changer(6007, vector():set(197.971,5.420,-63.977 ), "val_rad", vector():set(660.082,-43.878,168.142), "rad_val","to_radar", 0)
+
+--Радар - ТД
+ spawn_level_changer(6008, vector():set(660.082,-43.878,168.142), "rad_val", vector():set(191.994,3.013,-62.703), "val_rad","to_darkvalley", 0)
+
+end

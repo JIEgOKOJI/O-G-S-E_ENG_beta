@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+<string id="military_trader_who">
+		<text>Holy smoke! And who are you? Answer me!</text>
+	</string>
+	<string id="military_trader_about">
+		<text>Curb your enthusiasm, a stalker, I ... Trader. Call me "Military Trader". Who I really am, you should not now interested ... All in good time. I have, say, an agreement with the military stalkers, and thus with themselves "soldiers" and your relationship with them, I have absolutely no interest! You should know is that I trade gear and equipment of the military. Oh yeah, one more thing, you still come across traders, like me, so do not be afraid! Well, we'll be busy with it or how?</text>
+	</string>
+	<string id="military_trader_buy">
+		<text>Will.</text>
+	</string>
+	
+	<string id="bandit_trader_0">
+		<text>Zdarova, you must be a "merchant", true?</text>
+	</string>
+	<string id="bandit_trader_1">
+		<text>Well ... so if you want, then "yes. " That is, sell them weapons, equipment, and sometimes all sorts of rubbish, which they dragged me. Do not be confused with my neutrality - we have a brother with a treaty: they loot us, we give them snaryagu, products. Got it? So, you're on the case? Take what you will, or what?</text>
+	</string>
+	<string id="bandit_trader_2">
+		<text>In the case, in the case.</text>
+	</string>
+
+      <string id="merc_trader_lc_info_0">
+		<text>Listen, tell me how to get here at the Wild Territory?</text>
+	</string>
+	<string id="merc_trader_lc_info_1">
+		<text>At the Wild Territory is best to get through the dead city, I'll throw off the coordinates. In this way, go to mercenaries, most importantly, beware of snipers in the city!</text>
+	</string>
+	<string id="merc_trader_0">
+		<text>Hello, mercenary.</text>
+	</string>
+	<string id="merc_trader_1">
+		<text>I am not a mercenary, and you know it, if not, then go down to my ... Hmm ... colleagues, they explain to you. I suggest that products of mercenaries, you are interested in something, stalker?</text>
+	</string>
+	<string id="merc_trader_2">
+		<text>Yes, of course.</text>
+	</string>
+
+	<string id="monlit_trader_lc_info_0">
+		<text>You're here, you see, long ago! Not podskazhesh any way shortly, with the radar in the south zone? And then through the warehouses do not always want to walk, not quiet there ...</text>
+	</string>
+	<string id="monlit_trader_lc_info_1">
+		<text>Prompt, I'm interested in keeping customers, heh, heh! Areas to the south there are two paths: one will lead you to the dark valley, and the other at Jantar - dangerous place here, so you should strictly surveyors stake! Will a huckster, passed on my regards!</text>
+		<action>ogsm_freeplay.set_lc6_rad_xy</action>
+	</string>
+
+	<string id="monlit_trader_0">
+		<text>You must be a trader Monolith?</text>
+	</string>
+	<string id="monlit_trader_1">
+		<text>It is true stalker. I Sell the equipment group Monolith. About how I was allowed to stay here, do not even ask. Just hint that Monolith - not those "fanatics" that they seem. They have their own ... patrons.</text>
+	</string>
+	<string id="monlit_trader_2">
+		<text>And what about radiation? Radar immediately at hand!</text>
+	</string>
+	<string id="monlit_trader_3">
+		<text>I have a special hat from the "friends" of the hill. Do not try to force me away - he still self-destruct as soon as you try to remove it, at the same time and you will tear off your hands. Oh believe me, its technology "friends" know how to defend. By the way, my ... employer has asked me to tell you that you have been careful reactor. He is with you may contact, and yet asked me to convey: "Not everything that we obviously is indeed the case ..."</text>
+	</string>
+	<string id="monlit_trader_4">
+		<text>Fuck you all make out!</text>
+	</string>
+
+</string_table>

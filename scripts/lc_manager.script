@@ -1,0 +1,270 @@
+---------------------------------------------------------
+-- "Буфер"  для OGSE
+-- авторы: Stalbar
+---------------------------------------------------------
+local ii = 0
+local ci = 0
+local b_chk = 0
+local gai = {}
+local lc ={
+lc_id = {},
+lc_pos = {},
+sh_type = {},
+sh_center = {},
+sh_rad = {},
+sh_v1_x = {},
+sh_v2_y = {},
+sh_v3_z = {},
+sh_max = {}
+}
+local alert_msg = {"Extremely high anomalous activity!",
+					"E-me, just ring Moebius some!",
+					"High probability of spatial shifts!",
+					"Attention! Eject! Immediately to the shelter!",
+					"Stop! High level of radiation! Danger to life!",
+					"Attention! The critical level of psy-ray! Do not leave the territory!",
+					"Visokiy riven radiatsii! Ne liz, more naebne!",
+					"Back! For this feature death!",
+					"Where Presov, man? Tired of living?",
+					"Again, the damned \"Буфер\"!",
+					"Strong anomalous field. Better there not to meddle!",
+					"Casts. Seen, the release soon. We must look for the slot - which would hide",
+					"And what was it? No pass, no pass...",
+					"Do not pass. Happy Feet - Release of attending!"}
+
+-- Ищем левел-чейнджер
+function check_lc()
+	if (has_alife_info("horror_time") or has_alife_info("pre_blowout")) and db.check_lc_flag == 0 then
+	local level_name = level.name()
+		if (level_underground(level_name)) == false then
+            for a=1,65535 do
+                local obj = alife():object(a)
+                if obj and string.find(obj:section_name(),"level_changer") then  -- Нашли, читаем
+                    local obj_sect = obj:section_name()
+                    local pos = obj.position
+                    local map = alife():level_name(game_graph():vertex(obj.m_game_vertex_id):level_id())                    
+					if map == level_name then                -- Если на текущей локации
+						ii = ii + 1
+						lc.lc_id[ii] = obj.id  -- Заполняем таблицу данными с текущей локации 
+						lc.lc_pos[ii] = pos
+						get_lc_data(obj) 
+					end
+                end
+				if obj and string.find(obj:section_name(), "vehicle_") then
+					local map = alife():level_name(game_graph():vertex(obj.m_game_vertex_id):level_id())
+					if map == level_name then 
+						ci = ci + 1
+						gai[ci] = obj.id
+					end
+				end
+            end
+			db.check_lc_flag = 1           -- Таблица заполнена
+			-- amk.logf("----- Таблица заполнена, db.check_lc_flag = 1 ---")
+		end
+    elseif (has_alife_info("horror_time") or has_alife_info("pre_blowout")) and db.check_lc_flag == 1 then 
+        chk_act_in_zone()
+    elseif not (has_alife_info("horror_time") or has_alife_info("pre_blowout")) and db.check_lc_flag == 1 then
+        db.check_lc_flag = 0
+        -- amk.logf("----- Выбросы закончились, db.check_lc_flag = 0 ---")
+	end
+end
+
+-- Проверка, насколько близко ГГ или авто к левел-чейнджеру
+function chk_act_in_zone()
+local chk_dlt = 0
+local act_pos = db.actor:position()
+	for a=1,ii do		
+		if gai~=nil then
+		--- for c=1, table.getn(gai) do --- цикл потенциально опасен, переделан. KamikaZze
+			for k, v in pairs(gai) do
+				local c_obj = level.object_by_id(v)
+				if c_obj then
+					local c_pos = c_obj:position()
+					if lc.sh_max[a] ~=nil then
+						if c_pos:distance_to(lc.lc_pos[a]) < lc.sh_max[a]/2 or 
+							c_pos:distance_to(lc.lc_pos[a]) == 0 then
+							chk_dlt = lc.sh_max[a]/2-c_pos:distance_to(lc.lc_pos[a])+2
+							car_boom(v)
+						elseif c_pos:distance_to(lc.lc_pos[a]) <= lc.sh_max[a]/2+2 and
+							c_pos:distance_to(lc.lc_pos[a]) >= lc.sh_max[a]/2 then
+							car_boom(v)
+						end
+					elseif lc.sh_rad[a] ~= nil then
+						if c_pos:distance_to(lc.lc_pos[a]) < lc.sh_rad[a] or 
+							c_pos:distance_to(lc.lc_pos[a]) == 0 then
+							chk_dlt = lc.sh_rad[a]-c_pos:distance_to(lc.lc_pos[a])+2
+							car_boom(v)
+						elseif c_pos:distance_to(lc.lc_pos[a]) <= lc.sh_rad[a]+2 and
+							c_pos:distance_to(lc.lc_pos[a]) >= lc.sh_rad[a] then
+							car_boom(v)
+						end
+					end
+					if (b_chk>5 and act_pos:distance_to(c_pos)>50) then
+						local s_obj = alife():object(v)
+						if s_obj then
+							alife():release(s_obj, true)
+						end
+						gai[k] = nil
+						b_chk = 0
+					end
+				end
+			end
+		end	
+		if lc.sh_max[a] ~=nil then
+			if act_pos:distance_to(lc.lc_pos[a]) < lc.sh_max[a]/2 or 
+				act_pos:distance_to(lc.lc_pos[a]) == 0 then
+				chk_dlt = lc.sh_max[a]/2-act_pos:distance_to(lc.lc_pos[a])+2
+				actor_tport(chk_dlt,180)
+			elseif act_pos:distance_to(lc.lc_pos[a]) <= lc.sh_max[a]/2+2 and
+				act_pos:distance_to(lc.lc_pos[a]) >= lc.sh_max[a]/2 then
+				actor_tport()
+			end
+		elseif lc.sh_rad[a] ~= nil then
+			if act_pos:distance_to(lc.lc_pos[a]) < lc.sh_rad[a] or 
+				act_pos:distance_to(lc.lc_pos[a]) == 0 then
+				chk_dlt = lc.sh_rad[a]-act_pos:distance_to(lc.lc_pos[a])+2
+				actor_tport(chk_dlt,180)
+			elseif act_pos:distance_to(lc.lc_pos[a]) <= lc.sh_rad[a]+2 and
+				act_pos:distance_to(lc.lc_pos[a]) >= lc.sh_rad[a] then
+				actor_tport()
+			end
+		end
+	end
+end
+
+-- Разворот чувака на 180 градусов или в сторону нуля карты и пинок под зад 
+function actor_tport(chk_dlt,rtt)
+local dlt = 0
+local act_pos = db.actor:position()
+local cur_dir = db.actor:direction()
+local dir
+	if chk_dlt~=nil then
+		dlt = chk_dlt
+		local nul_pos = vector():set(0,0,0)
+		local nul_vec=vector():set(act_pos):sub(nul_pos)
+		nul_vec.y=0
+		nul_vec:normalize()
+		dir = vector_rotate_y(nul_vec, rtt)
+	else
+		dlt = 3
+		dir = vector_rotate_y(cur_dir, 180)
+	end
+	level.add_pp_effector ("teleport.ppe", 2006, false)
+	db.actor:set_actor_direction(-dir:getH())
+	local lv_id=level.vertex_in_direction(db.actor:level_vertex_id(),dir,dlt)
+	local new_pos = level.vertex_position(lv_id)
+	local check = new_pos:distance_to(db.actor:position())
+	if check < 1 then
+		local pos_1 = new_pos
+		if pos_1.z < 0 then
+			pos_1.z = pos_1.z + 5
+		else	
+			pos_1.z = pos_1.z - 5
+		end
+		new_pos = pos_1
+	end
+	db.actor:set_actor_position(new_pos)
+	local snd_obj = xr_sound.get_safe_sound_object([[affects\tinnitus3a]])
+	if snd_obj then
+		snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+	end
+	local hud = get_hud()
+	hud:AddCustomStatic("main_task_lc", true)
+	hud:GetCustomStatic("main_task_lc"):wnd():SetTextST(alert_msg[math.random(table.getn(alert_msg))])
+	hud:GetCustomStatic("main_task_lc").m_endTime = time_global()/1000 + 5
+	chk_dlt = nil
+end
+
+function level_underground(lv_name)
+	if lv_name == "l03u_agr_underground" or
+		lv_name == "l08u_brainlab" or
+		lv_name == "l10u_bunker" or
+		lv_name == "l04u_labx18" or 
+		lv_name == "l12u_sarcofag" or
+		lv_name == "l12u_control_monolith" or
+	    lv_name == "l12_stancia" or 
+	    lv_name == "l12_stancia_2" then		
+		return true
+	else
+		return false
+	end
+end
+
+function car_boom(c_id)
+local car = level.object_by_id(c_id)
+local boom = hit()
+	boom.direction = vector():set(0,0,0)
+	boom.impulse = 20
+    boom.draftsman = car
+	boom.power = 1
+	boom.type = hit.explosion
+	if car then 
+		car:hit(boom)
+		b_chk = b_chk + 1
+	end
+end
+
+-- Разбор пакета левел-чейнджера и шейпа
+function get_lc_data(obj)
+	local packet = net_packet()
+	obj:STATE_Write(packet)
+	local t={}
+	t.game_vertex_id = packet:r_u16()
+	t.distance = packet:r_float()
+	t.direct_control = packet:r_s32()
+	t.level_vertex_id = packet:r_s32()
+	t.object_flags = packet:r_s32()
+	t.custom_data = packet:r_stringZ()
+	t.story_id = packet:r_s32()
+	t.spawn_story_id = packet:r_s32()
+
+	t = parse_shape_packet(t,packet)
+	
+	t.restrictor_type = packet:r_u8()
+	t.dest_game_vertex_id = packet:r_u16()
+	t.dest_level_vertex_id = packet:r_s32()
+	t.dest_position = packet:r_vec3()
+	t.dest_direction = packet:r_vec3()
+	t.dest_level_name = packet:r_stringZ()
+	t.dest_graph_point = packet:r_stringZ()
+	t.silent_mode = packet:r_u8()
+
+	if packet:r_elapsed() ~= 0 then
+		abort("left=%d", packet:r_elapsed())
+	end
+	return t
+end
+
+function parse_shape_packet(t,stpk)
+	local shape_count = stpk:r_u8()
+	t.shapes={}
+	for i=1,shape_count do
+		local shape_type = stpk:r_u8()
+		t.shapes[i]={}
+		t.shapes[i].shtype=shape_type
+		lc.sh_type[ii] = shape_type
+		if shape_type == 0 then
+			-- sphere
+			t.shapes[i].center = stpk:r_vec3()
+			lc.sh_center[ii] = t.shapes[i].center
+			t.shapes[i].radius = stpk:r_float()
+			lc.sh_rad[ii] = t.shapes[i].radius
+		else
+			-- box
+			t.shapes[i].v1 = stpk:r_vec3()
+			t.shapes[i].v2 = stpk:r_vec3()
+			t.shapes[i].v3 = stpk:r_vec3()
+			t.shapes[i].offset = stpk:r_vec3()
+			lc.sh_v1_x[ii] = t.shapes[i].v1.x
+			lc.sh_v2_y[ii] = t.shapes[i].v2.y
+			lc.sh_v3_z[ii] = t.shapes[i].v3.z
+			lc.sh_max[ii] = math.max(lc.sh_v1_x[ii],lc.sh_v2_y[ii],lc.sh_v3_z[ii])
+		end
+	end
+	return t
+end
+
+--------------------------------------------------------
+-- "Буфер" для OGSE
+-- авторы: Stalbar
+---------------------------------------------------------

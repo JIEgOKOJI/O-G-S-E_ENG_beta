@@ -1,0 +1,143 @@
+
+	<game_task id="task_1">
+        	<title>Learn about the missing stalkers</title>
+        	<objective>
+            		<text>hidden_text</text>
+            		<icon>ui_iconsTotal_grouping</icon>
+			<!-- <article>storyline_task_1</article> -->
+            		<infoportion_complete>task_1_end</infoportion_complete>
+		</objective>
+        	<objective>
+            		<text>Meet with a group of "Duty"</text>
+            		<infoportion_complete>task_1_obj_1</infoportion_complete>
+        	</objective>
+        	<objective>
+            		<text>The fate of missing stalkers</text>
+            		<infoportion_complete>task_1_end</infoportion_complete>
+        	</objective>
+	</game_task>
+
+	<game_task id="task_2">
+        	<title>Cause of military activity</title>
+        	<objective>
+            		<text>hidden_text</text>
+            		<icon>ui_iconsTotal_grouping</icon>
+			<!-- <article>storyline_task_2</article> -->
+            		<infoportion_complete>task_2_end</infoportion_complete>
+		</objective>
+        	<objective>
+            		<text>Descend into the dungeon</text>
+            		<infoportion_complete>task_2_obj_1</infoportion_complete>
+        	</objective>
+        	<objective>
+            		<text>Anyone know why the military is not allowed in the dungeon</text>
+            		<infoportion_complete>task_2_end</infoportion_complete>
+        	</objective>
+	</game_task>
+
+	<game_task id="task_3">
+        	<title>Find SHOW-13</title>
+        	<objective>
+            		<text>hidden_text</text>
+            		<icon>ui_iconsTotal_grouping</icon>
+			<!-- <article>storyline_task_2</article> -->
+            		<infoportion_complete>task_3_end</infoportion_complete>
+		</objective>
+        	<objective>
+            		<text>SHOW catch-13.</text>
+            		<infoportion_complete>task_3_end</infoportion_complete>
+        	</objective>
+	</game_task>
+
+
+
+
+
+
+
+
+
+
+
+	<game_task id="task_7">
+        	<title>Details of the conflict</title>
+        	<objective>
+            		<text>hidden_text</text>
+            		<icon>ui_iconsTotal_bar_resque_information</icon>
+			<article>storyline_task_7</article>
+            		<infoportion_complete>task_7_end</infoportion_complete>
+		</objective>
+        	<objective>
+            		<text>why the military attacked the scientists</text>
+            		<infoportion_complete>task_7_end</infoportion_complete>
+        	</objective>
+	</game_task>
+
+	<game_task id="task_8">
+        	<title>Meet with scientists</title>
+        	<objective>
+            		<text>hidden_text</text>
+            		<icon>ui_iconsTotal_bar_resque_information</icon>
+			<article>storyline_task_8</article>
+            		<infoportion_complete>task_8_end</infoportion_complete>
+			<infoportion_fail>task_8_fail</infoportion_fail>
+		</objective>
+        	<objective>
+            		<text>Find a scientist</text>
+            		<infoportion_complete>task_8_obj_1</infoportion_complete>
+        	</objective>
+        	<objective>
+            		<text>Provide assistance to the scientist</text>
+            		<infoportion_complete>task_8_end</infoportion_complete>
+        	</objective>
+	</game_task>
+
+	<game_task id="task_4">
+        	<title>Know what they're looking at military x18</title>
+        	<objective>
+            		<text>hidden_text</text>
+            		<icon>ui_iconsTotal_bar_resque_information</icon>
+			<article>storyline_task_3</article>
+            		<infoportion_complete>task_4_end</infoportion_complete>
+		</objective>
+        	<objective>
+            		<text>Go to the x18</text>
+            		<infoportion_complete>task_4_obj_1</infoportion_complete>
+        	</objective>
+        	<objective>
+            		<text>Back to Zhuravlenko</text>
+            		<infoportion_complete>task_4_end</infoportion_complete>
+        	</objective>
+	</game_task>
+
+	<game_task id="task_5">
+        	<title>Learn what NEAT13</title>
+        	<objective>
+            		<text>hidden_text</text>
+            		<icon>ui_iconsTotal_bar_resque_information</icon>
+			<article>storyline_task_3</article>
+            		<infoportion_complete>task_5_end</infoportion_complete>
+		</objective>
+        	<objective>
+            		<text>Meet with Sakharov</text>
+            		<infoportion_complete>task_5_obj_1</infoportion_complete>
+        	</objective>
+        	<objective>
+            		<text>Go to X16</text>
+            		<infoportion_complete>task_5_end</infoportion_complete>
+        	</objective>
+	</game_task>
+
+	<game_task id="task_6">
+        	<title>Respond to the call for help</title>
+        	<objective>
+            		<text>hidden_text</text>
+            		<icon>ui_iconsTotal_bar_resque_information</icon>
+			<article>storyline_task_2</article>
+            		<infoportion_complete>task_6_end</infoportion_complete>
+		</objective>
+        	<objective>
+            		<text>To help the bartender</text>
+            		<infoportion_complete>task_6_end</infoportion_complete>
+        	</objective>
+	</game_task>

@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+		<!--Vosstanovlenie otnosheniy s  banditami-->
+		   <dialog id="trader_relation_bandit"> 
+	<precondition>community_relation.bad_relation_bandit</precondition>
+           <phrase_list>
+            <phrase id="0">
+	                 <text>trader_relation_bandit_1</text>
+                <next>1</next>
+				<next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="1">
+				<precondition>community_relation.bad_relation_10000</precondition>
+			                <text>trader_relation_bandit_2</text>
+				<next>4</next>
+				<next>7</next>
+	             </phrase>
+			             <phrase id="2">
+				<precondition>community_relation.bad_relation_30000</precondition>
+			                <text>trader_relation_bandit_3</text>
+                      <next>5</next>
+					  <next>7</next>
+             </phrase>
+			             <phrase id="3">
+					<precondition>community_relation.bad_relation_50000</precondition>
+			                <text>trader_relation_bandit_4</text>
+                      <next>6</next>
+					  <next>7</next>
+             </phrase>
+	          <phrase id="4">
+		<precondition>community_relation.has_10000</precondition>
+                <text>trader_relation_bandit_7</text>
+				<action>community_relation.relocate_10000</action>
+				<action>community_relation.repair_relation_bandit</action>
+				<action>dialogs.break_dialog</action>
+            </phrase>	
+		          <phrase id="5">
+		<precondition>community_relation.has_30000</precondition>
+                <text>trader_relation_bandit_7</text>
+				<action>community_relation.relocate_30000</action>
+				<action>community_relation.repair_relation_bandit</action>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+			          <phrase id="6">
+		<precondition>community_relation.has_50000</precondition>
+                <text>trader_relation_bandit_5</text>
+				<action>community_relation.relocate_50000</action>
+				<action>community_relation.repair_relation_bandit</action>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+			          <phrase id="7">
+	                <text>trader_relation_bandit_6</text>
+               <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+<!--Vosstanovlenie otnosheniy s  banditami-->
+
+<!--Kvest Borova na ubiystvo Fraera-->
+<dialog id="kill_fraer">
+  <has_info>actor_set_bandit</has_info>
+ <precondition>ogsm_quests.fraer_alive</precondition>
+        <phrase_list>
+			        <phrase id="0">
+                <text>kill_fraer_0</text>
+                <next>1</next>
+				 </phrase>
+			        <phrase id="1">
+                <text>kill_fraer_1</text>
+               <next>2</next>
+				 </phrase>
+			        <phrase id="2">
+                <text>kill_fraer_2</text>
+                <next>3</next>
+				 </phrase>
+		        <phrase id="3">
+                <text>kill_fraer_3</text>
+                <next>4</next>
+				<next>5</next>
+				 </phrase>				 
+			        <phrase id="4">
+                <text>kill_fraer_4</text>
+<give_info>kill_fraer_start</give_info>
+<action>dialogs.break_dialog</action>
+				 </phrase>
+				        <phrase id="5">
+                <text>kill_fraer_5</text>
+				<action>dialogs.break_dialog</action>
+				 </phrase>
+</phrase_list>
+    </dialog>				 
+
+<dialog id="kill_fraer_dome">
+<has_info>kill_fraer_done_0</has_info>
+        <phrase_list>
+			        <phrase id="0">
+                <text>kill_fraer_dome_0</text>
+				<give_info>kill_fraer_complete</give_info>
+<action>ogsm_quests.kill_fraer_complete</action>
+				 </phrase>
+  	           </phrase_list>
+    </dialog>
+
+<!--Vstuplenie v bandity s pomosch'yu borova posle  polucheniya klyucha v laboratoriyu-->
+	   <dialog id="borov_enter_bandit_3"> 
+ <has_info>val_actor_has_borov_key</has_info>
+ <dont_has_info>actor_set_zombied</dont_has_info>
+           <phrase_list>
+            <phrase id="0">
+	                 <text>borov_meet_again_0</text>
+					  <next>1</next>
+            </phrase>
+            <phrase id="1">
+	                <text>borov_meet_again_1</text>
+					 <next>2</next>
+					 <next>4</next>
+             </phrase>
+<phrase id="2">
+     <text>borov_meet_again_2</text>
+	  <next>3</next>
+     </phrase>
+ <phrase id="3">
+      <text>borov_meet_again_3</text>
+ <next>6</next>
+ <next>5</next>
+</phrase>
+<phrase id="5">
+     <text>borov_meet_again_5</text>
+<action>dialogs.break_dialog</action>
+     </phrase>
+<phrase id="6">
+<precondition>community_relation.has_10000</precondition>
+      <text>borov_meet_again_6</text>
+	  <action>dialogs.actor_set_bandit</action>
+	  <action>community_relation.relocate_10000</action>
+<action>dialogs.break_dialog</action>
+</phrase>
+<phrase id="4">
+      <text>borov_meet_again_4</text>
+<action>dialogs.break_dialog</action>
+</phrase>
+</phrase_list>
+ </dialog>
+ 
+<!--Dialog s banditom, kotorogo gnobit Pulya-->
+<dialog id="chto_namutil">
+  <dont_has_info>actor_set_zombied</dont_has_info>
+ <dont_has_info>kill_pula_start</dont_has_info>
+ <precondition>ogsm_quests.pula_alive</precondition>
+        <phrase_list>
+			        <phrase id="0">
+                <text>chto_namutil_0</text>
+                <next>1</next>
+				 </phrase>
+			        <phrase id="1">
+                <text>chto_namutil_1</text>
+               <next>2</next>
+			   <next>3</next>
+				 </phrase>
+			        <phrase id="2">
+                <text>chto_namutil_2</text>
+<give_info>kill_pula_start</give_info>
+				 </phrase>
+				        <phrase id="3">
+                <text>chto_namutil_3</text>
+				<next>4</next>
+				 </phrase>
+				 <phrase id="4">
+                <text>chto_namutil_4</text>
+				<next>5</next>
+				 </phrase>
+					 <phrase id="5">
+                <text>chto_namutil_5</text>
+				<action>dialogs.break_dialog</action>
+				 </phrase>
+  	           </phrase_list>
+    </dialog>
+	<!--Posle ubiystva Puli bandit daet navodku na SVD Cherepa-->
+	<dialog id="cherep_treasure">
+   <has_info>kill_pula_complete</has_info>
+   <dont_has_info>cherep_treasure_start</dont_has_info>
+        <phrase_list>
+			        <phrase id="0">
+                <text>cherep_treasure_0</text>
+                <next>1</next>
+				 </phrase>
+			        <phrase id="1">
+                <text>cherep_treasure_1</text>
+               <next>2</next>
+			  	 </phrase>
+			        <phrase id="2">
+                <text>cherep_treasure_2</text>
+<give_info>cherep_treasure_start</give_info>
+<action>bar_spawn.spawn_cherep_svd</action>
+<action>dialogs.break_dialog</action>
+				 </phrase>
+  	           </phrase_list>
+    </dialog>
+	<!--Telohraniteli Borova, poka Borov jiv-->
+<dialog id="prebandir_guard">
+ <precondition>ogsm_quests.borov_alive</precondition>
+        <phrase_list>
+			        <phrase id="0">
+                <text>prebandit_0</text>
+                <next>1</next>
+				 </phrase>
+			        <phrase id="1">
+                <text>prebandit_1</text>
+                <next>2</next>
+				 </phrase>
+		           <phrase id="2">
+                <text>prebandit_2</text>
+                <next>3</next>
+            </phrase>
+			 <phrase id="3">
+                <text>prebandit_3</text>
+               <action>dialogs.break_dialog</action>
+            </phrase>
+  	           </phrase_list>
+    </dialog>
+<!--Vstuplenie v bandity i poluchenie klyucha cherez Borova-->
+	   <dialog id="borov_enter_bandit_2"> 
+	   <dont_has_info>barman_document_done</dont_has_info>
+<has_info>barman_document_start</has_info>
+ <dont_has_info>actor_set_zombied</dont_has_info>
+           <phrase_list>
+            <phrase id="0">
+	                 <text>borov_ask_document_0</text>
+					  <next>1</next>
+            </phrase>
+            <phrase id="1">
+	                <text>borov_ask_document_1</text>
+					 <next>2</next>
+					 <next>3</next>
+             </phrase>
+<phrase id="2">
+     <text>borov_ask_document_2</text>
+	  <next>4</next>
+     </phrase>
+ <phrase id="4">
+      <text>borov_ask_document_3</text>
+ <next>5</next>
+</phrase>
+<phrase id="5">
+     <text>borov_ask_document_4</text>
+<action>dialogs.break_dialog</action>
+     </phrase>
+<phrase id="3">
+<precondition>dialogs_darkvalley.barman_document_have</precondition>
+      <text>borov_ask_document_5</text>
+ <next>6</next>
+ <next>11</next>
+</phrase>
+<phrase id="6">
+<dont_has_info>actor_set_bandit</dont_has_info>
+      <text>borov_ask_document_6</text>
+	  <give_info>val_actor_has_borov_key</give_info>
+	  <give_info>barman_document_done</give_info>
+	   <action>dialogs_darkvalley.borov_give_document</action>
+ <next>7</next>
+ <next>8</next>
+</phrase>
+<phrase id="7">
+  <text>borov_ask_document_7</text>
+  <action>dialogs.actor_set_bandit</action>
+   <action>dialogs.break_dialog</action>
+</phrase>
+<phrase id="8">
+ <text>borov_ask_document_8</text>
+  <next>9</next>
+</phrase>
+<phrase id="9">
+      <text>borov_ask_document_9</text>
+	  <next>10</next>
+</phrase>
+<phrase id="10">
+      <text>borov_ask_document_10</text>
+ <action>dialogs.break_dialog</action>
+</phrase>
+<phrase id="11">
+<has_info>actor_set_bandit</has_info>
+      <text>borov_ask_document_11</text>
+	  <give_info>val_actor_has_borov_key</give_info>
+	  <give_info>barman_document_done</give_info>
+	   <action>dialogs_darkvalley.borov_give_document</action>
+ <next>10</next>
+</phrase>
+</phrase_list>
+ </dialog>
+ 
+ <!--Pervaya vstrecha s Borovym, svyazannaya s polucheniem klyucha ot laboratorii-->
+	   <dialog id="borov_enter_bandit_1"> 
+<dont_has_info>barman_document_start</dont_has_info>
+<dont_has_info>val_actor_has_borov_key</dont_has_info>
+           <phrase_list>
+            <phrase id="0">
+	                 <text>borov_enter_bandit_0</text>
+					  <next>1</next>
+            </phrase>
+            <phrase id="1">
+	                <text>borov_enter_bandit_1</text>
+					 <next>2</next>
+					 <next>14</next>
+             </phrase>
+<phrase id="2">
+<has_info>osvedomitel_actor_prebandit</has_info>
+     <text>borov_enter_bandit_2</text>
+	  <next>3</next>
+     </phrase>
+ <phrase id="3">
+      <text>borov_enter_bandit_3</text>
+ <next>4</next>
+             </phrase>
+<phrase id="4">
+      <text>borov_enter_bandit_4</text>
+ <next>5</next>
+             </phrase>
+<phrase id="5">
+      <text>borov_enter_bandit_5</text>
+ <next>6</next>
+             </phrase>
+<phrase id="6">
+      <text>borov_enter_bandit_6</text>
+ <next>7</next>
+             </phrase>
+<phrase id="7">
+      <text>borov_enter_bandit_7</text>
+ <next>8</next>
+             </phrase>
+<phrase id="8">
+      <text>borov_enter_bandit_8</text>
+ <next>9</next>
+ <next>16</next>
+             </phrase>
+<phrase id="9">
+      <text>borov_enter_bandit_9</text>
+ <next>10</next>
+             </phrase>
+<phrase id="10">
+      <text>borov_enter_bandit_10</text>
+ <next>11</next>
+             </phrase>
+<phrase id="11">
+      <text>borov_enter_bandit_11</text>
+ <next>12</next>
+ <next>13</next>
+             </phrase>
+<phrase id="12">
+      <text>borov_enter_bandit_12</text>
+ <action>dialogs_darkvalley.barman_document_have</action>
+ <action>bar_spawn.spawn_barman_document</action>
+<give_info>barman_document_start</give_info>
+             </phrase>
+<phrase id="13">
+      <text>borov_enter_bandit_13</text>
+<action>dialogs.break_dialog</action>
+<action>dialogs.actor_clear_community</action>
+             </phrase>
+			 <phrase id="14">
+			 <dont_has_info>osvedomitel_actor_prebandit</dont_has_info>
+      <text>borov_enter_bandit_14</text>
+ <next>15</next>
+ <next>17</next>
+ <next>22</next>
+             </phrase>
+			 <phrase id="15">
+      <text>borov_enter_bandit_15</text>
+	  <dont_has_info>kill_pula_complete</dont_has_info>
+ <next>4</next>
+             </phrase>
+			 <phrase id="16">
+      <text>borov_enter_bandit_16</text>
+ <next>10</next>
+ </phrase>
+ 			 <phrase id="17">
+			 <dont_has_info>actor_set_bandit</dont_has_info>
+			 <has_info>kill_pula_complete</has_info>
+      <text>borov_enter_bandit_17</text>
+ <next>18</next>
+ <next>19</next>
+ </phrase>
+ <phrase id="18">
+      <text>borov_ask_document_7</text>
+	  <action>dialogs.actor_set_bandit</action>
+ <next>20</next>
+             </phrase>
+			 <phrase id="20">
+      <text>Well then think you're one of us. Welcome to the thieves' lives.</text>
+ <next>4</next>
+             </phrase>
+ <phrase id="19">
+      <text>borov_ask_document_8</text>
+ <next>21</next>
+             </phrase>
+			 <phrase id="21">
+      <text>What are. Once you have helped us, we will not touch you now. But in the future we had better not meet.</text>
+ <next>4</next>
+             </phrase>
+			  			 <phrase id="22">
+			 <has_info>kill_pula_complete</has_info>
+			 <has_info>actor_set_bandit</has_info>
+      <text>I know. You already said you helped him and helped to Pula, in the sense rather die, heh, heh. Now you're our man.</text>
+ <next>4</next>
+ </phrase>
+
+</phrase_list>
+ </dialog>
+<dialog id="dead_stalker_start_1">
+        <phrase_list>
+			        <phrase id="0">
+                <text>start_dialog_1</text>
+                <next>1</next>
+				 </phrase>
+		           <phrase id="1">
+                <text>start_dialog_2</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>start_dialog_3</text>
+             </phrase>
+	           </phrase_list>
+    </dialog>
+    <dialog id="val_sos_dialog">
+        <phrase_list>
+            <phrase id="1">
+                <text />
+                <dont_has_info>val_sos_got_medkit</dont_has_info>
+                <next>11</next>
+            </phrase>
+            <phrase id="112">
+                <text>val_sos_dialog_112</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="2">
+                <text />
+                <has_info>val_sos_got_medkit</has_info>
+                <next>21</next>
+            </phrase>
+            <phrase id="111">
+                <text>val_sos_dialog_111</text>
+                <precondition>dialogs.actor_have_medkit</precondition>
+                <action>dialogs.transfer_medkit</action>
+                <action>dialogs.break_dialog</action>
+                <give_info>val_sos_got_medkit</give_info>
+            </phrase>
+            <phrase id="211">
+                <text>val_sos_dialog_211</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="11">
+                <text>val_sos_dialog_11</text>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="21">
+                <text>val_sos_dialog_21</text>
+                <give_info>val_show_farm_zone</give_info>
+                <give_info>val_sos_give_info</give_info>
+                <next>211</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="val_prisoner_hello">
+        <phrase_list>
+            <phrase id="111">
+                <text>val_prisoner_hello_111</text>
+                <action>dialogs.break_dialog</action>
+                <give_info>val_prisoner_sit</give_info>
+            </phrase>
+            <phrase id="112">
+                <text>val_prisoner_hello_112</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="2111">
+                <text>val_prisoner_hello_2111</text>
+                <next>21111</next>
+            </phrase>
+            <phrase id="21111">
+                <text>val_prisoner_hello_21111</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="3">
+                <text />
+                <has_info>val_prisoner_give_info</has_info>
+                <next>31</next>
+            </phrase>
+            <phrase id="311">
+                <text>val_prisoner_hello_311</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="1">
+                <text />
+                <dont_has_info>val_prisoner_free</dont_has_info>
+                <dont_has_info>val_prisoner_door_unlocked</dont_has_info>
+                <dont_has_info>val_prisoner_sit</dont_has_info>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>val_prisoner_hello_11</text>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="31">
+                <text>val_prisoner_hello_31</text>
+                <next>311</next>
+            </phrase>
+            <phrase id="2">
+                <text />
+                <dont_has_info>val_prisoner_give_info</dont_has_info>
+                <has_info>val_prisoner_free</has_info>
+                <next>21</next>
+            </phrase>
+            <phrase id="211">
+                <text>val_prisoner_hello_211</text>
+                <give_info>val_prisoner_give_info</give_info>
+                <next>2111</next>
+            </phrase>
+            <phrase id="21">
+                <text>val_prisoner_hello_21</text>
+                <next>211</next>
+            </phrase>
+            <phrase id="4">
+                <text />
+                <dont_has_info>val_prisoner_free</dont_has_info>
+                <dont_has_info>val_prisoner_door_unlocked</dont_has_info>
+                <has_info>val_prisoner_sit</has_info>
+                <next>41</next>
+            </phrase>
+            <phrase id="41">
+                <text>val_prisoner_hello_41</text>
+                <next>411</next>
+            </phrase>
+            <phrase id="411">
+                <text>val_prisoner_hello_411</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+                <next>2</next>
+                <next>3</next>
+                <next>4</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="val_rob_dialog">
+        <phrase_list>
+            <phrase id="11">
+                <text>val_rob_dialog_11</text>
+                <next>111</next>
+                <next>113</next>
+            </phrase>
+            <phrase id="21">
+                <text>val_rob_dialog_21</text>
+                <next>111</next>
+                <next>113</next>
+            </phrase>
+            <phrase id="3">
+                <text>val_rob_dialog_3</text>
+                <next>31</next>
+            </phrase>
+            <phrase id="31">
+                <text>val_rob_dialog_31</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="113">
+                <text>val_rob_dialog_113</text>
+                <action>dialogs.break_dialog</action>
+                <give_info>val_rob_no_money</give_info>
+            </phrase>
+            <phrase id="111">
+                <text>val_rob_dialog_111</text>
+                <precondition>dialogs_darkvalley.val_rob_actor_has_money</precondition>
+                <action>dialogs_darkvalley.val_rob_actor_reloc_money</action>
+                <give_info>val_rob_buying</give_info>
+                <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <text />
+                <has_info>val_rob_no_money</has_info>
+                <next>21</next>
+            </phrase>
+            <phrase id="1">
+                <text />
+                <dont_has_info>val_rob_no_money</dont_has_info>
+                <next>11</next>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <precondition>dialogs_darkvalley.val_rob_actor_has_money</precondition>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="val_escort_captive_dialog">
+        <phrase_list>
+            <phrase id="8">
+                <text></text>
+                <dont_has_info>val_escort_captive_give_main_info</dont_has_info>
+                <next>1</next>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text></text>
+                <has_info>val_escort_nap1_dead</has_info>
+                <next>41</next>
+            </phrase>
+            <phrase id="1">
+                <text></text>
+                <dont_has_info>val_escort_nap1_dead</dont_has_info>
+                <next>11</next>
+            </phrase>
+            <phrase id="41">
+                <text>val_escort_captive_dialog_41</text>
+                <next>411</next>
+            </phrase>
+            <phrase id="411">
+                <text>val_escort_captive_dialog_411</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>val_escort_captive_dialog_11</text>
+                <give_info>val_escort_captive_give_main_info</give_info>
+                <next>7</next>
+            </phrase>
+            <phrase id="2">
+                <text>val_escort_captive_dialog_2</text>
+                <dont_has_info>val_escort_captive_give_info</dont_has_info>
+                <next>21</next>
+            </phrase>
+            <phrase id="21">
+                <text>val_escort_captive_dialog_21</text>
+                <give_info>val_escort_captive_give_info</give_info>
+                <next>211</next>
+            </phrase>
+            <phrase id="211">
+                <text>val_escort_captive_dialog_211</text>
+                <next>71</next>
+            </phrase>
+            <phrase id="3">
+                <text>val_escort_captive_dialog_3</text>
+                <dont_has_info>val_escort_help_prisoner_task</dont_has_info>
+                <give_info>val_escort_help_prisoner_task</give_info>
+                <next>71</next>
+            </phrase>
+            <phrase id="7">
+                <text></text>
+                <has_info>val_escort_actor_helped</has_info>
+                <next>8</next>
+                <next>71</next>
+            </phrase>
+            <phrase id="61">
+                <text>val_escort_captive_dialog_61</text>
+                <next>511</next>
+            </phrase>
+            <phrase id="6">
+                <text></text>
+                <dont_has_info>val_escort_actor_helped</dont_has_info>
+                <next>61</next>
+            </phrase>
+            <phrase id="5">
+                <text></text>
+                <has_info>val_escort_captive_give_info</has_info>
+                <has_info>val_escort_help_prisoner_task</has_info>
+                <next>51</next>
+            </phrase>
+            <phrase id="51">
+                <text>val_escort_captive_dialog_51</text>
+                <next>511</next>
+            </phrase>
+            <phrase id="511">
+                <text>val_escort_captive_dialog_511</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="71">
+                <text></text>
+                <has_info>val_escort_captive_give_main_info</has_info>
+                <next>2</next>
+                <next>3</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="0">
+                <text></text>
+                <next>7</next>
+                <next>6</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="val_escort_nap1_dialog">
+        <phrase_list>
+            <phrase id="2111">
+                <text>val_escort_nap1_dialog_2111</text>
+                <next>412</next>
+            </phrase>
+            <phrase id="31">
+                <text>val_escort_nap1_dialog_31</text>
+                <action>dialogs_darkvalley.val_escort_reward</action>
+                <give_info>val_escort_got_reward</give_info>
+                <next>219</next>
+            </phrase>
+            <phrase id="41">
+                <text>val_escort_nap1_dialog_41</text>
+                <next>219</next>
+            </phrase>
+            <phrase id="212191">
+                <text></text>
+                <next>21211</next>
+                <next>21212</next>
+                <next>21213</next>
+                <next>21214</next>
+                <next>21215</next>
+            </phrase>
+            <phrase id="212111">
+                <text>val_escort_nap1_dialog_212111</text>
+                <next>21219</next>
+            </phrase>
+            <phrase id="21212">
+                <text>val_escort_nap1_dialog_21212</text>
+                <next>212121</next>
+            </phrase>
+            <phrase id="212121">
+                <text>val_escort_nap1_dialog_212121</text>
+                <next>2121211</next>
+            </phrase>
+            <phrase id="2121211">
+                <text>val_escort_nap1_dialog_2121211</text>
+                <next>21212111</next>
+            </phrase>
+            <phrase id="21212111">
+                <text>val_escort_nap1_dialog_21212111</text>
+                <next>21219</next>
+            </phrase>
+            <phrase id="21213">
+                <text>val_escort_nap1_dialog_21213</text>
+                <next>212131</next>
+            </phrase>
+            <phrase id="212131">
+                <text>val_escort_nap1_dialog_212131</text>
+                <next>21219</next>
+            </phrase>
+            <phrase id="21214">
+                <text>val_escort_nap1_dialog_21214</text>
+                <next>212141</next>
+            </phrase>
+            <phrase id="212141">
+                <text>val_escort_nap1_dialog_212141</text>
+                <next>21219</next>
+            </phrase>
+            <phrase id="21215">
+                <text>val_escort_nap1_dialog_21215</text>
+                <next>212151</next>
+            </phrase>
+            <phrase id="212151">
+                <text>val_escort_nap1_dialog_212151</text>
+                <next>2121511</next>
+            </phrase>
+            <phrase id="2121511">
+                <text></text>
+                <next>2191</next>
+            </phrase>
+            <phrase id="21211">
+                <text>val_escort_nap1_dialog_21211</text>
+                <next>212111</next>
+            </phrase>
+            <phrase id="2121">
+                <text>val_escort_nap1_dialog_2121</text>
+                <give_info>val_show_zones</give_info>
+                <next>21219</next>
+            </phrase>
+            <phrase id="21219">
+                <text></text>
+                <next>212191</next>
+            </phrase>
+            <phrase id="2131">
+                <text>val_escort_nap1_dialog_2131</text>
+                <next>219</next>
+            </phrase>
+            <phrase id="212">
+                <text>val_escort_nap1_dialog_212</text>
+                <next>2121</next>
+            </phrase>
+            <phrase id="2191">
+                <text></text>
+                <next>212</next>
+                <next>213</next>
+                <next>214</next>
+            </phrase>
+            <phrase id="219">
+                <text></text>
+                <next>2191</next>
+            </phrase>
+            <phrase id="214">
+                <text>val_escort_nap1_dialog_214</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="213">
+                <text>val_escort_nap1_dialog_213</text>
+                <dont_has_info>val_escort_captive_give_main_info</dont_has_info>
+                <next>2131</next>
+            </phrase>
+            <phrase id="0">
+                <text></text>
+                <next>2</next>
+                <next>3</next>
+                <next>4</next>
+                <next>6</next>
+            </phrase>
+            <phrase id="21">
+                <text>val_escort_nap1_dialog_21</text>
+                <action>dialogs_darkvalley.val_escort_reward</action>
+                <give_info>val_escort_got_reward</give_info>
+                <next>219</next>
+            </phrase>
+            <phrase id="61">
+                <text>val_escort_nap1_dialog_61</text>
+                <next>611</next>
+            </phrase>
+            <phrase id="611">
+                <text>val_escort_nap1_dialog_611</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="6">
+                <text></text>
+                <dont_has_info>val_escort_actor_helped</dont_has_info>
+                <next>61</next>
+            </phrase>
+            <phrase id="4">
+                <text></text>
+                <has_info>val_escort_got_reward</has_info>
+                <has_info>val_escort_actor_helped</has_info>
+                <next>41</next>
+            </phrase>
+            <phrase id="3">
+                <text></text>
+                <dont_has_info>val_escort_got_reward</dont_has_info>
+                <has_info>val_escort_captive_dead</has_info>
+                <has_info>val_escort_actor_helped</has_info>
+                <has_info>val_escort_guard1_dead</has_info>
+                <has_info>val_escort_guard2_dead</has_info>
+                <next>31</next>
+            </phrase>
+            <phrase id="2">
+                <text></text>
+                <dont_has_info>val_escort_captive_dead</dont_has_info>
+                <dont_has_info>val_escort_got_reward</dont_has_info>
+                <has_info>val_escort_guard1_dead</has_info>
+                <has_info>val_escort_guard2_dead</has_info>
+                <has_info>val_escort_actor_helped</has_info>
+                <next>21</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+	
+	<dialog id="bandit_trader">
+        <dont_has_info>bandit_trader_intro</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>bandit_trader_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>bandit_trader_1</text>
+				<give_info>bandit_trader_intro</give_info>
+				<next>2</next>
+     	    </phrase>
+            <phrase id="2">
+                <text>bandit_trader_2</text>
+            </phrase>
+        </phrase_list>
+  </dialog>
+</game_dialogs>

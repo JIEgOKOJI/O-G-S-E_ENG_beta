@@ -1,0 +1,1353 @@
+----------------------------------------------------------------------------------------------------
+-- Companion
+----------------------------------------------------------------------------------------------------
+-- Разработчик: Serhiy Vynnychenko (narrator@gsc-game.kiev.ua)
+-- Доработки: Andrey Fidrya (Zmey) af@svitonline.com
+-- Реанимация схемы для применения в релизной версии, доработка: KamikaZze kamikazze-ru@yandex.ru
+----------------------------------------------------------------------------------------------------
+-- Возможные коммунити актора:
+-- actor			- одиночка
+-- actor_dolg		- долговец
+-- actor_freedom	- свободовец
+-- actor_zombied	- зомбированный
+-- actor_prebandit	- помощник бандитов
+-- bandit			- бандит
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------  
+number_of_companions = 0
+companions = {}
+
+local desired_distance = 3
+local min_distance = 1.5
+local max_distance = 25 -- дальше этого расстояния напарник будет юежать к вам забыв про врагов
+
+local keep_state_min_time = 1000 -- переключившись в состояние (бег, ходьба, спринт), не переключаться в другое N ms
+
+local dist_walk = 5 -- < dist_run
+local dist_run = 15
+-- otherwise - sprint
+
+local sound_wait = "weather,state"
+local timeout
+
+local scared = false
+local scared_timer = nil
+local disabled_objects = {}
+local calm_down_timer = nil
+
+-- Модели поведения:
+beh_walk_simple = 0
+beh_walk_low_aggr = 8
+beh_walk_ignore = 2
+
+beh_crouch_simple = 1
+beh_crouch_low_aggr = 9
+beh_crouch_ignore = 4
+
+beh_wait_simple = 3
+beh_wait_low_aggr = 10
+beh_wait_ignore = 5
+
+beh_hide_simple = 6
+beh_hide_low_aggr = 11
+beh_hide_ignore = 7
+
+--beh_wait_near = 4
+--beh_walk_near = 1
+
+local range_normal = 100
+local range_basic = 80
+local range_low_aggression = 60
+local range_dont_shoot = 0
+
+local fov_normal = 360
+local fov_basic = 220
+local fov_low_aggression = 180
+local fov_dont_shoot = 120
+
+local mt_stand = 0
+local mt_walk = 1
+local mt_run = 2
+local mt_sprint = 3
+
+local keep_state_until = time_global()
+local last_state = nil
+local assist_point = nil
+
+being_attacked = false
+actor_attacked = false
+
+-----------------------------------------------------
+-- Функции сохранения и выгрузки из кастомдаты
+-----------------------------------------------------
+-- Переменные напарника в кастомдате
+-----------------------------------------------------
+-- is_companion - компаньон ли сейчас
+-- companion_behavior - номер модели поведения
+-- actor_level - текущий уровень актора
+-- orig_community - родное коммунити
+-- friendship_status - родное отношение к ГГ
+-- actor_rep - репа актора (на будущее)
+-- actor_debt - долг актора (на будущее)
+-----------------------------------------------------
+
+function community_by_actor(actor_comm)
+
+	local return_community = "stalker"
+
+	if actor_comm then
+		if actor_comm == "actor" then
+			return_community = "stalker"
+		elseif actor_comm == "actor_dolg" then
+			return_community = "dolg"
+		elseif actor_comm == "actor_freedom" then
+			return_community = "freedom"	
+		elseif actor_comm == "bandit" then
+			return_community = "bandit"		
+		elseif actor_comm == "actor_prebandit" then
+			return_community = "bandit"	
+		elseif actor_comm == "actor_zombied" then
+			return_community = "zombied"	
+		end
+	
+	end
+	
+	return return_community
+end
+
+function save_var_companion(npc, var_name, var_value)
+
+	if not npc or not var_name then return end
+	local sobj = alife():object(npc)
+	
+	if sobj then
+
+		local npc_data = m_net_utils.get_stalker_data(sobj)
+		local custom_data = m_net_utils.parse_custom_data(npc_data.custom)
+		
+		if not custom_data.companion_data then
+			custom_data.companion_data = {}
+			custom_data.companion_data[var_name] = var_value
+			-- logf("V1 COMP VAR SAVED: "..tostring(var_name).." value "..tostring(var_value))
+		else
+			custom_data.companion_data[var_name] = var_value
+			-- logf("V2 COMP VAR SAVED: "..tostring(var_name).." value "..tostring(var_value))			
+		end
+		
+		npc_data.custom = m_net_utils.gen_custom_data(custom_data)
+		m_net_utils.set_stalker_data(npc_data, sobj)
+		-- logf("COMP SYNCHRONIZED!")
+	
+	end
+
+end
+
+function load_var_companion(npc, var_name, def_value)
+
+	if not npc or not var_name then return end
+	local sobj = alife():object(npc)
+	
+	if sobj then
+	
+		local npc_data = m_net_utils.get_stalker_data(sobj)
+		local custom_data = m_net_utils.parse_custom_data(npc_data.custom)	
+		
+		if custom_data.companion_data and custom_data.companion_data[var_name] then
+			-- logf("COMP VAR RET: "..tostring(var_name).." value "..tostring(custom_data.companion_data[var_name]))
+			return custom_data.companion_data[var_name]
+		else	
+			return def_value or nil
+		end
+	
+	end	
+
+end
+
+function init_danger_settings(npc)
+
+	local storage = db.storage[npc:id()]
+	local danger_settings = storage.danger
+	
+	storage.ignore_types = nil
+	storage.ignore_types = {}
+	storage.ignore_types["corpse"] = true 
+	storage.ignore_types["sound"] = true
+	
+	npc:set_custom_panic_threshold(0.0)	
+	
+	if not danger_settings then
+		storage.danger = {}
+		danger_settings = storage.danger
+	end
+	
+	danger_settings.ignore_distance			= 50
+	danger_settings.ignore_distance_grenade	= 15
+	danger_settings.ignore_distance_corpse	= 10
+	danger_settings.ignore_distance_hit		= 80
+	danger_settings.ignore_distance_sound		= 50
+
+	danger_settings.danger_inertion_time_grenade	= 10000
+	danger_settings.danger_inertion_time_corpse	= 5000
+	danger_settings.danger_inertion_time_hit		= 10000
+	danger_settings.danger_inertion_time_sound	= 5000
+	danger_settings.danger_inertion_time_ricochet	= 10000	
+	
+end
+
+function we_are_hit(npc, who, real)
+	
+	if (who and who:alive() and who:id() ~= db.actor:id() and (IsStalker(who) or IsMonster(who))) and npc then
+
+		if not timeout then
+			timeout = time_global() + 1000
+		else
+			if time_global() < timeout then
+				return false
+			else	
+				timeout = time_global() + 2000
+			end
+		end
+
+		local range = npc:range()
+		local fov = npc:fov()	
+		
+		local act_item = npc:active_item()
+		local bw = nil
+
+		if not act_item then
+			local wm = rx_wmgr and rx_wmgr.get_wm(npc)
+			bw = (wm and wm:get_weapon()) or npc:best_weapon()
+		else
+			bw = act_item
+		end			
+		
+		
+		local look_pos = who:bone_position("bip01_head")	
+		local real_enemy = db.storage[npc:id()].enemy	
+		local distance = npc:position():distance_to(who:position()) 
+		
+		local a_hit = hit()	
+		a_hit.type = hit.fire_wound
+		a_hit.impulse = 0.1
+		a_hit.draftsman = who
+		a_hit.direction = vector():set(look_pos)		
+			
+		if real then
+		
+			if disabled_objects[who:id()] then
+				disabled_objects[who:id()] = nil
+				npc:enable_memory_object( who, true )
+			end
+			if range < range_normal or fov < fov_normal then
+				npc:set_range(range_normal)
+				npc:set_fov(fov_normal)
+			end			
+			if being_attacked == false then
+				being_attacked = true
+				a_hit.power = 0.0
+			else
+				a_hit.power = 0.0
+			end
+			
+			if not real_enemy or (real_enemy and not real_enemy:alive()) then
+				db.storage[npc:id()].enemy = who
+			end
+			
+			npc:hit(a_hit)	
+			xr_sound.set_sound(npc, nil)
+			stop_play_sound(npc)
+			npc.health = 1
+			state_mgr.set_state(npc, "raid_fire")
+			npc:set_sight(look.fire_point,look_pos)
+			npc:set_item(object.fire1, bw)
+			
+		else
+		
+			local st_c = db.storage[npc:id()].companion
+			if not st_c then
+				db.storage[npc:id()].companion = {}
+				db.storage[npc:id()].companion.behavior = 0
+				db.storage[npc:id()].companion.enabled = true
+			end
+			local behavior = st_c.behavior
+			if behavior == beh_walk_simple 
+			or behavior == beh_crouch_simple 
+			or behavior == beh_wait_simple 
+			or behavior == beh_hide_simple then
+				if (IsStalker(who) and distance < 70) then
+					if being_attacked == false then
+						being_attacked = true
+						a_hit.power = 0.0
+					else
+						a_hit.power = 0.0
+					end
+
+					if not real_enemy or (real_enemy and not real_enemy:alive()) then
+						db.storage[npc:id()].enemy = who
+					end
+					
+					npc:hit(a_hit)	
+					xr_sound.set_sound(npc, nil)
+					stop_play_sound(npc)
+					npc.health = 1
+					if behavior == beh_crouch_simple 
+					or behavior == beh_hide_simple then
+						state_mgr.set_state(npc, "sneak_fire")
+					else
+						state_mgr.set_state(npc, "raid_fire")
+					end
+					npc:set_sight(look.fire_point,look_pos)
+					npc:set_item(object.fire1, bw)		
+					
+				elseif (IsMonster(who) and distance < 40) then
+					if being_attacked == false then
+						being_attacked = true
+						a_hit.power = 0.0
+					else
+						a_hit.power = 0.0
+					end
+
+					if not real_enemy or (real_enemy and not real_enemy:alive()) then
+						db.storage[npc:id()].enemy = who
+					end
+					
+					npc:hit(a_hit)	
+					xr_sound.set_sound(npc, nil)
+					stop_play_sound(npc)
+					npc.health = 1
+					state_mgr.set_state(npc, "raid_fire")
+					npc:set_sight(look.fire_point,look_pos)
+					npc:set_item(object.fire1, bw)
+					
+				end			
+			elseif behavior == beh_walk_low_aggr 
+			or behavior == beh_crouch_low_aggr 
+			or behavior == beh_wait_low_aggr 
+			or behavior == beh_hide_low_aggr then
+				if (IsStalker(who) and distance < 45) then
+					if being_attacked == false then
+						being_attacked = true
+						a_hit.power = 0.0
+					else
+						a_hit.power = 0.0
+					end
+
+					if not real_enemy or (real_enemy and not real_enemy:alive()) then
+						db.storage[npc:id()].enemy = who
+					end
+					
+					npc:hit(a_hit)	
+					xr_sound.set_sound(npc, nil)
+					stop_play_sound(npc)
+					npc.health = 1
+					if behavior == beh_crouch_simple 
+					or behavior == beh_hide_simple then
+						state_mgr.set_state(npc, "sneak_fire")
+					else
+						state_mgr.set_state(npc, "raid_fire")
+					end					
+					npc:set_sight(look.fire_point,look_pos)
+					npc:set_item(object.fire1, bw)
+					
+				elseif IsMonster(who) and distance < 20 then
+					if being_attacked == false then
+						being_attacked = true
+						a_hit.power = 0.0
+					else
+						a_hit.power = 0.0
+					end
+
+					if not real_enemy or (real_enemy and not real_enemy:alive()) then
+						db.storage[npc:id()].enemy = who
+					end
+					
+					npc:hit(a_hit)	
+					xr_sound.set_sound(npc, nil)
+					stop_play_sound(npc)
+					npc.health = 1
+					state_mgr.set_state(npc, "raid_fire")
+					npc:set_sight(look.fire_point,look_pos)
+					npc:set_item(object.fire1, bw)
+					
+				end					
+			elseif behavior == beh_walk_ignore 
+			or behavior == beh_crouch_ignore 
+			or behavior == beh_wait_ignore 
+			or behavior == beh_hide_ignore then	
+				if (IsStalker(who) and distance < 25) then
+					if range < range_low_aggression or fov < fov_low_aggression then
+						npc:set_range(range_low_aggression)
+						npc:set_fov(fov_low_aggression)
+					end					
+					npc:set_sight(look.fire_point,look_pos)
+				elseif (IsMonster(who) and distance < 15) then
+					if range < range_low_aggression or fov < fov_low_aggression then
+						npc:set_range(range_low_aggression)
+						npc:set_fov(fov_low_aggression)
+					end					
+					npc:set_sight(look.fire_point,look_pos)				
+				end					
+			end		
+		
+		end
+		
+	end
+end
+
+function companion_death(npc)
+	if npc and is_companion(npc:id()) then
+	
+		local storage = db.storage[npc:id()]
+		if storage then
+			local scheme = storage.companion
+			if scheme then
+				scheme.enabled = false
+			end
+		end	
+		
+		number_of_companions = number_of_companions - 1
+		xr_companion.companions[npc:id()] = nil
+		
+		level.map_remove_object_spot(npc:id(), "alife_presentation_companion")
+		
+		local dead_friends = amk.load_variable("dead_fr", 0)
+		dead_friends = dead_friends + 1
+		amk.save_variable("dead_fr", dead_friends)		
+		
+		if dead_friends < 4 then
+			db.actor:give_game_news("Your companion "..npc:character_name() .. " had been killed!", "ui\\ui_iconsTotal", Frect():set(0,235,83,47), 0, 15000)
+		else
+			db.actor:give_game_news("Your companion "..npc:character_name() .. " had been killed once again! You have a bad red among stalkers now!", "ui\\ui_iconsTotal", Frect():set(0,235,83,47), 0, 15000)
+		end	
+	end
+end
+
+function reset_enemy_by_time()
+	if actor_attacked or being_attacked then
+		if not calm_down_timer then
+			calm_down_timer = time_global() + 3000
+		else	
+			local calm_down = time_global()
+			if calm_down > calm_down_timer then
+				-- logf("CALM DOWN")
+				actor_attacked = false
+				being_attacked = false
+				calm_down_timer = nil
+				for k, v in pairs(companions) do
+					if companions[k] == "companion" then
+						local companion = level.object_by_id(k)
+						if companion and companion:alive() then
+							local be = companion:best_enemy()
+							if not be or (be and (not companion:see(be) or not be:alive())) then
+								-- logf("RESET ENEMY")
+								db.storage[companion:id()].enemy = nil
+							end
+						end
+					end
+				end					
+			end
+		end		
+	end
+end
+
+function process_enemy(enemy)
+	if enemy and enemy:alive() and (IsStalker(enemy) or IsMonster(enemy)) then
+		--' Определим есть ли у нас враг, и лучший враг
+		local be = enemy:best_enemy()
+		local en = enemy:get_enemy()
+		
+		--self.object:see( be )
+		
+		if (be and be:alive() and enemy:see(be) and be:see(enemy)) then
+			--' Если лучший враг
+			if be:id() == db.actor:id() and actor_attacked == false then
+				--' и это ГГ
+				actor_attacked = true
+				for k, v in pairs(companions) do
+					if companions[k] == "companion" then
+						local companion = level.object_by_id(k)
+						if companion and companion:alive() then
+							--' сообщим неписю
+							-- logf("we_are_hit actor best")
+							we_are_hit(companion, enemy, false)
+							return
+						end
+					end
+				end	
+			elseif companions[be:id()] and companions[be:id()] == "companion" then
+				--' если лучший враг - компаньон
+				local companion = level.object_by_id(be:id())
+				if companion and companion:alive() then
+					-- logf("we_are_hit companion best")
+					we_are_hit(companion, enemy, false)
+					return
+				end
+			end
+		end	
+
+		if (en and en:alive() and enemy:see(en) and en:see(enemy)) then
+			--' Если враг
+			if en:id() == db.actor:id() and actor_attacked == false then
+				--' и это ГГ
+				actor_attacked = true
+				for k, v in pairs(companions) do
+					if companions[k] == "companion" then
+						local companion = level.object_by_id(k)
+						if companion and companion:alive() then
+							--' сообщим неписю
+							-- logf("we_are_hit actor enemy")
+							we_are_hit(companion, enemy, false)
+							return
+						end
+					end
+				end	
+			elseif companions[en:id()] and companions[en:id()] == "companion" then
+				--' если враг - компаньон
+				local companion = level.object_by_id(en:id())
+				if companion and companion:alive() then
+					-- logf("we_are_hit companion enemy")
+					we_are_hit(companion, enemy, false)
+					return
+				end
+			end
+		end			
+		
+	end
+end
+
+function process_sight_low_aggression(npc)
+	if not npc then
+		-- logf(" process_sight_low_aggression no npc ")
+		return
+	end
+	local be = npc:best_enemy()
+	local bd = npc:best_danger()
+	local range = npc:range()
+	local fov = npc:fov()	
+	if (be and be:alive() and (IsStalker(be) or IsMonster(be))) or bd then
+		--' Если или враг или опасность рядом
+		if not being_attacked then
+			--' Игнорировать всех врагов, пока нас не тронули
+			if range > range_low_aggression then
+				--' Ничего тогда не видим
+				npc:set_range(range_low_aggression)
+				npc:set_fov(fov_low_aggression)
+			end
+		else
+			--' Тронули - пиздец им
+			if range < range_normal or fov < 200 then
+				-- отдадим ему глаза обратно, пусть охренеет
+				npc:set_range(range_normal)
+				npc:set_fov(fov_normal)
+			end			
+		end	
+	else
+		--' Если нет врагов и опасности
+		if not actor_attacked and not being_attacked then
+			--' Если никто не атакует актора
+			if range > range_low_aggression then
+				--' Ничего тогда не видим
+				npc:set_range(range_low_aggression)
+				npc:set_fov(fov_low_aggression)			
+			end
+		elseif actor_attacked then
+			--' Поднимем флаг атаки
+			being_attacked = true	
+			--' Наших бьют!
+			if range < range_normal or fov < 200 then
+				--' Отдадим неписю глаза обратно, пусть охренеет
+				npc:set_range(range_normal)
+				npc:set_fov(fov_normal)
+			end					
+		end
+	end
+end
+
+function process_sight_dont_shoot(npc)
+	if not npc then
+		-- logf(" process_sight_dont_shoot no npc ")
+		return
+	end
+	local be = npc:best_enemy()
+	local bd = npc:best_danger()
+	local range = npc:range()
+	local fov = npc:fov()	
+	if (be and be:alive() and (IsStalker(be) or IsMonster(be))) or bd then
+		--' Если или враг или опасность рядом
+		if not being_attacked then
+			--' Игнорировать всех врагов, пока нас не тронули
+			if range > range_dont_shoot then
+				--' Ничего тогда не видим
+				npc:set_range(range_dont_shoot)
+				npc:set_fov(fov_dont_shoot)
+			end
+		else
+			--' Тронули - пиздец им
+			if range < range_normal or fov < fov_normal then
+				-- отдадим ему глаза обратно, пусть охренеет
+				npc:set_range(range_normal)
+				npc:set_fov(fov_normal)
+			end			
+		end	
+	else
+		--' Если нет врагов и опасности
+		if not actor_attacked and not being_attacked then
+			--' Если никто не атакует актора
+			if range > range_dont_shoot then
+				--' Ничего тогда не видим
+				npc:set_range(range_dont_shoot)
+				npc:set_fov(fov_dont_shoot)			
+			end
+		elseif actor_attacked then	
+			--' Поднимем флаг атаки
+			being_attacked = true	
+			--' Наших бьют!
+			if range < range_normal or fov < fov_normal then
+				--' Отдадим неписю глаза обратно, пусть охренеет
+				npc:set_range(range_normal)
+				npc:set_fov(fov_normal)
+			end					
+		end
+	end
+end
+
+function process_sight(npc)
+	if not npc then
+		-- logf(" process_sight no npc ")
+		return
+	end
+	local be = npc:best_enemy()
+	local bd = npc:best_danger()
+	local range = npc:range()
+	local fov = npc:fov()	
+	if (be and be:alive() and (IsStalker(be) or IsMonster(be))) or bd then
+		--' Если или враг или опасность рядом
+		if not being_attacked then
+			--' Игнорировать всех врагов, пока нас не тронули
+			if range > range_basic then
+				--' Ничего тогда не видим
+				npc:set_range(range_basic)
+				npc:set_fov(fov_basic)
+			end
+		else
+			--' Тронули - пиздец им
+			if range < range_normal or fov < 200 then
+				-- отдадим ему глаза обратно, пусть охренеет
+				npc:set_range(range_normal)
+				npc:set_fov(fov_normal)
+			end			
+		end	
+	else
+		--' Если нет врагов и опасности
+		if not actor_attacked and not being_attacked then
+			--' Если никто не атакует актора
+			if range > range_basic then
+				--' Ничего тогда не видим
+				npc:set_range(range_basic)
+				npc:set_fov(fov_basic)			
+			end
+		elseif actor_attacked then
+			--' Поднимем флаг атаки
+			being_attacked = true	
+			--' Наших бьют!
+			if range < range_normal or fov < 200 then
+				--' Отдадим неписю глаза обратно, пусть охренеет
+				npc:set_range(range_normal)
+				npc:set_fov(fov_normal)
+			end					
+		end
+	end
+end
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+function beh_walk(mode, npc)
+
+	local stor = db.storage[npc:id()].companion
+
+	local actor = db.actor
+	local select_new_pt = false
+	
+	if (mode == "simple" or mode == "simple_c") then
+		process_sight(npc)
+	elseif (mode == "ignore" or mode == "ignore_c") then
+		process_sight_dont_shoot(npc)
+	elseif (mode == "simple_la" or mode == "simple_c_la") then
+		process_sight_low_aggression(npc)
+	end
+		
+
+	local dist_from_self_to_actor = npc:position():distance_to(actor:position())
+	local dist_from_assist_pt_to_actor
+	if assist_point then
+		dist_from_assist_pt_to_actor = level.vertex_position(assist_point):distance_to(actor:position())
+	else
+		dist_from_assist_pt_to_actor = nil
+	end
+	if (dist_from_self_to_actor >= desired_distance and
+	   (not dist_from_assist_pt_to_actor or
+	    dist_from_assist_pt_to_actor >= desired_distance * 2)) or 
+		dist_from_self_to_actor <= 2 then
+		select_new_pt = true
+	end
+	
+	-- 1. Если мы находимся за большим радиусом - необходимо выбрать новую точку
+	if select_new_pt then
+		assist_point = select_position(npc, stor)
+		if not assist_point then
+			return
+		end
+	elseif not assist_point then
+		return
+	end
+
+	-- 2. Двигаемся на точку: если точка далеко - бежим, иначе идем
+
+	npc:set_detail_path_type(move.curve)
+	npc:set_path_type(game_object.level_path)
+	utils.send_to_nearest_accessible_vertex(npc, assist_point)
+	
+	local dist_to_assist_pt = level.vertex_position(assist_point):distance_to(npc:position())
+
+	local new_state
+
+	if npc:level_vertex_id() == assist_point then
+		-- Уже пришли на точку отхода, разрешить еще раз начать отход
+		-- (случай, когда игрок подошел слишком близко к ассистенту)
+		if (mode == "simple" or mode == "simple_la") then
+			new_state = "guard"
+		elseif mode == "ignore" then
+			new_state = "wait"			
+		elseif (mode == "simple_c" or mode == "simple_c_la") then	
+			new_state = "hide"
+		elseif mode == "ignore_c" then
+			new_state = "hide_no_wpn"
+		end
+			
+	else
+		local t = time_global()
+		if t >= keep_state_until then
+			keep_state_until = t + keep_state_min_time
+
+			if dist_to_assist_pt <= dist_walk then
+				if (mode == "simple" or mode == "simple_la") then
+					new_state = "patrol"
+				elseif mode == "ignore" then
+					new_state = "walk"
+				elseif (mode == "simple_c" or mode == "simple_c_la") then
+					new_state = "sneak"
+				elseif mode == "ignore_c" then
+					new_state = "sneak_no_wpn"
+				end				
+			elseif dist_to_assist_pt <= dist_run then
+				if (mode == "simple" or mode == "simple_la") then
+					new_state = "rush"
+				elseif mode == "ignore" then
+					new_state = "run"		
+				elseif (mode == "simple_c" or mode == "simple_c_la") then	
+					new_state = "sneak_run"
+				elseif mode == "ignore_c" then
+					new_state = "sneak_run_no_wpn"
+				end				
+			else
+				if (mode == "simple" or mode == "simple_la") then
+					new_state = "sprint_p"
+				elseif mode == "ignore" then
+					new_state = "run_p"		
+				elseif (mode == "simple_c" or mode == "simple_c_la") then
+					new_state = "sneak_run"
+				elseif mode == "ignore_c" then
+					new_state = "sneak_run_no_wpn"
+				end						
+			end
+		end
+	end
+	
+	if new_state and new_state ~= last_state then
+		state_mgr.set_state(npc, new_state)
+		last_state = new_state
+	end 
+
+	-- 4. Если стоим на точке - петь песенки и прочую херню
+	if (mode == "simple" or mode == "ignore" or mode == "simple_la") then
+		-- xr_sound.set_sound(npc, sound_wait) 
+	elseif (mode == "simple_c" or mode == "ignore_c" or mode == "simple_c_la") then	
+		-- xr_sound.set_sound(npc, nil) 
+	end							
+end
+
+function beh_wait(mode, npc)
+
+	local actor = db.actor
+
+	if (mode == "simple" or mode == "simple_c") then
+		process_sight(npc)
+	elseif (mode == "ignore" or mode == "ignore_c") then
+		process_sight_dont_shoot(npc)
+	elseif (mode == "simple_la" or mode == "simple_c_la") then
+		process_sight_low_aggression(npc)
+	end
+
+	local new_state 
+	
+	if (mode == "simple" or mode == "simple_la") then
+		new_state = "guard"
+	elseif mode == "ignore" then
+		new_state = "wait"		
+	elseif (mode == "simple_c" or mode == "simple_c_la") then
+		new_state = "hide"
+	elseif mode == "ignore_c" then
+		new_state =	"hide_no_wpn"
+	end			
+
+	if new_state and new_state ~= last_state then
+		state_mgr.set_state(npc, new_state)
+		last_state = new_state
+	end 
+
+	-- 4. Если стоим на точке - петь песенки и прочую херню
+	if (mode == "simple" or mode == "ignore" or mode == "simple_la") then
+		-- xr_sound.set_sound(npc, sound_wait) 
+	elseif (mode == "simple_c" or mode == "ignore_c" or mode == "simple_c_la") then	
+		-- xr_sound.set_sound(npc, nil) 
+	end	
+end
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+class "evaluator_need_companion" (property_evaluator)
+
+function evaluator_need_companion:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+
+function evaluator_need_companion:evaluate()
+	if not self.object:alive() then
+		return false
+	end
+	if being_attacked == true then 
+		-- logf("ATCKD") 
+		return false
+	end
+	if self.st.enabled == true then
+		return true
+	else	
+		return false
+	end
+end
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+
+class "evaluator_need_run" (property_evaluator)
+
+function evaluator_need_run:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+
+function evaluator_need_run:evaluate()
+
+	if not self.object:alive() then
+		return false
+	end
+	
+	if not scared_timer then scared_timer = time_global() end
+
+	local scheme = (self.st.behavior == beh_walk_simple or 
+					self.st.behavior == beh_walk_low_aggr or
+					self.st.behavior == beh_walk_ignore or
+					self.st.behavior == beh_crouch_simple or
+					self.st.behavior == beh_crouch_low_aggr or
+					self.st.behavior == beh_crouch_ignore)
+
+	if self.st.enabled == true and scheme then
+		local posobj = self.object:position()
+		local actorpos = db.actor:position()
+		local distance = posobj:distance_to(actorpos)
+		if distance < (dist_run - 3) then
+			if scared == true then
+				scared = false
+			end			
+			return false
+		end		
+		if distance > max_distance or (scared == true and time_global() < scared_timer) then
+			if scared == false then
+				scared = true
+				scared_timer = time_global() + 20000		
+			end
+			return true
+		else	
+			if scared == true then
+				scared = false
+			end			
+			return false
+		end
+	else	
+		return false
+	end
+end
+
+----------------------------------------------------------------------------------------------------------------------
+class "action_companion_activity" (action_base)
+
+function action_companion_activity:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+
+function action_companion_activity:initialize()
+
+	action_base.initialize(self)
+	
+	if not self.object:alive() then
+		return false
+	end	
+	
+	if being_attacked == true then return false end	
+	
+	self.object:remove_all_restrictions()
+	self.object:set_desired_position()
+	self.object:set_desired_direction()
+
+	self.object:enable_talk()	
+	assist_point = nil
+
+	last_state = "guard"
+	state_mgr.set_state(self.object, last_state)
+	
+	keep_state_until = time_global()
+end
+
+function action_companion_activity:execute()
+
+	action_base.execute(self)
+	
+	if not self.object:alive() then
+		return false
+	end	
+	
+	if being_attacked == true then return false end
+	
+	self.object:remove_all_restrictions()
+	
+	local range = self.object:range()
+	local fov = self.object:fov()	
+	local npc = self.object
+	
+	--logf("COMP R "..range.." FOV "..fov)
+	---logf("COMP ATCK "..tostring(being_attacked).." ACT "..tostring(actor_attacked))
+
+	if self.st.behavior == beh_walk_simple then
+		beh_walk("simple", npc)
+	elseif self.st.behavior == beh_walk_low_aggr then
+		beh_walk("simple_la", npc)
+	elseif self.st.behavior == beh_walk_ignore then	
+		beh_walk("ignore", npc)
+	elseif self.st.behavior == beh_crouch_simple then
+		beh_walk("simple_c", npc)	
+	elseif self.st.behavior == beh_crouch_low_aggr then		
+		beh_walk("simple_c_la", npc)
+	elseif self.st.behavior == beh_crouch_ignore then
+		beh_walk("ignore_c", npc)			
+	elseif self.st.behavior == beh_wait_simple then
+		beh_wait("simple", npc)		
+	elseif self.st.behavior == beh_wait_low_aggr then		
+		beh_wait("simple_la", npc)		
+	elseif self.st.behavior == beh_wait_ignore then
+		beh_wait("ignore", npc)
+	elseif self.st.behavior == beh_hide_simple then
+		beh_wait("simple_c", npc)	
+	elseif self.st.behavior == beh_hide_low_aggr then
+		beh_wait("simple_c_la", npc)
+	elseif self.st.behavior == beh_hide_ignore then
+		beh_wait("ignore_c", npc)			
+	end
+	
+	--  Проверка на враждебность
+	if self.object:relation(db.actor) == game_object.enemy then
+		db.actor:give_game_news(self.object:character_name() .. " becames your enemy!", "ui\\ui_iconsTotal", Frect():set(0,235,83,47), 0, 15000)
+		db.storage[self.object:id()].companion.enabled = false
+		xr_companion.number_of_companions = xr_companion.number_of_companions - 1
+		xr_companion.save_var_companion(self.object:id(), "is_companion", 0)
+		level.map_remove_object_spot(self.object:id(), "alife_presentation_companion")
+		local dead_friends = amk.load_variable("dead_fr", 0)
+		dead_friends = dead_friends + 1
+		amk.save_variable("dead_fr", dead_friends)		
+		local comm = xr_companion.load_var_companion(self.object:id(), "orig_community", nil)
+		self.object:set_character_community(comm, 0, 0)
+		trade_manager.trade_init(self.object, "misc\\trade_generic.ltx")	
+		xr_companion.companions[self.object:id()] = nil
+	end	
+	
+end
+
+function action_companion_activity:finalize()
+	-- xr_sound.set_sound(self.object, nil) 
+	action_base.finalize(self)
+end
+
+----------------------------------------------------------------------------------------------------------------------
+class "action_companion_run" (action_base)
+
+function action_companion_run:__init(name, storage) super (nil, name)
+	self.st = storage	
+end
+
+function action_companion_run:initialize()
+	action_base.initialize(self)
+	
+	if not self.object:alive() then
+		return false
+	end	
+	
+	self.object:remove_all_restrictions()
+	self.object:set_desired_position()
+	self.object:set_desired_direction()
+
+	self.object:enable_talk()	
+	assist_point = nil
+
+	last_state = "guard"
+	state_mgr.set_state(self.object, last_state)
+	
+	keep_state_until = time_global()
+end
+
+function action_companion_run:execute()
+
+	action_base.execute(self)
+	
+	if not self.object:alive() then
+		return false
+	end	
+	
+	self.object:remove_all_restrictions()
+	
+	local npc = self.object
+	local be = self.object:best_enemy()
+	if be then
+		disabled_objects[be:id()] = be:id()
+		npc:enable_memory_object( be, false )	
+		db.storage[npc:id()].enemy = nil
+	end
+
+	if self.st.behavior == beh_walk_simple then
+		beh_walk("simple", npc)
+	elseif self.st.behavior == beh_walk_low_aggr then
+		beh_walk("simple_la", npc)
+	elseif self.st.behavior == beh_walk_ignore then	
+		beh_walk("ignore", npc)
+	elseif self.st.behavior == beh_crouch_simple then
+		beh_walk("simple_c", npc)
+	elseif self.st.behavior == beh_crouch_low_aggr then		
+		beh_walk("simple_c_la", npc)
+	elseif self.st.behavior == beh_crouch_ignore then
+		beh_walk("ignore_c", npc)
+	end
+
+end
+
+function action_companion_run:finalize()
+	action_base.finalize(self)
+end
+
+
+--' Выбор новой позиции
+function select_position(npc, st)
+	local node_1_vertex_id = nil
+	local node_1_distance = nil
+	local node_2_vertex_id = nil
+	local node_2_distance = nil
+
+	local actor = db.actor
+
+	-- проверяем точку слева от актера
+	desired_direction = vector_rotate_y(actor:direction(), math.random(50,60) )
+	node_1_vertex_id = level.vertex_in_direction(actor:level_vertex_id(),
+		desired_direction,
+		desired_distance)
+	if npc:accessible(node_1_vertex_id) ~= true or node_1_vertex_id == actor:level_vertex_id() then			
+		node_1_vertex_id = nil
+	end
+	-- проверяем точку справа от актера
+	desired_direction = vector_rotate_y(actor:direction(), -math.random(50,60) )
+	node_2_vertex_id = level.vertex_in_direction (  actor:level_vertex_id(),
+		desired_direction,
+		desired_distance )
+	if npc:accessible(node_2_vertex_id) ~= true or node_2_vertex_id == actor:level_vertex_id() then			
+		node_2_vertex_id = nil
+	end
+	
+	-- Проверяем растояния до точек
+	if node_1_vertex_id ~= nil then
+		node_1_distance = npc:position():distance_to_sqr(level.vertex_position(node_1_vertex_id))
+	else
+		node_1_distance = -1
+	end
+	if node_2_vertex_id ~= nil then
+		node_2_distance = npc:position():distance_to_sqr(level.vertex_position(node_2_vertex_id))
+	else
+		node_2_distance = -1
+	end
+	
+	-- Выбираем ближайшую из существующих
+	if node_1_distance == -1 and node_2_distance == -1 then
+		--' Не смогли найти точку, ругаться
+		return nil
+	end
+	if node_1_distance == -1 then
+		return node_2_vertex_id
+	end
+	if node_2_distance == -1 then
+		return node_1_vertex_id
+	end
+	if node_1_distance < node_2_distance then
+		return node_1_vertex_id
+	else
+		return node_2_vertex_id
+	end
+end
+
+function vector_rotate_y (v, angle)
+    angle = angle * 0.017453292519943295769236907684886
+    local c = math.cos (angle)
+    local s = math.sin (angle)
+    return vector ():set (v.x * c - v.z * s, v.y, v.x * s + v.z * c)
+end
+
+property_base = 79945
+property_need_companion = property_base + 1
+property_need_run = property_base + 2
+---
+act_base = 79950
+act_companion_activity = act_base + 1
+act_companion_run = act_base + 2
+
+-- Добавляем в планировщик нашу схему
+function add_to_binder(object, char_ini, scheme, section, st)
+
+	local manager = object:motivation_action_manager()
+	
+	local property_wounded = xr_evaluators_id.sidor_wounded_base
+	local prop_idlecombat = xr_evaluators_id.state_mgr + 3
+
+	manager:remove_evaluator(property_need_companion)
+	manager:add_evaluator(property_need_companion, evaluator_need_companion("evaluator_need_companion", st))	
+	
+	manager:remove_evaluator(property_need_run)
+	manager:add_evaluator(property_need_run, evaluator_need_run("evaluator_need_run", st))		
+
+	local action = action_companion_activity("action_companion_activity", st)
+	action:add_precondition(world_property(property_need_run, false))
+	action:add_precondition(world_property(stalker_ids.property_alive, true))
+	action:add_precondition(world_property(stalker_ids.property_enemy,false))
+	if xrs_grenade and xrs_grenade.evid_aaa_grenade then
+		action:add_precondition(world_property(xrs_grenade.evid_aaa_grenade,false))		
+	end
+	if rx_bandage then
+		action:add_precondition(world_property(rx_bandage.evid_bandage,false))
+	end	
+	if xrs_medic and xrs_medic.evid_self_medic then
+		action:add_precondition(world_property(xrs_medic.evid_self_medic,false))
+	end
+	if rx_facer then
+		action:add_precondition(world_property(rx_facer.evid_facer,false))
+	end
+	if rx_reload then
+		action:add_precondition(world_property(rx_reload.evid_reload,false))	
+	end
+	if anomaly_evader then
+		action:add_precondition(world_property(1099,false))
+	end	
+	action:add_precondition(world_property(property_wounded, false))	
+	action:add_precondition(world_property(property_need_companion, true))
+	action:add_effect(world_property(property_need_companion, false))
+	manager:add_action(act_companion_activity, action)	
+	
+	local action = action_companion_run("action_companion_run", st)
+	action:add_precondition(world_property(stalker_ids.property_alive, true))
+	if xrs_grenade and xrs_grenade.evid_aaa_grenade then
+		action:add_precondition(world_property(xrs_grenade.evid_aaa_grenade,false))		
+	end
+	if rx_facer then
+		action:add_precondition(world_property(rx_facer.evid_facer,false))
+	end
+	action:add_precondition(world_property(property_wounded, false))	
+	action:add_precondition(world_property(property_need_run, true))
+	action:add_effect(world_property(property_need_run, false))
+	manager:add_action(act_companion_run, action)	
+
+	action = manager:action(stalker_ids.action_alife_planner)
+	action:add_precondition(world_property(property_need_companion, false))
+	action:add_precondition(world_property(property_need_run, false))
+	
+	action = manager:action(stalker_ids.action_combat_planner)
+	action:add_precondition(world_property(property_need_run, false))
+
+	action = manager:action(stalker_ids.action_danger_planner)
+	action:add_precondition(world_property(property_need_run, false))
+
+	action = manager:action(stalker_ids.action_retreat_from_enemy)
+	action:add_precondition(world_property(property_need_companion, false))
+	action:add_precondition(world_property(property_need_run, false))	
+end
+
+-- Функции включения/выключения схемы
+function enable_scheme(npc, ini)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, "companion")
+	local flag = load_var_companion(npc:id(), "is_companion", 0)
+	
+	if st then
+		if tostring(flag) == "1" then
+			-- logf("xr_companion scheme online "..tostring(npc:id()))
+			companions[npc:id()] = "companion"
+			local behavior = load_var_companion(npc:id(), "companion_behavior", beh_walk_simple)
+			init_danger_settings(npc)
+			st.enabled = true		
+			st.behavior = tonumber(behavior)
+		else
+			st.enabled = false
+		end
+	end
+end
+function disable_scheme(npc, scheme)
+	local st = db.storage[npc:id()][scheme]
+	if st then
+		st.enabled = false
+	end
+end
+
+function is_companion(npc_id)
+	if npc_id then
+		if companions[npc_id] and companions[npc_id] == "companion" then
+			return true
+		end
+	end
+	return false
+end
+
+function is_companion_se(obj)
+	local community = obj:community()
+		if community == "stalker" or
+		community == "dolg" or
+		community == "freedom" or
+		community == "zombied" or
+		community == "bandit" then
+		if not string.find(obj:profile_name(), "bar_arena_stalker") and obj:health() > 0 then
+			xr_companion.companions[obj.id] = community
+			local flag = load_var_companion(obj.id, "is_companion", 0)
+			if tostring(flag) == "1" then
+				-- logf("COMP FND OFFLINE!")
+				xr_companion.companions[obj.id] = "companion"
+				xr_companion.number_of_companions = xr_companion.number_of_companions + 1
+			end
+		end
+	end
+end
+
+
+--------------------------------
+-- Функции для перехода с локации на локацию
+-- Очень грамотное решение - взято из схемы "Напарники" Дмитрия Рощина aka Red75,
+-- за что ему огромное спасибо.
+--------------------------------
+local offline_dest_table={
+    l01_escape={
+      none="esc2_bandit_les_kamp_1",
+      l02_garbage="esc2_most_kamp_1"
+    },
+    l02_garbage={
+      none="gar_dram_bandit1_walk"
+    },
+    l03_agroprom = {
+      none="agr_factory_hold_fake_walk2"
+    }, 
+    l03u_agr_underground = {
+      none="agr_u_bandits_walk4"
+    },
+    l04_darkvalley = {
+      none="val_escort_nap1_walk"
+    }, 
+    l04u_labx18 = {
+      none="val_soldiers_raid_off_offgroup_1"
+    }, 
+    l05_bar = {
+      none="bar_visitors_kamp_1_task"
+    }, 
+    l06_rostok = {
+      none="ros_zombies_walk"
+    },
+    l07_military = {
+      none="mil_dolg_ambush_walk1"
+    }, 
+    l08_yantar = {
+      none="yan_scientist_offline_walk"
+    }, 
+    l08u_brainlab = {
+      none="yan_scientist_offline_walk" -- не нашёл
+    }, 
+    l10_radar = {
+      none="rad_entrance_kamp_task"
+    },
+    l10u_bunker = {
+      none="rad_entrance_kamp_task" -- не нашёл
+    }, 
+    l11_pripyat = {
+      none="pri_followers_wait_stalker1_walk"
+    }, 
+    l12_stancia = {
+      none="aes_heli_attack_desant_walk1_2" -- взял из spawn.ini надо проверять
+    }, 
+    l12u_sarcofag = {
+      none="aes_heli_attack_desant_walk1_2" -- не нашёл
+    }, 
+    l12u_control_monolith = {
+      none="aes_heli_attack_desant_walk1_2" -- не нашёл
+    }, 
+    l12_stancia_2 = {
+      none="aes_heli_attack_desant_walk1_2" -- не нашёл
+    }
+  }
+
+local offline_dest_point
+
+function get_offline_dest()
+  return offline_dest_point
+end
+
+function update_offline_dest(cur_level,prev_level)
+  if offline_dest_table[cur_level] then
+    if offline_dest_table[cur_level][prev_level] then
+      offline_dest_point = offline_dest_table[cur_level][prev_level]
+    else
+      offline_dest_point = offline_dest_table[cur_level]["none"]
+    end
+  end
+  if not offline_dest_point then
+	-- Не смогли найти точку следования за ГГ на другую локацию
+    -- logf("odp is nil for " .. tostring(cur_level) .. " " .. tostring(prev_level))
+  end
+  offline_dest_point = offline_dest_point or "esc2_bandit_les_kamp_1"
+end
+
+function update_level_names(npc_id)
+  local actor = db.actor
+  if not actor then
+    offline_dest_point = "esc2_bandit_les_kamp_1"
+    return
+  end
+  local cur_level_name = load_var_companion(npc_id,"c_lvl","none")
+  -- если локация всё та же, нет никакой надобности насиловать постоянно пстор
+  if cur_level_name ~= level.name() then
+	  save_var_companion(npc_id,"c_lvl",level.name())
+  end	  
+  -- Проверим, нужно ли ждать на другом уровне
+  local w_level = load_var_companion(npc_id,"w_lvl",nil)
+  if w_level then
+	-- ждём на другом уровне
+	update_offline_dest(w_level,level.name())
+  else
+	update_offline_dest(level.name(),cur_level_name)
+  end
+end

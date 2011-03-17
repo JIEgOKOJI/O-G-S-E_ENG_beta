@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	
+<string id="Transmut">
+	<text>Transmutation</text>
+</string>
+
+<string id="af-transmut_1">
+	<text>"Sky"</text>
+</string>
+<string id="enc_zone_artifact_af-transmut_1">
+	<text>Externally, the artifact is similar to the "Medusa". It is believed that this is the "Medusa", exposed powerful electric field. Thanks to its new qualities, the artifact can increase muscle tone, the carrier, increasing the resistance to shock and lacerations. Vysokoradioaktiven.\n\n
+Needed for the manufacture of: Night Star, Moonlight, Battery.</text>
+</string>
+
+<string id="af-transmut_2">
+	<text>"TJV"</text>
+</string>
+<string id="enc_zone_artifact_af-transmut_2">
+	<text>TdW - Triumph des Willens. Increases immunity to psychic stress. Because of its high efficiency in high demand.\n\n
+For manufacturing needs: Moon Light, The Eye of the flesh.</text>
+</string>
+
+<string id="af-transmut_3">
+	<text>"Goat horn"</text>
+</string>
+<string id="enc_zone_artifact_af-transmut_3">
+	<text>Artifact of unusual shape, sometimes appearing in the gravitational field of high activity. The effect is slightly curved gravitational field around a living organism, which must be in direct contact. Works on any high-speed particles of any size, slightly slowing down their speed, which may provide some protection against bullets and blast wave.\n\n
+Needed for the manufacture of: Night Star, Mama's Beads, gravel and drops.</text>
+</string>
+
+<string id="af-transmut_4">
+	<text>"Hermes (Crookshanks)"</text>
+</string>
+<string id="enc_zone_artifact_af-transmut_4">
+	<text>Some call it "Hermes" - in honor of the god bystronogo other "Crookshanks" - because of its adverse properties. Artifact strongly accelerates the metabolism of the body, allowing for a long time to move without getting tired, but at the same time an artifact of tissue burns your carrier.\n\n
+For manufacturing needs: Moon Light, Cactus, Slime.</text>
+</string>
+
+<string id="af-transmut_5">
+	<text>"Sponge"</text>
+</string>
+<string id="enc_zone_artifact_af-transmut_5">
+	<text>Is a porous structure that absorbs radioactive and thermal radiation. Equally, successfully defended his support, both from external radiation and from radiation-induced trapped in the body of radioactive particles, as well as from the heat.\n\n
+For manufacturing needs: Mica, pacifiers, ball of fire.</text>
+</string>
+
+<string id="af-transmut_6">
+	<text>"Honeycomb"</text>
+</string>
+<string id="enc_zone_artifact_af-transmut_6">
+	<text>Represents a somewhat hollow formations combined organic nature. Allocates a gaseous substance which can neutralize the effects of many toxins in the human body.\n\n
+Needed for manufacturing: film, crotchet.</text>
+</string>
+
+<string id="af-transmut_7">
+	<text>"Red Star"</text>
+</string>
+<string id="enc_zone_artifact_af-transmut_7">
+	<text>Due to the unique combination of artifacts and bodies bloodsucker (beings, characterized by rapid tissue regeneration), an artifact contributes to the rapid restoration of health and healing.\n\n
+Needed for the manufacture of: Soul, Mica, tissue samples bloodsucker.</text>
+</string>
+
+<string id="af-transmut_8">
+	<text>"Eye"</text>
+</string>
+<string id="enc_zone_artifact_af-transmut_8">
+	<text>Artifact that arises when a strong impact on the psycho-organic, so it is not found anywhere except Amber. Greatly speed up the metabolic processes in the body that promotes rapid wound healing and increases stamina. Has a low specific psy-rays. This radiation leads to suppression of aggressiveness Snork byurer with respect to who bears the artifact.
+Prolonged exposure can lead to mental breakdowns and seizures of epilepsy. Prolonged wearing is not recommended.\n\n
+For manufacturing needed: Goldfish, Mica, hand controller.</text>
+</string>
+
+</string_table>

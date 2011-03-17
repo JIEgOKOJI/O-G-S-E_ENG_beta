@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+	<string id="ogsm_stuff">
+		<text>OGS Mod + OGS Evolution Mod</text>
+	</string>
+
+	<string id="ogsm_lead">
+		<text>Разработка OGSM</text>
+	</string>
+
+	<string id="ogsm_dexxx">
+		<text>DEXXX\n(idea, scripts, config files, sounds, textures)\nOFFBAR (Scripts)</text>
+	</string>
+
+	<string id="ogse_lead">
+		<text>Development OGSE</text>
+	</string>
+
+	<string id="ogse_stuff_1">
+		<text>DEATHDOOR (deas, configs, sounds, models)\nKAMIKAZZE (ideas, scripts, config files, textures)\nDUSTY79 (ideas, scripts, config)\nMIXSER (ideas, scripts)</text>
+	</string>	
+	<string id="ogse_stuff_2">
+		<text>FEAR93 (ideas, scripts, config files, site)\nЖул (ideas, textures)\nСталин (ideas, models, animations)\nQWERTY111 (ideas, ranging)</text>
+	</string>
+	<string id="ogse_stuff_3">
+		<text>STALBAR (ideas, scripts)\nCHAOS (ideas, scripts, config)\nQUEST (ideas, scripts, sounds, textures)\nROMZ (ideas, scripts, config)\nTECHNIK (ideas, scripts)</text>
+	</string>
+
+	<string id="ogse_testers">
+		<text>Special thanks to testers fashion, for their hard work</text>
+	</string>
+	<string id="ogse_testers_list">
+		<text>SIMPLYYURI\nBACHA\nПСИХ\nJek@\nCD-R\nTLAR\nMAROGOR\nВАМПИРУС\nMERC13\nАхмет</text>
+	</string>
+
+	<string id="ogse_thanx_otd">
+		<text>Special thanks</text>
+	</string>
+	<string id="ogse_thanx_otd_1">
+		<text>Xiani\nArgus\nBAC9-FLCL\nMegafenix\nMVN78\nRonan</text>
+	</string>
+	<string id="ogse_thanx_otd_2">
+		<text>and to all those who supported modes\nsince its inception</text>
+	</string>
+	<string id="ogse_thanx_otd_3">
+		<text>and of course the GSC Game World to play, the resources which we are now so shamelessly dig :)</text>
+	</string>
+
+	<string id="ogse_forum">
+		<text>Visit our Forum</text>
+	</string>
+	<string id="ogse_link">
+		<text>www.ogse.ru</text>
+	</string>
+
+	<string id="ogse_thanx">
+		<text>Thanks for playing our mod</text>
+	</string>
+	<string id="ogse_freeplay">
+		<text>Clear Sky you Stalkers :)</text>
+	</string>
+
+	<string id="ogse_development">
+		<text>©2007-2010 Developed exUSSR</text>
+	</string>
+</string_table>

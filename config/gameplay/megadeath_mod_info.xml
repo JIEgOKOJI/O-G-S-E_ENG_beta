@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<game_information_portions>
+
+	<info_portion id="gar_dolg_assault_start"></info_portion>
+
+	<info_portion id="agr_dolg_molodoy_tell_hide"></info_portion>
+
+	<info_portion id="agr_dolg_glavnyi_hide"></info_portion>
+	<info_portion id="agr_dolg_sniper_prikaz"></info_portion>
+
+	<info_portion id="agr_dolg_sniper_kolodets_zaminirovan"></info_portion>
+	<info_portion id="kolodets_razminirovan"></info_portion>
+	<info_portion id="kolodets_sniper_tell"></info_portion>
+
+	<info_portion id="ecolog_02_give_help"></info_portion>
+	<info_portion id="ecolog_02_tell_sixth_hide"></info_portion>
+	<info_portion id="ecolog_02_tell_second_hide"></info_portion>
+	<info_portion id="ecolog_02_tell_third_hide"></info_portion>
+	<info_portion id="ecolog_02_get_blood"></info_portion>
+
+<!-- zadaniya -->
+
+	<info_portion id="task_1_start">
+		<task>task_1</task>
+	</info_portion>
+	<info_portion id="task_1_obj_1"></info_portion>
+	<info_portion id="task_1_end"></info_portion>
+
+	<info_portion id="task_2_start">
+		<task>task_2</task>
+	</info_portion>
+	<info_portion id="task_2_obj_1"></info_portion>
+	<info_portion id="task_2_end"></info_portion>
+
+
+
+	<info_portion id="task_3_start"></info_portion>
+	<info_portion id="task_3_obj_1"></info_portion>
+
+<!-- zadaniya otklyucheny i zameneny na obychnye porshny. Posle zaversheniya raboty nad syujetom, snabdit' igroka vmenyaemymi zadaniyami
+
+
+	<info_portion id="task_3_start">
+		<task>task_3</task>
+	</info_portion>
+	<info_portion id="task_3_obj_1"></info_portion>
+	<info_portion id="task_3_end"></info_portion>
+	<info_portion id="task_3_fail"></info_portion>
+
+	<info_portion id="task_4_start">
+		<task>task_4</task>
+	</info_portion>
+	<info_portion id="task_4_obj_1"></info_portion>
+	<info_portion id="task_4_end"></info_portion>
+
+	<info_portion id="task_5_start">
+		<task>task_5</task>
+	</info_portion>
+	<info_portion id="task_5_obj_1"></info_portion>
+	<info_portion id="task_5_end"></info_portion>
+
+	<info_portion id="task_6_start">
+		<task>task_6</task>
+	</info_portion>
+	<info_portion id="task_6_end"></info_portion> -->
+
+
+
+
+
+
+
+
+
+
+
+
+	<info_portion id="ecolog_01_hello_first_hide"></info_portion>
+
+	<info_portion id="wounded_ecolog_02"></info_portion>
+
+	<info_portion id="agr_soldier_guard_hit"></info_portion>
+
+	<info_portion id="dar_door1_lock"></info_portion>
+	<info_portion id="dar_door1_pass_2"></info_portion>
+	<info_portion id="dar_door1_unlock"></info_portion>
+
+	<info_portion id="dar_deadly_found"></info_portion>
+
+	<info_portion id="neytral_01_tell_hide"></info_portion>
+
+	<info_portion id="sidorovich_tell_first_hide"></info_portion>
+
+	<info_portion id="saharov_tell_first_hide"></info_portion>
+	<info_portion id="saharov_tell_second_hide"></info_portion>
+
+	<info_portion id="yan_svoboda_informator_tell_hide"></info_portion>
+
+	<info_portion id="news_bar_assault"></info_portion>
+
+	<info_portion id="bar_assault_start"></info_portion>
+
+	<info_portion id="barmen_tell_second_hide"></info_portion>
+	<info_portion id="barmen_tell_third_hide"></info_portion>
+
+	<info_portion id="mil_dolg_recon_tell_hide"></info_portion>
+	<info_portion id="mil_dolg_recon_tell_second_hide"></info_portion>
+
+	<info_portion id="mil_dolg_killer"></info_portion>
+
+	<info_portion id="mil_svoboda_wounded"></info_portion>
+
+	<info_portion id="yan_svoboda_bespredel_hit"></info_portion>
+
+	<info_portion id="yan_svoboda_bespredel_tell_hide"></info_portion>
+	<info_portion id="ros_zasada_start"></info_portion>
+
+	<info_portion id="ecolog_v_tainike_tell_second_hide"></info_portion>
+
+	<info_portion id="mil_svoboda_wounded_tell_hide"></info_portion>
+
+	<info_portion id="ros_zasada"></info_portion>
+
+	<info_portion id="saharov_tell_third_hide"></info_portion>
+
+	<info_portion id="yan_saharov_assault"></info_portion>
+
+</game_information_portions>

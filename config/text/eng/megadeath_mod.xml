@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+<!-- zadaniya -->
+
+<!-- kvestovye predmety -->
+
+	<string id="st_knife_m1">
+		<text>Knife Maniac Seryoga</text>
+	</string>
+	<string id="knife_m1_desc">
+		<text>Hunting knife with a sharp razor blade, and engraved on the handle of the inscription - "Serge maniac."</text>
+	</string>
+
+	<string id="flash_01_name">
+		<text>Flash Drive</text>
+	</string>
+	<string id="flash_01_desc">
+		<text>Description Stick</text>
+	</string>
+
+	<string id="doc_01_name">
+		<text>Documents</text>
+	</string>
+	<string id="doc_01_desc">
+		<text>Research project "SHOW-13". Charts, formulas and notes, not allowing even understand what "SHOW-13".</text>
+	</string>
+
+	<string id="doc_02_name">
+		<text>Documents</text>
+	</string>
+	<string id="doc_02_desc">
+		<text>This is the second part of the documents on the project "SHOW-13"</text>
+	</string>
+
+	<string id="case_01_name">
+		<text>Sealed Case</text>
+	</string>
+	<string id="case_01_desc">
+		<text>Case with samples of the substance, developed under the project "SHOW-13"</text>
+	</string>
+
+	<string id="case_02_desc">
+		<text>The second case with samples of materials developed under the project "SHOW-13"</text>
+	</string>
+
+	<string id="pda_01_name">
+		<text>PDA</text>
+	</string>
+	<string id="pda_01_desc">
+		<text>From: Captain Barykina\nTo: posse\nSubject: Order\n \nDetect and neutralize the fugitive scholars\n \nAccording to intelligence data is well known that the two scientists managed to escape. One of them managed to escape in an unknown direction, and another was seriously wounded. He could not go far, so you need to comb the area within a radius of 1 km.</text>
+	</string>
+
+	<string id="pda_02_desc">
+		<text>From: Colonel Musorenko\nTo: posse\nSubject: Find materials on the project "SHOW-13"\n \nHelicopter, you will be transferred to Amber. Then you have to break through the lab X16. Go there without the help of an experienced stalker is simply impossible so I hired a guide from the "Freedom". Once in the lab you'll need to find all the materials on the project "SHOW-13". After the operation be advanced to the point of evacuation.</text>
+	</string>
+
+	<string id="pda_03_desc">
+		<text>To log in, enter your correct username and password.\n \nUsername: ********\nPassword: ********</text>
+	</string>
+
+	<string id="pda_04_desc">
+		<text>From: Konstantin Mayhem\nTo: The Punisher\nSubject: Exponential penalty\n \nEverything is going according to plan. The military believe us and think that we know nothing about "SHOW-13". Soon we will have the money, and after the war will see a record of execution, the base of "Duty" will cease to exist. After solving these problems will be thinking about Lucas.\n \nNow you must save to video brutal massacre "Duty" on helpless soldiers. Do not forget to burn after the execution dolgovskie rags. You understand that if they can find.\n \nI'll be at Yantar, at the entrance to the lab X16. Warriors told me that there may descend mercenaries. Apparently, the lab is something left. Also, it seems to me that I Musorenko clearly something not agree. Where mercenaries learned about "SHOW-13"?</text>
+	</string>
+
+	<string id="pda_05_desc">
+		<text>From: Colonel Musorenko\nTo: assault force\nSubject: Capturing case with samples of "SHOW-13"\n \nAccording to data received from the stalkers of the group "Liberty" became known that they did not manage to get a case of Plakhova. If you believe them, Plakhova leaving the lab X16 met a group of heavily armed mercenaries who were aware of its cargo. At gunpoint, they took possession of the samples SHOW-13 and fled. Your task is to intercept and destroy the group before they have time to take the goods out of the zone.\n\nAccording to fresh intelligence, a group of mercenaries intercepted the cargo, recently seen at the Wild Territory. I order you to seize the goods, but a group of mercenaries to destroy. After the seizure, you should as soon as possible to deliver samples SHOW-13 in our research group at SRI "Agroprom".</text>
+	</string>
+
+<!-- imena geroev -->
+
+	<string id="killer_commander_name">
+		<text>General Vlasov</text>
+	</string>
+
+	<string id="ecolog_01_name">
+		<text>Plans</text>
+	</string>
+
+	<string id="ecolog_02_name">
+		<text>Zhuravlenko</text>
+	</string>
+
+	<string id="neytral_02_name">
+		<text>Serega Maniac</text>
+	</string>
+
+	<string id="bespredel_name">
+		<text>Kostya Lawlessness</text>
+	</string>
+
+<!-- dialogi s barmenom -->
+
+	<string id="barmen_tell_0">
+		<text>Heard anything new during my absence?</text>
+	</string>
+	<string id="barmen_tell_1">
+		<text>Yes. I myself would like to tell you, but shook it and forget. Do you remember, was you mess with the military to "agricultural industry?</text>
+	</string>
+	<string id="barmen_tell_2">
+		<text>Well?</text>
+	</string>
+	<string id="barmen_tell_3">
+		<text>So, now they're back out there looking for something. Dart everywhere and stalkers plaguing them there. This is one of the neutrals told me. And these days are ours, from the "debt", stuck in the dungeons, artifacts search, you know, "Kissel" there good "Mica" is born, and Elektra - Bengal Lights "throws, but seems to have their fighters and pressed. Three at once is not, and quite good stalkers. For them, a detachment had gone, one must bury guys like human beings, and also - with the ends ... I thought maybe Go check it out? You stalker grated, belted with a crowbar.</text>
+	</string>
+	<string id="barmen_tell_4">
+		<text>Certainly check it, I would only ammunition.</text>
+	</string>
+	<string id="barmen_tell_5">
+		<text>No problem. What for?</text>
+	</string>
+	<string id="barmen_tell_6">
+		<text>Nato, 5,56.</text>
+	</string>
+	<string id="barmen_tell_7">
+		<text>Our native, 5,45.</text>
+	</string>
+	<string id="barmen_tell_8">
+		<text>PAB or JV.</text>
+	</string>
+	<string id="barmen_tell_9">
+		<text>That hold, seven boxes of happiness. Well, then, go on Agroprom. There on the factory Dolgovtsy 'parking would be arranged. Talk to them. Let them explain the situation.</text>
+	</string>
+	<string id="barmen_tell_10">
+		<text>Realized.</text>
+	</string>
+	<string id="barmen_tell_11">
+		<text>You know, the bartender, come the next time I have, and so full of affairs.</text>
+	</string>
+
+<!-- dialog s ohrannikom na stoyanke dolgovcev -->
+
+	<string id="agr_dolg_ohrannik_hello_0">
+		<text>Yes blimey...!</text>
+	</string>
+
+<!-- dialog s novichkom na stoyanke dolgovcev -->
+
+	<string id="agr_dolg_molodoy_hello_0">
+		<text>Cool stalker! You like this was?</text>
+	</string>
+	<string id="agr_dolg_molodoy_tell_0">
+		<text>I came at the request of Barmen. Find out what happened here.</text>
+	</string>
+	<string id="agr_dolg_molodoy_tell_1">
+		<text>A-ha-ha-ha-ha-ha ... Kopec! Look around! Warriors killed all my friends ... that's what happened here! You blind or something, bitch?</text>
+	</string>
+	<string id="agr_dolg_molodoy_tell_2">
+		<text>You're a speech track of something!</text>
+	</string>
+	<string id="agr_dolg_molodoy_tell_3">
+		<text>Fuck you on ....!</text>
+	</string>
+
+<!-- dialog s glavnym na stoyanke dolgovcev -->
+
+	<string id="agr_dolg_glavnyi_hello_0">
+		<text>Greetings.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_0">
+		<text>And I love you.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_1">
+		<text>Do not be offended by them. Guys first got into such a zavarushku and just want to survive. This is normal.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_2">
+		<text>And I love you. You - the same unit, which came after missing stalkers?</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_3">
+		<text>Okay, I understand. You came for the three missing stalkers?</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_4">
+		<text>Yes. They descended into the caves, but we do not have time. Military such nix on to it.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_5">
+		<text>Nix? Why? They're looking for something?</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_6">
+		<text>If at the fair, I do not care. Figured out myself if you want. We are returning to base. I would like to pick up the dead bodies of friends, but do not want to risk survivors. Generally, if you decide to get into the dungeon, speak with my sniper. He is near here.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_7">
+		<text>I'll do that.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_8">
+		<text>No thanks.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_9">
+		<text>Then I tell him that you would come. He does not talk to strangers.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_10">
+		<text>Well.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_11">
+		<text>Nifiga it is not normal - a senior sauce. Nakostylyat-to puppies, so your hands do not want to soil.</text>
+	</string>
+	<string id="agr_dolg_glavnyi_tell_12">
+		<text>I see you, stalker, are not in themselves.</text>
+	</string>
+
+<!-- dialog so snayperom dolgovcev na Agroprome -->
+
+	<string id="agr_dolg_sniper_tell_0">
+		<text>Catch a crab! Listen to the conversation is ... you do downstairs?</text>
+	</string>
+	<string id="agr_dolg_sniper_tell_1">
+		<text>In the dungeon going?</text>
+	</string>
+	<string id="agr_dolg_sniper_tell_2">
+		<text>Yes.</text>
+	</string>
+	<string id="agr_dolg_sniper_tell_3">
+		<text>I would not advise you to go there. All war survivors after a battle with us, leave it there. And more ... similar to what they had mined the entrance to the pit. Our guys are there for a couple of charges at the entrance was removed, but to stay still.</text>
+	</string>
+	<string id="agr_dolg_sniper_tell_4">
+		<text>Damn! If so, have to crawl round ...</text>
+	</string>
+	<string id="agr_dolg_sniper_tell_5">
+		<text>Is that so.</text>
+	</string>
+
+<!-- dialog s uchenym v taynike Strelka -->
+
+	<string id="ecolog_01_hello_0">
+		<text>Do not shoot! Do not shoot me, please!</text>
+	</string>
+	<string id="ecolog_01_tell_0">
+		<text>Peace! I'm actually not even going.</text>
+	</string>
+	<string id="ecolog_01_tell_1">
+		<text>Praise God in me and so today all too often shoot ... but as the soldiers at the bottom? You killed them! So you saved my life! Thank you! Thank you very much. Let me kiss you!</text>
+	</string>
+	<string id="ecolog_01_tell_2">
+		<text>Why such unbridled desires? "women painted modesty, hyih.</text>
+	</string>
+	<string id="ecolog_01_tell_3">
+		<text>I just wanted to express my gratitude.</text>
+	</string>
+	<string id="ecolog_01_tell_4">
+		<text>"Thank you" would suffice. Better tell me why this is suddenly the military wanted to kill you?</text>
+	</string>
+	<string id="ecolog_01_tell_5">
+		<text>Frankly, I do not know ...</text>
+	</string>
+	<string id="ecolog_01_tell_6">
+		<text>How's that?</text>
+	</string>
+	<string id="ecolog_01_tell_7">
+		<text>The fact that we have with colleagues and a group of soldiers arrived in the laboratory of X-18 to clarify certain circumstances, to work with one drug. On the purpose of the expedition were to know only the leader of our group and myself. Then the soldiers came down directly into the laboratory, while the remainder stayed with us. And then began the strange. I overheard a conversation by a few soldiers, and from scraps of their conversation it became clear that they too know about the drug, because several times voiced its name - Heat 13. And they spoke about him only estimating its cost, the figure sounded fantastic. I was concerned about it and I went looking for our leader, he then walked over to the samples. I had walked far enough, when I heard gunfire in the side of the hangar. As quickly as possible, I went back and carefully looked into the hangar. God ... I will never forget what I saw ... The soldiers shot my defenseless colleagues, seeking shots to the head injuries ... I panicked and started running, I noticed. Far away I could not, in such a suit did not run much, and I had to hide from them in the local underground. Since then, I sat out here and wait until they stop searching. I heard a conversation a couple of soldiers, came down here - they said they wanted two, and I realized that survived even some of my colleagues, and it has not yet been found. If you survive, try to find it.</text>
+	</string>
+	<string id="ecolog_01_tell_14">
+		<text>Hence, dolgovtsam just unlucky and they were here at the time when the military looking for you.</text>
+	</string>
+	<string id="ecolog_01_tell_15">
+		<text>How "Dolgovtsam?</text>
+	</string>
+	<string id="ecolog_01_tell_8">
+		<text>t does not matter. You, by the way, he stammered about money?</text>
+	</string>
+	<string id="ecolog_01_tell_9">
+		<text>I see you are only interested in it!</text>
+	</string>
+	<string id="ecolog_01_tell_10">
+		<text>Well ... Money is always an interesting topic for conversation.</text>
+	</string>
+	<string id="ecolog_01_tell_11">
+		<text>All you have stalkers only swag da privarok. And I thought I ...</text>
+	</string>
+	<string id="ecolog_01_tell_12">
+		<text>Yes, it's not even money. Bothered me to trample the Zone. Cottage by the river and I want to ... In general, I'll go look for it your "SHOW-13"</text>
+	</string>
+	<string id="ecolog_01_tell_13">
+		<text>Understandable. Okay, thanks again for your help. Only I would not advise you with this contact, it is dangerous.</text>
+	</string>
+	<string id="ecolog_01_tell_16">
+		<text>Yes me the danger is not the first time. Well am healthy!</text>
+	</string>
+
+	<string id="ecolog_v_tainike_tell_second_9">
+		<text>Okay, let me start from the beginning. Originally, "SHOW-13 'was not fighting the virus. It was developed as part of the fight against AIDS. In general, "SHOW-13 'is a hybrid of man-made harmless virus and AIDS virus. The original virus itself is not dangerous. The immune system can easily fight with him in consequence of the fact that it was created on the basis of existing in nature, and accustomed to the human body the virus is spread by airborne droplets. But the source of the virus is the exclusive property - it can change the structure of other viruses, making them similar to his, and since he is easy to fight the immune system, then theoretically it can be used to defeat any disease. This is the original virus was obtained by chance and scientists wanted to put it in the service of man for peaceful purposes, but when the results of an experiment with rats fell into the hands of the military, they moved the rails on the military track. And the results were disappointing. "SHOW-13 ', getting into the body, hit certain areas of the brain and the media did not sensitive to pain (this is the property of the military wanted to instill soldiers), but in most cases the virus is suppressed almost all the intellectual activity of man. Some were lost even the basic instincts like food needs. And unfortunately, the vaccine he had not yet established, since work on the project were not completed until the end ...</text>
+	</string>
+	<string id="ecolog_v_tainike_tell_second_11">
+		<text>Well ... theoretically, the antidote is your body. Indeed, experiments on humans have shown the results of the following items - the death rate was about 50%, 48% of test subjects lost their minds or become sick AIDS and only 2% of the subjects survived, but ... were still doomed. After the virus was struck central nervous system.</text>
+	</string>
+	<string id="ecolog_v_tainike_tell_second_12">
+		<text>Would you like to say that I got to the 2%?</text>
+	</string>
+	<string id="ecolog_v_tainike_tell_second_13">
+		<text>It seems that way. But do not think that "SHOW-13" took you a really short time. Do not lose hope, judging from the reports you can live for decades, and the band - an unusual place, then even ordinary sickness pass outside the box. And here's what I wanted to tell you. Work on "Znoyu-13" led my supervisor, academic Shelestov, and I know he's going to come into the Zone to conduct some of their experiments. If by that time I'll be still alive, then introduce you to him, maybe he could help. But how can you find?</text>
+	</string>	
+	<string id="ecolog_v_tainike_tell_second_14">
+		<text>Dump for a bar of 100 X-ray, I will leave the bartender documents, through him, and we will keep in touch. When going to talk to him mention of the word "heat ", it will be conditioned signal. Well, am!</text>
+	</string>	
+
+<!-- dialog s uchenym v temnoy doline -->
+
+	<string id="ecolog_02_hello_0">
+		<text>Pppomogite ... pppozhaluysta ...</text>
+	</string>
+
+	<string id="ecolog_02_tell_0">
+		<text>How are you?</text>
+	</string>
+
+<!-- dialog so stalkerom, kotoryy rasskajet o Serege Man'yake -->
+
+	<string id="neytral_01_hello_0">
+		<text>I greet you, a stalker!</text>
+	</string>
+	<string id="neytral_01_tell_0">
+		<text>And I love you! Listen, you do not know whether you're a stalker, who recently went to the lab x18?</text>
+	</string>
+	<string id="neytral_01_tell_1">
+		<text>Yes, I know! You seem you mean Serega maniac. I see that after going to x18, he became a legend.</text>
+	</string>
+	<string id="neytral_01_tell_2">
+		<text>Probably ... and where is he?</text>
+	</string>
+	<string id="neytral_01_tell_3">
+		<text>By Sidorovich went. Do you know him a little missed.</text>
+	</string>
+	<string id="neytral_01_tell_4">
+		<text>Clear. Well, thanks for the information the stalker.</text>
+	</string>
+
+<!-- dialog s Sidorovichem -->
+
+	<string id="sidorovich_tell_0">
+		<text>Sidorych! To you went stalker, nicknamed "Maniac"?</text>
+	</string>
+	<string id="sidorovich_tell_1">
+		<text>Yes. Visited recently ... and you know about it from?</text>
+	</string>
+	<string id="sidorovich_tell_2">
+		<text>It does not matter. He said where you going?</text>
+	</string>
+	<string id="sidorovich_tell_3">
+		<text>Of course not! Since when stalkers have reported to me about where the others go? Although he said he was going to make a halt ... here ... the cordon ...</text>
+	</string>
+	<string id="sidorovich_tell_4">
+		<text>Well, you see! And you say that you stalkers do not report.</text>
+	</string>
+	<string id="sidorovich_tell_5">
+		<text>It's just I'm so considerate. You'd better tell me why he needed you?</text>
+	</string>
+	<string id="sidorovich_tell_6">
+		<text>The point I have for him.</text>
+	</string>
+
+<!-- dialog s Seregoy Man'yakom -->
+
+	<string id="neytral_02_hello_0">
+		<text>Good day!</text>
+	</string>
+	<string id="neytral_02_tell_0">
+		<text>Hello. Maniac?</text>
+	</string>
+	<string id="neytral_02_tell_1">
+		<text>The same. Looking for me, or what?</text>
+	</string>
+	<string id="neytral_02_tell_2">
+		<text>Like...</text>
+	</string>
+	<string id="neytral_02_tell_3">
+		<text>And what is required?</text>
+	</string>
+	<string id="neytral_02_tell_4">
+		<text>I've got to see you a couple of questions about x18. For example, who killed a military at the entrance to the lab?</text>
+	</string>
+	<string id="neytral_02_tell_5">
+		<text>And that I killed them ... and secretion of do not.</text>
+	</string>
+	<string id="neytral_02_tell_6">
+		<text>So just?</text>
+	</string>
+	<string id="neytral_02_tell_7">
+		<text>So just!</text>
+	</string>
+	<string id="neytral_02_tell_8">
+		<text>And for what? If not a secret.</text>
+	</string>
+	<string id="neytral_02_tell_9">
+		<text>Well, not exactly a secret, but also confess to you I'm not going.</text>
+	</string>
+	<string id="neytral_02_tell_10">
+		<text>Clear. And about the door code can tell you something.</text>
+	</string>
+	<string id="neytral_02_tell_11">
+		<text>Warriors locked door. They put the time to protect yourself ... I have it, however, did not stop.</text>
+	</string>
+	<string id="neytral_02_tell_12">
+		<text>But...</text>
+	</string>
+	<string id="neytral_02_tell_13">
+		<text>That "but"? You would not have done something if they killed your brother.</text>
+	</string>
+	<string id="neytral_02_tell_14">
+		<text>So that's what it was. In the "Zone" Many have lost loved ones, but the maniacs in this case did not get.</text>
+	</string>
+	<string id="neytral_02_tell_15">
+		<text>If you're not familiar with the matter of fact, it is better to be silent. Or I'll help you shut up.</text>
+	</string>
+	<string id="neytral_02_tell_16">
+		<text>Listen, a stalker, I really need to get into that lab, and the door closed. Need a code.</text>
+	</string>
+	<string id="neytral_02_tell_17">
+		<text>Code? About the code, I've heard something. At that moment, when I went to the lab, one of the officers just exhibited time. He said that the door is closed only in case of emergency, and someone always stayed outside. Code from the door - "Battle of the Neva. " I understand it the date of the battle had in mind ... That's all.</text>
+	</string>
+	<string id="neytral_02_tell_18">
+		<text>"Battle of the Neva" means ... try ...</text>
+	</string>
+	<string id="neytral_02_tell_19">
+		<text>And why are you lost something?</text>
+	</string>
+	<string id="neytral_02_tell_20">
+		<text>Yes, I do not know ... until ...</text>
+	</string>
+
+<!-- dialog s Saharovym -->
+
+	<string id="saharov_tell_0">
+		<text>Professor, there's talk.</text>
+	</string>
+	<string id="saharov_tell_1">
+		<text>Yes, yes...</text>
+	</string>
+	<string id="saharov_tell_2">
+		<text>Where in the county as a zombie?</text>
+	</string>
+	<string id="saharov_tell_3">
+		<text>When the light was turned off at Yantar, here pulled stalkers ... for the rich swag, but ... from the laboratory were selected controllers. Initially, about no one knew, and many travelers complained of hallucinations, and we decided that it was the residual effect of radiation, but later began to appear on the frequent skirmishes with the controllers. Well, it is easy to guess the consequences.</text>
+	</string>
+	<string id="saharov_tell_17">
+		<text>I'm back, Professor.</text>
+	</string>
+	<string id="saharov_tell_18">
+		<text>Very glad to see you. You have found the answers to your questions?</text>
+	</string>
+	<string id="saharov_tell_19">
+		<text>I am afraid that the issues become even more.</text>
+	</string>
+	<string id="saharov_tell_20">
+		<text>You did not find anything?</text>
+	</string>
+	<string id="saharov_tell_21">
+		<text>Found...</text>
+	</string>
+	<string id="saharov_tell_22">
+		<text>Will look?</text>
+	</string>
+	<string id="saharov_tell_23">
+		<text>Yes, please.</text>
+	</string>
+	<string id="saharov_tell_24">
+		<text>No, it is unnecessary.</text>
+	</string>
+	<string id="saharov_tell_25">
+		<text>God!</text>
+	</string>
+	<string id="saharov_tell_26">
+		<text>That?</text>
+	</string>
+	<string id="saharov_tell_27">
+		<text>"SHOW-13" - this terrible biological weapons. Just look at the pictures!</text>
+	</string>
+	<string id="saharov_tell_28">
+		<text>Its tested on humans?!</text>
+	</string>
+	<string id="saharov_tell_29">
+		<text>Yes ... as stated in the protocol - to prisoners.</text>
+	</string>
+	<string id="saharov_tell_30">
+		<text>Rotten deal.</text>
+	</string>
+	<string id="saharov_tell_31">
+		<text>Listen, Marked One, these documents must not fall into the hands of bad people. Give them to me and I will convey them to the authorities.</text>
+	</string>
+	<string id="saharov_tell_32">
+		<text>Authorities can not, because they were interested in "SHOW-13". There. Read what he wrote one of the soldiers in his diary.</text>
+	</string>
+	<string id="saharov_tell_33">
+		<text>It can not be ... military wanted to test "SHOW-13 'in the Zone? They are mad? Here, people!</text>
+	</string>
+	<string id="saharov_tell_34">
+		<text>Many guinea pigs.</text>
+	</string>
+	<string id="saharov_tell_35">
+		<text>In this impossible to believe. The territory of the Chernobyl zone to be unsuitable for living another 24 000 years, and various tests will only aggravate the situation ...</text>
+	</string>
+	<string id="saharov_tell_36">
+		<text>Do not despair professor, after all documents have.</text>
+	</string>
+	<string id="saharov_tell_37">
+		<text>Documents - yes, but the samples that were used during the tests, still buried in the depths of the Zone. They need to find the earlier war.</text>
+	</string>
+	<string id="saharov_tell_38">
+		<text>I think I know a man who could help. Does not appear if you have prior to my arrival stalker factions of Liberty?</text>
+	</string>
+	<string id="saharov_tell_39">
+		<text>Yes, come. Like you, interested in zombie activity.</text>
+	</string>
+	<string id="saharov_tell_40">
+		<text>Do not know where he went?</text>
+	</string>
+	<string id="saharov_tell_41">
+		<text>Unfortunately not ... but it seemed he wanted to go down to the lab.</text>
+	</string>
+	<string id="saharov_tell_42">
+		<text>Stalkers I have not met.</text>
+	</string>
+	<string id="saharov_tell_43">
+		<text>Then, perhaps, he is still looking for the entrance to the laboratory.</text>
+	</string>
+	<string id="saharov_tell_44">
+		<text>Perhaps...</text>
+	</string>
+
+<!-- dialogi s dolgovskim razvedchikom -->
+
+	<string id="mil_dolg_recon_tell_9">
+		<text>None. For starters, you can share the their base for the presence of unattended wallows in electronics. Anything can happen - someone forgot or left unattended your computer. If you have a good relationship with freedom, then the labor to enter the base you will not be. Especially if you're caught in this business, you probably decide that you just want to earn extra money by selling, and if I burn down - then the conversation will be quite different.</text>
+	</string>
+	<string id="mil_dolg_recon_tell_0">
+		<text>Let a professional do it. So ... So ... casket, then just opened. Look for anything about the disorder. We are waiting and ... information about it, but there are news about the stalker from his group, which was, as written here, dolgovskoy "six". Its exact location is not, but we know that he is hiding in the army warehouses. Referred to an abandoned village, but no details. Apparently somewhere in there it was last seen.</text>
+	</string>
+
+<!-- dialog so stalkerom iz Svobody, sbejavshim iz otryada Bespredela -->
+
+	<string id="mil_svoboda_wounded_tell_10">
+		<text>I do not know. Himself would have wanted that bastard to find. But there is little thought. You can kill two birds at once. Do not want to help the cattle out of debt, but ... Lawlessness planned to provoke a military attack on the bar. For this, he took hostage a number of soldiers, and dressed in dolgovtsev decided to punish them. It will be filmed on video and sent a soldier.</text>
+	</string>
+
+<!-- dialogi s Kostey Bespredelom -->
+
+	<string id="yan_svoboda_bespredel_tell_13">
+		<text>You kin have seen enough American or what? Listen, I tell you what. You see these guys? If you rypneshsya, you are razed to the ground. That's it. A case that the case ... The warriors of it ask them if they needed it, too, want - to catch up, they moved toward the Wild Territory. I myself would have gone, but the forces are not enough, do not beat them to us. And you do not advise it - debris and will not be asked as he was called.
+		</text>
+	</string>
+
+<!-- dialog so stalkerom iz Svobody, sbejavshim iz otryada Bespredela -->
+
+<!--	<string id="svoboda_04_hello_0">
+		<text>Здорова, сталкер.</text>
+	</string>
+
+	<string id="svoboda_04_tell_0">
+		<text>Привет. А ведь я к тебе по делу.</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>По какому делу?</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Что ты знаешь о Васе Ангеле?</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Ах, об этом деле...</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Мне интересно, как так получилось, что "Свобода" помогает военным?</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Нужно было покончить с "Долгом".</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>С чего это вы вдруг решили, что военные вам в этом помогут?</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>А у них не будет другого выбора, когда они узнают о захвате "ЗНОЙ-13" "Долгом".</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Но долговцы даже не знают об этом проекте!</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Ошибаешься. Они не только знают о "ЗНОЙ-13", но еще и устраивают засаду на возвращающихся из лаборатории Х16 военных.</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Что за бред ты несешь?</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Все это придумал Костя Беспредел. Когда военным понадобилась помощь сталкеров, откликнулся именно он. Еще он пронюхал о "ЗНОЙ-13" и о том, что эта гадость стоит миллионы. Вначале, он просто хотел на этом заработать, но потом смекнул, что одним выстрелом сможет убить двух зайцев. Он решил устроить засаду на военных, когда те будут возвращаться из Х16, а нападение списать на "Долг". После такого жеста долговцы окажутся в такой жопе, что...</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Какой паскудный план.</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Согласен.</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Почему же?</text>
+	</string>
+	<string id="svoboda_04_tell_0">
+		<text>Почему же?</text>
+	</string> -->
+
+</string_table>

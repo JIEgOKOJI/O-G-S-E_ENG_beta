@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<!-- Dialogi o transmutah -->
+
+<string_table>
+	
+	<string id="yantar_trader_transmut_0">
+		<text>Professor, I've heard you can make transmutation?</text>
+	</string>
+	<string id="yantar_trader_transmut_1">
+		<text>Yes, sometimes I do it, but you can imagine what it's worth, young man? Transmutation - a very rare and expensive toys! I could make them for you, of course, if you find the right components and some money. That's what I can offer you:\n
+"The sky." Increases muscle tone, increasing resistance to shock and lacerations. But it is quite fonit. \n
+Manufacturing cost 35.000 Rub. Needed: Night Star, Moonlight, Battery. \n\n
+"TJV". So named by our German colleagues, the first to manufacture it. Increases immunity to psychic stress.\n
+Manufacturing cost 55.000 Rub. Needed: Moonlight eyes of the flesh.\n\n
+"Goat horn". Due to its unique features, provides protection against bullets and shock waves.\n
+Manufacturing cost 100.000 Rub. Needed: Night Star, Mama's Beads, gravel and drops. \n\n
+Hermes. Dual artifact. Making its bearer is incredibly hardy, eats it alive. \n
+Manufacturing cost 35.000 Rub. Needed: Moonlight, cactus and mucus. \n\n
+"Sponge." Protects against radiation and high temperatures. \n
+Manufacturing cost 75.000 Rub. Needed: Mica, pacifiers, ball of fire. \n\n
+"Honeycomb." Beneficial effect on the body affected by chemical poisoning. \n
+Manufacturing cost 20.000 Rub. Needed: Film, crotchet. \n\n
+"Red Star". Recovers HP and heals wounds. \n
+Manufacturing cost 150.000 Rub. Needed: Soul, Mica, tissue samples bloodsucker. \n\n
+"The Eye. "Not bad heals wounds. However, decreases resistance to PSI-effects. This artifact has a unique ability: if you put it on yourself, most Snork byurer you are not touched. \n
+Manufacturing cost 85.000 Rub. Needed: Goldfish, Mica, a hand controller.</text>
+	</string>
+	
+	<string id="yantar_trader_transmut_01">
+		<text>Professor, I hope you can order another transmutation.</text>
+	</string>
+	<string id="yantar_trader_transmut_02">
+		<text>Of course, young man. What interests you?</text>
+	</string>
+	
+	<string id="yantar_trader_trans_1">
+		<text>Make a "Sky"</text>
+	</string>
+	<string id="yantar_trader_trans_2">
+		<text>Make a "TJV"</text>
+	</string>
+	<string id="yantar_trader_trans_3">
+		<text>Make a "goat horn"</text>
+	</string>
+	<string id="yantar_trader_trans_4">
+		<text>Make a Hermes, tired circles in the Zone with full kit to cut.</text>
+	</string>
+	<string id="yantar_trader_trans_5">
+		<text>Make a "sponge", otherwise the night will soon begin to glow, or sopyus altogether.</text>
+	</string>
+	<string id="yantar_trader_trans_6">
+		<text>Make a "Honeycomb"</text>
+	</string>
+	<string id="yantar_trader_trans_7">
+		<text>Make a "Red Star", and it became like a mummy from these bandages</text>
+	</string>
+	<string id="yantar_trader_trans_8">
+		<text>Fabricate "The Eye"</text>
+	</string>
+	
+	<string id="yantar_trader_transmut_5">
+		<text>Oh, sorry for not enough money. I'll come later.</text>
+	</string>
+	<string id="yantar_trader_transmut_6">
+		<text>Take a young man, transmutation is ready!</text>
+	</string>
+	<string id="yantar_trader_transmut_7">
+		<text>Well, done!</text>
+	</string>
+	<string id="yantar_trader_transmut_8">
+		<text>Cool! I hope it's worth the money!</text>
+	</string>
+	<string id="yantar_trader_transmut_9">
+		<text>Impressive, good job!</text>
+	</string>
+	<string id="yantar_trader_transmut_10">
+		<text>Or you can still do it?</text>
+	</string>
+	<string id="yantar_trader_transmut_11">
+		<text>Of course! At the moment I have free time.</text>
+	</string>
+
+</string_table>

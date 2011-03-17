@@ -1,0 +1,672 @@
+---------------Copyright_Quest_2009-------------------
+------------- Edited_by_stalbar_2009 -----------------
+---- Total Reconstruction - KamikaZze and Mixser -----
+------------------------------------------------------
+---' Служебные процедуры проверки численности
+---' ограничивают спавн при наличии слишком
+---' большого числа врагов на уровне,
+---' стимулируют спавн подкреплений если
+---' численность населения сильно снизилась
+-------------------------------------------------------
+---' Настроечные переменные
+-------------------------------------------------------
+local max_enemies_on_bar = 10	--' предел численности врагов
+local max_monsters_on_bar = 15	--' предел численности монстров
+local min_loners_on_bar = 15	--' предел численности одиночек
+local min_dolgers_on_bar = 25	--' предел численности должан
+-------------------------------------------------------
+---' Счётчики численности
+-------------------------------------------------------
+bar_count_enemies = 0
+bar_count_monsters = 0
+bar_count_loners = 0
+bar_count_dolgers = 0
+-------------------------------------------------------
+---' Регулярная проверка численности и доспавн
+-------------------------------------------------------
+function check_bar_population()
+
+	--' Обнулим счётчики
+
+	bar_count_enemies = 0
+	bar_count_monsters = 0
+	bar_count_loners = 0
+	bar_count_dolgers = 0
+	
+	local actor_vid = game_graph():vertex(alife():actor().m_game_vertex_id):level_id()
+	
+	for id=1,65535 do
+		local npc = alife():object(id)
+		if npc then
+			local npc_vid 	= game_graph():vertex(npc.m_game_vertex_id):level_id()	
+			if actor_vid == npc_vid then
+				if IsStalker(npc) and npc:alive() then
+					if not amk.is_quest_npc(npc) then
+						if npc:community() == "stalker" or 
+							npc:community() == "csky" or
+							npc:community() == "ecolog" then
+							bar_count_loners = bar_count_loners + 1
+						elseif npc:community() == "dolg" then	
+							bar_count_dolgers = bar_count_dolgers + 1
+						elseif npc:community() == "monolith" or
+							npc:community() == "military" or
+							npc:community() == "killer" or
+							npc:community() == "freedom" or
+							npc:community() == "bandit" or
+							npc:community() == "zombied" then	
+							bar_count_enemies = bar_count_enemies + 1						
+						end
+					end
+				elseif IsMonster(npc) and npc:alive() then
+						bar_count_monsters = bar_count_monsters + 1
+				end
+			end
+		end
+	end
+	
+	-- amk.logf("Сводка Населения Бара:")
+	-- amk.logf("одиночки: "..tostring(bar_count_loners))
+	-- amk.logf("долг: "..tostring(bar_count_dolgers))
+	-- amk.logf("монстры: "..tostring(bar_count_monsters))
+	-- amk.logf("враги: "..tostring(bar_count_enemies))
+	
+	if bar_count_loners < min_loners_on_bar then
+		local number_ct = math.floor(min_loners_on_bar - bar_count_loners)/6
+		if number_ct >= 1 then
+			stalker1( actor, npc, number_ct )
+			stalker2( actor, npc, number_ct )
+			stalker3( actor, npc, number_ct )
+			-- amk.logf("Мало одиночек. Производим спавн.")
+		else	
+			stalker1( actor, npc, 1 )
+			stalker2( actor, npc, 1 )
+			stalker3( actor, npc, 1 )
+			-- amk.logf("Мало одиночек. Производим спавн.")			
+		end
+	end
+	
+	if bar_count_dolgers < min_dolgers_on_bar then
+		local number_ct = math.floor(min_dolgers_on_bar - bar_count_dolgers)/5
+		if number_ct >= 1 then
+			dolg1( actor, npc, number_ct )
+			dolg2( actor, npc, number_ct )
+			-- amk.logf("Мало долговцев. Производим спавн.")
+		else	
+			dolg1( actor, npc, 1 )
+			dolg2( actor, npc, 1 )
+			-- amk.logf("Мало долговцев. Производим спавн.")			
+		end
+	end	
+	
+end
+-------------------------------------------------------
+---' Проверки разрешения на спавн
+-------------------------------------------------------
+function can_spawn_monster()
+	local permission = false
+	if bar_count_monsters < max_monsters_on_bar and bar_count_dolgers >= min_dolgers_on_bar then 
+		permission = true
+		return permission
+	end
+	
+	return permission
+end
+-------------------------------------------------------
+function can_spawn_enemy()
+	local permission = false
+	if bar_count_enemies < max_enemies_on_bar and bar_count_loners >= min_loners_on_bar then 
+		permission = true 
+		return permission
+	end
+	return permission
+end
+-------------------------------------------------------
+---' Спавн квестовых вещей - эту секцию НЕ трогать!
+-------------------------------------------------------
+function arbalet( actor, npc )
+alife():create("wpn_crossbow",vector():set(-26.14,-6.88,-21.14),286161,1593)
+alife():create("ammo_arbolt",vector():set(-26,-6.8,-21.14),286161,1593)
+alife():create("ammo_arbolt",vector():set(-26,-6.8,-21.14),286161,1593)
+alife():create("ammo_arbolt",vector():set(-26,-6.8,-21.14),286161,1593)
+alife():create("ammo_arbolt",vector():set(-26,-6.8,-21.14),286161,1593)
+alife():create("ammo_arbolt",vector():set(-26,-6.8,-21.14),286161,1593)
+alife():create("ammo_arbolt",vector():set(-26,-6.8,-21.14),286161,1593)
+end
+
+function spawn_barman_document()
+alife():create("borov_document",vector():set(113.72, -2.11,15.78),33613,1239)
+end
+
+function spawn_cherep_svd()
+alife():create("cherep_svd",vector():set(60.17,1.242,200.89),28310,1243)
+end
+-------------------------------------------------------
+---' Массивы атакующих
+-------------------------------------------------------
+
+local zombie_types_1 = {"zombie_weak","zombie_strong", "zombie_normal", 
+					"zombie_v_strong", "zombie_v_normal", "zombie_immortal", 
+					"pseudodog_weak", "pseudodog_normal", "rat_weak", 
+					"zombie_plague", "zombie_ghost", "zombie_old" }
+					
+local zombie_types_4 = {"aem_killer_t2_3_3","aem_killer_t2_3_2","ros_killer_respawn_1",
+						"ros_killer_respawn_2","ros_killer_respawn_3","mil_killer_respawn_3",
+						"mil_killer_respawn_4"}
+
+					
+local zombie_types_6 = {"agr_bandit_respawn_1", "agr_bandit_respawn_2", "gar_bandit_respawn_1", 
+						"esc_bandit_respawn_1", "esc_bandit_respawn_2", "gar_bandit_respawn_2" }
+
+local zombie_types_15 = {"bar_dolg_respawn_1","bar_dolg_respawn_2", "bar_dolg_respawn_3" }
+
+local zombie_types_16 = { "gar_stalker_respawn_1", "stalker_veteran_unmove", "bar_stalker_respawn_1", "bar_stalker_respawn_2", "bar_stalker_respawn_3", "bar_stalker_respawn_4", "mil_stalker_respawn_3" }
+
+local zombie_types_19 = { "gar_stalker_respawn_1", "stalker_veteran_unmove", "bar_stalker_respawn_1", "bar_stalker_respawn_4", "bar_dolg_respawn_1","bar_dolg_respawn_2", "bar_dolg_respawn_3" }
+
+local monsters = 
+	{
+		["dogs"] = {"dog_weak","dog_normal","dog_strong"},
+		["cats"] = {"cat_weak","cat_v_normal","cat_v_strong"},
+		["boars"] = {"boar_weak","boar_normal","boar_strong"},
+		["fleshes"] = {"flesh_weak","flesh_normal","flesh_strong","flesh_v_strong"},
+		["zombies"] = {"zombie_weak","zombie_normal","zombie_v_normal","zombie_strong","zombie_immortal","zombie_phantom_2","zombie_phantom_invisible","zombie_ghost","zombie_old","zombie_v_strong","zombie_rusty"},
+		["pseudodogs"] = {"pseudodog_weak","pseudodog_normal","pseudodog_strong","pseudodog_v_strong","psy_dog"},
+		["burers"] = {"burer_weak","burer_strong","burer_v_strong"},
+		["snorks"] = {"snork_weak","snork_normal","snork_strong"},
+		["bloodsuckers"] = {"bloodsucker_weak","bloodsucker_normal","bloodsucker_strong","bloodsucker_v_strong","bloodsucker_v_strong2"}
+	}
+
+local humans =
+	{
+		["stalkers"] = {"gar_stalker_respawn_1", "stalker_veteran_unmove", "bar_stalker_respawn_1", "bar_stalker_respawn_2", "bar_stalker_respawn_3", "bar_stalker_respawn_4", "mil_stalker_respawn_3"},
+		["dolg"] = {"bar_dolg_respawn_1","bar_dolg_respawn_2", "bar_dolg_respawn_3"},
+		["bandits"] = {"agr_bandit_respawn_1", "agr_bandit_respawn_2", "gar_bandit_respawn_1", "esc_bandit_respawn_1", "esc_bandit_respawn_2", "gar_bandit_respawn_2"},
+		["freedom"] = {"mil_freedom_respawn_1","mil_freedom_respawn_2","mil_freedom_respawn_3"},
+		["killers"] = {"aem_killer_t2_3_3", "aem_killer_t2_3_2", "ros_killer_respawn_1", "ros_killer_respawn_2", "ros_killer_respawn_3", "mil_killer_respawn_3", "mil_killer_respawn_4"},
+		["zombies"] = {"rad_zombied_respawn_1", "rad_zombied_respawn_2", "rad_zombied_respawn_3"},
+		["army"] = {"val_soldier_respawn_1", "rad_soldier_master","esc_soldier_respawn_1", "agr_soldier_regular", "agr_soldier_veteran"}
+		
+	}
+
+function type_info(obj)
+ -- if type(obj)=="nil" then 
+ -- -- amk.logf("Параметр не существует!!!")
+ 
+ -- elseif type(obj)=="table" then
+ 
+  -- for k,v in pairs(obj) do
+	-- if type(v)~="table" then 
+		-- -- amk.logf(tostring(k).." = "..tostring(v)) 
+	-- else 
+		-- -- amk.logf(tostring(k)..":")
+		-- type_info(v)
+    -- end
+  -- end
+  
+ -- else 
+	-- --amk.logf(tostring(obj))
+ -- end 
+end	
+	
+-------------------------------------------------------
+---' Атаки Бара, массированные и не особо. Приведено всё к единой функции + поправлены точки спавна.
+-------------------------------------------------------
+function random_bar_attack( actor, npc)
+
+--[[
+		{
+		posit = {},
+		y_offset = ,
+		lv = ,
+		gv = 
+		},
+--]]
+local positions =
+	{
+		["garbage"] =
+			{
+				{
+					posit = {196.56, 0, 29.2},
+					y_offset = 1,
+					lv = 36415,
+					gv = 1238
+				},
+				{
+					posit = {228.82, 1.5, -35.81},
+					y_offset = 5,
+					lv = 59241,
+					gv = 1264
+				},
+				{
+					posit = {210.71, 1.5, -132.3},
+					y_offset = 5,
+					lv = 50779,
+					gv = 1173
+				},
+				{
+					posit = {359.85, 13, -345.6},
+					y_offset = 5,
+					lv = 88843,
+					gv = 1290
+				},
+				{
+					posit = {389.68, 19, -281.3},
+					y_offset = 5,
+					lv = 88300,
+					gv = 1287
+				},
+				{
+					posit = {228.82, 1.5, -35.81},
+					y_offset = 5,
+					lv = 59241,
+					gv = 1264
+				},
+				{
+					posit = {210.71, 1.5, -132.3},
+					y_offset = 5,
+					lv = 50779,
+					gv = 1173
+				}
+			},
+		["rostok"] =
+			{
+				{
+					posit = {32.06, -0.55, 137.86},
+					y_offset = 5,
+					lv = 20263,
+					gv = 1247
+				},
+				{
+					posit = {33.01, -0.5, 143.79},
+					y_offset = 5,
+					lv = 20380,
+					gv = 1247
+				}
+			},	
+		["military"] =
+			{
+				{
+					posit = {56.153, -0.09, 173.85},
+					y_offset = 5,
+					lv = 26211,
+					gv = 1241
+				},
+				{
+					posit = {62.13, 0, 161.4},
+					y_offset = 5,
+					lv = 28493,
+					gv = 1241
+				},
+				{
+					posit = {50.56, 0, 162.6},
+					y_offset = 5,
+					lv = 23976,
+					gv = 1241
+				}
+			
+		
+	  }
+	}
+
+local h = amk.real_rand(99)
+local communites = {"bandits","freedom","zombies","killers","army"}
+local monsters_classes = {"dogs","cats","boars","fleshes","zombies","pseudodogs","burers","snorks"}
+local cur_level_spawn = ""
+
+if h<=33 then cur_level_spawn = "garbage"
+	elseif h<=66 then cur_level_spawn = "rostok"
+	else cur_level_spawn = "military"
+end
+
+
+
+if cur_level_spawn == "garbage" then
+	table.remove(communites,2) -- freedom
+	table.remove(communites,2) -- zombies
+	table.remove(communites,2) -- killers
+	table.remove(monsters_classes,7) -- burers
+	table.remove(monsters_classes,7) -- snorks
+
+elseif cur_level_spawn == "rostok" then
+	table.remove(communites,1) -- bandits
+	table.remove(communites,1) -- freedom
+	
+elseif cur_level_spawn == "military" then
+	table.remove(communites,1) -- bandits
+	table.remove(communites,4) -- army
+	table.remove(communites,2) -- zombies
+end
+
+
+-- Принудительно определяем тип атак. Сделано из-за соображений баланса. Однако этот параметр можно поменять...
+who="mutants" 
+
+if who=="humans" then
+-- Спавним людей
+	if can_spawn_enemy() then
+		local enemy_group = communites[amk.real_rand(table.getn(communites))]
+		local current_enemy = humans[enemy_group][amk.real_rand(table.getn(humans[enemy_group]))]
+		local enemy_count = 0 -- текущее количество народа в баре
+		enemy_count = max_enemies_on_bar-amk.real_rand(5,7)
+		local i = table.getn(positions[cur_level_spawn])
+		amk.quest_spawn(current_enemy, enemy_count, vector():set(positions[cur_level_spawn][i].posit[1], positions[cur_level_spawn][i].posit[2], positions[cur_level_spawn][i].posit[3]), positions[cur_level_spawn][i].y_offset, positions[cur_level_spawn][i].lv, positions[cur_level_spawn][i].gv)
+		give_text_message(enemy_group,cur_level_spawn,enemy_count)
+	end
+else
+ -- Спавним монстров
+	if can_spawn_monster() then
+		local enemy_group = monsters_classes[amk.real_rand(table.getn(monsters_classes))]
+		local current_enemy = monsters[enemy_group][amk.real_rand(table.getn(monsters[enemy_group]))]
+		local enemy_spawn = 0
+		if enemy_group == "dogs" or enemy_group == "cats" or enemy_group == "zombies" then enemy_count=max_monsters_on_bar-amk.real_rand(7,10)
+		elseif enemy_group == "boars" or enemy_group == "fleshes" or enemy_group == "snorks" then enemy_count=max_monsters_on_bar-amk.real_rand(9,12)
+		else enemy_count=max_monsters_on_bar-amk.real_rand(12,14) end
+		local i = table.getn(positions[cur_level_spawn])
+		amk.quest_spawn(current_enemy, enemy_count, vector():set(positions[cur_level_spawn][i].posit[1], positions[cur_level_spawn][i].posit[2], positions[cur_level_spawn][i].posit[3]), positions[cur_level_spawn][i].y_offset, positions[cur_level_spawn][i].lv, positions[cur_level_spawn][i].gv)
+		give_text_message(enemy_group,cur_level_spawn,enemy_count)
+	end
+ end
+end
+
+function give_text_message(who,where,count)
+
+local function iterate_array(array,name)
+	for k,v in pairs(array) do
+	 if k == name then return true end
+	end
+	return false
+end
+
+if who == nil or where == nil or count == nil then return
+end
+
+local communites = {["bandits"] = "бандитов",["freedom"] = "свободовцев",["zombies"] = "зомбированных",["killers"] = "наёмников",["army"] = "военных"}
+local monsters_classes = {["dogs"] = "слепые собаки",["cats"] = "коты",["boars"] = "кабаны",["fleshes"] = "плоти",["zombies"] = "зомби",["pseudodogs"] = "псеводособаки",["burers"] = "бюреры",["snorks"] = "снорки",["bloodsuckers"] = "кровососы"}
+
+local places = {["garbage"] = "Свалки",["rostok"] = "Дикой Территории",["military"] = "Армейских складов"}
+
+if iterate_array(communites,who) == true then amk.send_tip("Внимание, внимание! Со стороны "..places[where].." идёт отряд "..communites[who].."! Объявляется боевая готовность! Всем бойцам занять соотвествующие позиции!","Долг",nil,nil,amk.tips_icons[3],"news")
+elseif iterate_array(monsters_classes,who) == true then	amk.send_tip("Внимание, внимание! Со стороны "..places[where].." обнаружены "..monsters_classes[who].."! Всем тем, кто сейчас находится в данной местности, просьба помочь Долгу в уничтожении мутантов.","Долг",nil,nil,amk.tips_icons[3],"news")
+else 
+	amk.logf("Баг с выдаванием сообщения! "..who.." нет с ни одном из массивов!")
+end
+
+end
+--[[
+function bar_attack_chance(actor,npc)
+  local chance = 0
+	if not has_alife_info("bar_darklab_document_start") then chance = 0
+	elseif not has_alife_info("bar_x16_documents_start") then chance = amk.real_rand(30,70)
+	elseif not has_alife_info("bun_patrol_start") then chance = amk.real_rand(30,70)
+	else chance = amk.real_rand(100)
+	end
+ return chance
+end
+--]]
+function seldom_bar_attack_vibros( actor, npc )
+	if amk.real_rand(100) >= 50 then random_bar_attack(npc,actor) end
+end
+
+function seldom_bar_attack_sleep( actor, npc )
+	-- Отключено...
+end
+
+-------------------------------------------------------
+---' Спавн подкреплений на Бар
+---' Одиночки
+-------------------------------------------------------
+function barman_room( actor, npc )
+--'Одиночки и долговцы в каморке у бармена
+alife():create(zombie_types_19[amk.real_rand(7)],vector():set(129.9, 1, 48.8),35115,1233)
+end
+
+function stalker1( actor, npc, number )
+	--'Одиночки на Росток	
+	if not number then
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], amk.real_rand(1,2), vector():set(137, 0, 54), 1, 36922, 1227)
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], amk.real_rand(2,3), vector():set(104, 0, 103), 1, 32473, 1222)
+	elseif number and number > 0 then
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], number, vector():set(137, 0, 54), 1, 36922, 1227)
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], number, vector():set(104, 0, 103), 1, 32473, 1222)
+	end
+end
+
+function stalker2( actor, npc, number )
+	--'Одиночки на Росток
+	if not number then	
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], amk.real_rand(2,3), vector():set(108, 0, 130), 1, 32822, 1213)
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], amk.real_rand(1,2), vector():set(9.54, 0, 140), 1, 18248, 1306)
+	elseif number and number > 0 then
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], number, vector():set(108, 0, 130), 1, 32822, 1213)
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], number, vector():set(9.54, 0, 140), 1, 18248, 1306)
+	end
+end
+
+function stalker3( actor, npc, number )
+	--'Одиночки на Росток
+	if not number then		
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], amk.real_rand(2,3), vector():set(146, 0, 103), 1, 39575, 1184)
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], amk.real_rand(1,2), vector():set(-38, 0, 140), 1, 15902, 1305)
+	elseif number and number > 0 then
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], number, vector():set(146, 0, 103), 1, 39575, 1184)
+		amk.quest_spawn(zombie_types_16[amk.real_rand(7)], number, vector():set(-38, 0, 140), 1, 15902, 1305)
+	end
+end
+-------------------------------------------------------
+---' Спавн подкреплений на Бар
+---' Долговцы
+-------------------------------------------------------
+function dolg1( actor, npc, number )
+	--'Долг на Росток -- основная база
+	if not number then
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], amk.real_rand(1,2), vector():set(186.2, 0, 102.6), 1, 45164, 1188)
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], 2, vector():set(214.5, 0.6, 108), 1, 52795, 1193)
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], amk.real_rand(2,3), vector():set(191, 0, 126), 1, 45983, 1190)
+	elseif number and number > 0 then
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], number, vector():set(186.2, 0, 102.6), 1, 45164, 1188)
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], number, vector():set(214.5, 0.6, 108), 1, 52795, 1193)
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], number, vector():set(191, 0, 126), 1, 45983, 1190)
+	end
+end
+
+function dolg2( actor, npc, number )
+	--'Долг на Росток -- блокпосты
+	if not number then
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], amk.real_rand(2,3), vector():set(87, 0, 154), 1, 30448, 1221)
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], amk.real_rand(1,3), vector():set(215.5, -1, -20), 1, 53244, 1264)
+	elseif number and number > 0 then
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], number, vector():set(87, 0, 154), 1, 30448, 1221)
+		amk.quest_spawn(zombie_types_15[amk.real_rand(3)], number, vector():set(215.5, -1, -20), 1, 53244, 1264)
+	end
+end
+
+-------------------------------------------------------
+---' Спавн атак на Бар
+---' Зверьё и монстрьё
+-------------------------------------------------------
+
+function vibros3( actor, npc )
+	-- -- amk.logf("vibros3() called")
+	if has_alife_info("val_actor_has_borov_key") then 
+		--'После получения первого спецзадания от бармена во время выброса спаунятся зомби и крысы
+		amk.quest_spawn(zombie_types_1[amk.real_rand(12)], amk.real_rand(4), vector():set(176.988, 0.0099, 50.3), 8, 44566, 1178)
+	end		
+	-- -- amk.logf("vibros3() completed")		
+end
+
+function bar_electra_movable( actor, npc )
+	--'Подвижная электра перед выходом на Армейские склады
+	alife():create("electra_movable",vector():set(-58.25, 0, 469.5),16171,1246)
+	--'Подвижная электра на ДТ перед выходом на Янтарь
+	alife():create("electra_movable",vector():set(-153.1, -12, -269.1),37977,1435)
+	--'Подвижная электра на Янтаре перед выходом на ДТ
+	alife():create("electra_movable",vector():set(-246.9, 7, -280.8),139817,1528)
+end
+
+
+function cat1( actor, npc )
+	--'После первого прохождения через заставу долга спаун кота на дороге в Бар
+	amk.quest_spawn("cat_v_normal", 1, vector():set(388.92, 12.9, -348.74), 5, 87888, 1290)
+end
+
+function cat2( actor, npc )
+	-- -- amk.logf("cat2() called")		
+	--'После пропуска через заставу долга на дороге спавнятся коты
+	amk.quest_spawn("cat_v_normal", 3, vector():set( 391.73, 13, -347.31 ), 3, 89156, 1290)	
+	-- -- amk.logf("cat2() completed")	
+end
+
+
+function flesh1( actor, npc )
+	--'Плоти у выхода на армейские склады	
+	amk.quest_spawn("flesh_strong", amk.real_rand(3), vector():set(-44.16, -7, 411.3), 1, 15743, 1246)
+end
+
+-------------------------------------------------------
+---' Спавн атак на Бар
+---' Бандючьё bandit8
+-------------------------------------------------------
+
+function bandits2( actor, npc )
+	--'Бандиты на необитаемой территории со стороны дикой территории
+	amk.quest_spawn(zombie_types_6[amk.real_rand(6)], amk.real_rand(3), vector():set(41.4, 6, 148.45), 1, 18710, 1306)
+end
+
+function bandits3( actor, npc )
+	--'Бандиты  со стороны армейских складов
+	amk.quest_spawn(zombie_types_6[amk.real_rand(6)], amk.real_rand(3), vector():set(55.3, 0, 192.1), 1, 27331, 1243)
+end
+
+function bandit7( actor, npc )
+	if has_alife_info("val_actor_has_borov_key") then 
+		--'Спавн бандитов перед собаками
+		amk.quest_spawn(zombie_types_6[amk.real_rand(6)], amk.real_rand(3), vector():set(359.85, 13, -345.6), 5, 88843, 1290)		
+		-- -- amk.logf("bandit7() completed")	
+	end
+end	
+
+function bandit8( actor, npc )
+	--'Спавн бандитов перед собаками
+	amk.quest_spawn(zombie_types_6[amk.real_rand(6)], amk.real_rand(3), vector():set(389.68, 19, -281.3), 5, 88300, 1287)		
+	-- -- amk.logf("bandit8() completed")	
+end
+
+function bandit9( actor, npc )
+	-- -- amk.logf("bandit9() called")		
+	--'Спавн бандитов со стороны ДТ
+	amk.quest_spawn(zombie_types_6[amk.real_rand(6)], amk.real_rand(3), vector():set(-79.4, 0, 137.2), 5, 14152, 1305)		
+	-- -- amk.logf("bandit9() completed")	
+end
+
+-------------------------------------------------------
+---' Спавн атак на Бар
+---' Укурки
+-------------------------------------------------------
+function freedom1( actor, npc )
+	amk.quest_spawn("mil_freedom_respawn_3", amk.real_rand(2), vector():set(122.275, 0, 58.8), 5, 35018, 1226)	
+end
+
+function freedom2( actor, npc )
+	amk.quest_spawn("mil_freedom_respawn_2", amk.real_rand(2), vector():set(56.23, 0, 165.04), 5, 26199, 1241)	
+end
+
+function freedom3( actor, npc )
+	amk.quest_spawn("mil_freedom_respawn_1", amk.real_rand(2), vector():set(171.72, 0, 115.8), 5, 43697, 1187)	
+end
+
+function freedom4( actor, npc )
+	if has_alife_info("rad_start_svoboda_vs_dolg") then 			
+		amk.quest_spawn("mil_freedom_respawn_3", amk.real_rand(2), vector():set(98.84, 0, 96.7), 5, 31522, 1222)	
+	end	
+end
+
+-------------------------------------------------------
+---' Спавн атак на Бар
+---' Наймиты
+-------------------------------------------------------
+function killer1( actor, npc )
+	-- -- amk.logf("killer1() called")
+		--'Спавн наёмников возле перехода на Дикую территорию
+	amk.quest_spawn(zombie_types_4[amk.real_rand(7)], amk.real_rand(2), vector():set(122.275, 0, 58.8), 5, 35018, 1226)
+	-- -- amk.logf("killer1() completed")	
+end
+
+function killer2( actor, npc )
+	-- -- amk.logf("killer2() called")		
+	--'Спавн наёмников возле перехода на Дикую территорию
+	amk.quest_spawn(zombie_types_4[amk.real_rand(7)], amk.real_rand(2), vector():set(56.23, 0, 165.04), 5, 26199, 1241)	
+	-- -- amk.logf("killer2() completed")	
+end
+
+function killer30( actor, npc )
+	-- -- amk.logf("killer30() called")		
+	--'Спавн наёмников возле перехода на Армейские склады
+	amk.quest_spawn(zombie_types_4[amk.real_rand(7)], amk.real_rand(3), vector():set(171.72, 0, 115.8), 5, 43697, 1187)	
+	-- -- amk.logf("killer30() completed")	
+end
+
+function killer4( actor, npc )
+	-- -- amk.logf("killer4() called")
+	if has_alife_info("val_actor_has_borov_key") then 		
+		--'Спавн наёмников после документов X18
+		amk.quest_spawn("aem_killer_t2_3_3", amk.real_rand(4), vector():set(98.84, 0, 96.7), 5, 31522, 1222)		
+	end	
+	-- -- amk.logf("killer4() completed")
+end
+
+function killer5( actor, npc )
+	-- -- amk.logf("killer5() called")
+	if has_alife_info("val_actor_has_borov_key") then	
+		--'Спавн наёмников после документов X18
+		amk.quest_spawn("ros_killer_respawn_3", amk.real_rand(2), vector():set(145.44, 5.18, 42.2), 1, 39333, 1228)		
+	end
+	-- -- amk.logf("killer5() completed")	
+end
+
+function killer6( actor, npc )
+	-- -- amk.logf("killer6() called")
+	if has_alife_info("val_actor_has_borov_key") then 	
+		--'Спавн наёмников после документов X18
+		amk.quest_spawn("mil_killer_respawn_4", amk.real_rand(2),  vector():set(153.8, 4.94, 71.2), 1, 17771, 1306)		
+	end	
+	-- -- amk.logf("killer6() completed")
+end
+
+-------------------------------------------------------
+---' Спавн атак на Бар
+---' Зомбированное мясо
+-------------------------------------------------------
+
+function zombied1( actor, npc )
+	-- -- amk.logf("zombied1() called")
+	if has_alife_info("val_actor_has_borov_key") then 	
+		--'Спавн зомбированных сталкеров после  X16
+	amk.quest_spawn("rad_zombied_respawn_1", amk.real_rand(2), vector():set( 54.33, 0, 134.86 ), 3, 25593, 1240)		
+	end	
+	-- -- amk.logf("zombied1() completed")
+end
+
+function zombied2( actor, npc )
+	-- -- amk.logf("zombied2() called")		
+	--'Спавн зобмированных сталкеров после  X16
+	amk.quest_spawn("rad_zombied_respawn_2", amk.real_rand(2), vector():set( 56.23, 0, 165.04 ), 3, 26199, 1241)	
+	-- -- amk.logf("zombied2() completed")	
+end
+
+function zombied3( actor, npc )
+	-- -- amk.logf("zombied3() called")		
+	--'Спавн зомбированных сталкеров после  X16
+	amk.quest_spawn("rad_zombied_respawn_3", amk.real_rand(2), vector():set( -60, 0, 140 ), 3, 43697, 1187)	
+	-- -- amk.logf("zombied3() completed")	
+end
+
+function zombied5( actor, npc )
+	-- -- amk.logf("zombied5() called")		
+	--'Спавн зомбированных сталкеров после  X16
+	amk.quest_spawn("yan_zombied_respawn_2", amk.real_rand(3), vector():set(99.4, 0, 113.87), 3, 31693, 1218)		
+	-- -- amk.logf("zombied5() completed")	
+end
+
+---------------Copyright_Quest_2009-------------------
+------------- Edited_by_stalbar_2009 -----------------
+---- Total Reconstruction - KamikaZze and Mixser -----

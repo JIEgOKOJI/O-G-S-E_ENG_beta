@@ -1,0 +1,1356 @@
+------------------------------------------------------------
+------------------------------------------------------------
+-- Продажа и спавн всего транспорта в игре (OGSE mod)
+-- Тотальная переделка: KamikaZze, 2010 год для OGSE 0692
+--
+------------------------------------------------------------
+-- Таблица транспорта
+------------------------------------------------------------
+
+local trade_cars = {
+	-- Кордон. Сидорович
+	[1] = { section = "vehicle_uaz2",
+			name = "UAZ",
+			disabled = 0,
+			precond = "nil",
+			trader = "escape_trader",
+			price = 9000,
+			coord_x = 127.8561,
+			coord_y = -7.6820,
+			coord_z = -6.9047,
+			l_vid = 431980,
+			g_vid = 134,
+			location = "Cordon",
+			descript = "At the Cordon can to drive a goat. Little rig, but on the move. It will cost 9000 MNT. On ATP in the garage zaberesh. Money in advance! Constipation or can take the next but one house ... If zavedesh! Gy-Gy! .. But it's free!"		
+
+			},
+	-- Garbage. Сидорович 
+	[2] = { section = "vehicle_moskvich",
+			name = "Moskvich 412",
+			disabled = 0,	
+			precond = "agroprom_military_case_done",
+			trader = "escape_trader",
+			price = 8000,
+			coord_x = -82.1,
+			coord_y = -2.6,
+			coord_z = -224.7,
+			l_vid = 124015,
+			g_vid = 271,
+			location = "Garbage",
+			descript = "On Dump ... Yeah ... There are 412 Moskvich. Parked abandoned technology zaberesh. At the same time, maybe it'll help anything. Money - as usual!"		
+
+			},
+	-- Garbage. Сидорович
+	[3] = { section = "vehicle_uaz",
+			name = "UAZ",
+			disabled = 0,	
+			precond = "nil",
+			trader = "escape_trader",
+			price = 11000,
+			coord_x = 74,
+			coord_y = 0.6,
+			coord_z = 163.3,
+			l_vid = 244359,
+			g_vid = 364,
+			location = "Garbage",
+			descript = "The Garbage are still UAZik. Will stand near the ruins, on the contrary dolgovskogo checkpoint."		
+
+			},
+	-- Agroprom. Сидорович
+	[4] = { section = "vehicle_uaz",
+			name = "UAZ",
+			disabled = 0,	
+			precond = "agroprom_military_case_done",
+			trader = "escape_trader",
+			price = 12000,
+			coord_x = 165.3,
+			coord_y = 0.2,
+			coord_z = 33.6,
+			l_vid = 989487,
+			g_vid = 584,
+			location = "Agroprom",
+			descript = "I can fit a goat. Zaberesh near the railway tunnel."		
+
+			},
+	-- Agroprom. Сидорович
+	[5] = { section = "vehicle_niva",
+			name = "Niva ВАЗ-2121",
+			disabled = 0,	
+			precond = "agroprom_military_case_done",
+			trader = "escape_trader",
+			price = 11000,
+			coord_x = 96.1,
+			coord_y = 0.4,
+			coord_z = -125.7,
+			l_vid = 330377,
+			g_vid = 611,
+			location = "Agroprom",
+			descript = "You can still Nyvka. Find there ... On the road after leaving the institution..."		
+
+			},
+	-- Dark Valley. Сидорович
+	[6] = { section = "vehicle_uazbuhanka",
+			name = "UAZ Loaf",
+			disabled = 0,	
+			precond = "dar_document5",
+			trader = "escape_trader",
+			price = 15000,
+			coord_x = 16.8,
+			coord_y = -1.6,
+			coord_z = -151,
+			l_vid = 194168,
+			g_vid = 871,
+			location = "Dark Valley",
+			descript = "In the dark valley can to drive a loaf. 15,000 of money. Dangerous place. Will be at the gas station, opposite the base of the Hog."		
+
+			},
+	-- Бар. Сидорович
+	[7] = { section = "vehicle_niva",
+			name = "Niva ВАЗ-2121",
+			disabled = 0,	
+			precond = "bar_darklab_document_done",
+			trader = "escape_trader",
+			price = 12000,
+			coord_x = 57.3,
+			coord_y = 0,
+			coord_z = 127.6,
+			l_vid = 26697,
+			g_vid = 1240,
+			location = "Bar",
+			descript = "In Bar ... The bar will Niwa. Near the road, opposite the fuel truck."		
+
+			},
+	-- Янтарь. Сидорович
+	[8] = { section = "vehicle_zaz",
+			name = "ZAZ-965 \"Humpbacked\"",
+			disabled = 0,	
+			precond = "yan_labx16_switcher_primary_off",
+			trader = "escape_trader",
+			price = 8000,
+			coord_x = 152.5,
+			coord_y = 2,
+			coord_z = -245.7,
+			l_vid = 125438,
+			g_vid = 1438,
+			location = "Yantar",
+			descript = "At Yantar - Humpback! Small and unreliable! Take! As you come into the valley, once you see!"		
+
+			},
+	-- Армейские склады.
+	[9] = { section = "vehicle_baggi",
+			name = "Buggy",
+			disabled = 0,
+			precond = "nil",			
+			trader = "mil_Svoboda_engineer",
+			price = 10000,
+			coord_x = -2.6,
+			coord_y = -6.9,
+			coord_z = 105.9,
+			l_vid = 304939,
+			g_vid = 1636,
+			location = "Arm. Warehouses",
+			descript = "Buggy take? If yes, then right on the exit and take away our workhorse. Total 10,000 coins. I then made a new."		
+
+			},
+	-- Армейские склады.
+	[10] = { section = "vehicle_moskvich2",
+			name = "Moskvich412",
+			disabled = 0,	
+			precond = "nil",
+			trader = "mil_Svoboda_engineer",
+			price = 20000,
+			coord_x = -218,
+			coord_y = -12.5,
+			coord_z = 63.5,
+			l_vid = 111228,
+			g_vid = 1679,
+			location = "Arm. Warehouses",
+			descript = "Do not want to buggy, I can still fit the Moskvich. In the Village of bloodsuckers ... At the same time and poohotishsya! Heh-heh!"		
+
+			},
+	-- Радар. Шуруп
+	[11] = { section = "vehicle_zaz968",
+			name = "ZAZ-968 \"Eared\"",
+			disabled = 0,	
+			precond = "nil",
+			trader = "mil_Svoboda_engineer",
+			price = 18000,
+			coord_x = 558.9,
+			coord_y = -44,
+			coord_z = 59.44,
+			l_vid = 197257,
+			g_vid = 1902,
+			location = "Radar",
+			descript = "On the Radar? It was something out there like ... FIG knows what a trough, but the car is yours. Prigonim directly to the Monolith checkpoint. That is to say full service."		
+
+			}			
+}
+
+
+------------------------------------------------------------
+-- Интерфейс покупки транспорта
+------------------------------------------------------------
+
+local trader_sect = nil
+
+function open_car_trade_dialog(actor, trader)
+
+	trader_sect = trader:profile_name()
+	-- logf("CRAT "..tostring(trader_sect))
+
+	local spwn = car_trade_dialog(get_hud())
+	level.start_stop_menu(spwn,true)	
+
+end
+
+
+class "select_car_trade_items" (CUIListItemEx)
+
+function select_car_trade_items:__init() super()
+-- -- amk.logf("Начинаем инициализацию поля списка предметов")
+	self.item_name		= "itemname"
+	self:SetWndRect		(0,0,320,22)
+	
+	local ca = 255
+	local cr = 216
+	local cg = 186
+	local cb = 140
+	
+	self.itmnum				= CUIStatic	()
+	self.itmnum:SetAutoDelete	(true)
+	self:AttachChild		(self.itmnum)
+	self.itmnum:SetWndRect	(0,0,20,22)
+	self.itmnum:SetText		("itemnum")
+	self.itmnum:SetFont		(GetFontLetterica16Russian())
+	self.itmnum:SetTextColor	(ca,cr,cg,cb)
+
+	self.itmn					= CUIStatic	()
+	self.itmn:SetAutoDelete	(true)
+	self:AttachChild		(self.itmn)
+	self.itmn:SetWndRect		(25,0,205,22)
+	self.itmn:SetText			("itemname")
+	self.itmn:SetFont			(GetFontLetterica18Russian())
+	self.itmn:SetTextColor	(ca,cr,cg,cb)
+
+	self.itmage				= CUIStatic	()
+	self.itmage:SetAutoDelete	(true)
+	self:AttachChild		(self.itmage)
+	self.itmage:SetWndRect	(250,0,40,22)
+	self.itmage:SetText		("itemage")
+	self.itmage:SetFont		(GetFontLetterica16Russian())
+	self.itmage:SetTextColor	(ca,cr,cg,cb)
+-- -- amk.logf("Поле списка предметов инициализировано")
+end
+
+class "select_car_descr" (CUIListItemEx)
+
+function select_car_descr:__init() super()
+-- -- amk.logf("Начинаем инициализацию поля списка предметов")
+	self.item_name		= "itemname"
+	self:SetWndRect		(0,0,320,22)
+	
+	local ca = 255
+	local cr = 216
+	local cg = 186
+	local cb = 140
+	
+	self.itmnum				= CUIStatic	()
+	self.itmnum:SetAutoDelete	(true)
+	self:AttachChild		(self.itmnum)
+	self.itmnum:SetWndRect	(0,0,20,200)
+	self.itmnum:SetText		("itemnum")
+	self.itmnum:SetFont		(GetFontLetterica18Russian())
+	self.itmnum:SetTextColor	(ca,cr,cg,cb)
+
+end
+
+
+class "car_trade_dialog" (CUIScriptWnd)
+
+
+function car_trade_dialog:__init() super()
+	self:InitControls()
+	self:InitCallBacks()
+	self:FillList()
+end
+
+function car_trade_dialog:__finalize() end
+
+
+function car_trade_dialog:InitControls()
+-- -- amk.logf("Инициализируем управление формой")
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:Init(50,50,550,450)
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	local ctrl
+	
+	xml:ParseFile("ui_car_trade.xml")
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- рамка предмета
+	xml:InitStatic("item_frame2", self)
+
+	-- список предметов
+	xml:InitFrame("list_frame", self)
+	xml:InitFrame("desc_frame", self)
+	xml:InitFrame("desc_list", self)
+
+	ctrl = xml:InitList("list", self)
+	ctrl:ShowSelectedItem(true)
+	
+	self:Register(ctrl, "list_window")
+	
+	ctrl = xml:InitList("desc_list", self)
+	ctrl:ShowSelectedItem(true)	
+	
+	self:Register(ctrl, "desc_window")
+
+	-- кнопки
+	self:Register(xml:Init3tButton("window_name", self),"window_name")
+	
+	
+	self:Register(xml:Init3tButton("caption1", self),"caption1")
+	self:Register(xml:Init3tButton("caption2", self),"caption2")
+	self:Register(xml:Init3tButton("caption4", self),"caption4")
+	
+	self:Register(xml:Init3tButton("caption5", self),"caption4")
+	self:Register(xml:Init3tButton("caption6", self),"caption4")
+	
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)	
+	
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+
+	self.message_box = CUIMessageBoxEx()
+	self:Register(self.message_box,"message_box")
+-- -- amk.logf("Управление формой инициализировано")
+
+	local money = db.actor:money()
+	self:DrawMoney(money, 260, 63)
+end
+
+
+function car_trade_dialog:InitCallBacks()
+-- -- amk.logf("Инициализируем коллбэки")
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED, self.buy_car, self)
+	
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+	
+	self:AddCallback("list_window", ui_events.LIST_ITEM_CLICKED, 			  self.OnListItemClicked,		self)
+	self:AddCallback("list_window", ui_events.WINDOW_LBUTTON_DB_CLICK,		  self.OnListItemDbClicked,		self)
+
+	self:AddCallback("message_box",		ui_events.MESSAGE_BOX_OK_CLICKED,	  self.OnMsgYes,				self)
+-- -- amk.logf("Коллбэки инициализированы")
+end
+
+
+function car_trade_dialog:FillList()
+	
+	local i = 1
+	while (trade_cars[i]) do
+	
+	--precond
+		-- amk.logf("Извлекаем предмет из таблицы")
+		if trade_cars[i].disabled == 0 and string.find(trader_sect, trade_cars[i].trader) then
+			if trade_cars[i].precond == "nil" or has_alife_info(trade_cars[i].precond) then
+				local s_item = trade_cars[i]
+				local s_item_section = trade_cars[i].section
+				local _item_num = "" .. i .. ""
+				local _item_name = trade_cars[i].name
+				local _item_location = trade_cars[i].location
+				-- amk.logf("Передаём строку в список")
+				self:AddItemToList(_item_num, _item_name, _item_location)
+			end
+		end
+		i = i+1
+	end
+
+-- -- amk.logf("Закончили наполнять список")
+end
+
+
+function car_trade_dialog:OnListItemClicked()
+
+	local list_box = self:GetListWnd("list_window")
+	local desc_box = self:GetListWnd("desc_window")
+	
+	if list_box:GetSize() == 0 then return end
+	
+	local itm_index = list_box:GetSelectedItem()
+	
+	local item = list_box:GetItem(itm_index)
+
+	if item == nil then return end
+	
+	self.btn_4:Enable(true)
+
+	local destr_item_index = tonumber(item.itmnum:GetText())
+	local destr_item = trade_cars[destr_item_index]
+	local money = db.actor:money()
+	local cost = destr_item.price
+	
+	local str = destr_item.descript
+	
+	self:DrawCurCar(destr_item.section, 300, 90)
+	self:DrawMoney(money, 260, 63)
+	self:DrawPrice(cost, 260, 83)
+	
+	local first = 1
+	local last = 45
+
+	desc_box:RemoveAll()
+	
+	local buffer = ""
+	local last_str = ""
+	
+	for word in string.gfind(str, "([-+/\=;:1234567890АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя.,!?]+)") do
+		local word_len = string.len(word)
+		local buff_len = string.len(buffer)
+		if (buff_len + word_len + 1) <= 45 then
+			buffer = buffer.." "..word
+		else
+			self:AddItemToDesc(buffer)
+			last_str = buffer
+			buffer = ""
+			buffer = buffer.." "..word
+		end
+	end
+	if string.len(buffer) > 0 and buffer ~= last_str then
+		self:AddItemToDesc(buffer)
+		buffer = ""
+		last_str = ""
+	end	
+	
+	self.car_textur:Show(true)
+	self.carprice:Show(true)
+
+end
+
+
+function car_trade_dialog:OnListItemDbClicked()
+	self:buy_car()
+end
+
+
+function car_trade_dialog:buy_car()
+
+	local console = get_console()
+	local list = self:GetListWnd("list_window")	
+	if list:GetSize()==0 then
+		return
+	end
+
+	local index = list:GetSelectedItem()
+	if index == -1 then
+		self.msgbox_id = 1
+		self.message_box:Init("message_box_select_item")
+		self:GetHolder():start_stop_menu(self.message_box, true)
+		return
+	end
+
+	local item = list:GetItem(index)
+	local destr_item_index = tonumber(item.itmnum:GetText())
+	local destr_item = trade_cars[destr_item_index]
+
+
+	local money = db.actor:money()
+	local cost = trade_cars[destr_item_index].price
+	
+	if money >= cost then 
+	
+		car_obj = alife():create( trade_cars[destr_item_index].section, vector():set(trade_cars[destr_item_index].coord_x, trade_cars[destr_item_index].coord_y, trade_cars[destr_item_index].coord_z), trade_cars[destr_item_index].l_vid, trade_cars[destr_item_index].g_vid)
+		db.add_car(car_obj)	
+
+		trade_cars[destr_item_index].disabled = 1
+	
+		db.actor:give_money(0-cost)
+		
+		local list_box = self:GetListWnd("list_window")
+		local desc_box = self:GetListWnd("desc_window")
+
+		self.car_textur:Show(false)
+		self.carprice:Show(false)
+		
+--		remkit_main.play_repair_sound()
+
+		desc_box:RemoveAll()
+		list_box:RemoveAll()
+		self:FillList()
+
+		local money = db.actor:money()
+		self:DrawMoney(money, 260, 63)		
+		
+	else
+		self.msgbox_id = 1
+		self.message_box:Init("message_box_cartrade_nomoney")
+		self:GetHolder():start_stop_menu(self.message_box, true)	
+	end
+
+end	
+
+function car_trade_dialog:OnKeyboard(dik, keyboard_action)
+	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+-- на выход повесим Esc
+		if dik == DIK_keys.DIK_ESCAPE then
+			self:on_quit()
+		end
+		if dik == DIK_keys.DIK_NUMPAD4 then
+			self:buy_car()
+		end
+		
+	end
+	return true
+end
+
+
+function car_trade_dialog:on_quit()
+	self:GetHolder():start_stop_menu (self,true)
+end
+
+
+function car_trade_dialog:AddItemToList(item_num, item_name, item_location)
+-- -- amk.logf("Пытаемся добавить строку списка:")
+	local _itm = select_car_trade_items()
+	
+-- -- amk.logf("Передача индекса..." .. item_num)
+	_itm.itmnum:SetText (item_num)
+-- -- amk.logf("Передача имени..." .. item_name)
+	_itm.itmn:SetText (item_name)
+-- -- amk.logf("Передача локации..." .. item_location)
+	_itm.itmage:SetText (item_location)
+	
+-- -- amk.logf("Получаем доступ к полю списка...")
+	local list_box = self:GetListWnd("list_window")
+-- -- amk.logf("Добавление строки...")
+	list_box:AddItem (_itm)
+-- -- amk.logf("Строка списка добавлена")
+end
+
+function car_trade_dialog:AddItemToDesc(text)
+
+	local _itm = select_car_descr()
+	_itm.itmnum:SetText(text)
+	local list_box = self:GetListWnd("desc_window")
+	list_box:AddItem (_itm)
+	
+end
+
+
+
+
+function car_trade_dialog:DrawCurCar(car, x, y)
+
+	local icons = {
+		["vehicle_baggi"] = "ui\\ui_vechicle_baggi",
+		["vehicle_btr"] = "ui\\ui_vechicle_btr",
+		["vehicle_niva"] = "ui\\ui_vechicle_niva",
+		["vehicle_moskvich"] = "ui\\ui_vechicle_moskvich",
+		["vehicle_moskvich2"] = "ui\\ui_vechicle_moskvich",
+		["vehicle_tr13"] = "ui\\ui_vechicle_traktor",
+		["vehicle_uaz"] = "ui\\ui_vechicle_uaz",
+		["vehicle_uaz2"] = "ui\\ui_vechicle_uaz",
+		["vehicle_uazbuhanka"] = "ui\\ui_vechicle_uazb",
+		["vehicle_zaz"] = "ui\\ui_vechicle_zapor",
+		["vehicle_zaz968"] = "ui\\ui_vechicle_zaporu"
+	}
+
+	if not car then return end
+	if x == nil then x = 0 end
+	if y == nil then y = 0 end
+
+	local a = self.car_textur
+	local sys = system_ini()
+	  
+	if not a then
+		self.car_textur = CUIStatic()
+		a = self.car_textur
+		a:SetWindowName("car_textur")
+		a:SetAutoDelete(true)  
+		a:InitTexture(icons[car])   
+		a:SetStretchTexture(true)
+		self:AttachChild(a)
+	end	
+	if car then
+		a:InitTexture(icons[car])   
+		a:SetStretchTexture(true)
+	else
+		a:Init(0,0,0,0)
+	end
+
+	a:SetOriginalRect(0,0,256,256)
+	a:Init(257,57,80,80)
+
+end
+
+function car_trade_dialog:DrawMoney(insert_text, x, y)
+
+if x == nil then x = 0 end
+if y == nil then y = 0 end
+	local w = self.money
+	if not w then
+	self.money = CUI3tButton()
+    w = self.money
+    w:SetWindowName("money")
+    w:SetAutoDelete(true)
+    self:AttachChild(w) 
+	end
+	if insert_text then
+	w:SetFont(GetFontLetterica16Russian())
+	w:SetTextColor (255,255,255,255)
+	w:SetText(insert_text)
+	w:Init(x-100,y,200,10)
+	w:SetTextAlign(CGameFont.alLeft)
+	else
+	w:SetText("")
+	w:Init(0,0,0,0)
+	end
+end
+
+function car_trade_dialog:DrawPrice(insert_text, x, y)
+
+if x == nil then x = 0 end
+if y == nil then y = 0 end
+	local w = self.carprice
+	if not w then
+	self.carprice = CUI3tButton()
+    w = self.carprice
+    w:SetWindowName("carprice")
+    w:SetAutoDelete(true)
+    self:AttachChild(w) 
+	end
+	if insert_text then
+	w:SetFont(GetFontLetterica16Russian())
+	w:SetTextColor (255,255,255,255)
+	w:SetText(insert_text)
+	w:Init(x-100,y,200,10)
+	w:SetTextAlign(CGameFont.alLeft)
+	else
+	w:SetText("")
+	w:Init(0,0,0,0)
+	end
+end
+
+function car_trade_dialog:DrawDescript(insert_text, x, y)
+
+if x == nil then x = 0 end
+if y == nil then y = 0 end
+	local w = self.descr
+	if not w then
+	self.descr = CUIEditBox()
+    w = self.descr
+    w:SetWindowName("descr")
+    w:SetAutoDelete(true)
+	w:SetWidth(100);
+	w:SetHeight(57);	
+    self:AttachChild(w) 
+	end
+	if insert_text then	
+	w:SetFont(GetFontLetterica18Russian())
+	w:SetTextColor (255,216,186,140)
+	w:SetTextAlignment(CGameFont.alLeft)
+	w:SetText(insert_text)
+	w:Init(x,y,100,57)
+	else
+	w:SetText("")
+	w:Init(0,0,0,0)
+	end
+end
+
+function car_trade_dialog:OnMsgYes()
+
+	if self.msgbox_id == 1 then return
+	end
+	
+	self.msgbox_id = 0
+end
+
+
+
+------------------------------------------------------------
+--	Горе :(
+------------------------------------------------------------
+
+function gore_1 (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "vodka", "in")
+end
+
+function gore_2 (actor)
+	db.actor:eat(db.actor:object("vodka"))
+end
+
+------------------------------------------------------------
+--	ПРЕКОНДИШЕНЫ
+------------------------------------------------------------
+
+function military_info()
+    if has_alife_info("mil_dolg_skull_sniper_end") or
+       has_alife_info("mil_lukash_dolg_task_complete") then
+       return true
+    end
+    return false   
+end
+
+------------------------------------------------------------
+--	Спавн транспорта без покупки
+------------------------------------------------------------
+
+function transport_spawn_load()
+-- На Кордоне.
+car_obj = alife():create( "vehicle_zaz", vector():set(-226.2, -20.3, -158.4), 28485, 48)
+db.add_car(car_obj)
+
+car_obj = alife():create( "vehicle_btr", vector():set(-148.15, -30.0, -383), 101494, 15)
+db.add_car(car_obj)
+
+car_obj = alife():create( "vehicle_tr13", vector():set(9, 0.5, 280.3), 286415, 181)
+db.add_car(car_obj)
+
+-- На Agropromе. на территории института у гаражей
+car_obj = alife():create("vehicle_moskvich2", vector():set(-143.9, -0.2, -212.7) ,93986, 677)
+db.add_car(car_obj)
+
+-- Территория Бара
+car_obj = alife():create( "vehicle_uaz2", vector():set(413.73626, 14.3532, -414.77145), 97806, 1289)
+db.add_car(car_obj)
+
+-- На АЭС 2
+car_obj = alife():create("vehicle_uazbuhanka",vector():set(794.17,-0.0,279.42),212718,2643)
+db.add_car(car_obj)
+
+end
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+--' Спец. функции для работы с транспортом
+--' KamikaZze (c) 2009 для мода OGSE
+--" Я часто пишу комментарии на английском, если что - sorry for what
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------
+--' car_impulse() - Эта функция наносит транспорту микротолчки с некоторым интервалом. 
+--' Необходима чтобы транспорт не повисал в воздухе после загрузки игры
+-------------------------------------------------------------------------------------------------------------
+function car_impulse()
+	local blow = hit()
+	blow.direction = vector():set(0,0,0)
+	blow.impulse = 0.001
+    blow.draftsman = db.actor
+	blow.power = 0
+	blow.type = hit.explosion
+    for k,v in pairs(db.cars) do
+        local car = level.object_by_id(k)
+		if car then 
+			car:hit(blow)
+		end
+	end		
+end
+
+
+inside_the_car = false
+trunk_nearby = false
+target = nil
+in_btr = false 
+current_car = nil
+current_trunk = nil
+local suithud = system_ini():r_s32("options","suithud_enable")
+
+-------------------------------------------------------------------------------------------------------------
+--' add_btr_hud() - Эта функция обрабатывает худ
+--' транспортного средства. Если внутри - убирает оружие и позволяет вести огонь из бортовой пушки.
+-------------------------------------------------------------------------------------------------------------
+local saved_aspect = 0
+
+function add_btr_hud()
+	-- local zoom=67.5/device().fov
+	-- zoom=(zoom-1)*1.5+1
+	-- if zoom<1.001 then
+		-- zoom=1.001
+	-- end
+	-- local stretchy=0.75/(math.floor(device().aspect_ratio*1000)/1000)
+	-- if stretchy<1 then stretchy=1 end	
+	-- local rect={x=-768*zoom+768,y=(-512*zoom+512)*stretchy-(stretchy-1)*300,w=1024*zoom,h=768*zoom*stretchy}
+	local screen = device()
+	local scr_width = screen.width
+	local scr_height = screen.height		
+	
+	local screen_aspect_ratio = ui_rad.orig_aspect
+	
+	if scr_width > 0 and scr_height > 0 then
+		screen_aspect_ratio = scr_width / scr_height
+	end	
+	
+	if get_hud():GetCustomStatic("periscope") == nil then
+		saved_aspect = screen_aspect_ratio
+		get_hud():AddCustomStatic("periscope")
+		periscope = get_hud():GetCustomStatic("periscope"):wnd()
+		periscope:SetWidth(0)
+		periscope:SetColor(GetARGB(0,255,255,255))
+		periscope:SetWndRect(Frect():set(0,0,1024,768))
+	else	
+		if (screen_aspect_ratio ~= saved_aspect) then
+			if (math.abs(screen_aspect_ratio - saved_aspect) > 0.1) then
+				saved_aspect = screen_aspect_ratio
+				get_hud():RemoveCustomStatic("periscope")
+				get_hud():AddCustomStatic("periscope")
+				periscope = get_hud():GetCustomStatic("periscope"):wnd()
+				periscope:SetWidth(0)
+				periscope:SetColor(GetARGB(0,255,255,255))
+				periscope:SetWndRect(Frect():set(0,0,1024,768))			
+			end
+		end
+	end
+end
+
+-------------------------------------------------------------------------------------------------------------
+--' check_trunk() - Эта функция проверяет нет ли рядом с актором багажника машины.
+-------------------------------------------------------------------------------------------------------------
+
+function check_trunk()
+	
+	if not current_car and inside_the_car == false and not amk.ignore_this_items then
+		if trunk_nearby == false then
+			for k,v in pairs(db.cars) do
+				local car = level.object_by_id(k)
+				if car then 
+					local actor_pos = db.actor:position()
+					local car_pos = car:bone_position("exhausts")
+					if actor_pos:distance_to(car_pos) < 3 then
+						car_s = car:get_car()
+						local car_state = car_s:GetfHealth()					
+						if car_state > 0.05 then
+							trunk_nearby = true
+							current_trunk = car:id()
+							-- local hud = get_hud()
+							-- local trunk = hud:GetCustomStatic("car_trunk")
+							-- if not trunk then
+								-- hud:AddCustomStatic("car_trunk", true)
+								-- trunk = hud:GetCustomStatic("car_trunk"):wnd()
+								-- trunk:SetText("Открыть багажник ($$ACTION_SCORES$$)")
+							-- end
+						end
+					end
+				end
+			end			
+		else
+			local car = level.object_by_id(current_trunk)
+			if car then
+				local actor_pos = db.actor:position()
+				local car_pos = car:bone_position("exhausts")
+				if actor_pos:distance_to(car_pos) >= 2 then
+					trunk_nearby = false
+					current_trunk = nil
+					-- local hud = get_hud()
+					-- local trunk = hud:GetCustomStatic("car_trunk")
+					-- if trunk then
+						-- hud:RemoveCustomStatic("car_trunk")
+					-- end					
+				end
+			end
+		end
+	end
+end
+
+-------------------------------------------------------------------------------------------------------------
+--' open_trunk() - Эта функция открывает багажник машины.
+-------------------------------------------------------------------------------------------------------------
+function open_trunk()
+	if not amk.ignore_this_items then
+		trunk_inv.open_trunk_dialog()
+	end
+end
+-------------------------------------------------------------------------------------------------------------
+--' check_car() - Эта функция проверяет не находится ли актор внутри (фактически около)
+--' транспортного средства. Если внутри - убирает оружие и позволяет вести огонь из бортовой пушки, 
+--' если она есть конечно. Кроме того эта функция чинит глюк когда после загрузки игры ГГ 
+--' сидит в воздухе на высоте 3-4 метров над машиной.
+-------------------------------------------------------------------------------------------------------------
+
+function check_car()
+	if not current_car and inside_the_car == false then
+		--- actor outside of car
+		-- logf("NOT_IN_CAR")
+		for k,v in pairs(db.cars) do
+			local car = level.object_by_id(k)
+			if car then 
+				local actor_pos = db.actor:position()
+				local car_pos = car:bone_position("seat_left")
+				if actor_pos:distance_to(car_pos) < 1 then
+					-- actor sit in the car
+					db.actor:hide_weapon()
+					current_car = car:id()
+					inside_the_car = true
+					enable_gun()
+					hud_info()
+					-- logf("SIT_IN_CAR")
+				end
+			end
+		end	
+	else	
+		-- logf("IN_THE_CAR")
+		--- actor inside of car
+		local actor_pos = db.actor:position()
+		local car = level.object_by_id(current_car)
+		if car then
+			check_btr_hud()
+			hud_info()
+			local car_pos = car:bone_position("seat_left")	
+			if inside_the_car == false then
+				-- game just loaded and actor inside of car
+				-- need to hide weapon
+				-- logf("GAME LOADED")
+				-- logf("CC "..tostring(current_car))
+				-- logf("IN "..tostring(inside_the_car))
+				-- logf("DIST "..tostring(actor_pos:distance_to(car_pos)))
+				if actor_pos:distance_to(car_pos) < 1 then
+					-- logf("LOADING INSIDE")
+					db.actor:hide_weapon()
+					current_car = car:id()
+					inside_the_car = true
+					check_btr_hud()
+					enable_gun()
+					hud_info()
+					return
+				else	
+					-- buggy outside load, we need to restore
+					-- actors position to make him sit on the seat
+					local point = car_pos
+					local look = car_pos					
+					db.actor:set_actor_position(point)
+					local dir = look:sub(point)
+					db.actor:set_actor_direction(-dir:getH())		
+					db.actor:hide_weapon()
+					current_car = car:id()
+					inside_the_car = true
+					check_btr_hud()
+					enable_gun()
+					hud_info()					
+					return					
+				end
+			else
+				if actor_pos:distance_to(car_pos) > 1 then
+					-- actor leaves car
+					db.actor:restore_weapon()
+					inside_the_car = false
+					check_btr_hud()
+					disable_gun()
+					current_car = nil
+					hud_info()
+					amk.del_variable("car")
+					return
+				end
+				--- GUN
+				local script_car = car:get_car()
+				if script_car:HasWeapon() and target then
+					local targ = level.object_by_id(target)
+					if targ then
+						if not targ:alive() then
+							target = nil
+							targ = nil
+						end
+						-- if targ and script_car:IsObjectVisible(targ) then
+						if targ then
+							if targ and IsStalker(targ) or IsMonster(targ) then
+								local position = targ:bone_position("bip01_head")
+								script_car:SetParam(CCar.eWpnDesiredPos, position)
+							else
+								local position = nil
+								if string.find(targ:name(), "turret") then
+									position = targ:bone_position("wpn_body1")
+								elseif string.find(targ:name(), "heli") then
+									position = targ:bone_position("pilot2")
+								elseif string.find(targ:name(), "btr") then
+									position = targ:bone_position("kabina")
+								else
+									position = targ:position()
+								end
+								script_car:SetParam(CCar.eWpnDesiredPos, position)
+							end
+						end
+					end
+				end
+			end		
+		else
+			-- uncertain situation = car destroyed?
+			-- logf("CAR_DESTROYED")
+			db.actor:restore_weapon()
+			inside_the_car = false
+			current_car = nil
+			check_btr_hud()
+			hud_info()
+			amk.del_variable("car")
+		end
+	end
+end
+
+-- Убирание худа при использовании перископа БТР
+function check_btr_hud()
+	if db.actor then
+		if car_trade.inside_the_car == true then
+			local car = level.object_by_id(current_car)
+			if car and string.find(car:name(), "btr") then
+				in_btr = true
+			else	
+				in_btr = false
+			end
+		else
+			in_btr = false
+			if suithud == 1 and dinamic_hud.suithud_enable == 0 then
+				dinamic_hud.suithud_enable = 1
+				dinamic_hud.checkmysuithud()
+			end	
+			biodetector.update("off")	
+			periscope = get_hud():GetCustomStatic("periscope")
+			if periscope then
+				periscope = get_hud():GetCustomStatic("periscope"):wnd()
+			else	
+				return
+			end
+			periscope:SetColor(GetARGB(0,255,255,255))	
+		end
+		if in_btr == true then
+			if dinamic_hud.suithud_enable == 1 then
+				dinamic_hud.blood_intensity = 0
+				dinamic_hud.set_blood()
+				dinamic_hud.suithud_enable = 0
+				dinamic_hud.setmysuithud(nil)
+			end
+			periscope = get_hud():GetCustomStatic("periscope")
+			if periscope then
+				periscope = get_hud():GetCustomStatic("periscope"):wnd()
+			else	
+				return
+			end
+			periscope:SetColor(GetARGB(255,255,255,255))				
+		else
+			if suithud == 1 and dinamic_hud.suithud_enable == 0 then
+				dinamic_hud.suithud_enable = 1
+				dinamic_hud.checkmysuithud()
+			end
+			biodetector.update("off")	
+			periscope = get_hud():GetCustomStatic("periscope")
+			if periscope then
+				periscope = get_hud():GetCustomStatic("periscope"):wnd()
+			else	
+				return
+			end
+			periscope:SetColor(GetARGB(0,255,255,255))	
+		end
+	end
+end
+
+local chech_count = 0
+
+function hud_info()
+	local hud = get_hud()
+	if inside_the_car == false or in_btr == false then
+		local targ = hud:GetCustomStatic("btr_target")
+		if targ then
+			hud:RemoveCustomStatic("btr_target")
+		end	
+		local armor = hud:GetCustomStatic("btr_armor")
+		if armor then
+			hud:RemoveCustomStatic("btr_armor")
+		end	
+		local critical = hud:GetCustomStatic("btr_critical")
+		if critical then
+			hud:RemoveCustomStatic("btr_critical")
+		end			
+		return
+	end	
+	local car_chek = level.object_by_id(current_car)
+	if car_chek then
+		local script_car = car_chek:get_car()
+		if in_btr then	
+			local health = script_car:GetfHealth()
+			local targ = hud:GetCustomStatic("btr_target")
+			if health < 0.25 then
+				local targ = hud:GetCustomStatic("btr_target")
+				if targ then
+					hud:RemoveCustomStatic("btr_target")
+				end			
+				local critical = hud:GetCustomStatic("btr_critical")
+				if not critical then
+					hud:AddCustomStatic("btr_critical", true)
+					critical = hud:GetCustomStatic("btr_critical"):wnd()
+					if chech_count == 0 then
+						if math.random() > 0.5 then
+							critical:SetText("!!! FIRE ON BOARD - EXIT MACHINE !!!")
+						else
+							critical:SetText("!!! RISK UNDERMINING THE AMMUNITON !!!")
+						end
+					end
+					chech_count = chech_count + 1
+					if chech_count >= 50 then
+						chech_count = 0
+					end
+				else
+					critical = hud:GetCustomStatic("btr_critical"):wnd()
+					if chech_count == 0 then
+						if math.random() > 0.5 then
+							critical:SetText("!!! FIRE ON BOARD - EXIT MACHINE !!!")
+						else
+							critical:SetText("!!! RISK UNDERMINING THE AMMUNITON !!!")
+						end
+					end
+					chech_count = chech_count + 1
+					if chech_count >= 50 then
+						chech_count = 0
+					end
+				end	
+				local armor = hud:GetCustomStatic("btr_armor")
+				if not armor then
+					hud:AddCustomStatic("btr_armor", true)
+					armor = hud:GetCustomStatic("btr_armor"):wnd()
+					armor:SetText("STRENGTH ARMOR: "..tostring(math.floor(health*100)).." %")
+				else
+					armor = hud:GetCustomStatic("btr_armor"):wnd()
+					armor:SetText("STRENGTH ARMOR: "..tostring(math.floor(health*100)).." %")
+				end					
+			else
+				local critical = hud:GetCustomStatic("btr_critical")
+				if critical then
+					hud:RemoveCustomStatic("btr_critical")
+				end				
+				if not targ then
+					hud:AddCustomStatic("btr_target", true)
+					targ = hud:GetCustomStatic("btr_target"):wnd()
+					targ:SetText("- There is no purpose for firing -")
+				else	
+					targ = hud:GetCustomStatic("btr_target"):wnd()
+				end
+				if target then
+					local target_descr = level.object_by_id(target)
+					if target_descr and script_car:IsObjectVisible(target_descr) then
+						local str = resolve_target(target_descr)
+						if str then
+							targ:SetText("- CURRENT GOAL: "..tostring(str).." -")
+						else	
+							targ:SetText("- GOAL NOT RECOGNIZE -")
+						end
+					else	
+						targ:SetText("- THE TARGET IS BEHIND AN OBSTACLE -")
+					end
+				else
+					targ:SetText("- THERE IS NO PURPOSE FOR FIRING -")
+				end
+				local armor = hud:GetCustomStatic("btr_armor")
+				if not armor then
+					hud:AddCustomStatic("btr_armor", true)
+					armor = hud:GetCustomStatic("btr_armor"):wnd()
+					armor:SetText("STRENGTH AROR: "..tostring(math.floor(health*100)).." %")
+				else
+					armor = hud:GetCustomStatic("btr_armor"):wnd()
+					armor:SetText("STRENGTH ARMOR: "..tostring(math.floor(health*100)).." %")
+				end					
+			end
+		else
+			local targ = hud:GetCustomStatic("btr_target")
+			if targ then
+				hud:RemoveCustomStatic("btr_target")
+			end
+			local armor = hud:GetCustomStatic("btr_armor")
+			if armor then
+				hud:RemoveCustomStatic("btr_armor")
+			end	
+			local critical = hud:GetCustomStatic("btr_critical")
+			if critical then
+				hud:RemoveCustomStatic("btr_critical")
+			end				
+		end
+	else	
+		local targ = hud:GetCustomStatic("btr_target")
+		if targ then
+			hud:RemoveCustomStatic("btr_target")
+		end		
+		local armor = hud:GetCustomStatic("btr_armor")
+		if armor then
+			hud:RemoveCustomStatic("btr_armor")
+		end	
+		local critical = hud:GetCustomStatic("btr_critical")
+		if critical then
+			hud:RemoveCustomStatic("btr_critical")
+		end			
+	end
+end
+
+function actor_target(object)
+	if db.actor and object then
+		local dangerang = 1/object:position():distance_to(device().cam_pos)
+		local ang = horz_angle(device().cam_dir, object:position():sub(device().cam_pos))
+		local tgt = ang > -dangerang and ang < dangerang
+		if tgt then return true else return false end
+	end
+	return false
+end
+
+local cannon_firing = false
+
+function enable_gun()
+	if current_car then
+		local car = level.object_by_id(current_car)
+		if car then
+			local script_car = car:get_car()
+			if script_car:HasWeapon() then
+				script_car:Action(CCar.eWpnActivate,1)
+			end	
+		end
+	end	
+end
+
+function disable_gun()
+	if current_car then
+		local car = level.object_by_id(current_car)
+		if car then
+			local script_car = car:get_car()
+			if script_car:HasWeapon() then
+				script_car:Action(CCar.eWpnActivate,0)
+			end	
+		end
+	end	
+end
+
+function start_firing()
+	if current_car then
+		local car = level.object_by_id(current_car)
+		if car then
+			local script_car = car:get_car()
+			if script_car:HasWeapon() then
+				script_car:Action(CCar.eWpnAutoFire,1)
+				script_car:Action(CCar.eWpnFire, 1)						
+				cannon_firing = true
+				--logf("Ведем огонь из орудия БТР")				
+			end	
+		end
+	end		
+end
+
+function stop_firing()
+	if cannon_firing == true then
+		if current_car then
+			local car = level.object_by_id(current_car)
+			if car then
+				local script_car = car:get_car()		
+				if script_car:HasWeapon() then
+					script_car:Action(CCar.eWpnFire, 0)
+					script_car:Action(CCar.eWpnAutoFire,0)
+					cannon_firing = false
+					--logf("Прекратили стрельбу из орудия БТР")						
+				end					
+			end
+		end		
+	end
+end
+
+-- Возвращает угол между проекциями векторов vec1 и vec2 на горизонтальную плоскость
+-- положительный угол - доворот vec1 до vec2 по часовой.
+function horz_angle(vec1,vec2)
+  local x = vec2.x*vec1.x+vec2.z*vec1.z
+  local y = -vec2.z*vec1.x+vec2.x*vec1.z -- повернули систему координат     
+  return math.atan2(y,x) -- угол доворота от -pi до pi
+end
+
+function resolve_target(target)
+local descript = nil
+	if target then
+		if IsStalker(target) then
+			descript = target:character_community()
+			if string.find(descript, "stalker") then
+				descript = "STALKER SINGLE"
+			elseif string.find(descript, "monolith") then
+				descript = "STALKER GR. MONOLITH"
+			elseif string.find(descript, "military") then
+				descript = "MILITARY"
+			elseif string.find(descript, "killer") then
+				descript = "MERCENARY"
+			elseif string.find(descript, "ecolog") then
+				descript = "ECOLOG"
+			elseif string.find(descript, "dolg") then
+				descript = "STALKER GR. DUTY"
+			elseif string.find(descript, "freedom") then
+				descript = "STALKER GR. FREEDOM"
+			elseif string.find(descript, "bandit") then
+				descript = "BANDIT"
+			elseif string.find(descript, "zombied") then
+				descript = "ZOMBIE STALKER"
+			elseif string.find(descript, "stranger") then
+				descript = "WANDERER"
+			elseif string.find(descript, "trader") then
+				descript = "TRADER"
+			elseif string.find(descript, "csky") then
+				descript = "STALKER GR. CLEAR SKY"
+			end			
+		elseif IsMonster(target) then
+			descript = target:section()
+			if string.find(descript, "boar") then
+				descript = "BOAR"
+			elseif string.find(descript, "bloodsucker") then
+				descript = "BLOODSUCKER"	
+			elseif string.find(descript, "flesh") then
+				descript = "FLESH"
+			elseif string.find(descript, "dog") then
+				descript = "DOG"	
+			elseif string.find(descript, "pseudodog") then
+				descript = "PSEUDODOG"
+			elseif string.find(descript, "cat") then
+				descript = "CAT"
+			elseif string.find(descript, "chimera") then
+				descript = "CHIMERA"	
+			elseif string.find(descript, "giant") then
+				descript = "GIANT"
+			elseif string.find(descript, "zombie") then
+				descript = "ZOMBIE"
+			elseif string.find(descript, "burer") then
+				descript = "BURER"	
+			elseif string.find(descript, "controller") then
+				descript = "CONTROLLER"	
+			elseif string.find(descript, "poltergeist") then
+				descript = "POLTERGEIST"
+			elseif string.find(descript, "snork") then
+				descript = "SNORK"
+			elseif string.find(descript, "fracture") then
+				descript = "IZLOM"	
+			elseif string.find(descript, "bird") then
+				descript = "BIRD"	
+			elseif string.find(descript, "rat") then
+				descript = "RAT"	
+			elseif string.find(descript, "tushkano") then
+				descript = "TUSHKANO"	
+			end			
+		else
+			descript = target:section()
+			if string.find(descript, "helicop") then
+				descript = "HELICOPTER"
+			elseif string.find(descript, "turret") then
+				descript = "AUTONOMOUS TURRET"		
+			elseif string.find(descript, "btr") then
+				descript = "BTR"					
+			end
+		end
+	end
+	return descript
+end
+
+function btr_kill(victim)
+	relation_registry.set_community_goodwill(victim:character_community(), db.actor:id(), -100)
+	if victim:relation(db.actor) == game_object.neutral then
+		db.actor:change_character_reputation(db.actor:character_reputation() - 50);
+	elseif victim:relation(db.actor) == game_object.friend then
+		db.actor:change_character_reputation(db.actor:character_reputation() - 100);
+	end
+	for id=1,65535 do
+	local obj = level.object_by_id(id)
+		if obj and obj:alive() and IsStalker(obj) and obj:character_community() == victim:character_community() and obj:position():distance_to(victim:position()) < 30 then
+			obj:set_relation(game_object.enemy, db.actor)
+		end	
+	end
+end		

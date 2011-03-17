@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+<string id="military_trader_who">
+		<text>Holy smoke! And who are you? Answer!</text>
+	</string>
+	<string id="military_trader_about">
+		<text>Curb your enthusiasm, a stalker, you're talking with nachskladom fuel, ugh ... nachskladom hmm ... In short, I was your relationship with the army absolutely no interest! You must know only that for such a brave soldier like you have any army outfit ... not for free of course. Well, let's engage in business or chew snot?</text>
+	</string>
+	<string id="military_trader_buy">
+		<text>We will, comrade Ensign</text>
+	</string>
+	
+	<string id="bandit_trader_0">
+		<text>Zdarova, bartender, what fate in these parts?</text>
+	</string>
+	<string id="bandit_trader_1">
+		<text>The bartender did not I, but his brother. We have a contract with the bandits: they loot us, we give them snaryagu, products. One more thing all sorts of rubbish, which they dragged me to them as oversold. Got it? So, you're on the case? Take what you will, or what?</text>
+	</string>
+	<string id="bandit_trader_2">
+		<text>In the case, I will.</text>
+	</string>
+
+      <string id="merc_trader_lc_info_0">
+		<text>Listen, tell me how to get here at the Wild Territory?</text>
+	</string>
+	<string id="merc_trader_lc_info_1">
+		<text>At the Wild Territory is best to get through the dead city, I'll throw off the coordinates. In this way, go to mercenaries, most importantly, beware of snipers in the city!</text>
+	</string>
+	<string id="merc_trader_0">
+		<text>Sensibly be in the pay!</text>
+	</string>
+	<string id="merc_trader_1">
+		<text>I do not Must Die goner. Are you interested in expensive equipment and high-quality professionals? Picked up under him that interesting?</text>
+	</string>
+	<string id="merc_trader_2">
+		<text>Wow, yeah!</text>
+	</string>
+
+	<string id="monlit_trader_lc_info_0">
+		<text>Ты здесь, видать, давно уже! Не подскажешь какие пути, покороче, с Радара на юг зоны? А то через Склады не всегда хочется ходить, не спокойно там...</text>
+	</string>
+	<string id="monlit_trader_lc_info_1">
+		<text>Подскажу, я ведь заинтересован в сохранности клиентов, хе-хе! На юг Зоны есть два пути: один выведет тебя на Тёмную Долину, а другой на Янтарь - места тут опасные, так что следуй строго по вешкам! Будешь у Барыги, передавай от меня привет!</text>
+		<action>ogsm_freeplay.set_lc6_rad_xy</action>
+	</string>
+
+	<string id="monlit_trader_0">
+		<text>Ты, должно быть, снабженец Монолита?</text>
+	</string>
+	<string id="monlit_trader_1">
+		<text>Почти верно, сталкер. Про то, что я здесь делаю, не спрашивай. Просто намекну, что Монолит - совсем не те "фанатики", которыми кажутся. У них свои... покровители.</text>
+	</string>
+	<string id="monlit_trader_2">
+		<text>А как же излучение? Тут же Радар под боком!</text>
+	</string>
+	<string id="monlit_trader_3">
+		<text>У меня есть специальный шлем от "друзей" за бугром. Не пытайся у меня его насильно отобрать - всё равно он самоуничтожится, как только ты попытаешься его снять, заодно и тебе руки оторвёт. Кстати, мой... наниматель попросил передать тебе чтобы ты был осторожен у Реактора. Он сам с тобой, возможно, свяжется, а пока просил передать: "Не всё что нам очевидно, таково на самом деле..."</text>
+	</string>
+	<string id="monlit_trader_4">
+		<text>Хрен вас всех разберёшь!</text>
+	</string>
+
+</string_table>

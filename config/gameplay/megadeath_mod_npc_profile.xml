@@ -1,0 +1,149 @@
+﻿<?xml version='1.0' encoding="UTF-8"?>
+
+<xml>
+
+	<character id="agr_dolg_glavnyi">
+		<class>bar_stalker_dolg</class>
+		<specific_character>agr_dolg_glavnyi</specific_character>
+	</character>
+
+	<character id="agr_dolg_molodoy">
+		<class>bar_stalker_dolg</class>
+		<specific_character>agr_dolg_molodoy</specific_character>
+	</character>
+
+	<character id="agr_dolg_ohrannik">
+		<class>bar_stalker_dolg</class>
+		<specific_character>agr_dolg_ohrannik</specific_character>
+	</character>
+
+	<character id="agr_dolg_sniper">
+		<class>bar_stalker_dolg</class>
+		<specific_character>agr_dolg_sniper</specific_character>
+	</character>
+
+	<character id="ecolog_v_tainike">
+		<class>aes_x</class>
+		<specific_character>ecolog_v_tainike</specific_character>
+	</character>
+
+	<character id="ecolog_v_doline">
+		<class>aes_x</class>
+		<specific_character>ecolog_v_doline</specific_character>
+	</character>
+
+	<character id="agr_soldier_guard">
+		<class>agr_Soldier_regular</class>
+		<specific_character>agr_soldier_guard</specific_character>
+	</character>
+
+	<character id="agr_soldier_guard_2">
+		<class>agr_Soldier_regular</class>
+		<specific_character>agr_soldier_guard_2</specific_character>
+	</character>
+
+	<character id="zombied_dolg">
+		<class>yan_Zombied</class>
+		<specific_character>zombied_dolg</specific_character>
+	</character>
+
+	<character id="ecolog_dead">
+		<class>aes_x</class>
+		<specific_character>ecolog_dead</specific_character>
+	</character>
+
+	<character id="neytral_drug_seregi">
+		<class>aes_x</class>
+		<specific_character>neytral_drug_seregi</specific_character>
+	</character>
+
+	<character id="u_agr_specnaz_partul">
+		<class>aes_x</class>
+		<specific_character>u_agr_specnaz_partul</specific_character>
+	</character>
+
+	<character id="neytral_serega_manyak">
+		<class>aes_x</class>
+		<specific_character>neytral_serega_manyak</specific_character>
+	</character>
+
+	<character id="x16_soldier_searcher">
+		<class>megadeath_mod</class>
+		<specific_character>x16_soldier_searcher</specific_character>
+	</character>
+
+	<character id="yan_svoboda_informator">
+		<class>aes_x</class>
+		<specific_character>yan_svoboda_informator</specific_character>
+	</character>
+
+	<character id="mil_dolg_recon">
+		<class>aes_x</class>
+		<specific_character>mil_dolg_recon</specific_character>
+	</character>
+
+	<character id="mil_soldier_hostage">
+		<class>aes_x</class>
+		<specific_character>mil_soldier_hostage</specific_character>
+	</character>
+
+	<character id="mil_svoboda_wounded">
+		<class>megadeath_mod</class>
+		<specific_character>mil_svoboda_wounded</specific_character>
+	</character>
+
+	<character id="mil_dolg_killer_commander">
+		<class>megadeath_mod</class>
+		<specific_character>mil_dolg_killer_commander</specific_character>
+	</character>
+
+	<character id="mil_dolg_killer_1">
+		<class>megadeath_mod</class>
+		<specific_character>mil_dolg_killer_1</specific_character>
+	</character>
+
+	<character id="mil_dolg_killer_2">
+		<class>megadeath_mod</class>
+		<specific_character>mil_dolg_killer_1</specific_character>
+	</character>
+
+	<character id="mil_dolg_killer_sit">
+		<class>megadeath_mod</class>
+		<specific_character>mil_dolg_killer_sit</specific_character>
+	</character>
+
+	<character id="mil_svoboda_bespredel">
+		<class>megadeath_mod</class>
+		<specific_character>mil_svoboda_bespredel</specific_character>
+	</character>
+
+	<character id="mil_svoboda_guard_1_bespredel">
+		<class>megadeath_mod</class>
+		<specific_character>mil_svoboda_guard_1_bespredel</specific_character>
+	</character>
+
+	<character id="mil_svoboda_guard_2_bespredel">
+		<class>megadeath_mod</class>
+		<specific_character>mil_svoboda_guard_2_bespredel</specific_character>
+	</character>
+
+	<character id="mil_svoboda_guard_3_bespredel">
+		<class>megadeath_mod</class>
+		<specific_character>mil_svoboda_guard_3_bespredel</specific_character>
+	</character>
+
+	<character id="ros_killer_1">
+		<class>megadeath_mod</class>
+		<specific_character>ros_killer_1</specific_character>
+	</character>
+
+	<character id="ros_neytral_zasada">
+		<class>megadeath_mod</class>
+		<specific_character>ros_neytral_zasada</specific_character>
+	</character>
+
+	<character id="ros_specnaz_zasada_pda">
+		<class>megadeath_mod</class>
+		<specific_character>ros_specnaz_zasada_pda</specific_character>
+	</character>
+</xml>

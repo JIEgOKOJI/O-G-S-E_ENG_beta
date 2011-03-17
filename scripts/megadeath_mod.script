@@ -1,0 +1,551 @@
+--------------------------------------------------------------------------------------------------------
+-- из бинда
+--------------------------------------------------------------------------------------------------------
+
+function bind_stalker()
+	if level.name() == "l02_garbage" then
+		news_gar_dolg_assault()
+	end
+
+	if level.name() == "l03u_agr_underground" then
+		kolodets_zaminirovan()
+	end
+
+	if level.name() == "l04u_labX18" then
+		nashol_trupy_x18()
+	end
+
+	if level.name() == "l05_bar" then
+		bar_assault()
+	end
+
+	if level.name() == "l06_rostok" then
+		news_bar_assault()
+		ros_zasada_spawn()
+	end
+
+	if level.name() == "l08_yantar" then
+		news_yan_saharov_assault()
+	end
+end
+
+--------------------------------------------------------------------------------------------------------
+-- выдача патронов
+--------------------------------------------------------------------------------------------------------
+function get_556(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "ammo_5.56x45_ss190", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.56x45_ss190", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.56x45_ss190", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.56x45_ss190", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.56x45_ss190", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.56x45_ss190", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.56x45_ss190", "in")
+end
+
+function get_545(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "ammo_5.45x39_fmj", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.45x39_fmj", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.45x39_fmj", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.45x39_fmj", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.45x39_fmj", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.45x39_fmj", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_5.45x39_fmj", "in")
+end
+
+function get_pab(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "ammo_9x39_pab9", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x39_pab9", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x39_pab9", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x39_pab9", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x39_pab9", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x39_pab9", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x39_pab9", "in")
+end
+
+--------------------------------------------------------------------------------------------------------
+-- проверка наличия у ГГ вещей после прохождения мода
+--------------------------------------------------------------------------------------------------------
+
+function have_a_items_megadeath(first_speaker, second_speaker)
+	if has_alife_info("ecolog_v_tainike_tell_second_hide") and
+		db.actor:object("case_01") ~= nil and 
+		db.actor:object("case_02") ~= nil and 
+		db.actor:object("documents_01") ~= nil and 
+		db.actor:object("documents_02") ~= nil then
+		return true else return false
+	end
+end
+
+--------------------------------------------------------------------------------------------------------
+-- передача всех вещей из Stas Aliens Megadeath Mod бармену на хранение
+--------------------------------------------------------------------------------------------------------
+
+function give_items_megadeath(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 3000, "out")
+	dialogs.relocate_item_section(first_speaker, "documents_01", "out")
+	dialogs.relocate_item_section(first_speaker, "documents_02", "out")
+	dialogs.relocate_item_section(first_speaker, "case_01", "out")
+	dialogs.relocate_item_section(first_speaker, "case_02", "out")
+	dialogs.relocate_item_section(first_speaker, "pda_01", "out")
+	dialogs.relocate_item_section(first_speaker, "pda_02", "out")
+	dialogs.relocate_item_section(first_speaker, "pda_03", "out")
+	dialogs.relocate_item_section(first_speaker, "pda_04", "out")
+	dialogs.relocate_item_section(first_speaker, "pda_05", "out")
+end
+
+-----------------------------------------------------------------------------------
+-- репутация
+--------------------------------------------------------------------------------------------------------
+
+function reputation_down_20(stalker, player)
+	db.actor:change_character_reputation(db.actor:character_reputation() - 20)
+end
+
+function reputation_down_10(stalker, player)
+	db.actor:change_character_reputation(db.actor:character_reputation() - 10)
+end
+
+function reputation_up_10(stalker, player)
+	db.actor:change_character_reputation(db.actor:character_reputation() + 10)
+end
+
+function reputation_up_20(stalker, player)
+	db.actor:change_character_reputation(db.actor:character_reputation() + 20)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- спавн ученого в тайнике Стрелка и трупов в Х18
+--------------------------------------------------------------------------------------------------------
+
+function agroprom()
+	-- ученый в тайнике Стрелка и нашедшие его военные
+		alife():create("agr_soldier_guard_2_spawn",vector():set(-71.123,-6.876,-69.7978),3328,717)
+		alife():create("agr_soldier_guard_spawn",vector():set(-72.054,-6.873,-70.816),3327,717)
+		alife():create("ecolog_v_tainike_spawn",vector():set(-68.364,-6.875,-70.26),3552,717)
+	-- раненый ученый в вагончике в темной долине
+		alife():create("ecolog_v_doline_spawn",vector():set(133.633,1.502,-201.299),331648,926)
+	-- нож Сереги Маньяка
+	alife():create("wpn_knife_m1",vector():set(-2.103,4.183,-2.721),2412,1124)
+	-- сталкер рассказывающий о Сереге Маньяке
+		alife():create("neytral_drug_seregi_spawn",vector():set(-104.453,0.978,-518.546),53729,833)
+	-- дверь в х18 с кодом 1243 закрывается
+		db.actor:give_info_portion("task_1_start")
+	-- контролирует коридор
+	-- контролирует коридор (этот ближе к люку в крыше)
+	-- новичок у стены
+	-- главный
+	-- снайпер
+		alife():create("agr_dolg_ohrannik_spawn",vector():set(-26.076,4.999,9.971),214654,485)
+		alife():create("agr_dolg_ohrannik2_spawn",vector():set(-26.076,4.999,6.769),213968,485)
+		alife():create("agr_dolg_molodoy_spawn",vector():set(-26.279,4.999,3.861),213960,485)
+		alife():create("agr_dolg_glavnyi_spawn",vector():set(-26.279,4.999,1.626),213952,486)
+		alife():create("agr_dolg_sniper_spawn",vector():set(-32.931,9.431,9.537),207818,681)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- зомби атаковавшие заставу долга на свалке
+--------------------------------------------------------------------------------------------------------
+
+function news_gar_dolg_assault()
+	if has_alife_info("task_1_start") and not has_alife_info("gar_dolg_assault_start")
+		then
+			local news_text = "%c[255,0,255,0]PDA\\n%c[default]Stalkers! All who hear! Help! On outpost duty zombie attack. This former duty... I repeat them in suits of duty! Ah-ah-ah-ah-ah bitch ... sozhrite ... ah-ah-ah-ah-ah ..."
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(332,376,83,47), 0, 40000)
+			gar_dolg_assault()
+	end
+end
+
+function gar_dolg_assault()
+		-- самые ближние
+		alife():create("zombied_dolg_spawn",vector():set(51.724,0.422,228.744),224833,359)
+		alife():create("zombied_dolg_spawn",vector():set(51.724,0.422,228.744),224833,359)
+		-- дальше
+		alife():create("zombied_dolg_spawn",vector():set(62.177,0.975,215.707),234281,360)
+		alife():create("zombied_dolg_spawn",vector():set(62.177,0.975,215.707),234281,360)
+		-- еще дальше
+		alife():create("zombied_dolg_spawn",vector():set(73.006,1.004,227.312),243229,362)
+		alife():create("zombied_dolg_spawn",vector():set(73.006,1.004,227.312),243229,362)
+		alife():create("zombied_dolg_spawn",vector():set(73.006,1.004,227.312),243229,362)
+		alife():create("zombied_dolg_spawn",vector():set(73.006,1.004,227.312),243229,362)
+		db.actor:give_info_portion("gar_dolg_assault_start")
+end
+
+--------------------------------------------------------------------------------------------------------
+-- убить актера, когда он полезет в колодец
+--------------------------------------------------------------------------------------------------------
+
+function kolodets_zaminirovan()
+	amk.start_timer("kol",5)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- 4 спеца у выхода из колодца со стороны Крота
+--------------------------------------------------------------------------------------------------------
+
+function u_agr_patrul()
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(-48.012,-6.529,23.268),4295,726)
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(-48.012,-6.529,23.268),4295,726)
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(-48.012,-6.529,23.268),4295,726)
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(-48.012,-6.529,23.268),4295,726)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- проверка наличия предметов у ГГ
+--------------------------------------------------------------------------------------------------------
+
+function have_a_doc_01(stalker, player)
+	return db.actor:object("documents_01") ~= nil
+end
+
+function have_a_doc_02(stalker, player)
+	return db.actor:object("documents_02") ~= nil
+end
+
+function have_a_knife_m1(stalker, player)
+	return db.actor:object("wpn_knife_m1") ~= nil
+end
+
+function have_a_pda_03(stalker, player)
+	return db.actor:object("pda_03") ~= nil
+end
+
+function have_a_case_02(stalker, player)
+	return db.actor:object("case_02") ~= nil
+end
+
+--------------------------------------------------------------------------------------------------------
+-- игрок нашел трупы в х18
+--------------------------------------------------------------------------------------------------------
+
+function nashol_trupy_x18()
+	if has_alife_info("ecolog_02_tell_sixth_hide") and not has_alife_info("dar_deadly_found")
+	then
+		db.actor:give_info_portion("dar_deadly_found")
+	end
+end
+
+--------------------------------------------------------------------------------------------------------
+-- спавн сереги маньяка
+--------------------------------------------------------------------------------------------------------
+
+function serega_maniac_spawn()
+	-- спавн сереги маньяка. Он рядом с проводником
+	alife():create("neytral_serega_manyak_spawn",vector():set(314.621,3.921,117.647),572410,143)
+	-- выдача инфопоршна блокировки диалога сидоровича
+	db.actor:give_info_portion("sidorovich_tell_first_hide")
+	-- монстры и трупы в х18 после кодовой двери
+	-- 2 псевдогиганта
+	alife():create("gigant_strong",vector():set(1.169,-14.181,29.173),3022,1157)
+	alife():create("gigant_strong",vector():set(1.169,-14.181,29.173),3022,1157)
+	-- 2 полергейста в х18
+	alife():create("m_poltergeist_normal_tele",vector():set(9.805,-12.43,24.692),4221,1155)
+	alife():create("m_poltergeist_normal_tele",vector():set(9.805,-12.43,24.692),4221,1155)
+	-- 2 бюрера
+	alife():create("m_poltergeist_normal_tele",vector():set(22.612,-10.817,-23.005),6084,1139)
+	alife():create("m_poltergeist_normal_tele",vector():set(22.612,-10.817,-23.005),6084,1139)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- зомби атаковавшие лабораторию Сахарова
+--------------------------------------------------------------------------------------------------------
+
+function news_yan_saharov_assault()
+	if has_alife_info("ecolog_02_get_blood") and not has_alife_info("yan_saharov_assault")
+		then
+			local news_text = "%c[255,0,255,0]PDA\\n%c[default]Everyone who hears me! At my lab committed a major attack zombies. Need urgent help. The doors will not withstand long..."
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(415,893,83,47), 0, 40000)
+			yan_saharov_assault()
+	end
+end
+
+function yan_saharov_assault()
+		-- справа от двери
+		alife():create("zombie_weak",vector():set(39.543,-11.881,-261.570),58484,1480)
+		alife():create("zombie_strong",vector():set(39.543,-11.881,-261.570),58484,1480)
+--		alife():create("zombie_weak",vector():set(39.543,-11.881,-261.570),58484,1480)
+		-- справа
+		alife():create("zombie_weak",vector():set(27.526,-11.881,-255.483),52368,1478)
+		alife():create("zombie_normal",vector():set(27.526,-11.881,-255.483),52368,1478)
+		-- сзади
+		alife():create("zombie_normal",vector():set(14.454,-11.8799,-272.696),46191,1448)
+		alife():create("zombie_strong",vector():set(14.454,-11.8799,-272.696),46191,1448)
+--		alife():create("zombie_normal",vector():set(14.454,-11.8799,-272.696),46191,1448)
+--		alife():create("zombie_strong",vector():set(14.454,-11.8799,-272.696),46191,1448)
+		-- слева
+		alife():create("zombie_weak",vector():set(27.964,-11.89,-286.129),52756,1479)
+--		alife():create("zombie_strong",vector():set(27.964,-11.89,-286.129),52756,1479)
+		alife():create("zombie_weak",vector():set(27.964,-11.89,-286.129),52756,1479)
+		-- слева от двери
+		alife():create("zombie_weak",vector():set(38.951,-11.883,-283.437),58479,1479)
+		alife():create("zombie_normal",vector():set(38.951,-11.883,-283.437),58479,1479)
+		-- поршен, блокирующий повторный спавн зомби
+		db.actor:give_info_portion("yan_saharov_assault")
+end
+
+--------------------------------------------------------------------------------------------------------
+-- спавн в х16
+--------------------------------------------------------------------------------------------------------
+
+function x16_spawn()
+	-- кпк на пульте управления и документы на ящиках 2 этажа
+	alife():create("documents_02",vector():set(-44.533,20.47,2.048),2377,1530)
+	alife():create("pda_02",vector():set(-23.934,4.369,-11.61),3638,1532)
+	-- 2 спеца у входа в х16
+	alife():create("x16_soldier_searcher_spawn",vector():set(73.218,5.58,-12.501),5733,1539)
+	alife():create("x16_soldier_searcher_spawn",vector():set(73.218,5.58,-12.501),5733,1539)
+	-- 2 спеца в х16
+	alife():create("x16_soldier_searcher_spawn",vector():set(23.968,5.584,13.811),4589,1537)
+	alife():create("x16_soldier_searcher_spawn",vector():set(23.968,5.584,13.811),4589,1537)
+	-- 2 спеца на 1 этаже
+	alife():create("x16_soldier_searcher_spawn",vector():set(-37.87,-4.12,-18.116),2935,1534)
+	alife():create("x16_soldier_searcher_spawn",vector():set(-37.87,-4.12,-18.116),2935,1534)
+	-- 2 спеца на 2 этаже
+	alife():create("x16_soldier_searcher_spawn",vector():set(-46.85,3.466,-20.526),2245,1535)
+	alife():create("x16_soldier_searcher_spawn",vector():set(-46.85,3.466,-20.526),2245,1535)
+	-- 2 спеца на 3 этаже
+	alife():create("x16_soldier_searcher_spawn",vector():set(-52.99,11.565,-14.866),1993,1530)
+	alife():create("x16_soldier_searcher_spawn",vector():set(-52.99,11.565,-14.866),1993,1530)
+	-- 3 спеца у пульта управления
+	alife():create("x16_soldier_searcher_spawn",vector():set(-45.14,19.179,4.989),2379,1530)
+	alife():create("x16_soldier_searcher_spawn",vector():set(-45.14,19.179,4.989),2379,1530)
+	alife():create("x16_soldier_searcher_spawn",vector():set(-45.14,19.179,4.989),2379,1530)
+	-- 4 спеца у Призрака
+	alife():create("x16_soldier_searcher_spawn",vector():set(-97.841,21.565,-23.064),540,1529)
+	alife():create("x16_soldier_searcher_spawn",vector():set(-97.841,21.565,-23.064),540,1529)
+	alife():create("x16_soldier_searcher_spawn",vector():set(-97.965,21.565,-39.048),529,1529)
+	alife():create("x16_soldier_searcher_spawn",vector():set(-97.965,21.565,-39.048),529,1529)
+	-- 2 контролера далее по трубе
+	alife():create("m_controller_normal_fat",vector():set(-168.334,-19.089,-41.959),764,1498)
+	alife():create("m_controller_normal",vector():set(-132.704,-19.088,-96.993),1379,1497)
+	-- 2 зомби
+	alife():create("rad_zombied_respawn_3",vector():set(-85.935,-19.089,-61.495),9686,1495)
+	alife():create("yan_zombied_respawn_1",vector():set(-85.935,-19.089,-61.495),9686,1495)
+	-- 2 зомби
+	alife():create("yan_zombied_respawn_2",vector():set(-55.487,-18.844,-74.719),19990,1456)
+	alife():create("yan_zombied_respawn_3",vector():set(-55.487,-18.844,-74.719),19990,1456)
+	alife():create("rad_zombied_respawn_2",vector():set(-55.487,-18.844,-74.719),19990,1456)
+	-- 2 псевдогиганта далее по трубе
+	alife():create("gigant_strong",vector():set(-55.925,-19.088,-96.617),19540,1456)
+	-- 2 зомби далее по трубе
+	alife():create("rad_zombied_respawn_1",vector():set(-25.193,-18.104,-84.726),29744,1492)
+	alife():create("yan_zombied_respawn_2",vector():set(-25.193,-18.104,-84.726),29744,1492)
+	-- контролер у выхода из трубы
+	alife():create("m_controller_old_fat",vector():set(-76.336,-19.089,-159.062),12401,1490)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- спавн информатора из свободы
+--------------------------------------------------------------------------------------------------------
+
+function informator_spawn()
+	alife():create("yan_svoboda_informator_spawn",vector():set(-8.639,0.735,-41.889),35785,1444)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- новость - бармен просит помощи
+--------------------------------------------------------------------------------------------------------
+
+function news_bar_assault()
+	if has_alife_info("yan_svoboda_informator_tell_hide") and not has_alife_info("news_bar_assault")
+		then
+			local news_text = "%c[255,0,255,0]PDA\\n%c[default]Attention all freestyle stalkers! At the bar attack. Debt need your help. Everyone who responds is guaranteed a generous reward!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(332,235,83,47), 0, 40000)
+		db.actor:give_info_portion("news_bar_assault")
+	end
+end
+
+--------------------------------------------------------------------------------------------------------
+-- нападение на бар
+--------------------------------------------------------------------------------------------------------
+
+function bar_assault()
+	if has_alife_info("yan_svoboda_informator_tell_hide") and not has_alife_info("bar_assault_start")
+		then
+	-- у блок-поста при входе на дикую территорию
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(70.474,-0.001,130.416),29633,1221)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(70.474,-0.001,130.416),29633,1221)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(70.474,-0.001,130.416),29633,1221)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(70.474,-0.001,130.416),29633,1221)
+	-- сидящие в ангаре сталкеры
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(97.62,0.099,75.734),31223,1223)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(97.62,0.099,75.734),31223,1223)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(97.62,0.099,75.734),31223,1223)
+	-- ангар между баром и ареной
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(112.002,-0.008,62.896),33260,1224)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(112.002,-0.008,62.896),33260,1224)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(112.002,-0.008,62.896),33260,1224)
+	-- ангар между входом в дик. териитории и постом к главарю
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(133.015,-0.001,116.939),36472,1213)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(133.015,-0.001,116.939),36472,1213)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(133.015,-0.001,116.939),36472,1213)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(133.015,-0.001,116.939),36472,1213)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(133.015,-0.001,116.939),36472,1213)
+	-- пост к главарю (лево)
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(173.837,-0.001,116.759),44062,1187)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(173.837,-0.001,116.759),44062,1187)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(173.837,-0.001,116.759),44062,1187)
+	-- пост к главарю (право) смени координаты на право
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(181.862,-0.001,92.449),45239,1186)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(181.862,-0.001,92.449),45239,1186)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(181.862,-0.001,92.449),45239,1186)
+	-- дворик у главаря
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(213.408,0.042,89.809),52511,1193)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(213.408,0.042,89.809),52511,1193)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(213.408,0.042,89.809),52511,1193)
+	-- иди своей дорогой
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(194.867,0.097,62.055),46473,1177)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(194.867,0.097,62.055),46473,1177)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(194.867,0.097,62.055),46473,1177)
+	-- блок-пост у собак
+	alife():create("u_agr_specnaz_partul_spawn",vector():set(234.039,-0.011,-26.714),59879,1266)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(234.039,-0.011,-26.714),59879,1266)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(234.039,-0.011,-26.714),59879,1266)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(234.039,-0.011,-26.714),59879,1266)
+--	alife():create("u_agr_specnaz_partul_spawn",vector():set(234.039,-0.011,-26.714),59879,1266)
+		db.actor:give_info_portion("bar_assault_start")
+	end	
+end
+
+--------------------------------------------------------------------------------------------------------
+-- спавн долговского разведчика
+--------------------------------------------------------------------------------------------------------
+
+function dolg_recon_spawn()
+	alife():create("mil_dolg_recon_spawn",vector():set(-239.708,-12.662,49.078),93077,1680)
+	alife():create("pda_03",vector():set(-19.667,-3.217,-19.944),288159,1593)
+	alife():create("pda_03",vector():set(91.758,0.067,302.499),391258,1774)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- спавн раненого сталкера из группы Кости Беспредела
+--------------------------------------------------------------------------------------------------------
+
+function mil_svoboda_wounded_spawn()
+	alife():create("mil_svoboda_wounded_spawn",vector():set(-244.621,-6.404,293.809),89406,1797)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- кровососы и организаторы расстрела
+--------------------------------------------------------------------------------------------------------
+
+function mil_rasstrel()
+	-- 6 кровососов у подножия башни
+	alife():create("bloodsucker_normal",vector():set(-253.329,-22.304,281.536),81662,1797)
+	alife():create("bloodsucker_normal",vector():set(-253.329,-22.304,281.536),81662,1797)
+	alife():create("bloodsucker_strong",vector():set(-253.329,-22.304,281.536),81662,1797)
+	alife():create("bloodsucker_strong",vector():set(-253.329,-22.304,281.536),81662,1797)
+	alife():create("bloodsucker_strong",vector():set(-253.329,-22.304,281.536),81662,1797)
+	alife():create("bloodsucker_strong",vector():set(-253.329,-22.304,281.536),81662,1797)
+	-- 5 солдат для расстрела
+	alife():create("mil_soldier_hostage_spawn",vector():set(-95.043,-21.221,284.645),219490,1768)
+	alife():create("mil_soldier_hostage_spawn",vector():set(-94.901,-21.255,283.403),219488,1768)
+	alife():create("mil_soldier_hostage_spawn",vector():set(-95.017,-21.282,282.047),219486,1768)
+	alife():create("mil_soldier_hostage_spawn",vector():set(-94.943,-21.316,280.596),219484,1768)
+	alife():create("mil_soldier_hostage_spawn",vector():set(-95.043,-21.221,279.175),220141,1768)
+	-- исполнители
+	alife():create("mil_dolg_killer_1_spawn",vector():set(-100.019,-21.262,283.755),215089,1768)
+	alife():create("mil_dolg_killer_1_spawn",vector():set(-98.851,-21.382,281.743),216384,1768)
+	alife():create("mil_dolg_killer_2_spawn",vector():set(-98.894,-21.419,279.846),216381,1768)
+	-- командир
+	alife():create("mil_dolg_killer_commander_spawn",vector():set(-97.368,-21.218,276.041),217524,1768)
+	-- отдыхающие у грузовика
+	alife():create("mil_dolg_killer_sit_spawn",vector():set(-100.035,-20.65,293.993),215104,1768)
+	alife():create("mil_dolg_killer_sit_spawn",vector():set(-101.035,-20.65,293.993),213830,1768)
+	-- Беспредел со своей свитой на Янтаре
+	-- Костя Беспредел
+	alife():create("mil_svoboda_bespredel_spawn",vector():set(-2.509,9.352,2.448),37988,1525)
+	-- сидящие у стены
+	---------------------- добавь ребят, а то скучно Кастету
+	-- у окон
+	alife():create("mil_svoboda_guard_2_bespredel_spawn",vector():set(-5.433,9.353,-4.848),37051,1525)
+	alife():create("mil_svoboda_guard_2_bespredel_spawn",vector():set(-5.433,9.353,0.487),37071,1525)
+	-- у двери
+	alife():create("mil_svoboda_guard_1_bespredel_spawn",vector():set(-4.558,9.352,-9.529),37336,1525)
+	alife():create("mil_svoboda_guard_1_bespredel_spawn",vector():set(-1.446,9.352,-9.529),38622,1525)
+end
+
+--------------------------------------------------------------------------------------------------------
+-- засада военных, кейс, наемники на дикой территории
+--------------------------------------------------------------------------------------------------------
+
+function ros_zasada_spawn()
+	if has_alife_info("yan_svoboda_bespredel_tell_hide") and not has_alife_info("ros_zasada_start")
+		then
+	-- солдаты, устроившие засаду
+	--alife():create("ros_neytral_zasada_spawn",vector():set(-57.503,-17.463,-196.683),55300,1431)
+	alife():create("ros_specnaz_zasada_pda_spawn",vector():set(-63.507,-16.7396,-207.3304),52996,1408)
+	alife():create("ros_specnaz_zasada_spawn",vector():set(-63.507,-16.7396,-207.3304),52996,1408)
+	alife():create("ros_specnaz_zasada_spawn",vector():set(-63.507,-16.7396,-207.3304),52996,1408)
+	alife():create("ros_specnaz_zasada_spawn",vector():set(-49.752,-14.843,-202.211),56172,1433)
+	alife():create("ros_specnaz_zasada_spawn",vector():set(-49.752,-14.843,-202.211),56172,1433)
+	alife():create("ros_specnaz_zasada_spawn",vector():set(-49.752,-14.843,-202.211),56172,1433)
+	-- наемники для дополнительного веселья на дикой территории
+	-- в вагончике со стороны Янтаря
+	--alife():create("ros_killer_1_spawn",vector():set(-253.533,1.436,9.916),8494,1424)
+	--alife():create("ros_killer_1_spawn",vector():set(-253.533,1.436,9.916),8494,1424)
+	-- на крыше перед вагончиком
+	--alife():create("ros_killer_1_spawn",vector():set(-234.757,3.699,13.369),16918,1391)
+	--alife():create("ros_killer_1_spawn",vector():set(-234.267,3.699,20.492),16918,1391)
+	-- на кране
+	--alife():create("ros_killer_1_spawn",vector():set(-245.968,8.655,39.688),13175,1391)
+	-- на базе
+	alife():create("ros_killer_1_spawn",vector():set(-236.148,9.361,51.667),15806,1391)
+	alife():create("ros_killer_1_spawn",vector():set(-236.148,9.361,51.667),15806,1391)
+	-- на вышке недалеко от базы
+	alife():create("ros_killer_1_spawn",vector():set(-239.158,8.288,94.501),15263,1362)
+	-- разрушенные кирпичный гараж у вертолета
+	alife():create("ros_killer_1_spawn",vector():set(-227.167,0.165,141.177),19589,1354)
+	alife():create("ros_killer_1_spawn",vector():set(-227.167,0.165,141.177),19589,1354)
+	alife():create("ros_killer_1_spawn",vector():set(-227.167,0.165,141.177),19589,1354)
+	-- разрушенные сарай у вертолета
+	--alife():create("ros_killer_1_spawn",vector():set(-243.268,-0.0002,139.857),12302,1352)
+	--alife():create("ros_killer_1_spawn",vector():set(-243.268,-0.0002,139.857),12302,1352)
+	-- у забора в дальней части двора, где лежит вертолет
+	--alife():create("ros_killer_1_spawn",vector():set(-288.599,0.798,172.442),435,1341)
+	--alife():create("ros_killer_1_spawn",vector():set(-288.599,0.798,170.918),433,1341)
+	-- на вышке у двора со стороны бара
+	--alife():create("ros_killer_1_spawn",vector():set(-147.339,7.505,156.217),38608,1327)
+	-- у входа во двор со стороны бара
+	alife():create("ros_killer_1_spawn",vector():set(-112.631,-0.032,144.725),43657,1312)
+	-- в кузове у входа во двор со стороны бара
+	alife():create("ros_killer_1_spawn",vector():set(-116.574,1.372,135.663),42885,1312)
+	-- за камазом во дворе со стороны бара
+	alife():create("ros_killer_1_spawn",vector():set(-148.171,-0.018,148.125),39183,1313)
+	alife():create("ros_killer_1_spawn",vector():set(-148.171,-0.018,148.125),39183,1313)
+	-- вышка в проходе на перрон
+	--alife():create("ros_killer_1_spawn",vector():set(-200.095,5.003,117.436),26622,1368)
+	-- на перроне
+	--alife():create("ros_killer_1_spawn",vector():set(-224.688,1.3999,122.084),39183,1313)
+	--alife():create("ros_killer_1_spawn",vector():set(-224.688,1.3999,122.084),39183,1313)
+	--alife():create("ros_killer_1_spawn",vector():set(-224.688,1.3999,122.084),39183,1313)
+	-- в кабине погрузчика
+	--alife():create("ros_killer_1_spawn",vector():set(-234.749,8.3696,178.175),16523,1337)
+	-- на стропилах погрузчика. Смотрят на двор
+	--alife():create("ros_killer_1_spawn",vector():set(-228.407,8.4796,172.442),19081,1336)
+	--alife():create("ros_killer_1_spawn",vector():set(-276.5602,8.4797,172.6302),2806,1341)
+	-- кейс
+	alife():create("case_02",vector():set(-239.254,9.786,55.524),14567,1391)
+		db.actor:give_info_portion("ros_zasada_start")
+	end
+end
+
+--------------------------------------------------------------------------------------------------------
+-- засада наемников в подземельях агропрома
+--------------------------------------------------------------------------------------------------------
+
+function u_agr_zasada_spawn()
+	---------------- со стороны бандюков
+	-- слева
+	alife():create("ros_killer_1_spawn",vector():set(-53.543,-6.429,19.276),4110,726)
+	-- справа
+	alife():create("ros_killer_1_spawn",vector():set(-53.543,-6.429,6.833),4093,728)
+	-- у лифта
+	alife():create("ros_killer_1_spawn",vector():set(-60.623,-6.498,12.774),3881,778)
+	alife():create("ros_killer_1_spawn",vector():set(-60.623,-6.498,12.774),3881,778)
+	-- под лесницей среди аномалий
+	alife():create("ros_killer_1_spawn",vector():set(-89.475,-16.459,-6.482),2224,762)
+	-- в комнатке между коридорами
+	alife():create("ros_killer_1_spawn",vector():set(-80.052,-16.264,-44.916),2751,747)
+	alife():create("ros_killer_1_spawn",vector():set(-80.052,-16.264,-44.916),2751,747)
+	---------------- со стороны военных
+end

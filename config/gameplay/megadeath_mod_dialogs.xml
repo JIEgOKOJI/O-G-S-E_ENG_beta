@@ -1,0 +1,1586 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+<!-- dialogi s barmenom -->
+
+    <dialog id="barmen_tell_first">
+	<has_info>freeplay</has_info> <!-- posle nachala fripleya -->
+	<!-- <has_info>yantar_find_ghost_task_end</has_info> posle obnarujeniya Prizraka -->
+	<dont_has_info>task_1_start</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>barmen_tell_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>barmen_tell_1</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>barmen_tell_2</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+		<text>barmen_tell_3</text>
+		<next>4</next>
+		<next>11</next>
+		<next>12</next>
+            </phrase>
+	    <phrase id="4">
+		<text>barmen_tell_4</text>
+		<give_info>task_1_start</give_info>
+		<action>megadeath_mod.agroprom</action>
+		<next>5</next>
+	    </phrase>
+            <phrase id="5">
+		<text>barmen_tell_5</text>
+		<next>6</next>
+		<next>7</next>
+		<next>8</next>
+            </phrase>
+	    <phrase id="6">
+		<text>barmen_tell_6</text>
+		<action>megadeath_mod.get_556</action>
+		<next>9</next>
+	    </phrase>
+	    <phrase id="7">
+		<text>barmen_tell_7</text>
+		<action>megadeath_mod.get_545</action>
+		<next>9</next>
+	    </phrase>
+	    <phrase id="8">
+		<text>barmen_tell_8</text>
+		<action>megadeath_mod.get_pab</action>
+		<next>9</next>
+	    </phrase>
+	    <phrase id="9">
+		<text>barmen_tell_9</text>
+		<next>10</next>
+	    </phrase>
+	    <phrase id="10">
+		<text>barmen_tell_10</text>
+		<action>dialogs.break_dialog</action>
+	    </phrase>
+            <phrase id="11">
+                <text>barmen_tell_11</text>
+		<action>megadeath_mod.reputation_down_10</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="12">
+                <text>No, the bartender, I zadolbalsya for you with Sidorovich in the dirtiest climb. The military probably already over my head a good reward offer.</text>
+		<action>megadeath_mod.reputation_down_20</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="barmen_tell_second">
+	<has_info>bar_assault_start</has_info>
+	<dont_has_info>barmen_tell_second_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>What's going on here? Why is the military attacked the bar?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>I have no idea. Most importantly, it did not mean the outbreak of war.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Maybe it is. We put the whole battalion.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Have to wait for stalkers from deep raids, they may have heard about it.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>May have heard, but I came up with useful information. It is known that "Freedom" with the military in recent years some things have been.</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>This can not be! "Freedom" and the military? Ugh!</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+               <text>And you believe. Stalker nicknamed Lawlessness helped them get into X16 and maybe not only there.</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Be that as it nibylo, this is bad news lately. "Freedom" with the soldier will cut us like kittens.</text>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Us? You're just a bartender. Unlikely for you someone will chase.</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>Give me just run away? No! I will not leave a bar.</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Good money doing? Heh heh ... Well enough waffle. I will go to Lukas and learn from him accurate information.</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Figures that he will tell you. It is better to talk to a scout, who works in the warehouses. He is always up to date svobodovskih events. And if these scum actually cooperate with the military, then he definitely knows about it.</text>
+                <next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>To be honest, your showdown with the military is not interested in me now. I need the Limit ... but at the same time learn about the military.</text>
+                <next>13</next>
+            </phrase>
+            <phrase id="13">
+                <text>Why do you want this same lawlessness?</text>
+                <next>14</next>
+            </phrase>
+            <phrase id="14">
+                <text>Needed.</text>
+                <next>15</next>
+            </phrase>
+            <phrase id="15">
+                <text>Okay. It's your business. But the smell of the military in "freedom".</text>
+                <next>16</next>
+            </phrase>
+            <phrase id="16">
+                <text>Well. How do I find this spy?</text>
+                <next>17</next>
+            </phrase>
+            <phrase id="17">
+                <text>He should be in a village in the southwest of the warehouses. There, the debt parking. Maybe you know?</text>
+                <next>18</next>
+            </phrase>
+            <phrase id="18">
+                <text>Know.</text>
+		<give_info>barmen_tell_second_hide</give_info>
+		<action>megadeath_mod.dolg_recon_spawn</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+
+    <dialog id="barmen_tell_third">
+	<precondition>megadeath_mod.have_a_items_megadeath</precondition>
+        <phrase_list>
+	    <phrase id="0">
+                <text>Бармен. Я могу оставить тебе на хранение кое-какие вещички?</text>
+                <next>1</next>
+            </phrase>
+	    <phrase id="1">
+                <text>Считаешь меня надежнее всякого схрона?</text>
+                <next>2</next>
+            </phrase>
+	    <phrase id="2">
+                <text>Считаю.</text>
+                <next>3</next>
+            </phrase>
+	    <phrase id="3">
+                <text>Ну хорошо. Оставляй. Только с тебя малость причитается за сохранность.</text>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="4">
+                <text>Вот тебе 3000 и надеюсь, что ты ничего не потеряешь. И еще - меня возможно будeт искать один ученый, если он произнесет слово "зной", сообщи мне по сети, для меня это очень важно.</text>
+                <next>6</next>
+            </phrase>
+	    <phrase id="6">
+                <text>Ну почему не помочь хорошему человеку. Конечно скину тебе сообщение.</text>
+				<give_info>barmen_tell_third_hide</give_info>
+				<action>megadeath_mod.give_items_megadeath</action>
+            </phrase>
+	    <phrase id="5">
+                <text>Причитается? Я думал мы друзья, а если мы не друзья, то я тебе ничего не оставлю.</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog s ohrannikom na stoyanke dolgovcev -->
+
+    <dialog id="agr_dolg_ohrannik_hello">
+	<precondition>dialogs.level_agroprom_freeplay</precondition>
+        <phrase_list>
+            <phrase id="0">
+                <text>agr_dolg_ohrannik_hello_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog s novichkom na stoyanke dolgovcev -->
+
+    <dialog id="agr_dolg_molodoy_hello">
+	<dont_has_info>agr_dolg_molodoy_tell_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>agr_dolg_molodoy_hello_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="agr_dolg_molodoy_tell">
+	<precondition>dialogs.level_agroprom_freeplay</precondition>
+	<dont_has_info>agr_dolg_molodoy_tell_hide</dont_has_info>
+        <phrase_list>
+	    <phrase id="0">
+                <text>agr_dolg_molodoy_tell_0</text>
+                <next>1</next>
+            </phrase>
+	    <phrase id="1">
+                <text>agr_dolg_molodoy_tell_1</text>
+                <next>2</next>
+            </phrase>
+	    <phrase id="2">
+                <text>agr_dolg_molodoy_tell_2</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>agr_dolg_molodoy_tell_3</text>
+		<give_info>agr_dolg_molodoy_tell_hide</give_info>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog s glavnym na stoyanke dolgovcev -->
+
+    <dialog id="agr_dolg_glavnyi_hello">
+        <phrase_list>
+            <phrase id="0">
+                <text>agr_dolg_glavnyi_hello_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="agr_dolg_glavnyi_tell">
+	<precondition>dialogs.level_agroprom_freeplay</precondition>	
+	<dont_has_info>agr_dolg_molodoy_tell_hide</dont_has_info>
+	<dont_has_info>agr_dolg_glavnyi_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>agr_dolg_glavnyi_tell_2</text>
+		<give_info>agr_dolg_glavnyi_hide</give_info>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>agr_dolg_glavnyi_tell_4</text>
+		<give_info>task_1_obj_1</give_info>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>agr_dolg_glavnyi_tell_5</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>agr_dolg_glavnyi_tell_6</text>
+                <next>7</next>
+                <next>8</next>
+            </phrase>
+            <phrase id="7">
+                <text>agr_dolg_glavnyi_tell_7</text>
+		<give_info>task_2_start</give_info>
+                <next>9</next>
+            </phrase>
+            <phrase id="8">
+                <text>agr_dolg_glavnyi_tell_8</text>
+		<action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="9">
+                <text>agr_dolg_glavnyi_tell_9</text>
+		<give_info>agr_dolg_sniper_prikaz</give_info>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+		<text>agr_dolg_glavnyi_tell_10</text>
+		<action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="agr_dolg_glavnyi_tell_second">
+	<precondition>dialogs.level_agroprom_freeplay</precondition>
+	<has_info>agr_dolg_molodoy_tell_hide</has_info>
+	<dont_has_info>agr_dolg_glavnyi_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>agr_dolg_glavnyi_tell_0</text>
+		<give_info>agr_dolg_glavnyi_hide</give_info>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>agr_dolg_glavnyi_tell_1</text>
+                <next>3</next>
+                <next>11</next>
+            </phrase>
+            <phrase id="3">
+                <text>agr_dolg_glavnyi_tell_3</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>agr_dolg_glavnyi_tell_4</text>
+		<give_info>task_1_obj_1</give_info>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>agr_dolg_glavnyi_tell_5</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>agr_dolg_glavnyi_tell_6</text>
+                <next>7</next>
+                <next>8</next>
+            </phrase>
+            <phrase id="7">
+                <text>agr_dolg_glavnyi_tell_7</text>
+		<give_info>agr_dolg_sniper_prikaz</give_info>
+		<give_info>task_2_start</give_info>
+                <next>9</next>
+            </phrase>
+            <phrase id="8">
+                <text>agr_dolg_glavnyi_tell_8</text>
+		<action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="9">
+                <text>agr_dolg_glavnyi_tell_9</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+		<text>agr_dolg_glavnyi_tell_10</text>
+		<action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="11">
+                <text>agr_dolg_glavnyi_tell_11</text>
+		<action>megadeath_mod.reputation_down_20</action>
+                <next>12</next>
+            </phrase>
+            <phrase id="12">
+		<text>agr_dolg_glavnyi_tell_12</text>
+		<action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog so snayperom dolgovcev na Agroprome -->
+
+    <dialog id="agr_dolg_sniper_tell">
+	<precondition>dialogs.level_agroprom_freeplay</precondition>
+	<has_info>agr_dolg_sniper_prikaz</has_info>
+	<dont_has_info>kolodets_sniper_tell</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>agr_dolg_sniper_tell_0</text>
+				<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>agr_dolg_sniper_tell_1</text>
+				<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>agr_dolg_sniper_tell_2</text>
+				<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>agr_dolg_sniper_tell_3</text>
+				<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>agr_dolg_sniper_tell_4</text>
+				<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>agr_dolg_sniper_tell_5</text>
+				<give_info>kolodets_sniper_tell</give_info>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog s uchenym v taynike Strelka -->
+
+    <dialog id="ecolog_01_hello_first">
+	<dont_has_info>task_3_start</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>ecolog_01_hello_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+	
+    <dialog id="ecolog_01_tell_first">
+	<dont_has_info>task_3_start</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>ecolog_01_tell_0</text>
+                <next>1</next>
+            </phrase>
+	    <phrase id="1">
+		<text>ecolog_01_tell_1</text>
+		<next>2</next>
+	    </phrase>
+	    <phrase id="2">
+		<text>ecolog_01_tell_2</text>
+		<next>3</next>
+	    </phrase>
+	    <phrase id="3">
+		<text>ecolog_01_tell_3</text>
+		<next>4</next>
+	    </phrase>
+	    <phrase id="4">
+		<text>ecolog_01_tell_4</text>
+		<next>5</next>
+	    </phrase>
+	    <phrase id="5">
+		<text>ecolog_01_tell_5</text>
+		<next>6</next>
+	    </phrase>
+	    <phrase id="6">
+		<text>ecolog_01_tell_6</text>
+		<next>7</next>
+	    </phrase>
+	    <phrase id="7">
+		<text>ecolog_01_tell_7</text>
+		<next>14</next>
+	    </phrase>
+	    <phrase id="14">
+		<text>ecolog_01_tell_14</text>
+		<give_info>task_1_end</give_info>
+		<give_info>task_2_end</give_info>
+		<next>15</next>
+	    </phrase>
+	    <phrase id="15">
+		<text>ecolog_01_tell_15</text>
+		<next>8</next>
+	    </phrase>
+	    <phrase id="8">
+		<text>ecolog_01_tell_8</text>
+		<next>9</next>
+	    </phrase>
+	    <phrase id="9">
+		<text>ecolog_01_tell_9</text>
+		<next>10</next>
+	    </phrase>
+	    <phrase id="10">
+		<text>ecolog_01_tell_10</text>
+		<next>11</next>
+	    </phrase>
+	    <phrase id="11">
+		<text>ecolog_01_tell_11</text>
+		<next>12</next>
+	    </phrase>
+	    <phrase id="12">
+		<text>ecolog_01_tell_12</text>
+		<next>13</next>
+	    </phrase>
+	    <phrase id="13">
+		<text>ecolog_01_tell_13</text>
+		<next>16</next>
+	    </phrase>
+            <phrase id="16">
+                <text>ecolog_01_tell_16</text>
+				<give_info>task_3_start</give_info>
+				<give_info>kolodets_razminirovan</give_info>
+				<action>megadeath_mod.u_agr_patrul</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="ecolog_v_tainike_tell_second">
+	<precondition>megadeath_mod.have_a_case_02</precondition>
+	<dont_has_info>ecolog_v_tainike_tell_second_hide</dont_has_info>
+        <phrase_list>
+	    <phrase id="0">
+                <text>Хорошо, что ты все еще здесь! Взгляни на эти документы.</text>
+                <next>1</next>
+	    </phrase>
+	    <phrase id="1">
+                <text>Мне нужно вам кое-что рассказать!</text>
+                <next>2</next>
+	    </phrase>
+	    <phrase id="2">
+                <text>Сначала документы!</text>
+                <next>3</next>
+	    </phrase>
+	    <phrase id="3">
+                <text>Хорошо, хорошо. Как пожелаете. Так... так... вот значит, что хотел продать полковник Мусоренко... вот что стоит миллионы долларов...</text>
+                <next>4</next>
+	    </phrase>
+	    <phrase id="4">
+                <text>Это вирус, и я заражен им. Мне нужна вакцина.</text>
+                <next>5</next>
+	    </phrase>
+	    <phrase id="5">
+                <text>С этим кажется будут проблемы. В 80-х годах его испытывали на людях, но проект, похоже, был закрыт. Тут сказано...</text>
+                <next>6</next>
+	    </phrase>
+	    <phrase id="6">
+                <text>Ближе к делу. Ты понимаешь что-нибудь в этих материалах?</text>
+                <next>7</next>
+	    </phrase>
+	    <phrase id="7">
+                <text>Да, да, безусловно. "ЗНОЙ-13" это боевая мутация вируса СПИДа.</text>
+                <next>8</next>
+	    </phrase>
+	    <phrase id="8">
+                <text>Не понял?</text>
+                <next>9</next>
+	    </phrase>
+	    <phrase id="9">
+                <text>ecolog_v_tainike_tell_second_9</text>
+                <next>10</next>
+	    </phrase>
+	    <phrase id="10">
+                <text>То есть я обречен?</text>
+                <next>11</next>
+	    </phrase>
+	    <phrase id="11">
+                <text>ecolog_v_tainike_tell_second_11</text>
+                <next>12</next>
+	    </phrase>
+	    <phrase id="12">
+                <text>ecolog_v_tainike_tell_second_12</text>
+                <next>13</next>
+	    </phrase>
+	    <phrase id="13">
+                <text>ecolog_v_tainike_tell_second_13</text>
+                <next>14</next>
+	    </phrase>
+	    <phrase id="14">
+                <text>ecolog_v_tainike_tell_second_14</text>
+                <next>15</next>
+	    </phrase>
+	    <phrase id="15">
+                <text>Стойте, подождите! Дело в том, что... в том, что после вашего ухода сюда пришли какие-то люди, хорошо вооруженные и... в общем они знали о деньгах, о проекте. Все это похоже на дурацкий сон... Они угрожали убить меня...</text>
+                <next>16</next>
+	    </phrase>
+	    <phrase id="16">
+                <text>Какие ещё люди?</text>
+                <next>17</next>
+	    </phrase>
+	    <phrase id="17">
+                <text>В военной форме, иностранной. Они устроили на вас засаду... здесь, в подземелье. Они собираются вас убить!</text>
+                <next>18</next>
+	    </phrase>
+	    <phrase id="18">
+                <text>Вот как. Ладно, мы ещё посмотрим, кто останется здесь кормить червей.</text>
+                <next>19</next>
+	    </phrase>
+	    <phrase id="19">
+                <text>А как быть мне?</text>
+                <next>20</next>
+	    </phrase>
+	    <phrase id="20">
+                <text>Уходи отсюда к своим. Скажи, что зомбированые напали на вас в лаборатории Х18 и перебили всех. Тебе удалось бежать. Коси под дурачка.</text>
+                <next>21</next>
+	    </phrase>
+	    <phrase id="21">
+                <text>Я понял.</text>
+                <next>22</next>
+	    </phrase>
+            <phrase id="22">
+                <text>Пока.</text>
+				<give_info>ecolog_v_tainike_tell_second_hide</give_info>
+				<action>megadeath_mod.u_agr_zasada_spawn</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog s uchenym v temnoy doline -->
+
+    <dialog id="ecolog_02_hello_first">
+	<dont_has_info>ecolog_02_give_help</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Пппомогите... пппожалуйста...</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+
+    <dialog id="ecolog_02_tell_first">
+	<dont_has_info>ecolog_02_give_help</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ты как?</text>
+		<give_info>task_3_obj_1</give_info>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Пплохо мне... оччень плохо... нужна аптечка... срочно... У тебя есть?</text>
+                <next>2</next>
+                <next>3</next>
+                <next>4</next>
+            </phrase>
+            <phrase id="2">
+                <text>Конечно. Вот возьми.</text>
+		<give_info>ecolog_02_give_help</give_info>
+		<action>dialogs.transfer_medkit</action>
+		<action>megadeath_mod.reputation_up_10</action>
+                <next>5</next>
+            </phrase>
+            <phrase id="3">
+                <text>Нет. Все закончились.</text>
+		<give_info>ecolog_02_give_help</give_info>
+<!-- zdes' doljen byt' proval 3 zadaniya -->
+		<action>megadeath_mod.reputation_down_10</action>
+                <next>6</next>
+            </phrase>
+            <phrase id="4">
+                <text>Нету. Самому не хватает.</text>
+		<give_info>ecolog_02_give_help</give_info>
+<!-- zdes' doljen byt' proval 3 zadaniya -->
+		<action>megadeath_mod.reputation_down_20</action>
+                <next>6</next>
+            </phrase>
+            <phrase id="5">
+                <text>Спасибо огромное.</text>
+            </phrase>
+            <phrase id="6">
+                <text>Жаль. Я ннаверное скоро умру...</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+
+    <dialog id="ecolog_02_tell_sixth">
+	<has_info>ecolog_02_give_help</has_info>
+	<dont_has_info>ecolog_02_tell_sixth_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Кто ты?</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Я... я ученый. Я прибыл сюда с группой военных...</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Странно... Но они же в тебя стреляли. Почему они хотели тебя убить?</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Не меня одного. Нас было несколько в составе экспедиции... Почему правительство решило нас убрать я не знаю.</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Я слышал военные нашли в лаборатории что-то очень ценное?</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Возможно. Я об этом ничего не слышал.</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Хреново, что не слышал. Хотелось бы знать, что искать. Бывай!</text>
+		<give_info>ecolog_02_tell_sixth_hide</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+
+    <dialog id="ecolog_02_tell_second">
+	<has_info>dar_deadly_found</has_info>
+	<dont_has_info>ecolog_02_tell_second_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Раз уж ты был в составе экспедиции, то может быть знаешь код от двери в лабораторию?</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Дверь в лабораторию закрыта? Но военные же туда спустились.</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Спустились и, похоже, специально закрыли дверь.</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Извини, но кода я не знаю.</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Черт! Я боялся этого. Похоже его знали только часовые, охранявшие вход, но их кто-то убил.</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Убил? То есть ты хочешь сказать, что это сделали люди, а не монстры?</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Там гильзы кругом, да и по положению трупов видно, что не лап мутантов это дело.</text>
+		<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Ясно. А на месте перестрелки больше ничего не было?</text>
+		<next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Да вроде нет. Хотя...</text>
+		<give_info>ecolog_02_tell_second_hide</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+
+    <dialog id="ecolog_02_tell_third">
+	<precondition>megadeath_mod.have_a_knife_m1</precondition>
+	<dont_has_info>ecolog_02_tell_third_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Взгляни, что я нашел перед дверью в лабораторию.</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Ну и что. Просто нож.</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>На рукоятке - имя хозяина.</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Серега Маньяк. Ты будешь его искать?</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Иголку в стоге сена найти проще, но надеюсь он не смог уйти далеко.</text>
+		<give_info>ecolog_02_tell_third_hide</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="ecolog_02_tell_fourth">
+	<precondition>megadeath_mod.have_a_doc_01</precondition>
+	<dont_has_info>ecolog_02_get_blood</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Привет. Я был в лаборатории и вот, что там нашел.</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Что это? Похоже на результаты каких-то исследований... образцы... здесь написано контейнер не вскрывать, но он...</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Так и было.</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Это я к тому, что ты мог заразиться тем, что в этом контейнере содержится. Засучи-ка рукав, я возьму у тебя пробу крови.</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Пожалуйста.</text>
+		<next>5</next>
+		<give_info>ecolog_02_get_blood</give_info>
+                <!-- <action>dialogs.break_dialog</action> здесь ученый должен отыграть анимацию -->
+            </phrase>
+            <phrase id="5">
+                <text>Ох... Дело дрянь. В твоей крови какой-то вирус. И он распространяется с огромной скоростью.</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Что за ... ?!</text>
+		<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Нужно срочно что-то предпринимать.</text>
+		<next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Что? Что предпринимать-то?</text>
+		<next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>Ну хотя бы изучить имеющуюся документацию. Я в ней ничего понять не могу. Нужны ученые другой специализации. Наверное поэтому в составе экспедиции были ученые разных профилей.</text>
+		<next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>На Янтаре есть мобильная лаборатория, где работает профессор Сахаров.</text>
+		<next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Тогда тебе стоит обратиться к нему.</text>
+		<next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>Понял.</text>
+		<action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="ecolog_02_tell_fifth">
+	<has_info>ecolog_02_get_blood</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я заражен.</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog so stalkerom, kotoryy rasskajet o Serege Man'yake -->
+
+    <dialog id="neytral_01_hello">
+        <phrase_list>
+            <phrase id="0">
+                <text>neytral_01_hello_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="neytral_01_tell">
+	<precondition>megadeath_mod.have_a_knife_m1</precondition>
+	<dont_has_info>neytral_01_tell_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>neytral_01_tell_0</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>neytral_01_tell_1</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>neytral_01_tell_2</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>neytral_01_tell_3</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>neytral_01_tell_4</text>
+		<give_info>neytral_01_tell_hide</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog s Sidorovichem -->
+
+    <dialog id="sidorovich_tell_first">
+	<has_info>neytral_01_tell_hide</has_info>
+	<dont_has_info>sidorovich_tell_first_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>sidorovich_tell_0</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>sidorovich_tell_1</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>sidorovich_tell_2</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>sidorovich_tell_3</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>sidorovich_tell_4</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>sidorovich_tell_5</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>sidorovich_tell_6</text>
+		<action>megadeath_mod.serega_maniac_spawn</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog s Seregoy Man'yakom -->
+
+    <dialog id="serega_manyak_hello">
+        <phrase_list>
+            <phrase id="0">
+                <text>neytral_02_hello_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="serega_manyak_tell">
+	<dont_has_info>dar_door1_pass_2</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>neytral_02_tell_0</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>neytral_02_tell_1</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>neytral_02_tell_2</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>neytral_02_tell_3</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>neytral_02_tell_4</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>neytral_02_tell_5</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>neytral_02_tell_6</text>
+		<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>neytral_02_tell_7</text>
+		<next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>neytral_02_tell_8</text>
+		<next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>neytral_02_tell_9</text>
+		<next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>neytral_02_tell_10</text>
+		<next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>neytral_02_tell_11</text>
+		<next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>neytral_02_tell_12</text>
+		<next>13</next>
+            </phrase>
+            <phrase id="13">
+                <text>neytral_02_tell_13</text>
+		<next>14</next>
+            </phrase>
+            <phrase id="14">
+                <text>neytral_02_tell_14</text>
+		<next>15</next>
+            </phrase>
+            <phrase id="15">
+                <text>neytral_02_tell_15</text>
+		<next>16</next>
+            </phrase>
+            <phrase id="16">
+                <text>neytral_02_tell_16</text>
+		<next>17</next>
+            </phrase>
+            <phrase id="17">
+                <text>neytral_02_tell_17</text>
+		<next>18</next>
+            </phrase>
+            <phrase id="18">
+                <text>neytral_02_tell_18</text>
+		<next>19</next>
+            </phrase>
+            <phrase id="19">
+                <text>neytral_02_tell_19</text>
+		<next>20</next>
+            </phrase>
+            <phrase id="20">
+                <text>neytral_02_tell_20</text>
+		<give_info>dar_door1_pass_2</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialog s Saharovym -->
+
+    <dialog id="saharov_tell_first">
+	<precondition>megadeath_mod.have_a_doc_01</precondition>
+	<dont_has_info>actor_set_zombied</dont_has_info>
+	<dont_has_info>saharov_tell_first_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>saharov_tell_0</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>saharov_tell_1</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>saharov_tell_2</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>saharov_tell_3</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Понятно. Но ближе к делу - взгляните на эти документы.</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Так... Интересно... Откуда это у Вас?!</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Это сейчас не важно... Вы узнали что-нибудь полезное из них?</text>
+		<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Да. Разработка "ЗНОЙ-13" велась в Х18.</text>
+		<next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Это я уже знаю!</text>
+		<next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>И в Х16!</text>
+		<next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>Дальше...</text>
+		<next>13</next>
+            </phrase>
+            <phrase id="13">
+                <text>Понять, что такое "ЗНОЙ-13" пока не удается, но информация из Х16 может пролить свет на эту загадку.</text>
+		<next>14</next>
+            </phrase>
+            <phrase id="14">
+                <text>Хорошо профессор. Я скоро вернусь.</text>
+		<give_info>saharov_tell_first_hide</give_info>
+<!-- daetsya infoporshn zadaniya blokiruyuschiy etot dialog, a ne saharov_tell_first_hide hotya mojno i task_5_obj_1 poostavit' -->
+                <action>megadeath_mod.x16_spawn</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+
+    <dialog id="saharov_tell_second">
+	<precondition>megadeath_mod.have_a_doc_02</precondition>
+	<dont_has_info>actor_set_zombied</dont_has_info>
+	<dont_has_info>saharov_tell_second_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я вернулся, профессор.</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Очень рад Вас видеть. Вы нашли что-нибудь?</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Нашел. Вот...</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Боже! Взгляните на эти фотографии! Похоже "ЗНОЙ-13" это вирус.</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Твою мать! Его уже испытывали на людях?</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Да... как сказано в протоколе - на заключенных. Это просто ужас! И почему, позвольте узнать, уже?</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Потому что я испытал эту гадость на себе.</text>
+		<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Зачем?</text>
+		<next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Ну... раз уж никто из ученых не смог мне сказать, что такое "ЗНОЙ-13", я решил выяснить это самостоятельно. И никакая ученая степень мне для этого не потребовалась. Профессор, в документах сказано что-нибудь о противоядии?</text>
+		<next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>Похоже есть что-то подобное, но хотелось бы посмотреть на содержимое контейнера.</text>
+		<next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Но его же нельзя вскрывать.</text>
+		<next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Не этого, а второго. Того что был в Х16.</text>
+		<next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>Но в лаборатрии не было контейнера. Только эта папка с документами.</text>
+		<next>13</next>
+            </phrase>
+            <phrase id="13">
+                <text>Он должен быть...</text>
+		<next>14</next>
+            </phrase>
+            <phrase id="14">
+                <text>Кажется я знаю кто мне может помочь. Не появлялись ли у Вас до моего прихода сталкеры из группировки "Свобода"?</text>
+		<next>15</next>
+            </phrase>
+            <phrase id="15">
+                <text>Был, один. Как и Вы интересовался активностью зомби.</text>
+		<next>16</next>
+            </phrase>
+            <phrase id="16">
+                <text>Не знаете куда он направился?</text>
+		<next>17</next>
+            </phrase>
+            <phrase id="17">
+                <text>К сожалению нет... но мне показалось, он хотел спуститься в лабораторию.</text>
+		<next>18</next>
+            </phrase>
+            <phrase id="18">
+                <text>Сталкеров я там не встречал.</text>
+		<next>19</next>
+            </phrase>
+            <phrase id="19">
+                <text>Тогда, возможно, он все еще ищет вход в лабораторию.</text>
+		<next>20</next>
+            </phrase>
+            <phrase id="20">
+                <text>Возможно.</text>
+		<give_info>saharov_tell_second_hide</give_info>
+                <action>dialogs.break_dialog</action>
+                <action>megadeath_mod.informator_spawn</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+    <dialog id="saharov_tell_third">
+	<precondition>megadeath_mod.have_a_case_02</precondition>
+	<dont_has_info>actor_set_zombied</dont_has_info>
+	<dont_has_info>saharov_tell_third_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Профессор! Я наконец-то нашел второй кейс!</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Это хорошо. Дайте взглянуть... похоже, что я Вам все-таки не смогу помочь. Тут нужны люди, сведущие в этих вопросах более меня. Я бы мог...	</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Я вспомнил! Замыслов!</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Какой Замыслов?</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Мне нужно бежать.</text>
+		<give_info>saharov_tell_third_hide</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+<!-- dialog s informatorom iz Svobody -->
+
+    <dialog id="yan_svoboda_informator_hello">
+        <phrase_list>
+            <phrase id="0">
+                <text>Здравствуй, дружище!</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+
+    <dialog id="yan_svoboda_informator_tell">
+	<dont_has_info>yan_svoboda_informator_tell_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здорова! Привет тебе от военных.</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Не понял?!</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Всё ты понял... но я тут не из-за военных. Это ты Беспредел?</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Нет... нет его тут. А я смотрю ты дохрена чего знаешь... Лишнего. За здоровье не волнуешься?</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>И не говори. Хоть сейчас помирай. Так где искать этого козла?</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Козла? Да ты совсем борзый, сталкер. Но думаю Беспределу лучше с тобой пообщаться, а не мне. Он на Складах, и будет рад тебя видеть. Я ему сообщу о том, что тебя нужно встретить.</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Ну-ну, поглядим... "Надо обязательно бармену сказать, что Свободовцы с вояками снюхались" - подумал Меченый</text>
+		<give_info>yan_svoboda_informator_tell_hide</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialogi s dolgovskim razvedchikom -->
+
+    <dialog id="mil_dolg_recon_hello">
+        <phrase_list>
+            <phrase id="0">
+                <text>Здорова!</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+
+    <dialog id="mil_dolg_recon_tell">
+	<dont_has_info>mil_dolg_recon_tell_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Привет. Я от Бармена.</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>И что?</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Хочу узнать что тебе известно о связи "Свободы" и военных?</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Ты что несешь? Свободовцы же беспредельщики, они не могут сотрудничать с военными.</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Ты когда в последний раз в разведку то ходил?</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Если я тебе это скажу, то мне придется тебя убить.</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Послушай, остряк, я не разведчик, а это знаю. Подробности не известны, но Костя Беспредел мог бы объяснить ситуацию. Но где он, я не знаю. Теперь вот у меня две причины искать его.</text>
+		<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Я слышал о Беспределе, но где искать его не знаю. Нужно раздобыть КПК свободовца и поискать информацию там. Они ведь обмениваются новостями как и мы.</text>
+		<next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Хорошая идея. Предлагаешь завалить одного из них?</text>
+		<next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>mil_dolg_recon_tell_9</text>
+		<next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Это точно. Ну, пошел я на поиски.</text>
+		<give_info>mil_dolg_recon_tell_hide</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+	
+    <dialog id="mil_dolg_recon_tell_second">
+	<dont_has_info>mil_dolg_recon_tell_second_hide</dont_has_info>
+	<precondition>megadeath_mod.have_a_pda_03</precondition>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я нашел КПК, но получить информацию из него не смог. Нужны логин и пароль...</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>mil_dolg_recon_tell_0</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Значит мне остается только искать вашу "шестерку"?</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Похоже, что да. Но о шестерках я ничего не слышал. Мутная это история. Скажи честно, почему ты так напрягаешься? Хочешь помочь "Долгу"?</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Заодно. У Беспредела есть вещь, без которой я не смогу жить.</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Он украл твое сердце?</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Хм... почти...</text>
+		<give_info>mil_dolg_recon_tell_second_hide</give_info>
+                <action>megadeath_mod.mil_svoboda_wounded_spawn</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialogi s ranenym svobodovcem iz gruppy Bespredela -->
+
+    <dialog id="mil_svoboda_wounded_hello">
+        <phrase_list>
+            <phrase id="0">
+                <text>Здоровеньки булы.</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="mil_svoboda_wounded_tell">
+	<dont_has_info>mil_svoboda_wounded_tell_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здоровеньки.</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Помоги, брат.</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Хорошо. Я помогу, но вначале ты кое-что мне расскажешь. Ты ведь из группы Беспредела?</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Да.</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Работаешь на "Долг"?</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Нет! Мля... ты о чем?</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Беспредел же тебя подстрелил. За что?</text>
+		<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Не твое это дело...</text>
+		<next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Не дергайся и не вздумай хвататься за оружие. Пристрелю как собаку. Где Беспредел?</text>
+		<next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>mil_svoboda_wounded_tell_10</text>
+		<next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Поздно... Бар уже был атакован.</text>
+		<next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>Как? Этого не может быть! Он же инструкцию по расстрелу совсем недавно получил!</text>
+		<next>13</next>
+            </phrase>
+            <phrase id="13">
+                <text>Вот как? У-ф-ф-ф-ф-ф... у меня скоро крыша съедет от всех этих заговоров. Где должна состояться казнь?</text>
+		<next>14</next>
+            </phrase>
+            <phrase id="14">
+                <text>Здесь, на Милитари.</text>
+		<next>15</next>
+            </phrase>
+            <phrase id="15">
+                <text>Точнее?</text>
+		<next>16</next>
+            </phrase>
+            <phrase id="16">
+                <text>Точнее не знаю. Ищи сам. Да и есть ли в этом смысл, если Бар уже был атакован? Ну вот, я тебе помог, теперь твоя очередь.</text>
+		<next>17</next>
+		<next>18</next>
+		<next>19</next>
+            </phrase>
+            <phrase id="17">
+                <text>Аптечку не дам! "Свободе" не помогаю!</text>
+		<action>megadeath_mod.reputation_down_20</action>
+		<give_info>mil_svoboda_wounded_tell_hide</give_info>
+		<action>megadeath_mod.mil_rasstrel</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="18">
+                <text>Извини браток, лекарства на исходе. Самому не хватает.</text>
+		<action>megadeath_mod.reputation_down_10</action>
+		<give_info>mil_svoboda_wounded_tell_hide</give_info>
+		<action>megadeath_mod.mil_rasstrel</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="19">
+                <text>Держи. В Зоне больному не выжить.</text>
+		<action>dialogs.transfer_medkit</action>
+		<action>megadeath_mod.reputation_up_10</action>
+		<next>20</next>
+            </phrase>
+            <phrase id="20">
+                <text>Кстати, как ты прошел сюда? Деревня кишит кровососами.</text>
+		<next>21</next>
+            </phrase>
+            <phrase id="21">
+                <text>Мы с ними разминулись.</text>
+		<next>22</next>
+            </phrase>
+            <phrase id="22">
+                <text>Твое счастье.</text>
+		<next>23</next>
+            </phrase>
+            <phrase id="23">
+                <text>Ага!</text>
+		<give_info>mil_svoboda_wounded_tell_hide</give_info>
+		<action>megadeath_mod.mil_rasstrel</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialogi s rasstrelivayuschimi -->
+
+    <dialog id="mil_dolg_killer_hello">
+        <phrase_list>
+            <phrase id="0">
+                <text>Чего хотел, сталкер?</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="mil_dolg_killer_tell">
+	<dont_has_info>mil_dolg_killer</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вы что задумали, мужики?</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>А тебе то что?</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Это же беспредел?</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Вали отсюда и побыстрее, а то еще наши свинцовые друзья тебя догонят.</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Солдаты не должны умирать подобным образом.</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Рот закрой! Мужики давайте перевернем гада, он мне поперек горла уже...</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Дьявол!</text>
+		<give_info>mil_dolg_killer</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+<!-- dialogi s rasstrelivayuschimi -->
+
+    <dialog id="yan_svoboda_bespredel_hello">
+        <phrase_list>
+            <phrase id="0">
+                <text>Здравствуй.</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+    <dialog id="yan_svoboda_bespredel_tell">
+	<dont_has_info>yan_svoboda_bespredel_tell_hide</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здравствуй. Беспредел?</text>
+		<next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Где? Хе-хе... шучу. Чего хотел?</text>
+		<next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Мне нужен кейс из Х16.</text>
+		<next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Мне он тоже нужен.</text>
+		<next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Не ври. Я знаю, что он у тебя.</text>
+		<next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>А ты хоть знаешь, с кем сейчас разговариваешь?</text>
+		<next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Знаю, поэтому и стараюсь выбирать выражения. Не будь дело достаточно серьезным, я бы не пришел к тебе.</text>
+		<next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Мне начхать на твои дела.</text>
+		<next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Беспредел...</text>
+		<next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>Я же велел катиться тебе отсюда, пока я не разозлился.</text>
+		<next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Без кейса я не уйду.</text>
+		<next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Его ты получишь только через мой труп.</text>
+		<next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>Как скажешь.</text>
+		<next>13</next>
+            </phrase>
+            <phrase id="13">
+                <text>yan_svoboda_bespredel_tell_13</text>
+		<next>14</next>
+            </phrase>
+            <phrase id="14">
+                <text>У меня нет выбора. Я и так уже труп.</text>
+		<give_info>yan_svoboda_bespredel_tell_hide</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+</game_dialogs>

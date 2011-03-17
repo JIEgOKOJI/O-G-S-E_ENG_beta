@@ -1,0 +1,854 @@
+belt = {}
+belt_ids = {}
+belt_status = false
+local warning_last = nil
+
+-- Список ограничений по типам для иммунитетов, даваемых артефактами, в процентах
+local burn_immunity_level = {80, 99}
+local strike_immunity_level = {80, 99}
+local shock_immunity_level = {80, 99}
+local wound_immunity_level = {80, 99}
+local radiation_immunity_level = {80, 99}
+local telepatic_immunity_level = {80, 99}
+local chemical_burn_immunity_level = {80, 99}
+local explosion_immunity_level = {80, 99}
+local fire_wound_immunity_level  = {80, 99}
+
+local art_hit_koef = 0.02	-- Коэффициент хита, наносимого актору при превышении ограничения по иммунитету от артефактов
+
+local warning_given_1 = false
+local warning_given_2 = false
+local warning_given_3 = false
+local warning_given_4 = false
+local warning_given_5 = false
+local warning_given_6 = false
+local warning_given_7 = false
+local warning_given_8 = false
+local warning_given_9 = false
+
+
+-- это табличка-ограничитель количества артов на поясе
+-- пользоваться просто - внести секцию арта и кол-во
+-- если ограничивать не надо - просто уберите из таблички
+local art_levels = {
+
+["af_gravi"] = 3,
+["af_drops"] = 3,
+["af_electra_sparkler"] = 3,
+["af_ameba_slug"] = 3,
+["af_rusty_thorn"] = 3,
+["af_mincer_meat"] = 3,
+["af_cristall_flower"] = 3,
+["af_fireball"] = 3,
+["af_electra_flash"] = 3,
+["af_rusty_kristall"] = 3,
+["af_kaktus"] = 3,
+
+["af_gold_fish"] = 2,
+["af_cristall"] = 2,
+["af_night_star"] = 2,
+["af_soul"] = 2,
+["af_electra_moonlight"] = 2,
+["af_ameba_mica"] = 2,
+["af_rusty_sea-urchin"] = 2,
+
+
+["af_zombie_hand"] = 1,
+["af_fuzz_kolobok"] = 1,
+["af_dummy_battery"] = 1,
+["af_dummy_glassbeads"] = 1,
+["af_dummy_spring"] = 1,
+["af_dummy_dummy"] = 1,
+["af_dummy_pellicle"] = 1,
+["af_transmut_1"] = 1,
+["af_transmut_2"] = 3,
+["af_transmut_3"] = 3,
+["af_transmut_4"] = 1,
+["af_transmut_5"] = 1,
+["af_transmut_6"] = 1,
+["af_transmut_7"] = 1,
+["af_transmut_8"] = 1
+
+}
+
+
+local need_update = true
+inventory_open = false
+local separator_spawned = false
+local separator = "separator"
+
+local debug = false
+local flag
+local flag_ids = 0
+
+function update()
+
+	if (need_update == false) then return end
+
+	-- Апдейтим ремкомплекты
+	remkit_main.update_repair_kit()
+
+	if debug == true and belt_status == true then get_console():execute("belt_status=false") end
+	belt_status = false
+
+	-- Спавним разделяющий елемент
+	if (separator_spawned == false) then
+		alife():create(separator,
+			db.actor:position(),
+			db.actor:level_vertex_id(),
+			db.actor:game_vertex_id(),
+			db.actor:id())
+		separator_spawned = true
+		if debug == true then get_console():execute("separator_spawned") end
+		return
+	end
+
+	belt = {}
+	flag = 0
+	
+	if flag_ids == 0 then
+		belt_ids = {}
+		flag_ids = 1
+		-- -- amk.logf("belt cleaned")
+	end
+
+	-- Сканируем инвентарь
+	db.actor:inventory_for_each(scan_inv)
+	need_update = false
+
+	-- Удаляем разделяющий елемент
+	db.actor:inventory_for_each(del_separator)
+	separator_spawned = false
+
+	if debug == true and belt_status == false then get_console():execute("belt_status=true") end
+	belt_status = true
+
+	if debug == true then
+		for i,k in pairs(belt) do
+			-- amk.logf(i.."="..k)
+		end
+		for i,k in pairs(belt_ids) do
+			-- amk.logf(i.."="..k)
+		end		
+	end
+	
+--Сюда запихиваем проверку на уникальные вещи
+
+	is_a_single_item()	
+
+	
+end
+
+-- Убирание с пояса предметов, перемещённых в слоты
+function remove_belt_art()
+	if db.actor then
+	local art_weapon = db.actor:item_in_slot(1)
+		if art_weapon and string.find(art_weapon:section(), "af_") then
+		-- -- amk.logf("Artefact set weapon!!!")
+			for i,k in pairs(belt_ids) do
+			--	-- amk.logf("CHECK_1A: "..tostring(i))
+			--	-- amk.logf("CHECK_1B: "..tostring(art_weapon:id()))
+				if i == art_weapon:id() then
+					-- amk.logf("Too bad - actor weared art from belt... bad idea... bye-bye actor 8(")
+					db.actor:kill(db.actor)
+					news_text = "You tried to pick up the artifact, the heated warmth of your body at the waist, and died because of his premature activation. Remember! Artifacts in the hands can be taken only from the backpack!"
+					db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+					return					
+				end
+			end	
+		end
+	end
+end
+
+-- Убирание с пояса уникальных одиночных вещей
+function is_a_single_item()
+
+-- autodoctor
+-- bioradar
+-- detector_elite
+-- detector_advances
+-- detector_simple
+-- detector_mine_finder
+
+	
+	if belt["autodoctor"] and belt["autodoctor"] > 1 then 
+		for i,k in pairs(belt) do
+			if i == "autodoctor" then	
+				amk.remove_item(db.actor:object("autodoctor")) 
+				amk.spawn_item_in_inv("autodoctor") 
+			end
+		end		
+	end
+	
+	if belt["bioradar"] and belt["bioradar"] > 1 then 
+		for i,k in pairs(belt) do
+			if i == "bioradar" then	
+				amk.remove_item(db.actor:object("bioradar")) 
+				amk.spawn_item_in_inv("bioradar") 
+			end
+		end		
+	end
+	
+	if belt["detector_elite"] and belt["detector_elite"] > 1 then 
+		for i,k in pairs(belt) do
+			if i == "detector_elite" then	
+				amk.remove_item(db.actor:object("detector_elite")) 
+				amk.spawn_item_in_inv("detector_elite") 
+			end
+		end		
+	end
+
+	if belt["detector_advances"] and belt["detector_advances"] > 1 then 
+		for i,k in pairs(belt) do
+			if i == "detector_advances" then	
+				amk.remove_item(db.actor:object("detector_advances")) 
+				amk.spawn_item_in_inv("detector_advances") 
+			end
+		end		
+	end
+
+	if belt["detector_simple"] and belt["detector_simple"] > 1 then 
+		for i,k in pairs(belt) do
+			if i == "detector_simple" then	
+				amk.remove_item(db.actor:object("detector_simple")) 
+				amk.spawn_item_in_inv("detector_simple") 
+			end
+		end		
+	end
+	
+	if belt["detector_mine_finder"] and belt["detector_mine_finder"] > 1 then 
+		for i,k in pairs(belt) do
+			if i == "detector_mine_finder" then	
+				amk.remove_item(db.actor:object("detector_mine_finder")) 
+				amk.spawn_item_in_inv("detector_mine_finder") 
+			end
+		end		
+	end
+
+end
+
+
+-- Нанесение хита актору при превышении ограничения по иммунитетам, получаемым от артефактов
+local hit_from_arts_meter_time = time_global() + 100
+function hit_from_arts()
+
+local uptime = time_global()
+if uptime < hit_from_arts_meter_time then return end
+hit_from_arts_meter_time = uptime + 100
+
+local obj_hit_absorbation_sect
+
+local burn_immunity = 0
+local strike_immunity = 0
+local shock_immunity = 0
+local wound_immunity = 0
+local radiation_immunity = 0
+local telepatic_immunity = 0
+local chemical_burn_immunity = 0
+local explosion_immunity = 0
+local fire_wound_immunity  = 0
+
+	for key, value in pairs(belt) do
+		if string.find(key, "af_") and key ~= "af_maska" then
+-- -- amk.logf("Найден артефакт: " .. key .. ", " .. value .. " штук.")
+			local obj_sect = key
+			local obj_num = value
+			if system_ini():section_exist(obj_sect) then
+				if system_ini():line_exist(obj_sect, "hit_absorbation_sect") then
+					obj_hit_absorbation_sect = system_ini():r_string(obj_sect, "hit_absorbation_sect")
+					if system_ini():section_exist(obj_hit_absorbation_sect) then
+-- -- amk.logf("Его секция иммунитетов: " .. obj_hit_absorbation_sect)
+					
+						if system_ini():line_exist(obj_hit_absorbation_sect, "burn_immunity") then
+							local tmp_burn_immunity = system_ini():r_string(obj_hit_absorbation_sect, "burn_immunity")
+							tmp_burn_immunity = (1-tmp_burn_immunity)*100
+							burn_immunity = burn_immunity + (tmp_burn_immunity*obj_num)
+						end
+						if system_ini():line_exist(obj_hit_absorbation_sect, "strike_immunity") then
+							local tmp_strike_immunity = system_ini():r_string(obj_hit_absorbation_sect, "strike_immunity")
+							tmp_strike_immunity = (1-tmp_strike_immunity)*100
+							strike_immunity = strike_immunity + (tmp_strike_immunity*obj_num)
+						end
+						if system_ini():line_exist(obj_hit_absorbation_sect, "shock_immunity") then
+							local tmp_shock_immunity = system_ini():r_string(obj_hit_absorbation_sect, "shock_immunity")
+							tmp_shock_immunity = (1-tmp_shock_immunity)*100
+							shock_immunity = shock_immunity + (tmp_shock_immunity*obj_num)
+						end
+						if system_ini():line_exist(obj_hit_absorbation_sect, "wound_immunity") then
+							local tmp_wound_immunity = system_ini():r_string(obj_hit_absorbation_sect, "wound_immunity")		
+							tmp_wound_immunity = (1-tmp_wound_immunity)*100
+							wound_immunity = wound_immunity + (tmp_wound_immunity*obj_num)
+						end
+						if system_ini():line_exist(obj_hit_absorbation_sect, "radiation_immunity") then
+							local tmp_radiation_immunity = system_ini():r_string(obj_hit_absorbation_sect, "radiation_immunity")
+							tmp_radiation_immunity = (1-tmp_radiation_immunity)*100
+							radiation_immunity = radiation_immunity + (tmp_radiation_immunity*obj_num)
+						end
+						if system_ini():line_exist(obj_hit_absorbation_sect, "telepatic_immunity") then
+							local tmp_telepatic_immunity = system_ini():r_string(obj_hit_absorbation_sect, "telepatic_immunity")
+							tmp_telepatic_immunity = (1-tmp_telepatic_immunity)*100
+							telepatic_immunity = telepatic_immunity + (tmp_telepatic_immunity*obj_num)
+						end
+						if system_ini():line_exist(obj_hit_absorbation_sect, "chemical_burn_immunity") then
+							local tmp_chemical_burn_immunity = system_ini():r_string(obj_hit_absorbation_sect, "chemical_burn_immunity")
+							tmp_chemical_burn_immunity = (1-tmp_chemical_burn_immunity)*100
+							chemical_burn_immunity = chemical_burn_immunity + (tmp_chemical_burn_immunity*obj_num)
+						end
+						if system_ini():line_exist(obj_hit_absorbation_sect, "explosion_immunity") then
+							local tmp_explosion_immunity = system_ini():r_string(obj_hit_absorbation_sect, "explosion_immunity")
+-- -- amk.logf("tmp_explosion_immunity: " .. tmp_explosion_immunity)
+							tmp_explosion_immunity = (1-tmp_explosion_immunity)*100
+							explosion_immunity = explosion_immunity + (tmp_explosion_immunity*obj_num)
+-- -- amk.logf("tmp_explosion_immunity: " .. tmp_explosion_immunity)
+-- -- amk.logf("explosion_immunity: " .. explosion_immunity)
+						end
+						if system_ini():line_exist(obj_hit_absorbation_sect, "fire_wound_immunity") then
+							local tmp_fire_wound_immunity  = system_ini():r_string(obj_hit_absorbation_sect, "fire_wound_immunity")
+-- -- amk.logf("tmp_fire_wound_immunity: " .. tmp_fire_wound_immunity)
+							tmp_fire_wound_immunity = (1-tmp_fire_wound_immunity)*100
+							fire_wound_immunity = fire_wound_immunity + (tmp_fire_wound_immunity*obj_num)
+-- -- amk.logf("tmp_fire_wound_immunity: " .. tmp_fire_wound_immunity)
+-- -- amk.logf("fire_wound_immunity: " .. fire_wound_immunity)
+						end
+					
+					end
+				end
+			end
+		end
+
+	end
+
+	if burn_immunity > burn_immunity_level[1] then
+		local burn_hit = burn_immunity - burn_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "fire"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = burn_hit*art_hit_koef
+		art_hit.type = hit.burn
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type) and not warning_given_1 then
+			news_text = "Can not be worn on a belt of artifacts, the overall fire protection which exceeds"..tostring(burn_immunity_level[1]).."% - you can burn alive!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type	
+			warning_given_1 = true
+		end
+		if burn_immunity > burn_immunity_level[2] then
+			art_hit.type = random_hit_type_select(0)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+	
+	if strike_immunity > strike_immunity_level[1] then
+		local strike_hit = strike_immunity - strike_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "strike"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = strike_hit*art_hit_koef
+		art_hit.type = hit.strike
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type) and not warning_given_2 then
+			news_text = "Can not be worn on a belt of artifacts, the total shock protection which exceeds "..tostring(strike_immunity_level[1]).."% - you die from hardening of internal organs!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type	
+			warning_given_2 = true			
+		end		
+		if strike_immunity > strike_immunity_level[2] then
+			art_hit.type = random_hit_type_select(2)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+	
+	if shock_immunity > shock_immunity_level[1] then
+		local shock_hit = shock_immunity - shock_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "shock"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = shock_hit*art_hit_koef
+		art_hit.type = hit.shock
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type) and not warning_given_3 then
+			news_text = "Can not be worn on a belt of artifacts, the total protection of electricity exceeds "..tostring(shock_immunity_level[1]).."% - Static electricity will kill them!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type	
+			warning_given_3 = true			
+		end				
+		if shock_immunity > shock_immunity_level[2] then
+			art_hit.type = random_hit_type_select(1)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+	
+	if wound_immunity > wound_immunity_level[1] then
+		local wound_hit = wound_immunity - wound_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "wound"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = wound_hit*art_hit_koef
+		art_hit.type = hit.wound
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type) and not warning_given_4 then
+			news_text = "Can not be worn on a belt of artifacts, the total protection of the gap exceeds "..tostring(wound_immunity_level[1]).."% - your soft tissue tear on the voltage!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type		
+			warning_given_4 = true			
+		end				
+		if wound_immunity > wound_immunity_level[2] then
+			art_hit.type = random_hit_type_select(3)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+	
+	if radiation_immunity > radiation_immunity_level[1] then
+		local radiation_hit = radiation_immunity - radiation_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "radiation"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = radiation_hit*art_hit_koef
+		art_hit.type = hit.radiation
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type) and not warning_given_5 then
+			news_text = "Can not be worn on a belt of artifacts, the total protection against radiation in excess of "..tostring(radiation_immunity_level[1]).."% - you'll be strongly irradiated dispersible radiation!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type	
+			warning_given_5 = true			
+		end				
+		if radiation_immunity > radiation_immunity_level[2] then
+			art_hit.type = random_hit_type_select(4)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+	
+	if telepatic_immunity > telepatic_immunity_level[1] then
+		local telepatic_hit = telepatic_immunity - telepatic_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "telepatic"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = telepatic_hit*art_hit_koef
+		art_hit.type = hit.telepatic
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type)  and not warning_given_6 then
+			news_text = "Can not be worn on a belt of artifacts, the total protection of the mental damage of more than "..tostring(telepatic_immunity_level[1]).."% - You can go crazy!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type		
+			warning_given_6 = true	
+		end				
+		if telepatic_immunity > telepatic_immunity_level[2] then
+			art_hit.type = random_hit_type_select(5)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+	
+	if chemical_burn_immunity > chemical_burn_immunity_level[1] then
+		local chemical_burn_hit = chemical_burn_immunity - chemical_burn_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "chemical"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = chemical_burn_hit*art_hit_koef
+		art_hit.type = hit.chemical_burn
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type) and not warning_given_7 then
+			news_text = "Can not be worn on a belt of artifacts, the total protection from chemical burns of more than "..tostring(chemical_burn_immunity_level[1]).."% - you die from irreversible changes in the blood!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type			
+			warning_given_7 = true				
+		end				
+		if chemical_burn_immunity > chemical_burn_immunity_level[2] then
+			art_hit.type = random_hit_type_select(6)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+	
+-- -- amk.logf("explosion_immunity: " .. explosion_immunity)
+	if explosion_immunity > explosion_immunity_level[1] then
+		local explosion_hit = explosion_immunity - explosion_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "explosive"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = explosion_hit*art_hit_koef
+		art_hit.type = hit.explosion
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type) and not warning_given_8 then
+			news_text = "Can not be worn on a belt of artifacts, the total protection from an explosion of more than "..tostring(explosion_immunity_level[1]).."% - you die from hardening of internal organs!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type		
+			warning_given_8 = true				
+		end				
+		if explosion_immunity > explosion_immunity_level[2] then
+			art_hit.type = random_hit_type_select(7)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+	
+-- -- amk.logf("fire_wound_immunity: " .. fire_wound_immunity)
+	if fire_wound_immunity > fire_wound_immunity_level[1] then
+		local fire_wound_hit = fire_wound_immunity - fire_wound_immunity_level[1]
+		local art_hit = hit()
+		local d_type = "fire_wound"
+		art_hit.direction = vector():set(0,0,0)
+		art_hit.impulse = 0
+		art_hit.draftsman = db.actor
+		art_hit.power = fire_wound_hit*art_hit_koef
+		art_hit.type = hit.fire_wound
+		db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		if not has_alife_info("hit_from_arts_story") then
+			db.actor:give_info_portion("hit_from_arts_story")
+		end
+		if (not warning_last or warning_last ~= d_type) and not warning_given_9 then
+			news_text = "Can not be worn on a belt of artifacts, the total protection of gunshot wounds of more than "..tostring(fire_wound_immunity_level[1]).."% - you die from hardening of the soft tissues!"
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 10000)
+			warning_last = d_type			
+			warning_given_9 = true				
+		end			
+		if fire_wound_immunity > fire_wound_immunity_level[2] then
+			art_hit.type = random_hit_type_select(8)
+			db.actor:hit(art_hit)
+-- -- amk.logf("Наносим хит: " .. art_hit.type .. art_hit.power)
+		end
+
+		if (need_update == false) and (inventory_open == true) then
+			need_update = true
+		end
+	end
+
+end
+
+-- Выбор случайного типа хита
+function random_hit_type_select(ignore_type)
+
+	local hit_type = {0,	-- burn
+					1,		-- shock
+					2,		-- strike
+					3,		-- wound
+					4,		-- radiation
+					5,		-- telepatic
+					6,		-- chemical_burn
+					7,		-- explosion
+					8}		-- fire_wound
+
+	if ignore_type ~= nil then
+		for i,v in pairs(hit_type) do
+			if v == ignore_type then
+				table.remove(hit_type, i)
+			end
+		end
+	end
+
+	local random_hit_type = hit_type[math.random(table.getn(hit_type))]
+	
+	return random_hit_type
+
+end
+
+
+-- Убирание с пояса лишних артефактов - использует табличку из начала модуля
+function remove_arts()
+
+	local news_text = "nil"
+	---- amk.logf("START REMOVE")
+
+	for key, value in pairs(art_levels) do
+		if belt[key] and belt[key] > value then
+			amk.remove_item(db.actor:object(key)) 
+			amk.spawn_item_in_inv(key)
+			belt[key] = belt[key] - 1
+			if (not warning_last or warning_last ~= key) then
+				if value == 1 then
+					news_text = "Can not be worn on the belt for more than one higher artifact of one species - the side effects will kill you!"
+				elseif value == 2 then
+					news_text = "Can not be worn on a belt over two strong artifacts of one species - the side effects will kill you!"
+				elseif value == 3 then
+					news_text = "Can not be worn on the belt for more than three ordinary artifacts of one species - the side effects will kill you!"
+				else
+					news_text = "Can not be worn on the belt more "..tostring(value).." similar artifacts of one species - the side effects will kill you!"
+				end
+				
+				db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,188,83,47), 0, 3000)
+				warning_last = key
+			end
+		end
+	end
+	
+end
+
+-- Проверка изменений на поясе
+function chek_belt(item)
+
+	local section = item:section()
+
+	if section == separator then
+		chk_flag = 1
+		return
+	end
+
+	if chk_flag == 1 then
+		if slot_item(item) ~= nil then
+			chk_flag = 2
+		else
+			insert_to_table(chk_belt, section)
+		end
+	end
+end
+
+-- Перебор предметов инвентаря
+function scan_inv(item)
+
+	local section = item:section()
+	local it_id = item:id()
+
+	if section == separator then
+		flag = 1
+		return
+	end
+
+	if flag == 1 then
+		if slot_item(item) ~= nil then
+			flag = 2
+		else
+			insert_to_table(belt, section)
+			insert_to_table(belt_ids, it_id)
+			---- amk.logf("CHECK0:"..tostring(section).." "..tostring(it_id))
+		end
+	end
+end
+
+-- Добавление в таблицу
+function insert_to_table(tbl, section)
+	if tbl[section] == nil then
+		tbl[section] = 1
+	else
+		tbl[section] = tbl[section] + 1
+	end
+end
+
+-- Удаление разделяющего предмета
+function del_separator(item)
+	if item:section() == separator then
+		local sobj = alife():object(item:id())
+		if sobj then
+			alife():release(sobj, true)
+		end
+		if debug == true then get_console():execute("separator_removed") end
+	end
+end
+
+-- Определение налечия предмета в одном из слотов
+function slot_item(item)
+	for i=0,12 do
+		local obj = db.actor:item_in_slot(i)
+		if obj and item:id() == obj:id() then
+			return i
+		end
+	end
+
+	return nil
+end
+
+-- Поднятие предмета
+function on_item_take(item)
+	if item:section() == separator then return end
+	
+	local level_name = level.name()
+	if db.actor and db.actor:dont_has_info("player_have_crowbar") and string.find(item:section(), "wpn_montirovka") and level_name == "l06_rostok" then 
+		soundtrack.rostok_gordon() 
+		db.actor:give_info_portion("player_have_crowbar")
+	end
+	
+	
+
+	if (inventory_open == false) then
+		if (separator_spawned == true) then
+			db.actor:inventory_for_each(del_separator)
+			separator_spawned = false
+		end
+
+		need_update = true
+		if debug == true then get_console():execute("item_take") end
+	end
+end
+
+-- Выброс предмета
+function on_item_drop(item)
+	if item:section() == separator then return end
+	
+
+	if (inventory_open == false) then
+		if (separator_spawned == true) then
+			db.actor:inventory_for_each(del_separator)
+			separator_spawned = false
+		end
+
+		need_update = true
+		
+		if debug == true then get_console():execute("item_drop") end
+	end
+end
+
+-- Открытие/закрытие инвентаря
+function on_inventory_info(info_id)
+	if info_id == "ui_inventory" then
+		inventory_open = true
+		if debug == true then get_console():execute("inventory_open") end
+
+	elseif info_id == "ui_inventory_hide" then
+		inventory_open = false
+		need_update = true
+		remove_belt_art()
+		flag_ids = 0
+		if debug == true then get_console():execute("inventory_close") end
+	end
+end
+
+function check_blood()
+--   if belt_status == true then
+      if belt["af_blood"]~=nil and belt["af_blood"]>0 then -- то есть когда параметр пояса[af_blood] равен 1, 2, 3.. Сколько навесишь Камней.
+--             amk.send_tip("Кровь Камня на поясе")
+          end
+--   end
+end
+
+
+-- Порча еды
+function spoilage_food()
+	if db.actor.radiation>0.3 and (db.actor:object("salo") or db.actor:object("kolbasa") or db.actor:object("kefir")) then
+       db.actor:iterate_inventory(function (dummy,item)  
+                                if item:section()=="salo" then
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("salo_bad")
+                                elseif item:section()=="kolbasa" then 
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("kolbasa_bad")
+								elseif item:section()=="kefir" then 
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("kefir_bad")
+                                end 
+                                end, nil)
+    end
+
+    if db.actor.radiation>0.4 and (db.actor:object("bread") or db.actor:object("kartoshka") or db.actor:object("conserva2")) then
+       db.actor:iterate_inventory(function (dummy,item)  
+                                if item:section()=="bread" then
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("bread_bad")
+                                elseif item:section()=="kartoshka" then 
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("kartoshka_bad")
+							    elseif item:section()=="conserva2" then 
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("conserva2_bad")
+                                end 
+                                end, nil)
+    end
+	
+	if db.actor.radiation>0.5 and (db.actor:object("syrok") or db.actor:object("conserva")) then
+       db.actor:iterate_inventory(function (dummy,item)  
+                                if item:section()=="syrok" then
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("syrok_bad")
+                                elseif item:section()=="conserva" then 
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("conserva_bad")
+                                end 
+                                end, nil)
+    end
+	
+	if db.actor.radiation>0.8 and (db.actor:object("mre") or db.actor:object("irp-b")) then
+       db.actor:iterate_inventory(function (dummy,item)  
+                                if item:section()=="mre" then
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("mre_bad")
+                                elseif item:section()=="irp-b" then 
+                                      amk.remove_item(item)  
+                                      amk.spawn_item_in_inv("irp-b_bad")
+                                end 
+                                end, nil)
+    end
+end

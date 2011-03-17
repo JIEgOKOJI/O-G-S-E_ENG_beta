@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+<!--Kvest na ubiystvo Fraera-->
+	<string id="trader_relation_bandit_1">
+		<text>Something with the lads lately I have some neponyatki. To collide with me trying. I do not bodalovo high. Do not settle podsobish golovnyak?</text>
+	</string>
+	<string id="trader_relation_bandit_2">
+		<text>Yes, small boys are not thrilled. Here and there, lads already hints that the stocks you ran. But the bell ringers can I soothe. Plati 10000 and all neponyatki be settled.</text>
+	</string>
+	<string id="trader_relation_bandit_3">
+		<text>Concrete kipesh you raised, brothers want you to put on feathers. This noise can be worked out, but you need to pay 30000.</text>
+	</string>
+	<string id="trader_relation_bandit_4">
+		<text>Throughout the area so much noise on your doorposts! The Fellowship is extremely dissatisfied. Require serious repair the damage. Plati 50000.</text>
+	</string>
+	<string id="trader_relation_bandit_5">
+		<text>Without the bazaar. Keep your money.</text>
+	</string>
+	<string id="trader_relation_bandit_6">
+		<text>A great honor for such sheluponi.</text>
+	</string>
+	<string id="trader_relation_bandit_7">
+		<text>Well, the loot triumphs over evil. Sweeps. Keep your money.</text>
+	</string>
+    <string id="kkill_fraer_done_0">
+	    <text>I soaked chushkarya Fraera.</text>
+	</string>
+	<string id="kill_fraer_0">
+	    <text>What a deal you got?</text>
+	</string>
+	<string id="kill_fraer_1">
+	    <text>Dealers then one turned up just for you. Then one Shnyrov much fuss. The authority is trying to make. Bazaar rotten leads the eye to the lads, drop me tuzhitsya, and such a zapadlo bratvy not in concepts. Skopytish chushkana this - empty handed no escape. Cheb out there who do not bot, but Piggy is responsible for the bazaar! Get to work pretty good gangster coat.</text>
+	</string>
+	<string id="kill_fraer_2">
+	    <text>But what drove this fraera?</text>
+	</string>
+    <string id="kill_fraer_3">
+	    <text>You're smart though. So Fraerom and they call. Only skopytit it should be in quiet, without kipesha.</text>
+	</string>
+	<string id="kill_fraer_4">
+	    <text>This is not zapadlo and fudge.</text>
+	</string>
+	<string id="kill_fraer_5">
+	    <text>Sorry. At mokruhu now are not pulled.</text>
+	</string>
+	<string id="borov_meet_again_0">
+	    <text>Well there you have ...</text>
+	</string>
+	<string id="borov_meet_again_1">
+	    <text>What cough wanted?</text>
+	</string>
+	<string id="borov_meet_again_2">
+	    <text>Got my life single. I want to do business with you stir up.</text>
+	</string>
+	<string id="borov_meet_again_3">
+	    <text>Well. Pay in obshchak 10000 rubles and join us.</text>
+	</string>
+	<string id="borov_meet_again_4">
+	    <text>Oh, just about anything. Just looked at the light.</text>
+	</string>
+	<string id="borov_meet_again_5">
+	    <text>Not with me is now kind of money. Look you up later.</text>
+	</string>
+	<string id="borov_meet_again_6">
+	    <text>Without the bazaar. Keep your money.</text>
+	</string>
+	<string id="chto_namutil_0">
+	    <text>What have you there with dolgovtsami namutil?</text>
+	</string>
+	<string id="chto_namutil_1">
+	    <text>Bratello, help me. Soak the goat aspiring to, a bullet got him. Fellowship you will be very grateful - to all our lads will go to Kent, answer! If you kill a goat, a prompt where the cache hill Dolgovskogo, Skulls, zanykan. Soak it, but I give the tooth - there'll be waiting for you!</text>
+	</string>
+	<string id="chto_namutil_2">
+	    <text>What kind of market, certainly help. Current come on, that I found you then!</text>
+	</string>
+	<string id="chto_namutil_3">
+	    <text>Fuck you...</text>
+	</string>
+	<string id="chto_namutil_4">
+	    <text>Well fraer, blah, one will be ours for the laces porezhut</text>
+	</string>
+	<string id="chto_namutil_5">
+	    <text>You better not flutter, there is already close to blind dogs, cut into circles, and we're in the world to deem</text>
+	</string>
+	<!--Plennyy bandit ryadom s dolgovcem na vhode-->
+	<string id="cherep_treasure_0">
+	    <text>I've soaked your enemy. So what are you hiding rubbed about the Skull?</text>
+	</string>
+	<string id="cherep_treasure_1">
+	    <text>Gad will. There is such a secret place where the bullet had killed people like to temporarily hide the loot. Tale I whispered that he recently put it chic SVD. Exactly tell you. Age will not be seen. Or maybe something else out there find.</text>
+	</string>
+	<string id="cherep_treasure_2">
+	    <text>Well ... Better for you would be if you told the truth.</text>
+	</string>
+<!--Dialogi c telohranitelyami Borova-->
+	<string id="prebandit_0">
+	    <text>Hey, brakes, which Presov?</text>
+	</string>
+	<string id="prebandit_1">
+	    <text>Yes I am, this Piggy to go ..</text>
+	</string>
+	<string id="prebandit_2">
+	    <text>This is why now? Che you want from him?</text>
+	</string>
+	<string id="prebandit_3">
+	    <text>Talking to him is.</text>
+	</string>
+<!--Vstuplenie v Bandity cherez Borova-->
+	<string id="borov_ask_document_0">
+	<text>What do you want to ask?</text>
+	</string>	
+	<string id="borov_ask_document_1">
+	<text>What? Brought the document?</text>
+	</string>	
+	<string id="borov_ask_document_2">
+	<text>Not yet.</text>
+	</string>
+	<string id="borov_ask_document_3">
+	<text>Very bad. I will not wait long. Do you understand?</text>
+	</string>
+	<string id="borov_ask_document_4">
+	<text>I think so.</text>
+	</string>
+	<string id="borov_ask_document_5">
+	<text>Brought, hold.</text>
+	</string>
+	<string id="borov_ask_document_6">
+	<text>Spot bad, well, I keep the word. Made the case without jambs - Get the key from the laboratory. I see you, Spot, do not miss, if you do not ssysh the lab down. Can join us?</text>
+	</string>
+	<string id="borov_ask_document_7">
+	<text>Well. And why not? "I?</text>
+	</string>
+	<string id="borov_ask_document_8">
+	<text>None. Thanks for the invitation, but I'm handy to be a loner.</text>
+	</string>
+	<string id="borov_ask_document_9">
+	    <text>Well, we're quits. Now I will not touch you, but in the future better for us to less common. Heh-heh.</text>
+	</string>
+	<string id="borov_ask_document_10">
+	    <text>It happens.</text>
+	</string>
+	<string id="borov_ask_document_11">
+	    <text>Spot bad, well, I keep the word. Made the case without jambs - Get the key from the laboratory.</text>
+	</string>
+	<string id="borov_enter_bandit_0">
+		<text>Good health.</text>
+	</string>
+	<string id="borov_enter_bandit_1">
+		<text>Yes this is very Spot! Heard a lot about you. Dark rumors about you go. If you pulled out alive from the death truck. By the way, you have cool flog "Spot". And the reason I called Hog.</text>
+	</string>
+		<string id="borov_enter_bandit_2">
+		<text>I sent an informant</text>
+	</string>	
+	<string id="borov_enter_bandit_3">
+		<text>Informant, you say? Hmm ... Okay, what do you want? </text>
+	</string>
+	<string id="borov_enter_bandit_4">
+		<text>And I've got one thing ...</text>
+	</string>
+	<string id="borov_enter_bandit_5">
+		<text>What a deal? Speak.</text>
+	</string>
+	<string id="borov_enter_bandit_6">
+		<text>I'm looking for the key to the door to the lab X18 ... </text>
+	</string>	
+		<string id="borov_enter_bandit_7">
+		<text>And why I should give it to you? Maybe for your beautiful eyes?</text>
+	</string>
+	<string id="borov_enter_bandit_8">
+		<text>Can I pay the money.</text>
+	</string>
+	<string id="borov_enter_bandit_9">
+		<text>And a lot of money you pay? Can you ... Okay ... Hmm. Know who sent you. With a bartender we observe neutrality. But we need someone who does not belong to our group, able to do one little errand.</text>
+	</string>
+	<string id="borov_enter_bandit_10">
+		<text>What kind of assignment is it? To kill, I suppose, someone need?</text>
+	</string>
+	<string id="borov_enter_bandit_11">
+		<text>Well, why just kill him? We need to steal some documents from the bartender so that he did not think that this case thieves. Documents are stored in his room, guarded by his men. Do the job - will become his, and with me - the second key from the laboratory.</text>
+	</string>
+	<string id="borov_enter_bandit_12">
+		<text>Well.</text>
+	</string>
+	<string id="borov_enter_bandit_13">
+		<text>I'm not ready</text>
+	</string>
+	<string id="borov_enter_bandit_14">
+		<text>I came on a tip of your rights.</text>
+	</string>
+	<string id="borov_enter_bandit_15">
+		<text>Yes I am aware of. You rescued him. Therefore, we and you have not touched. I listen to you.</text>
+	</string>
+	<string id="borov_enter_bandit_16">
+		<text>And a lot of money you pay? Can you ... Okay ... Hmm. Know who you vouchsafed to descend into this hell, hehe. With a bartender we observe neutrality. But I need a desperate man, able to perform a nontrivial matter ...</text>
+	</string>
+	<string id="borov_enter_bandit_17">
+		<text>Yes I am aware of. You rescued him. And, importantly, you, at his request, had a hand in the murder bullets. Therefore, you can join us. We are not alien to such people. What do you say to my proposal?</text>
+	</string>
+	
+<!--Vstuplenie v Bandity cherez Borova-->
+	<string id="start_dialog_1">
+		<text>What are you staring at me?</text>
+	</string>
+	<string id="start_dialog_2">
+		<text>Mother of God, who are you?</text>
+	</string>
+		<string id="start_dialog_3">
+		<text>When I was a man ... from my controller to have tried, but something they have not come there. Die too, failed, and that's been living in this container.</text>
+	</string>
+		<string id="val_escort_captive_dialog_11">
+		<text>Bandits! Those sons of bitches were taking me to the old factory. I don't know what they were planning to do with me there. I saw them take another guy in there before and I never saw him after that. They've got another one of ours, Serega. They keep him in the basement... in that big unfinished building there. Help him, would ya? Otherwise they'll... you know...</text>
+	</string>
+	<string id="val_escort_captive_dialog_2">
+		<text>Do you know what they've got there at the factory?</text>
+	</string>
+	<string id="val_escort_captive_dialog_21">
+		<text>I haven't heard much. All I know is that their boss Borov has part of the key to the underground there. There used to be a lab or something... I did hear that Borov has been eager to get inside, but can't without the second half of the key. Umm... if you're thinking of trying to get inside, think twice before you do. It's full of thugs.</text>
+	</string>
+	<string id="val_escort_captive_dialog_211">
+		<text>Gotcha. Thanks, I'll keep it in mind.</text>
+	</string>
+	<string id="val_escort_captive_dialog_3">
+		<text>I'll try to help your man.</text>
+	</string>
+	<string id="val_escort_captive_dialog_41">
+		<text>It's a shame about my partner... He was a great guy. But still, I owe you.</text>
+	</string>
+	<string id="val_escort_captive_dialog_411">
+		<text>These things happen.</text>
+	</string>
+	<string id="val_escort_captive_dialog_51">
+		<text>Thanks for your help!</text>
+	</string>
+	<string id="val_escort_captive_dialog_511">
+		<text>Bye.</text>
+	</string>
+	<string id="val_escort_captive_dialog_61">
+		<text>You don't give a damn about people. What's there to discuss between you and me?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_21">
+		<text>Thanks! You got my partner out of there! Here, take this - it's from the bottom of my heart.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_2111">
+		<text>Deal.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_212">
+		<text>I guess you must know this area well. What's interesting here?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_2121">
+		<text>To the North there's a bandit camp. To the East - an old factory. To the Southwest - a deserted pig farm, and some kind of gate beyond it... I can't say what's there, never been that far.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_21211">
+		<text>Would you tell me more about the bandit camp?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_212111">
+		<text>Hmm, what about it... They settled in an unfinished building straight North of here. Their leader is Borov - a real animal, that bastard. That's why they sent us here, to finish him off.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_21212">
+		<text>What's happening on the factory?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_212121">
+		<text>We managed to find out that there is some kind of vault there. Only it's guarded like Fort Knox.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_2121211">
+		<text>What kind of vault? What's inside it?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_21212111">
+		<text>I don't know but we dare to step inside. The only thing I do know is that Borov has one half of the key to its entrance.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_21213">
+		<text>A real pig farm? With actual pigs?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_212131">
+		<text>Drooling for some pork chops already, huh? Heck, the Zone is full of boars! Take a bite of one of those and you won't be needing a flashlight anymore - that's how bad you'll be glowing in the dark! OK, OK, just kidding... The farm has long been abandoned and is now home to some stalkers. They didn't make a good impression on me, though, and I usually trust my gut feeling.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_21214">
+		<text>What's this gate you were talking about?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_212141">
+		<text>I can't figure it out. Just an old gate, except it's locked and well guarded. We haven't set foot in there.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_21215">
+		<text>I see, thanks.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_212151">
+		<text>You're welcome! Come back any time.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_213">
+		<text>Just the two of you went on a scouting raid?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_2131">
+		<text>There was another guy, Serega. I don't know, he's gone and I haven't heard from him... The gang must have dealt with him after all.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_214">
+		<text>Take care.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_31">
+		<text>So, friend... What's going to happen with me now?.. Thanks. At least you tried to help. And I do keep my word.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_41">
+		<text>Thanks for your help! What else did you want to know about?</text>
+	</string>
+	<string id="val_escort_nap1_dialog_61">
+		<text>You refused to help when I asked you. We have nothing to discuss. Get lost.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_611">
+		<text>Bye.</text>
+	</string>
+	<string id="val_prisoner_hello_11">
+		<text>Hey, buddy! Help me! I'm a Duty scout. Help me get out!</text>
+	</string>
+	<string id="val_prisoner_hello_111">
+		<text>I'll try.</text>
+	</string>
+	<string id="val_prisoner_hello_112">
+		<text>There's nothing I can do for you.</text>
+	</string>
+	<string id="val_prisoner_hello_21">
+		<text>Thanks, brother! I owe you one. Look what I was able to find out - it might prove useful to you, who knows... Borov - the one who calls the shots - has collected quite a lot of goodies. He's got a piece of the key to the lower level at the old factory. I heard the guards yacking, they said there used to be some kind of lab there. Thing is, getting close to Borov isn't so simple.</text>
+	</string>
+	<string id="val_prisoner_hello_211">
+		<text>Thanks for the information.</text>
+	</string>
+	<string id="val_prisoner_hello_2111">
+		<text>It's time to get back to our guys. Something tells me we'll be lucky to get out of here alive...</text>
+	</string>
+	<string id="val_prisoner_hello_21111">
+		<text>Good luck.</text>
+	</string>
+	<string id="val_prisoner_hello_31">
+		<text>We gotta get outta here before these bastards decide to check this place out! Need something? Get it quick!</text>
+	</string>
+	<string id="val_prisoner_hello_311">
+		<text>Nope, nothing.</text>
+	</string>
+	<string id="val_prisoner_hello_41">
+		<text>Hey! There's a switch over there on the wall - it opens the cell door.</text>
+	</string>
+	<string id="val_prisoner_hello_411">
+		<text>OK, I'll look.</text>
+	</string>
+	<string id="val_rob_dialog_11">
+		<text>Hey, want an awesome gun? I found a little something near Yantar... a stash, I guess. There was this Gauss rifle among other things. I tell you, this thing rocks - anyone within a hundred meters of it is as good as dead... You can have it for just 800.</text>
+	</string>
+	<string id="val_rob_dialog_111">
+		<text>Here's the money.</text>
+	</string>
+	<string id="val_rob_dialog_112">
+		<text>Thanks, but no thanks.</text>
+	</string>
+	<string id="val_rob_dialog_113">
+		<text>Nah, keep it. Money is hard to come by.</text>
+	</string>
+	<string id="val_rob_dialog_21">
+		<text>Got the money? Hurry up. I've had a lot of customers... They'll be coming back soon.</text>
+	</string>
+	<string id="val_rob_dialog_3">
+		<text>Excellent. Wait here, I'll go get it.</text>
+	</string>
+	<string id="val_rob_dialog_31">
+		<text>Waiting.</text>
+	</string>
+	<string id="val_sos_dialog_11">
+		<text>Hey, gimme a medkit!</text>
+	</string>
+	<string id="val_sos_dialog_111">
+		<text>Here you are.</text>
+	</string>
+	<string id="val_sos_dialog_112">
+		<text>Sorry, I don't have a medkit.</text>
+	</string>
+	<string id="val_sos_dialog_21">
+		<text>Thanks, you bailed me out for real. If I live long enough to see you again, I'll try to pay you back. Right now all I can spare is a juicy tip. OK, to the South of here, there's a farm where some easygoing stalkers set up camp. One of them is selling a Gauss rifle real cheap, just 800. I was going to buy it, and then got knee deep in shit... So, if you've got the dough, go right ahead.</text>
+	</string>
+	<string id="val_sos_dialog_211">
+		<text>Thanks for the information.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_4111">
+		<text>I owe you, and I always repay my debts. Let's go.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_41111">
+		<text>Excellent. Now we'll tear everyone up.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_4112">
+		<text>Sorry, I have other plans.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_41121">
+		<text>Well, good luck then.</text>
+	</string>
+	<string id="val_escort_nap1_dialog_412">
+		<text>Bye.</text>
+	</string>
+
+</string_table>

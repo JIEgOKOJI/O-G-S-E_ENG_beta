@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+<!-- Russian Text -->
+		<string id="barman_document_description">
+		<text>Contains maps, photos and a diskette</text>
+	</string>
+	<string id="barman_document">
+		<text>Documents bartender</text>
+	</string>
+	<string id="item test1">
+		<text>This is an ITEM test string</text>
+	</string>
+	<string id="item test2">
+		<text>This is another ITEM test string</text>
+	</string>
+	<string id="item_case_esc_desc">
+		<text>Fireproof briefcase with documents.</text>
+	</string>
+	<string id="item_decoder_desc">
+		<text>Powerful electronic lockpick. Strangely enough, it does not seem to be an all-purpose thieves' instrument. Rather, it seems to have been created with a specific electronic lock in mind and can't be used to override anything else.</text>
+	</string>
+	<string id="item_decoder_name">
+		<text>Decoder</text>
+	</string>
+	<string id="item_detector_yantar_desc">
+		<text>Psi-emission detector</text>
+	</string>
+	<string id="item_detector_yantar_name">
+		<text>PP-4a sensor</text>
+	</string>
+	<string id="item_doc_x16_desc">
+		<text>Plastic document file. You'd need a degree in biology to understand a word of what it says.</text>
+	</string>
+	<string id="item_doc_x16_name">
+		<text>Documents from Lab X16</text>
+	</string>
+	<string id="item_doc_x18_desc">
+		<text>A thick pile of scientific documents. Terms, formulas, and a number of diagrams</text>
+	</string>
+	<string id="item_doc_x18p1_name">
+		<text>Documents from Lab X18, part 1</text>
+	</string>
+	<string id="item_doc_x18p2_name">
+		<text>Documents from Lab X18, part 2</text>
+	</string>
+	<string id="item_doc_x18p3_name">
+		<text>Documents from Lab X18, part 3</text>
+	</string>
+	<string id="item_doc_x18p4_name">
+		<text>Documents from Lab X18, part 4</text>
+	</string>
+	<string id="item_doc_x18p5_name">
+		<text>Documents from Lab X18, part 5</text>
+	</string>
+	<string id="item_docs_hiden_pri_desc">
+		<text>Worn manuscript in leather binding. Written by Strelok himself. Judging by the headings alone, it might explain some of the Zone's secrets.</text>
+	</string>
+	<string id="item_docs_hiden_pri_name">
+		<text>Documents from the secret stash in Pripyat</text>
+	</string>
+	<string id="item_dynamite_esc_desc">
+		<text>A heavy wooden crate with the word "Explosives" written in several languages</text>
+	</string>
+	<string id="item_dynamite_esc_name">
+		<text>Crate of explosives</text>
+	</string>
+	<string id="item_flash_crazy_mil_desc">
+		<text>Flash drive - convenient way to store and transfer information.</text>
+	</string>
+	<string id="item_flash_crazy_mil_name">
+		<text>The crazy stalker's flash drive</text>
+	</string>
+	<string id="item_flash_eco_rost_desc">
+		<text>Flash drive - convenient way to store and transfer information.</text>
+	</string>
+	<string id="item_flash_eco_rost_name">
+		<text>Professor Kruglov's flash drive</text>
+	</string>
+	<string id="item_flash_esc_desc">
+		<text>Flash drive - convenient way to store and transfer information.</text>
+	</string>
+	<string id="item_flash_esc_name">
+		<text>Captive stalker's flash drive</text>
+	</string>
+	<string id="item_flash_gslinger_agro_desc">
+		<text>Flash drive - convenient way to store and transfer information.</text>
+	</string>
+	<string id="item_flash_gslinger_agro_name">
+		<text>Strelok's flash drive</text>
+	</string>
+	<string id="item_key_x18_desc">
+		<text>Electronic key to the underground Lab X18.</text>
+	</string>
+	<string id="item_key_x18_name">
+		<text>Borov's key</text>
+	</string>
+	<string id="item_krot_flash">
+		<text>Mole's flash drive</text>
+	</string>
+	<string id="item_PDA_lucky_desc">
+		<text>Personal digital assistant. Indispensable in the Zone.</text>
+	</string>
+	<string id="item_PDA_lucky_name">
+		<text>Lucky's PDA</text>
+	</string>
+	<string id="item_PDA_tiran_desc">
+		<text>Personal digital assistant. Indispensable in the Zone.</text>
+	</string>
+	<string id="item_PDA_tiran_name">
+		<text>Tyran's PDA</text>
+	</string>
+	<string id="item_quest_case_02_desc">
+		<text>A fireproof briefcase with documents.</text>
+	</string>
+	<string id="item_quest_case_02_name">
+		<text>Military documents</text>
+	</string>
+	<string id="item_case_esc_name">
+		<text>Documents from the outpost</text>
+	</string>
+	<string id="yan_bad_psy_helmet_desc">
+		<text>Prototype developed by scientists to protect people from psi-emissions. Not adjusted.</text>
+	</string>
+	<string id="yan_bad_psy_helmet_name">
+		<text>Not adjusted psi-helmet.</text>
+	</string>
+	<string id="yan_good_psy_helmet_desc">
+		<text>Functional prototype developed by scientists to protect people from psi-emissions</text>
+	</string>
+	<string id="yan_good_psy_helmet_name">
+		<text>Functional psi-helmet</text>
+	</string>
+<!-- Russian Text -->
+	<string id="amk_metka">
+		<text>GPS-beacon</text>
+	</string>
+	<string id="amk_metka_s">
+		<text>GPS-beacon</text>
+	</string>
+	<string id="enc_amk_metka">
+		<text>GPS-beacon. In the Zone has appeared not so long ago, but enjoys wildly popular at the expense of versatility and affordable price. Initially, the prototype was introduced into "debt" for the demonstration and a deal to supply large quantities of these beacons. However, "random" missing a test version before the meeting of representatives from both sides gave a deep rift in the relationship with the supplier. Long and mutually beneficial relationship Voronin and Sakharov occurred here, can be very useful, and with the help of a local trader prototype beacon fell into the hands of scientists Field Laboratory, which is amber. He also has been redesigned and put on mass production for the needs of all the suffering. The original version did not survive due to a direct upgrade of a prototype. The upgraded version is different in a positive way because it allows us to digitally sign the beacons (Cyrillic, unfortunately, is not supported), and synchronize it with the PDA owner. On the basis of studies of protection against psionic effects, scientists have ensured that the beacon does not interference, and its detection by humans is virtually impossible. Given the fact that the GPS-beacon produced in-house laboratory Sakharov, the scientist and the prices more reasonable than those of dealers.</text>
+	</string>
+	<string id="treasure_detector_name">
+		<text>Detector</text>
+	</string>
+	<string id="treasure_abundant_artefact_name">
+		<text>Common artifacts</text>
+	</string>
+	<string id="treasure_scarce_artefact_name">
+		<text>Rare Artifacts</text>
+	</string>
+	<string id="treasure_rarity_artefact_name">
+		<text>Rare Artifacts</text>
+	</string>
+	<string id="treasure_medecine_name">
+		<text>Medicines</text>
+	</string>
+	<string id="treasure_grenade_name">
+		<text>Grenades</text>
+	</string>
+	<string id="treasure_wpngrenade_name">
+		<text>Grenades for the grenade launcher</text>
+	</string>
+	<string id="treasure_drink_name">
+		<text>Drinks</text>
+	</string>
+	<string id="treasure_ammo_name">
+		<text>Ammunition</text>
+	</string>
+	<string id="treasure_mutant_name">
+		<text>Part of Monster</text>
+	</string>
+	<string id="treasure_addon_name">
+		<text>Add-ons to weapons</text>
+	</string>
+	<string id="treasure_eat_name">
+		<text>Food</text>
+	</string>
+</string_table>

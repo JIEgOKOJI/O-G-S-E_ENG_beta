@@ -1,0 +1,336 @@
+--/ news_main_spawn.script /--
+--/ Mob spawn news /--
+--/ OGS Evolution Team 2009 /--
+--/ Использованы материалы by sokol_jack (sokol_jack@mail.ru) /--
+--/ version 0.4 /--
+
+--/ Модуль сообщений о появившихся монстрах /--
+
+
+local random_news = system_ini():r_s32("options","random_news")
+local spawn_message_flag = system_ini():r_s32("options","spawn_message_flag")
+
+local spawn_komm_message_prob = 0.5 -- общая вероятность комментариев к сообщениям о монстрах
+
+local s_mob_u = 0
+local s_mob_meter = 0
+
+
+local level_name = {
+	["l01_escape"] = {"Cordon", "the cordon"},
+	["l02_garbage"] = {"Garbage", "the Garbage"},
+	["l03_agroprom"] = {"Agroprom", "on the agricultural industry"},
+	["l03u_agr_underground"] = {"Agroprom underground", "in the basement of the Agricultural industry"},
+	["l04_darkvalley"] = {"Dark Valley", "in Dark Valley"},
+	["l04u_labx18"] = {"Laboratory X18", "in the laboratory x18"},
+	["l05_bar"] = {"Plant 'Rostok'", "the plant 'Rostock'"},
+	["l06_rostok"] = {"Wild Spaces", "at Wild Territory"},
+	["l07_military"] = {"Army stores", "in army warehouses"},
+	["l08_yantar"] = {"Yantar", "at Yantar"},
+	["l08u_brainlab"] = {"Laboratory x16", "in the laboratory X16"},
+	["l10_radar"] = {"Radar", "on the radar"},
+	["l10u_bunker"] = {"Laboratory X10", "in the laboratory X10"},
+	["l11_pripyat"] = {"Pripyat", "in Pripyat"},
+	["l12_stancia"] = {"Chernobyl", "the Chernobyl"},
+	["l12_stancia_2"] = {"Chernobyl", "the Chernobyl"},
+	["l12u_control_monolith"] = {"Chernobyl", "the Chernobyl"},
+	["l12u_sarcofag"] = {"Sarcophagus", "in Sarcophagus"}
+}
+
+local monster_classes = {}
+monster_classes[clsid.controller_s] 	= {"controller", "controller", "multiple controllers", "a group of controllers", "crowd controllers", "large cluster controllers"}
+monster_classes[clsid.chimera_s] 		= {"chimera", "химеру", "несколько химер", "группу химер", "стадо химер", "большое стадо химер"}
+monster_classes[clsid.poltergeist_s] 	= {"poltergeist", "poltergeist", "some poltergeist ", "a group of poltergeist", "crowd poltergeist", "a large crowd of poltergeist"}
+monster_classes[clsid.snork_s] 			= {"snork", "snork", "several snorks", "group of snorks", "the crowd of snorks", "a large crowd of snork"}
+monster_classes[clsid.gigant_s] 		= {"pseudo_gigant", "pseodo gigant", "some pseodogigants", "group of psedogigants", "the crowd of pseodogigants", "a large crowd of pseodogigants"}
+monster_classes[clsid.burer_s] 			= {"burer", "Burier", "some Buriers", "group Buriers", "crowd of Buriers", "a large crowd of Buriers"}
+monster_classes[clsid.bloodsucker_s] 	= {"bloodsucker", "bloodsucker", "few bloodsuckers", "group of bloodsuckers", "crowd of bloodsuckers", "large accumulation of blood-suckers"}
+monster_classes[clsid.zombie_s] 		= {"zombie", "zombie", "several zombies", "a group of zombies", "a crowd of zombies", "huge crowd of zombies"}
+monster_classes[clsid.boar_s] 			= {"boar", "boar", "a few wild boars", "group of wild boars", "a herd of wild boars", "a large herd of wild boars"}
+monster_classes[clsid.cat_s] 			= {"cat", "cat", "several cats", "a small flock of cats", "a flock of cats", "large flock of cats"}
+monster_classes[clsid.pseudodog_s] 		= {"pseudodog", "pseudodog", "several pseudodogs", "a small flock of pseudodogs", "flock of pseudodogs", "large flock of pseudodogs"}
+monster_classes[clsid.psy_dog_s] 		= {"psy_dog", "psy-dog", "several psy-dogs", "a small flock of psychic dogs", "a flock of psy-dogs", "large flock of psychic dogs"}
+monster_classes[clsid.dog_s] 			= {"dog", "blind dog", "several blind dogs", "a small pack of blind dogs", "pack of blind dogs", "big pack of blind dogs"}
+monster_classes[clsid.flesh_s] 			= {"flesh", "flesh", "few fleshes", "the group is fleshes", "herd of fleshes", "a large herd of fleshes"}
+monster_classes[clsid.tushkano_s] 		= {"tushkano", "tushkano", "several tushkanos", "a small flock of tushkanos", "flock of tushkanos", "a large flock of tushkanos"}
+monster_classes[clsid.fracture_s] 		= {"fracture", "Izlom", "a few izloms", "group of izloms", "the crowd of izloms", "a large group of izloms"}
+
+
+local spawn_add_text_green = {
+"There are wishing to hunt?",
+"Easy mark!",
+"Pelt need someone?"
+}
+local spawn_add_text_amber = {
+"There are brave stalkers who want to hunt?",
+"You can make good money on the skins, if you are not afraid!",
+"You can hunt! Who will make the company? One is not in hand.",
+"There is a chance to earn good money, if not scared.",
+"And someone's bones are picked...",
+"Do not relax.",
+"Who's with me critters drench?",
+"Someone had broken, I think...",
+"Not become a monkey on its own - its skin is more expensive.",
+"Safari no one ordered?",
+"Look out for squall."
+}
+local spawn_add_text_red = {
+"Feet barely blew.",
+"Thought my end had come. The legs themselves have taken.",
+"Bypassed away from sin.",
+"More careful out there.",
+"Be careful!",
+"Better there not to meddle.",
+"Now there is no move.",
+"Chose to make the legs.",
+"Thank God, his legs fast...",
+"Blood ... Lumps of bloody ... Someone not lucky...",
+"That I do if the wind in their favor was that? Question...",
+"Straight ambush ... No pass, no pass...",
+"Beware!"
+}
+
+local spawn_komment_text_green = {
+"Only time wasted teryat.",
+"Do not ... At that had not paid. Cartridges expensive.",
+"Propose to hunt together? No really. At only a trifle distracted.",
+"Just think ... Eka prodigy..."
+}
+local spawn_komment_text_amber = {
+"Requested to develop the company to hunt? Hmm ... That's possible.",
+"Where, say, see? The coordinates of the skin - to hunt.",
+"I can make a company. At this fun stuff to shoot.",
+"I join the hunt, if you take.",
+"Here they divorced! Step freely nowhere! Watering critters! Who's with me?!",
+"Divorced ... Shoot their long overdue!",
+"Hmm ... Disorder.",
+"Here are divorced! And where do, damn it! Should shoot until the late!"
+}
+local spawn_komment_text_red = {
+"Here is a pancake ... Now go and do not suneshsya...",
+"Oh, Christmas tree ... And I just go by ... Who is in the same direction? Maybe with some go clear?",
+"Divorced creatures of different ... Where only taken?",
+"Emt! And what to do now?",
+"Guys! Who's health is not hurt - maybe cleared area - we will do a good deed?",
+"Heh! Now back track ordered...",
+"And as you're alive, it was?",
+"Count - lucky that living away..."
+}
+
+local see_word_text={
+"seen",
+"noticed",
+"spotted",
+"saw",
+"saw",
+"found",
+"ran into",
+"bumped into",
+"almost bumped into",
+"met",
+"observed"
+}
+
+function on_spawn(obj)
+if random_news == 1 then
+if spawn_message_flag == 0 then return end
+if news_main_data.isIsolatedLevel(level.name()) or news_main_data.isIsolatedLevel(get_object_levelname(obj)) or news_main_data.chk_Vibros() then return end
+	if (obj) then
+		if (_g.IsMonster(obj)) then
+		
+		local mob_u = {}
+		mob_u.spawn_time = news_main_data.game_minutes()
+		mob_u.level = get_object_levelname(obj)
+		mob_u.name = get_clsid(obj)
+		
+		if s_mob_u == 0 or s_mob_meter == 0 then
+			s_mob_u = mob_u
+			s_mob_meter = 1
+			return
+		else
+			if (mob_u.spawn_time - s_mob_u.spawn_time > 5) or (mob_u.level ~= s_mob_u.level) or (mob_u.name ~= s_mob_u.name) then
+				mob_spawn_news(s_mob_u.spawn_time,s_mob_u.level,s_mob_u.name,s_mob_meter)
+				s_mob_u = mob_u
+				s_mob_meter = 1
+			else
+				s_mob_meter = s_mob_meter+1
+				return
+			end
+		end
+		
+	end
+end
+end
+end
+
+function mob_spawn_news(m_mob_spawn_time,m_mob_level,m_mob_name,m_mob_meter)
+if m_mob_level == "l12u_sarcofag" or m_mob_level == "l12u_control_monolith" or m_mob_level == "l12_stancia_2" or m_mob_level == "l12_stancia" or m_mob_level == "l11_pripyat" then return end
+if m_mob_level == "l10_radar" and not has_alife_info("aes_found_sarcofag") then return end
+if m_mob_level == "l08_yantar" and not has_alife_info("yan_kill_brain_done") then return end
+if not has_alife_info("esc_trader_can_leave") then return end
+if has_alife_info("pre_blowout") then return end
+	local alarm_status = "green"
+	local alarm_number = 1
+	local warning_status = "green"
+	
+	if m_mob_name == clsid.controller_s or m_mob_name == clsid.chimera_s or m_mob_name == clsid.gigant_s or m_mob_name == clsid.bloodsucker_s then alarm_status = "red"
+	elseif m_mob_name == clsid.poltergeist_s or m_mob_name == clsid.snork_s or m_mob_name == clsid.burer_s or m_mob_name == clsid.psy_dog_s then alarm_status = "amber"
+	else alarm_status = "green"
+	end
+	
+	if m_mob_meter == nil or m_mob_meter == 0 then alarm_number = 1
+	elseif m_mob_meter == 1 then alarm_number = 2
+	elseif m_mob_meter <= 3 then alarm_number = 3
+	elseif m_mob_meter <= 6 then alarm_number = 4
+	elseif m_mob_meter <= 10 then alarm_number = 5
+	elseif m_mob_meter > 10 then alarm_number = 6
+	end
+
+	if alarm_status == "red" then
+		if alarm_number <= 2 then warning_status = "amber"
+		elseif alarm_number > 2 then warning_status = "red"
+		end
+	elseif alarm_status == "amber" then
+		if alarm_number <= 2 then warning_status = "green"
+		elseif alarm_number <= 4 then warning_status = "amber"
+		elseif alarm_number > 4 then warning_status = "red"
+		end
+	elseif alarm_status == "green" then
+		if alarm_number <= 4 then warning_status = "green"
+		elseif alarm_number > 4 then warning_status = "amber"
+		end
+	end
+
+	if chek_warning_status(warning_status) then
+		local see_time = get_see_time(m_mob_spawn_time)
+		if see_time == false then return end
+		local from = news_main_new.gen_names_strings()
+		local see = gen_see_word()
+		local level = get_level_name(m_mob_level, 2)
+		local name = get_monster_name(m_mob_name, alarm_number)
+		local add_text = ""
+		
+		if warning_status == "red" and math.random() < 0.6 then add_text = spawn_add_text_red[math.random(table.getn(spawn_add_text_red))]
+		elseif warning_status == "amber" and math.random() < 0.4 then add_text = spawn_add_text_amber[math.random(table.getn(spawn_add_text_amber))]
+		elseif warning_status == "green" and math.random() < 0.3 then add_text = spawn_add_text_green[math.random(table.getn(spawn_add_text_green))]
+		else add_text = ""
+		end
+		
+		local text = see_time.." "..level.." "..see.." "..name..". "..add_text
+		local news_text = "%c[255,160,160,160]"..from..":\\n".."%c[default]"..text
+		db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(498,47,83,47), 0, 13000)
+			
+		if warning_status == "red" and (math.random() < spawn_komm_message_prob*0.9) then komment_str = spawn_komment_text_red[math.random(table.getn(spawn_komment_text_red))]
+		elseif warning_status == "amber" and (math.random() < spawn_komm_message_prob*0.7) then komment_str = spawn_komment_text_amber[math.random(table.getn(spawn_komment_text_amber))]
+		elseif warning_status == "green" and (math.random() < spawn_komm_message_prob*0.4) then komment_str = spawn_komment_text_green[math.random(table.getn(spawn_komment_text_green))]
+		else komment_str = ""
+		end
+		if komment_str ~= "" then
+			local from = news_main_new.gen_names_strings()
+			local news_text = "%c[255,160,160,160]"..from..":\\n".."%c[default]"..komment_str
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(498,47,83,47), math.random(1000,4000), 13000)
+		end
+		
+	end
+end
+
+function get_see_time(gm_mob_spawn_time)
+local msg_time = news_main_data.game_minutes()
+local m_see_time = msg_time - gm_mob_spawn_time
+	if msg_time - gm_mob_spawn_time < 3 then m_see_time = "Только что"
+	elseif msg_time - gm_mob_spawn_time < 10 then m_see_time = "A few minutes ago"
+	elseif msg_time - gm_mob_spawn_time < 20 then m_see_time = "Less than half an hour ago"
+	elseif msg_time - gm_mob_spawn_time < 30 then m_see_time = "About half an hour ago"
+	elseif msg_time - gm_mob_spawn_time < 45 then m_see_time = "Less than an hour ago"
+	elseif msg_time - gm_mob_spawn_time < 60 then m_see_time = "About an hour ago"
+	elseif msg_time - gm_mob_spawn_time < 90 then m_see_time = "Hour and a half ago"
+	elseif msg_time - gm_mob_spawn_time < 120 then m_see_time = "Today"
+	elseif msg_time - gm_mob_spawn_time >= 120 then m_see_time = false
+	end
+return m_see_time
+end
+
+function gen_see_word()
+	local see_word = see_word_text[math.random(table.getn(see_word_text))]
+	return see_word
+end
+
+function get_level_name(level_, index)
+	if index == nil then index = 1 end
+	local m_s_level 
+	if level_ == nil then
+		m_s_level = level.name()
+	else
+		m_s_level = level_
+	end
+	local m_tmp_str = ""
+	if level_name[m_s_level] ~= nil then
+		if (level_name[m_s_level][index] ~= nil) then
+			m_tmp_str = level_name[m_s_level][index]..""
+		end
+	end
+	return m_tmp_str
+end
+
+function get_object_levelname(obj)
+	local mlevel = "null"	
+	if (obj) then
+		local m_game_vertex
+		local nm = "nil"
+		if (obj.name) then nm = obj:name() end
+		if (isGameObject(obj)) then
+			m_game_vertex = obj:game_vertex_id()
+		else
+			m_game_vertex = obj.m_game_vertex_id
+		end
+		if (m_game_vertex) then
+			local lvert = game_graph():vertex(m_game_vertex)
+			if (lvert ~= nil and lvert.level_id) then
+				local lid = lvert:level_id()
+				if (lid ~= nil) then
+					mlevel = alife():level_name(lid)
+				end
+			end
+			if mlevel == nil then mlevel = "nil" end
+		end
+	end
+	return mlevel
+end
+
+function get_monster_name(gm_mob_name, index)
+	local m_comm = ""
+	local m_n = ""
+	if index == nil then index = 1 end
+		local m_clsid = gm_mob_name
+		if m_clsid then
+			m_comm = monster_classes[m_clsid]
+			if m_comm == nil then
+				m_n = ""
+			else
+				if (monster_classes[m_clsid][index] ~= nil) then
+					m_n = monster_classes[m_clsid][index]
+				end
+			end
+		end
+	return m_n
+end
+
+function isGameObject(obj)
+	local bResult = false
+	if (obj and obj.fov) then
+		bResult = true
+	end
+	return bResult
+end
+
+function chek_warning_status(warn_stat)
+if spawn_message_flag == 0 then return false
+elseif spawn_message_flag == 1 then
+	if warn_stat == "red" then return true else return false end
+elseif spawn_message_flag == 2 then
+	if warn_stat == "red" or warn_stat == "amber" then return true else return false end
+elseif spawn_message_flag == 3 then
+	if warn_stat == "red" or warn_stat == "amber" or warn_stat == "green" then return true else return false end
+else return false
+end 
+end

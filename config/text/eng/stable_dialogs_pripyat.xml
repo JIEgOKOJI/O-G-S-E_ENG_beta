@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="pri_followers_start_dlg_21">
+		<text>Let's move up the street. If anything happens, cover me.</text>
+	</string>
+	<string id="pri_followers_start_dlg_211">
+		<text>OK.</text>
+	</string>
+	<string id="pri_followers_start_dlg_31">
+		<text>Thanks for the help, Marked One. That was a hard fight. We can rest here. If you wanna keep going, I'll tell you more about the area. If you go back and turn right you'll reach the bus station. That area is open and not very safe. If you go forward you'll end up in front of the hotel. To the right of it is the Monolith base. Those guys have no limits. Behind the base is the stadium. We were planning to get to the station through it. That's all.</text>
+	</string>
+	<string id="pri_followers_start_dlg_311">
+		<text>Thank you.</text>
+	</string>
+	<string id="pri_followers_start_dlg_41">
+		<text>Thanks for the help. Good luck.</text>
+	</string>
+	<string id="pri_followers_start_dlg_411">
+		<text>Bye.</text>
+	</string>
+
+	<string id="zdorovo_strelok">
+		<text>Well, great shooter!</text>
+	</string>
+	<string id="otkuda_znaesh">
+		<text>And who are you? And how do you know that I'm gunner?</text>
+	</string>
+	<string id="my_zhe_sosedi">
+		<text>Heh heh ... Call me "The Dark Dealer. I know everything about everybody. I then had lived in a hotel right next to your number 26. And now, as you see, has a separate apartment ... Overlooking the city ...</text>
+	</string>
+	<string id="strannyi_tip">
+		<text>Strange you type ... Even about the number 26 you know ... While it may be we met before, before I got into the truck of death ...</text>
+	</string>
+	<string id="da_ne_boisya">
+		<text>Well, in general ... we assume ... that occurred. Anyway, if I were you enemy - the shot would be a long time. So do not panic. I've been in Pripyat has decided to establish trade. Stalkers now will not prevent trans-shipment point in the North Zone. Yes, and I staff to perform especially dangerous jobs are also needed ... Heh heh ... Come on, less talk, more action!</text>
+	</string>
+
+	<string id="pri_1_est_delicatnoe_delo">
+		<text>I've got one a delicate task. Need to bang a stalker-neutral. My name is Arnie, fills a place called "Arena" on the territory of the debt. And in the bar "100 X-ray" He is a frequent guest. I think you know him ...</text>
+	</string>
+	<string id="pri_1_znayu">
+		<text>Yes, of course I know him. But why did you have to kill him?</text>
+	</string>
+	<string id="pri_1_bereshsya">
+		<text>You came to me to ask questions or to earn money? This style, incidentally, is not as simple as it seems. But this, I think you yourself know when it pribesh ... So, get them from?</text>
+	</string>
+	<string id="pri_1_nu_4to">
+		<text>Oh yeah, before I had already heard rumors that manager arena is dead. You're perfectly mastered, the shooter. Here's your reward.</text>
+	</string>
+
+	<string id="pri_2_est_delicatnoe_delo">
+		<text>Maybe you and copes well with all previous assignments in his career. "But I am ready to offer you a really great job. There is one rabotenka for a real professional. Must be destroyed ... Leaders group Liberty.</text>
+	</string>
+	<string id="pri_2_znayu">
+		<text>Are you crazy? Yes they have there is an entire army base. How do you think I can cope with the whole group?</text>
+	</string>
+	<string id="pri_2_bereshsya">
+		<text>First of all, not with the whole group, but only with dvoimi - Lukas and miser. And secondly, these thugs, anarchists have long deserved death. You, the shooter, yet a master. Few people will cope with this kind of work better than you. Get them from?</text>
+	</string>
+	<string id="pri_2_nu_4to">
+		<text>Finally, with these svobodovtsami finished. Without a strong top of their group now will not survive long. And you coped well, Shooter. For you, apparently, did the two people that an entire army base - a piece of cake! Here's your reward ...</text>
+	</string>
+
+	<string id="pri_3_est_delicatnoe_delo">
+		<text>Now we all know that the leaders of the anarchists were dead. I have this really rad. But you must have already decided that under my mask hides General Voronin? Heh heh ... And here and there. Where will hide Voronin, now depends on you, because your goal is it. As well as Colonel Petrenko ...</text>
+	</string>
+	<string id="pri_3_znayu">
+		<text>Well, the scale of your job can not be surprised. What is the leaders of Debt annoy you?</text>
+	</string>
+	<string id="pri_3_bereshsya">
+		<text>You see, in all purity, and righteousness bravostyu Debt lies a small, but very unpleasant foulbrood. Debt - it really is nothing like a government spy paramilitary group, which has only one purpose - to destroy the zone and everything connected with it. Namely, all of us. You and me as well. And do not ask where I got such information. Undertake to, or not?</text>
+	</string>
+	<string id="pri_3_nu_4to">
+		<text>Excellent! Debt leaders are dead, now they have there is a start - will claw each other in an instant for the sake of power. And to me it is only at hand, heh, heh ... For such work relies considerable rewards. Take this!</text>
+	</string>
+
+	<string id="pri_4_k_4emu_eto_vse">
+		<text>Say, what goals do you still persecute?</text>
+	</string>
+	<string id="pri_4_a_ty_ne_ponyal">
+		<text>And what are you still not figured out shooter? Apparently head injury has affected a much more noticeable. Now that you killed the leaders of major factions, their merchants and other hangers-on which nearly kept the old order - and so now I have all the opportunities to establish a new order! I admit, not without your help. Heh heh ...</text>
+	</string>
+	<string id="pri_4_raz_tak">
+		<text>So that means you just used me in their dirty games! I'm afraid I can not let you install this your "new world order" ...</text>
+	</string>
+	<string id="pri_4_proshai">
+		<text>Can not afford? I like you! You walked on this shooter. You have a choice - leave the area or at least stop killing "for dubious benefits from its terrible creatures." Either be here in front of me with blood on their hands ... Your choice is obvious. And the consequences of it, too. I'm afraid, with your current reputation you long stretch ... As for me and the new order - hmm ... and whether there was actually Dark dealer? ..</text>
+	</string>
+	<string id="pri_4_ne_ponyal">
+		<text>I do not understand ... What do you mean was it?</text>
+	</string>
+
+</string_table>

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="af-maska">
+		<text>Mask</text>
+	</string>
+		<string id="enc_zone_artifact_af-maska">
+		<text>The usual mask, in a large kolichesvte produced in all former Soviet republics. Until now, millions of them are stored in warehouses. A necessity for the beginner in the Zone. Protects the respiratory organs from radioactive dust, harmful gases and vapors, biological agents in the air. Run hundred-meter race in a gas mask is not recommended.</text>
+	</string>
+	<string id="af-mine">
+        <text>PMN anti-personnel mine</text> 
+    </string>
+	<string id="af-mine_s">
+        <text>Mine PMN</text> 
+    </string>
+	<string id="enc_zone_artifact_af-mine">
+		<text>Anti-personnel mine blast pressure action. Is designed to incapacitate enemy personnel. Defeat a person applied by the destruction of the lower leg (foot), the explosion of a charge mine at the time of stepping foot on the push-cover mines. Typically, when an explosion completely torn his foot, which the soldiers stepped on a mine, and, depending on the distance of the second leg from the explosion, it could also be significantly damaged or does not get damaged at all. In addition, the shock wave sufficiently large explosive charge deprives a person of conscience; high temperature explosive gases can cause serious burns to the lower extremities. Death may occur from a painful shock, blood loss in the event of failure in first aid. Mina can be installed on the ground and in ground, in the snow, in all cases, translation mine in the firing position by hand. The term combat operation is not limited to mines. Mine is not equipped with a self-killer. Anti-handling devices and neobezvrezhivaemosti no. Mina has a fuse, which is part of the design mines. Fuse-type MD-9. Installing the mines safe enough.</text>
+	</string>
+	<string id="zapiska">
+		<text>Note</text>
+	</string>
+	<string id="zapiska_s">
+		<text>Note</text>
+	</string>
+	<string id="zapiska_l">
+		<text>A piece of paper on which is written: "The next time he goes into the arena, device so that it is there never came back. V."</text>
+	</string>
+	<string id="zapiska_m1_l">
+		<text>Someone's clumsy handwriting reads: "Well, I'm ready for a temporary truce ... only for the sake of this case. We have to deal with this labeled Gad. ZY Man, what a fiction with these paper notes? 21 in the yard!"</text>
+	</string>
+	<string id="zapiska_m2_l">
+		<text>A note by an unknown writes: "I'm glad you caught the essence. Your guys are able to powder the brains, so when the first case, suppose that handled our friend. Ps Do not underestimate the paper media:) V."</text>
+	</string>
+	<string id="amk_matras">
+		<text>Sleeping bag</text>
+	</string>
+	<string id="amk_matras_s">
+		<text>Sleeping bag</text>
+	</string>
+	<string id="enc_amk_matras">
+		<text>Hiking sleeping bag. Perhaps the most convenient way to stay in the Zone. Radiation does not save, but will protect from the rain.</text>
+	</string>
+    <string id="guitar">
+		<text>Guitar</text>
+	</string>
+      <string id="harmonica">
+		<text>Harmonica</text>
+	</string>
+      <string id="hand_radio">
+		<text>Portable radio</text>
+	</string>
+      <string id="hand_radio1">
+		<text>Broken portable radio</text>
+	</string>
+	<string id="detect">
+		<text>Dosimeter DKS-04</text>
+	</string>
+      <string id="detector">
+		<text>Universal detector DAS-4M</text>
+	</string>
+      <string id="st_detector">
+		<text>Anomaly detector Yeah-02</text>
+	</string>
+	<string id="Antirad">
+		<text>Antiradiation drugs</text>
+	</string>
+	<string id="Arm-heavy">
+		<text>Heavy stalker gear</text>
+	</string>
+	<string id="Arm-light">
+		<text>Light stalker gear</text>
+	</string>
+	<string id="Arm-medium">
+		<text>Medium stalker gear</text>
+	</string>
+	<string id="bandage">
+		<text>Bandages</text>
+	</string>
+	<string id="Binocul">
+		<text>Binoculars</text>
+	</string>
+	<string id="Bread">
+		<text>Bread</text>
+    </string>
+	<string id="pivo">
+		<text>Beer</text>
+	</string>
+	<string id="salo">
+		<text>Fat</text>
+	</string>
+	<string id="voda">
+		<text>Mineral water</text>
+	</string>
+	<string id="kefir">
+		<text>Kefir</text>
+	</string>
+	<string id="kartoshka">
+		<text>Potato</text>
+	</string>
+	<string id="syrok">
+		<text>Processed cheese</text>
+	</string>
+		<string id="cit_deadcity_maps_desc">
+		<text>A detailed map of the Dead City including Merc positions</text>
+	</string>
+	<string id="cit_deadcity_maps_name">
+		<text>Map of the Dead City</text>
+	</string>
+	<string id="cit_doctors_key_desc">
+		<text>Doctor's key to a secret stash in Pripyat</text>
+	</string>
+	<string id="cit_doctors_key_short_desc">
+		<text>Doctor's key</text>
+	</string>
+	<string id="Conserva">
+		<text>Tourist's Delight</text>
+	</string>
+	<string id="Detect1">
+		<text>Anomaly detector (DA-2)</text>
+	</string>
+	<string id="Detect2">
+		<text>Anomaly detector Yeah-02</text>
+	</string>
+	<string id="Detect3">
+		<text>Dosimeter DKG-01I</text>
+	</string>
+	<string id="Detect4">
+		<text>Universal detector DAS-4M</text>
+	</string>
+	<string id="Devic">
+		<text>Instruments and devices</text>
+	</string>
+	<string id="device-PDA">
+		<text>PDA</text>
+	</string>
+	<string id="device-torch">
+		<text>Flashlight</text>
+	</string>
+	<string id="enc_equipment_armors_arm-heavy">
+		<text>Protective suit. Weight: 18kg. Details: Protects the body from Jelly, Burnt Fuzz, most anomalies and physical damage. The torso and back are protected by built-in bio-metallic plates. The suit is equipped with an airtight, reinforced plastic helmet and two oxygen bottles. Note: During extended periods of use the suit tears through and gradually deteriorates beyond use.</text>
+	</string>
+	<string id="enc_equipment_armors_arm-light">
+		<text>Protective suit. Weight: 8 kg. Details: Protects the body from weak anomalies and physical damage. Equipped with an oxygen mask. Note: During extended periods of use the suit tears through and gradually deteriorates beyond use.</text>
+	</string>
+	<string id="enc_equipment_armors_arm-medium">
+		<text>Protective suit. Weight: 12 kg. Details: Protects the user from Jelly, Burnt Fuzz, many anomalies and physical damage. Equipped with an airtight helmet and an oxygen bottle. Note: During extended periods of use the suit tears through and gradually deteriorates beyond use.</text>
+	</string>
+	<string id="enc_equipment_armors_sci2">
+		<text>A red S.C.A.P.E suit with an airtight helmet. Weight: 11kg. Description: Protects the body from fire, acid, toxic gas, various anomalies, Burnt Fuzz and physical damage. Equipped with two oxygen bottles. Note: During extended periods of use the suit tears through and gradually deteriorates beyond use.</text>
+	</string>
+	<string id="enc_equipment_devic_binocul1">
+		<text>Military field binoculars</text>
+	</string>
+	<string id="enc_equipment_devic_detect1">
+		<text>Dosimeter DKS-04 is designed to measure the exposure dose (MED) and the exposure dose (ED) of the photon (gamma) ionizing radiation, as well as to evaluate, using the acoustic signal intensity of the photon (gamma), a hard beta radiation and heat flux density neutrons. It is used for operational radiation monitoring at nuclear power plants and factories in the works associated with sources of ionizing radiation and for individual monitoring.\n Measuring range - from 0.1 mSv/h to 1,0 Sv/h (from 10 mR/h to 100 R/h).\n The range of dose measurement - from 10 mSv to 1,0 Sv (from 1 mR to 100 R).\n Measurement error - ±25 %.\n Energy range - from 50 keV to 3 MeV.\n Operating temperature range - from +10 to +35 gr.C.\n Weight - 0,25 kg.\n For the work must be activated by placing the device on his belt.</text>
+	</string>
+	<string id="enc_equipment_devic_st_detector1">
+		<text>Yeah-02 (detector of abnormal activity) - A device that indicates the presence of anomalous fields and disturbances and report them to beep. Combined with a dosimeter, DKS-04.\n  For the work must be activated by placing the device on his belt.</text>
+	</string>
+	<string id="enc_equipment_devic_detector1">
+		<text>DAS-4M (special activity detector) - Universal anomaly detector, developed by scientists in the Zone. Determines not only the presence of anomalous fields and disturbances, but also shows a map of their location. Communicate them to the audio signal. Combined with a dosimeter, DKS-04.\n For the work must be activated by placing the device on his belt.</text>
+	</string>
+      <string id="enc_equipment_devic_hand_radio">
+		<text>Army radio. Radius - 5 km. Adjusted to a fairly wide range of frequencies on which you can sometimes catch some interesting things.</text>
+	</string>
+      <string id="enc_equipment_devic_hand_radio1">
+		<text>Some master lomaster tried to do from the army radio FM-radio. But apparently, it did not work.</text>
+	</string>
+	<string id="enc_equipment_devic_device-PDA1">
+		<text>Personal digital assistant - indispensable in the Zone.</text>
+	</string>
+	<string id="enc_equipment_devic_device-torch1">
+		<text>A powerful flashlight. Very useful thing in low light conditions. In an emergency, you can use it for "otmahivaniya" from the mutants, although the practical value of this action is close to zero.</text>
+	</string>
+	<string id="enc_equipment_devic_device-torch1_m1">
+		<text>Upgraded flashlight with a more powerful lamp. Improvements to the transformer is reduced and battery charging. But the weight of the transformer in the 10 kg of force to seriously consider before making such a purchase. Would be very useful if you're going to look for artifacts at the bottom of rivers and reservoirs and are looking for a quick way to get there.</text>
+	</string>
+	<string id="enc_equipment_energydrink">
+		<text>«Adrenalin RUSHsian» - excellent energy drink. Manufacturer - soft shop distillery "Duty". Ingredients: caffeine, taurine and powerful vitamin complex - components, relieves fatigue and additive effect.\n If you're tired unable to budge - this is exactly what you need.</text>
+	</string>
+	<string id="enc_equipment_food_bread1">
+		<text>Hard to say who manages to bake these loaves in the Zone, but the bread isn't contaminated and is perfectly edible. Well, at least none of the stalkers have complained about it.</text>
+	</string>
+	<string id="enc_equipment_food_kartoshka1">
+		<text>Выращенная на территории Зоны, картошка также популярна, как и во всем остальном мире. Но у зоновской картошки есть один побочный эффект: она немного заражена радиацией. Рекомендуется запивать водкой, которую, в свою очередь, нужно запивать кефиром. Дешево и вкусно.</text>
+	</string>
+	<string id="enc_equipment_food_syrok">
+		<text>Processed cheese is not less nutritious than canned, but much lighter in weight.</text>
+	</string>
+	<string id="enc_equipment_food_conserva1">
+		<text>"Beef stew pig. Extra Class" - made for the Ministry of Defense in the city of Ulan-Ude in the company of the Military-Industrial Complex, one of the best home canned foods for camping - is ready for consumption without heating. Provider - commissioned officers of Army food stores. Shelf life from date of manufacture - 25 years. In the parlance of stalkers - Hryaburenka.</text>
+	</string>
+	<string id="enc_equipment_food_kolbasa1">
+		<text>Often, faute de mieux, the sausage - a mixture of chicken, soy substitutes and no one knows what else - breakfast, lunch and dinner Stalker. Judging by the weak radiation to cook some of the animals went to the Zone, but there can be like. </text>
+	</string>
+	<string id="enc_equipment_food_vodka1">
+		<text>Ingredients: alcohol Royale, artesian water, sugar, bagasse from artifacts and anomalies, "parts" of mutants. Cleaning - "milk." Inscription on the label - "Do not let yourself dry. Vodka local production - analog "buryachihi" and "Spotykach" last good cleaning. In the most expensive and capacious bottles - Glowing Eye bloodsucker (collection version). In such bottles marked with asterisks number of hunters that this vampire had lunch. The title of producer in the courts still defend the two producers - Company «GSC» and Bar "100 X-Ray" base "duty". In view of the insolvency framework of the state, the constant re-registration of residence plaintiffs, the holder of the brand «StalkeroFFka» still not defined. That, however, does not prevent both sides to produce it and sell it. A clandestine group workshop "Freedom" is almost filled up the whole area of counterfeit goods, although the smell of the counterfeit impression that the main ingredients were rather old unwashed foot wraps, nastoennye on cologne "Russian Forest". Before use, frozen. Recommendations: a good drink (especially if you pinch your nose and do not relish a drink in the mouth), barely noticeably reduces radiation exposure. Contraindications: not recommended to use minors, pregnant and lactating women, persons who are driving, as well as persons with disabilities in mind. Addictive and as a consequence, "alcoholism", so it should not be abused.</text>
+    </string>
+    <string id="enc_equipment_food_guitar1">
+        <text>The usual six-string guitar. After hiking in unsafe places Zones stalkers like the evening to sit by the campfire and pobrenchat the guitar - it calms and relaxes.</text>
+	</string>
+    <string id="enc_equipment_food_harmonica1">
+        <text>In the Zone, every extra kilogram backpack can cost lives, nevertheless, harmonica is very popular among fans of live music.</text>
+	</string>
+	<string id="enc_equipment_food_voda1">
+		<text>Pure mineral water. Due to the fact that in the zone there are no sources of clean water - stalkers have to buy imported. Well relieves fatigue and eliminating the negative effects of the drugs at their frequent use.</text>
+	</string>
+	<string id="enc_equipment_food_kefir1">
+		<text>Kefir. A rare product in the zone. Excellent displays alcohol.</text>
+	</string>
+	<string id="enc_equipment_food_pivo1">
+		<text>Beer - it is the beer. Good to drink, especially in front of TV. Due to shortage of TVs in the Zone, is used to reduce radiation exposure. Recommended to drink kefir.</text>
+	</string>
+	<string id="enc_equipment_food_salo1">
+		<text>Big Shmat fat. Do stalkers Ukrainians - the subject of worship. Because of the greed merchants who make bacon from a local psevdoploti, it is a bit tainted by radiation. But the bad utalyaet famine and goes well with vodka.</text>
+	</string>
+	<string id="enc_equipment_medi_antirad1">
+		<text>Reduces the effects of radiation from the body. In a separate bag and even bar "Gematogen".</text>
+	</string>
+	<string id="enc_equipment_medi_bandage1">
+		<text>Individual dressing package (IPP-1). Designed to provide medical care upon application of primary dressings for wounds. Package "IPP-1" consists of a bandage, and two cotton-gauze pads. The outer cover package is used for imposing tight bandages. Main purpose - treatment of gunshot wounds, as well as all types of bleeding. Contraindications not. Shelf life - 5 years.</text>
+	</string>
+	<string id="enc_equipment_medi_medkit1">
+		<text>An all-purpose medkit. Used to treat injuries of various types and severities - wounds, burns, poisonings, etc.</text>
+	</string>
+	<string id="enc_equipment_medi_medkit2">
+		<text>A specialized medical set to fight against physical damage and blood loss. In it is included a component for blood coagulation, antibiotics, immunal stimulators, and painkillers.</text>
+	</string>
+	<string id="enc_equipment_medi_medkit3">
+		<text>Medical set, designed especially for work in the Zone. The set includes means of healing wounds as well as means of eliminating radionucleodes from the body. Prevents the development of radiowave sickness and lowers the dose of accumulated radiation.</text>
+	</string>
+	<string id="energy_drink_name">
+		<text>«Adrenalin RUSHsian»</text>
+	</string>
+	<string id="energy_drink_short_name">
+		<text>«Adrenalin RUSHsian»</text>
+	</string>
+	<string id="Equipment">
+		<text>Gear and food</text>
+	</string>
+	<string id="Food">
+		<text>Food</text>
+	</string>
+	<string id="Kolbasa">
+		<text>Diet sausage</text>
+	</string>
+	<string id="Medi">
+		<text>Medicaments</text>
+	</string>
+	<string id="Medkit">
+		<text>Medkit</text>
+	</string>
+	<string id="Medkit_army">
+		<text>Army first aid kit</text>
+	</string>
+	<string id="Medkit_scientific">
+		<text>Scientific first aid kit</text>
+	</string>
+	<string id="Sci2">
+		<text>Scientific EXP-4</text>
+	</string>
+	<string id="Vodka">
+		<text>Vodka «StalkeroFFka»</text>
+	</string>
+	<string id="st_detector">
+		<text>Anomaly detector Yeah-02</text>
+	</string>
+	<string id="st_detector2">
+		<text>Anomaly detector Yeah-02</text>
+	</string>
+	<string id="st_detector3">
+		<text>Special anomaly detector DAS-4M</text>
+	</string>
+	<string id="st_detector_descr1">
+		<text>Dosimeter DKS-04. The first and paramount instrument for a stalker who does not want to become bald on the second day of stay in the Zone. In the presence of radiation will sound siglnala.\n For the work must be activated by placing the device on his belt.</text>
+	</string>
+	<string id="st_detector_descr2">
+		<text>Yeah-02 - A device that indicates the presence of anomalous fields and disturbances, indicating that they beep. Combined with a dosimeter, DKS-04.\n  For the work must be activated by placing the device on his belt.</text>
+	</string>
+	<string id="st_detector_descr3">
+		<text>DAS-4M - Universal anomaly detector, developed by scientists in the Zone. Determines not only the presence of anomalous fields and disturbances, but also shows a map of their location. Notifies them beep. For the work must be activated by placing the device on his belt.</text>
+	</string>
+	<string id="st_grenade_gd5">
+		<text>Smoke grenade DG-05</text>
+	</string>
+	<string id="Conserva2">
+		<text>Soup Noodles</text>
+	</string>
+	<string id="enc_equipment_food_conserva2">
+		<text>Soup Noodles. With the constant lack of time and place for a normal dinner, life stalkers confidently entered instant soups range of options: meat, fish, mushroom, fish soup, borscht, and different vegetable options. Many prefer the soups - the first and second course in one cup.</text>
+	</string>
+	<string id="enc_bioradar">
+		<text>This amazing device allows you to detect at a distance of 50 meters, many life forms, like warm-blooded and cold-blooded. Principle of its operation is described in detail in the monograph of Professor Bolshakov, "Practical application of the unique properties of the artifact ZX-232" Crystal Ball "in the field, as well as in the thesis assistant Semenov" Biological organisms as natural radio transceivers.
+                Briefly describe the operation of the device can be so: the majority of living organisms emit during the movement of electromagnetic waves that can zapelengovat and measure their frequency, intensity and determine the source position in space. When you work the muscles, the nerve fiber to muscle bundle receives electrical impulses, and the living tissue, and tissue, which retain their current conductivity become microtransmitter.
+                Quite a long time it was thought that due to the extreme weakness of the signals to pinpoint their possible only under laboratory conditions, using bulky amplifying equipment - according to this principle worked and work, so-called "auroskopy" - devices that fix around the living body "aura" which is, in fact, electromagnetic radiation of a certain range. During the study the various artifacts Zone scientists came upon a very interesting effect of one of the subjects - an artifact, "Crystal Ball".
+                A small handheld radio assistant Semenova unexpectedly began to take a signal of private radio station, located in a provincial area of Argentina. Having studied the unusual phenomenon, the collective scientific camps came to the only plausible explanation: an artifact of the "Crystal Ball" amplifies and filters the noise from the radio ordered. Obviously, the microscopic part of the Argentine radio receiving a signal present at the location of the camp, but was so small that no powerful receivers have not been able to fix it.
+                However, it was worth only bring a console connection to a stationary camp "Crystal Ball", as the noise from the air began to be heard hundreds of voices in the further setting up successfully filtered out and caught almost all the signals available on a range of remote communication transmitters, the most distant of which was at a distance of 14 thousands of miles!
+                To develop the project "Crystal interception immediately imposed a stamp" top secret ", but until that time, some devices made with such amazing properties, yet the public domain. The device "bioradar Peleng radiation of living tissues of the body, filtering them by frequency and distance. As a result, conventional liquid crystal display you can see the marks that indicate living organisms. Since the unit was created primarily for exploration in the Zone, an assistant Semenov uploaded to the database device information about the frequencies most often emitted by members of the local fauna. Unfortunately, the organisms are the Zone as quickly mutate, that in a few weeks a list of frequencies had to be updated. However, the resourceful stalkers among the first winners of the device, invented a simple, though barbaric way bearing mutants: If a device is best at the waist, put a sample of biological tissue of the monster types you want to pinpoint - the device will automatically reset, and mutants of the desired type will be displayed. The disadvantages of the device is its high cost.</text>
+	</string>
+	<string id="bioradar">
+		<text>Bioradar</text>
+	</string>
+	<string id="enc_equipment_mre_name">
+		<text>Ration MRE</text>
+	</string>
+	<string id="enc_equipment_mre">
+		<text>Ration (MRE - meals ready to eat) - standard military option ready to use (it contains about 1300 calories). Shelf life, ensuring 100 percent. safety - six months (80 percent .- up to three years). In existence since the 80's ration in 1993, was incorporated 70 new components. At the same time 14 least popular dishes were removed from the range. But their number has increased (for example, add four vegetarian). Weight of individual ration 0.73 kg.</text>
+	</string>
+	<string id="enc_equipment_irp-b_name">
+		<text>Ration PRI-B</text>
+	</string>
+	<string id="enc_equipment_irp-b">
+		<text>Individual diet PRI-B (combat). Designed to provide power to soldiers performing combat missions in the field and everyday life in cases where it is not possible to prepare hot food from the basic rations. Diet is a collection of canned and concentrated products. Diet equipped for meals (breakfast, lunch and dinner) per person per day. The mass of solder from 1,3 to 1,7 kg. (Depending on configuration) Energy value - not less than 3,600 kcal.</text>
+	</string>
+	<string id="bread_rad">
+        <text>Bread</text>
+    </string>
+    <string id="enc_food_bread_rad">
+        <text>Once there was a normal bread. Became radioactive piece of dough. If tired of life - you can eat.</text>
+    </string>
+    <string id="kolbasa_rad">
+        <text>Sausage "Vovilo-Cherenkov"</text>
+    </string>
+    <string id="enc_food_kolbasa_rad">
+        <text>Damn, not only that it is not clear from what was done, so now no vodka, no zapesh.</text>
+    </string>
+    <string id="tag_bad_food_tip">
+        <text>Damn! In the backpack food has deteriorated.</text>
+    </string>
+    <string id="kartoshka_rad">
+        <text>Potato</text>
+    </string>
+    <string id="enc_food_kartoshka_rad">
+        <text>Previously, little fonila now - almost glows. It is interesting that out of it can grow?</text>
+    </string>
+    <string id="salo_rad">
+        <text>Fat</text>
+    </string>
+    <string id="enc_food_salo_rad">
+        <text>And how delicious it was, but with garlic. Now you can just throw it away.</text>
+    </string>
+	<string id="mre_rad">
+		<text>Ration MRE</text>
+	</string>
+	<string id="enc_equipment_mre_rad">
+		<text>Unlike the Russian counterpart, suffered more. Many of the products or are not suitable for eating at all, or they give slightly irradiation.</text>
+	</string>
+	<string id="irp-b_rad">
+		<text>Ration PRI-B</text>
+	</string>
+	<string id="enc_equipment_irp-b_rad">
+		<text>Surprisingly, quite a nice survived irradiation induced radioactivity is almost absent.</text>
+	</string>
+	<string id="Conserva2_rad">
+		<text>Soup Noodles</text>
+	</string>
+	<string id="enc_equipment_food_conserva2_rad">
+		<text>ow, a stomach ulcer achieved 100%. It is better to throw out.</text>
+	</string>
+	<string id="kefir_rad">
+		<text>Kefir</text>
+	</string>
+	<string id="enc_equipment_food_kefir1_rad">
+		<text>Kefir. A rare product in the zone. Excellent displays alcohol, which would help bring the radiation received, if this drink bag.</text>
+	</string>
+	<string id="syrok_rad">
+		<text>Melted cheese</text>
+	</string>
+	<string id="enc_equipment_food_syrok_rad">
+		<text>Melted cheese is not more nutritious than canned, but you will soon become much lighter in weight.</text>
+	</string>
+	<string id="Conserva_rad">
+		<text>"Beef stew pig"</text>
+	</string>
+	<string id="enc_equipment_food_conserva1_rad">
+		<text>Even the tin was not able to protect the contents. We'll have to throw out.</text>
+	</string>
+	<string id="enc_equipment_repairkit">
+		<text>A set of tools, fixtures and rags for cleaning and repairing ammunition in field conditions. Unfortunately, the contents of a set of home-made by some of folk art and can not withstand heavy use. </text>
+	</string>
+	<string id="repairkit">
+		<text>Marching repair kit</text>
+	</string>
+	<string id="enc_equipment_sigaret">
+		<text>By type such as cigarettes, though, from what they are, can be judged by what names they give stalkers: "Tales of Vienna Woods," "Grandmother's mattress," "coal".</text>
+	</string>
+	<string id="sigaret">
+		<text>Cigarettes</text>
+	</string>
+	<string id="D-IX">
+		<text>"The drug is D-IX"</text>
+	</string>
+	<string id="enc_equipment_D-IX">
+		<text>History Experiment D-IX "was launched in November 1944 in Sachsenhausen concentration camp. On the semicircular appelplatse every morning and every evening, marched 18 prisoners with backpacks weighing 20 kilograms each. In a circle and non-stop. They could get no rest to 90 miles a day. So were tested recently opened facilities (D-IX) for the energy conservation of the human body and reduce the need for sleep. The drug is D-IX contains 5 mg of synthetic cocaine production company "Ernst Merk", 3 mg amphetamine methamphetamine, 5 mg of oxycodone (opiate-based painkiller).</text>
+	</string>
+	<string id="bipsizon">
+		<text>"BIPSIZON"</text>
+	</string>
+	<string id="enc_equipment_bipsizon">
+		<text>Amazing product made specifically for the abnormal conditions of the Zone. Protects against psychic radiation exposure controller for a short time or remove this effect completely. Some say that the tool is designed specifically for MIIZ divisions leading field trials within the perimeter, others - that it was invented by Colonel voenstalov Bibik and the name stands for "Bibik - Psi-defense - Zone." Whatever it was, the drug enjoyed great success with the stalkers, but it is hard to get and it costs dearly.</text>
+	</string>
+	<string id="autodoctor">
+		<text>«IDLK-P»</text>
+	</string>
+	<string id="enc_autodoctor">
+		<text>Individual Diagnostic and Treatment Complex. Consists of the device for multiple sensors and a set of medications for various purposes. Designed to detect different types of injuries suffered by the body and drug administration to eliminate them. Depending on the application is divided into civil and field model.</text>
+	</string>
+	<string id="detector_minefinder">
+		<text>"Scanning minesweeper AFM-2м"</text>
+	</string>
+	<string id="detector_minefinder_s">
+		<text>«ACM-2m»</text>
+	</string>
+	<string id="enc_equipment_devic_minefinder">
+		<text>The latest military development of AFM-2m. Compact self-scanning minesweeper. Warns of finding mines beep and can transmit information about her whereabouts on the navigator. Radius sustainable detect mines - seven meters.</text> 
+    </string>
+	<string id="yod">
+		<text>«Drug B-190»</text>
+	</string>
+	<string id="enc_equipment_yod">
+		<text>Drug B-190 ensures the preservation of life 9 / 10 exposed when receiving an absolutely lethal dose of radiation. The drug should be prinrmat prior to the anticipated exposure possible, otherwise the effect will not be! The drug is almost non-toxic.</text>
+	</string>
+</string_table>

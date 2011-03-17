@@ -1,0 +1,13 @@
+wpn_sig550 \n
+ammo_5.56x45_ap \n
+wpn_pm \n
+ammo_9x18_pmm \n
+grenade_f1 = 2 \n
+
+device_torch \n
+
+bread = 1, prob=0.8 \n
+kolbasa	= 1, prob=0.6 \n
+conserva = 1, prob=0.4 \n
+energy_drink = 1, prob=0.3 \n
+voda = 1, prob=0.7

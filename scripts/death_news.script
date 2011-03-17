@@ -1,0 +1,372 @@
+--/ Stalker Death news Mod /--
+--/ by sokol_jack (sokol_jack@mail.ru) /--
+--/ дополнена и исправлена OGS Evolution Team 2009 /--
+--/ version 0.3 /--
+
+
+local news_showtime = system_ini():r_s32("options","news_showtime") -- стандартное врем€ показа сообщени€
+local post_message_prob = 0.6 -- ¬еро€тность того, что будет комментарий к смерти.
+
+local level_name = {
+	["l01_escape"] = {"Cordon", "on Cordon"},
+	["l02_garbage"] = {"Garbage", "on Garbage"},
+	["l03_agroprom"] = {"Agroprom", "On the agricultural industry"},
+	["l03u_agr_underground"] = {"Agroprom Underground", "In the basement of the Agricultural industry"},
+	["l04_darkvalley"] = {"Dark Valley", "In the Valley of the Dark"},
+	["l04u_labx18"] = {"Laboratory x18", "In the laboratory x18"},
+	["l05_bar"] = {"Plant 'Rostock'", "At the plant 'Rostock'"},
+	["l06_rostok"] = {"Wild Spaces", "At the Wild Territory"},
+	["l07_military"] = {"Army stores", "At Army depots"},
+	["l08_yantar"] = {"Yantar", "on Yantar"},
+	["l08u_brainlab"] = {"Laboratory x16", "In the laboratory х16"},
+	["l10_radar"] = {"Radar", "on the Radar"},
+	["l10u_bunker"] = {"Laboratory X10", "In the laboratory X10"},
+	["l11_pripyat"] = {"Pripyat", "In Pripyat"},
+	["l12_stancia"] = {"Chernobyl", "At Chernobyl"},
+	["l12_stancia_2"] = {"Chernobyl", "At Chernobyl"},
+	["l12u_control_monolith"] = {"Chernobyl", "At Chernobyl"},
+	["l12u_sarcofag"] = {"Sarcophagus", "In the Sarcophagus"}
+}
+
+local comm = {
+	stalker = "Stalker",
+	monolith = "Monolith",
+	military = "Military",
+	killer = "Mercenary",
+	ecolog = "Ecolog",
+	dolg = "Duty",
+	freedom = "Freedom",
+	bandit = "Bandit",
+	zombied = "Zombie Stalker",
+	stranger = "Stalker",
+	}
+
+local monster_classes = {}
+monster_classes[clsid.controller_s] 	= {"controller", "controller", "controller", "controller", "controller", "controllers"}
+monster_classes[clsid.chimera_s] 		= {"chimera", "chimera", "Chimera", "chimera", "chimera", "chimeras"}
+monster_classes[clsid.poltergeist_s] 	= {"poltergeist", "poltergeist", "poltergeist", "poltergeist", "poltergeist", "poltergeist"}
+monster_classes[clsid.snork_s] 			= {"snork", "snork", "snork", "snork", "snork", "snorks"}
+monster_classes[clsid.gigant_s] 		= {"pseudo_gigant", "pseodo gigant", "pseodo gigant", "pseodo gigant", "pseodo gigant", "pseodo gigants"}
+monster_classes[clsid.burer_s] 			= {"burer", "burier", "burier", "burier", "burier", "burier"}
+monster_classes[clsid.bloodsucker_s] 	= {"bloodsucker", "bloodsucker", "bloodsucker", "bloodsucker", "bloodsucker", "bloodsuckers"}
+monster_classes[clsid.zombie_s] 		= {"zombie", "zombie", "zombie", "zombie", "zombie", "zombie"}
+monster_classes[clsid.boar_s] 			= {"boar", "boar", "boar", "boar", "boar", "boars"}
+monster_classes[clsid.cat_s] 			= {"cat", "cat", "cat", "cat", "cat", "cats"}
+monster_classes[clsid.pseudodog_s] 		= {"pseudodog", "pseudodog", "pseudodog", "pseudodog", "pseudodog", "pseudodogs"}
+monster_classes[clsid.psy_dog_s] 		= {"psy_dog", "psy-dog", "psy-dog", "psy-dog", "psy-dog", "psy-dogs"}
+monster_classes[clsid.dog_s] 			= {"dog", "dog", "dog", "dog", "dog", "dogs"}
+monster_classes[clsid.flesh_s] 			= {"flesh", "flesh", "flesh", "flesh", "flesh", "fleshses"}
+monster_classes[clsid.tushkano_s] 		= {"tushkano", "tushkano", "tushkano", "tushkano", "tushkano", "tushkanos"}
+monster_classes[clsid.fracture_s] 		= {"fracture", "izlom", "izlom", "izlom", "izlom", "izloms"}
+
+local anomaly_classes = {}
+anomaly_classes[clsid.zone_bfuzz] 			= {"Rusty hair", "rusty hair"}
+anomaly_classes[clsid.zone_galantine] 		= {"Funnel", "funnel"}
+anomaly_classes[clsid.zone_galant_s] 		= {"Funnel", "funnel"}
+anomaly_classes[clsid.zone_mincer] 			= {"Carousel", "carousel"}
+anomaly_classes[clsid.zone_mincer_s] 		= {"Carousel", "carousel"}
+anomaly_classes[clsid.zone_mosquito_bald] 	= {"Springboard", "springboard"}
+anomaly_classes[clsid.zone_mbald_s] 		= {"Springboard", "springboard"}
+anomaly_classes[clsid.ameba_zone] 			= {"Aspic", "aspic"}
+
+local messages_comment = {
+"More corpse - a corpse less, heh!",
+"Oh! Sidrych, though I did not kill him, but you still owe!",
+"Barman, Th and do something now? Okay, I'll take a look at the corpse, suddenly on a flash drive, this is the infa ... If Che - write in a personal.",
+"Yes, when did it end?!... ",
+"Your mother! And I thought that all they decided...",
+"Blah, just yesterday seen him ... Sorry kid...",
+"Earth down! A good stalker was ... I'll go pick up the CCP - can loot was...",
+"Well, here's one more competitor in a different world away ... Amen!...",
+"And said - a charm! ... heh!...",
+"Here is blah, and he told me the money should...",
+"Well, it serves him right!!!",
+"One stalker smaller one corpse more.",
+"Ass smell - not good it is...",
+"Loser...",
+"I pupeyu ... He said that he is safe there, safe ... Well that I refused at the last moment with him to go, and then look - with him and would Poleg...",
+"NDA ... Walked behind the swag ... Fate...",
+"What can I say ...? Area stalker - not a place for a stroll...",
+"I hope not suffered a tramp...",
+"Only yesterday there cleaning done, it was necessary to make the trail ... Blah...",
+"A good man was risky, the swag was divided when it was tight, ground down, brother, stalker!",
+"Another zone alternatively, when the mind is already rack up ...? Yet they know - not less than the rootstock must go!...",
+"Ta-a-ak ... Where is he ditched? ... It is necessary to copy the coordinates...",
+"It serves him right!",
+"Ah, the Zone ... how many lives ruined..." ,
+"Ah, good man was there, but too cocky, that's plunge...",
+"Eeeh ... And he promised me to get the barrel kondovy ... Again swag Sidor bear...",
+"They said!... Do not come back on the same Putin promised proo!...",
+"Bah! But not this stalker yesterday that the bar is cut?...",
+"Oba-na! I am now a sin to the soul not take it! But the loot with the Bartender stryasu...",
+"Another soul Zone Visor ... How many more will take?...",
+"Sorry guys...",
+"I've been on this anecdote recalled..."
+}
+
+
+local victim_pos = nil
+
+function on_death(victim, killer)
+if system_ini():r_s32("options","random_news") == 1 then
+if news_main_data.isIsolatedLevel(level.name()) or news_main_data.chk_Vibros() then return end
+	if (victim ~= nil) then
+		if (_g.IsMonster(victim)) then
+			--on_mob_death(victim, killer)
+		end
+		if (_g.IsStalker(victim)) then
+			local m_obj
+			if (isGameObject(victim)) then
+				m_obj = victim
+				victim_pos = level.object_by_id(victim:id()):position()
+			else
+				m_obj = get_obj(victim.id)			
+				victim_pos = level.object_by_id(victim.id):position()		
+			end
+			if (m_obj) then
+				--if (IsNpcStalker(m_obj)) then
+					on_stalker_death(victim, killer)
+				--else
+					--on_npc_death(victim, killer)
+				--end
+			end
+		end	
+	end
+end
+end
+
+
+-- ѕогиб сталкер.
+function on_stalker_death(victim_, killer_)
+	if (victim_ == nil) then return	end
+
+	local m_killer = ""
+	local m_killer_s = ""
+	local m_victim = ""
+	local victim
+	if (isGameObject(victim_)) then
+		victim = victim_
+	else
+		victim = get_obj(victim_.id)
+	end
+	
+	if prefilter(victim) == false then return end
+	
+	local killer
+	local m_name  = get_npc_name(victim)
+	local m_level = get_level_name(get_object_levelname(victim))
+	local m_comm  = get_npc_community(victim)
+	local s_comm = ""
+	local m_post_message = ""
+	if m_comm and comm[m_comm] then
+		s_comm = " ("..comm[m_comm]..")"
+	end
+	local m_string = m_name..s_comm..". "..m_level.."."
+	local news_text = "%c[255,160,160,160]".."Stalker died:".."\\n".."%c[default]"..m_string
+	db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,658,83,47), 7000, 5000)
+	if math.random() < post_message_prob then
+		m_post_message = messages_comment[math.random(table.getn(messages_comment))]
+	end
+	if (m_post_message ~= "" and filter(victim)==true) then
+		local from = news_main_new.gen_names_strings()
+		local news_text = "%c[255,160,160,160]"..from..":\\n".."%c[default]"..m_post_message
+		db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(498,47,83,47), math.random(8000,12000), news_showtime)		
+	end
+end
+
+function on_spawn(obj)
+	if (obj) then
+		if (_g.IsMonster(obj)) then
+			if news_main_data.isIsolatedLevel(get_object_levelname(obj)) or news_main_data.chk_Vibros() then return end
+			local level = get_level_name(get_object_levelname(obj), 2)
+			local name = get_monster_name(obj, 4)
+			local text = level.." seen "..name.."."
+			local news_text = "%c[255,160,160,160]".."Information channel:".."\\n".."%c[default]"..text
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,658,83,47), 0, news_showtime)
+		end
+	end
+end
+
+function isGameObject(obj)
+	local bResult = false
+	if (obj and obj.fov) then
+		bResult = true
+	end
+	return bResult
+end
+
+function IsAnomaly(obj)
+	if (obj) then
+		local otype = get_clsid(obj)
+		if (otype>172 and otype<180) then
+			return true
+		end
+	end
+	return false
+end
+
+function get_obj(id)
+	local m_obj = nil
+	if (id) then
+		m_obj = level.object_by_id(id)
+	end
+	return m_obj
+end
+
+function get_npc_name(obj)
+	local m_s_name = ""
+	if (obj) then
+		if (isGameObject(obj)) then
+			if (obj.character_name) then
+				m_s_name = obj:character_name()
+			end
+		else
+			local ob = get_obj(obj.id)
+			if (ob and ob.character_name) then
+				m_s_name = ob:character_name()
+			end
+		end
+	end
+	if (m_s_name == nil) then
+		m_s_name = ""
+	end
+	if (m_s_name == "") then
+		--m_s_name = get_npc_community(obj)
+	end
+	return m_s_name
+end
+
+function get_level_name(level_, index)
+	if index == nil then index = 1 end
+	local m_s_level 
+	if level_ == nil then
+		m_s_level = level.name()
+	else
+		m_s_level = level_
+	end
+	local m_tmp_str = ""
+	if level_name[m_s_level] ~= nil then
+		if (level_name[m_s_level][index] ~= nil) then
+			m_tmp_str = level_name[m_s_level][index]..""
+		end
+	end
+	return m_tmp_str
+end
+
+function get_object_levelname(obj)
+	local mlevel = "null"	
+	if (obj) then
+		local m_game_vertex
+		local nm = "nil"
+		if (obj.name) then nm = obj:name() end
+		if (isGameObject(obj)) then
+			m_game_vertex = obj:game_vertex_id()
+		else
+			m_game_vertex = obj.m_game_vertex_id
+		end
+		if (m_game_vertex) then
+			local lvert = game_graph():vertex(m_game_vertex)
+			if (lvert ~= nil and lvert.level_id) then
+				local lid = lvert:level_id()
+				if (lid ~= nil) then
+					mlevel = alife():level_name(lid)
+				end
+			end
+			if mlevel == nil then mlevel = "nil" end
+		end
+	end
+	return mlevel
+end
+
+function get_level_subname()
+	return level.name()
+end
+
+function IsNpcStalker(obj)
+	if (obj and _g.IsStalker(obj)) then
+		local m_comm  = get_npc_community(obj)
+		if (m_comm == "actor" or m_comm == "actor_dolg" or m_comm == "actor_freedom" or m_comm == "stalker" or m_comm == "dolg" or m_comm == "freedom") then			
+			return true
+		end
+	end
+	return false
+end
+
+function get_npc_community(obj)
+	local m_s_c = ""
+	if (obj) then
+		if(_g.IsMonster(obj)) then
+			m_s_c = get_monster_name(obj, 1)
+		else
+			if (obj.character_community) then				
+				m_s_c = obj:character_community()
+			elseif (obj.community) then
+				m_s_c = obj:community()
+			end
+		end
+	end
+	if (m_s_c == nil) then
+		m_s_c = ""
+	end
+	return m_s_c
+end
+
+function get_monster_name(obj, index)
+	local m_comm = ""
+	local m_n = ""
+	if index == nil then index = 1 end
+	if(_g.IsMonster(obj)) then
+		local m_clsid = get_clsid(obj)
+		if m_clsid then
+			m_comm = monster_classes[m_clsid]
+			if m_comm == nil then
+				m_n = ""
+			else
+				if (monster_classes[m_clsid][index] ~= nil) then
+					m_n = monster_classes[m_clsid][index]
+				end
+			end
+		end
+	end
+	return m_n
+end
+
+function get_anomaly_name(obj, index)
+	local m_name = ""
+	local m_n = ""
+	if index == nil then index = 1 end
+	if (IsAnomaly(obj)) then
+		local m_clsid = get_clsid(obj)
+		if m_clsid then
+			m_name = anomaly_classes[m_clsid]
+			if m_name == nil then
+				m_n = ""
+			else
+				if (anomaly_classes[m_clsid][index] ~= nil) then
+					m_n = anomaly_classes[m_clsid][index]
+				end
+			end
+		end
+	end
+	return m_n
+end
+
+function prefilter(obj)
+	if (obj and IsStalker(obj)) then
+		local m_comm  = get_npc_community(obj)
+		if (m_comm == "monolith" or m_comm == "zombied" or m_comm == "military" or m_comm == "ecolog") then			
+			return false
+		end
+	end
+	return true
+end
+
+function filter(obj)
+	if (obj and IsStalker(obj)) then
+		local m_comm  = get_npc_community(obj)
+		if (m_comm == "bandit" or m_comm == "monolith" or m_comm == "zombied" or m_comm == "military" or m_comm == "ecolog") then			
+			return false
+		end
+	end
+	return true
+end

@@ -1,0 +1,1016 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>
+<!-- megadeath_mod -->
+
+<!-- komandir gruppy stalkerov na agroprome - dolgovec s ballolnami, pohoj na glavnogo stalkera na pervoy zastave bara, staryy -->
+	<specific_character id="agr_dolg_glavnyi" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_mask_1</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_dolg_regular_bio</bio>
+
+		<class>bar_stalker_dolg</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<money min="1200" max="18600" infinitive="0"></money>
+		
+		<rank>955</rank>
+		<reputation>0</reputation>
+ 
+		<visual>actors\dolg\stalker_do_balon_7</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_abakan_m1 \n
+			ammo_5.45x39_fmj \n
+			wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+			hand_radio \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+		#include "gameplay\character_criticals_6.xml"
+
+		<start_dialog>agr_dolg_glavnyi_hello</start_dialog>
+		<actor_dialog>agr_dolg_glavnyi_tell</actor_dialog>
+		<actor_dialog>agr_dolg_glavnyi_tell_second</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- nervnyy novichok - dolgovec v maske -->
+	<specific_character id="agr_dolg_molodoy" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_mask</icon>
+		<map_icon x="4" y="0"></map_icon>
+		<bio>sim_dolg_regular_bio</bio>
+
+		<class>bar_Dolg_regular</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<money min="1200" max="16000" infinitive="0"></money>
+		
+		<rank>570</rank>
+		<reputation>20</reputation>
+
+		<panic_threshold>0.0</panic_threshold>
+
+		<visual>actors\dolg\stalker_do_mask</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_abakan \n
+			ammo_5.45x39_fmj \n
+            wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+		<start_dialog>agr_dolg_molodoy_hello</start_dialog>
+		<actor_dialog>agr_dolg_molodoy_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- ohrannik - dolgovec s ryukzakom, kapyushon snyat, shapka na lice -->
+	<specific_character id="agr_dolg_ohrannik" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_balon_8</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_dolg_regular_bio</bio>
+
+		<class>bar_stalker_dolg</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<money min="1200" max="16000" infinitive="0"></money>
+		
+		<rank>497</rank>
+		<reputation>0</reputation>
+ 
+		<visual>actors\dolg\stalker_do_balon_8</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_abakan \n
+			ammo_5.45x39_fmj \n
+            wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+		#include "gameplay\character_criticals_6.xml"
+
+		<start_dialog>agr_dolg_ohrannik_hello</start_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- snayper - s ryukzakom, kapyushon snyat, shapka na lice -->
+	<specific_character id="agr_dolg_sniper" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_mask_1</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_dolg_regular_bio</bio>
+
+		<class>bar_stalker_dolg</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<money min="1200" max="16000" infinitive="0"></money>
+		
+		<rank>679</rank>
+		<reputation>0</reputation>
+ 
+		<visual>actors\dolg\stalker_do_mask_1</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_svd = 1, scope \n
+			ammo_7.62x54_7h14 \n
+			wpn_binoc \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+		#include "gameplay\character_criticals_6.xml"
+
+		<actor_dialog>agr_dolg_sniper_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- uchenyy v taynike Strelka - v zelenom kostyume -->
+	<specific_character id="ecolog_v_tainike" team_default = "1">
+		<name>ecolog_01_name</name>
+		<icon>ui_npc_u_stalker_ecolog_military</icon>
+		<map_icon x="0" y="6"></map_icon>
+		<bio>ecolog_bio</bio>
+
+		<class>aes_x</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		
+		<rank>13</rank>
+		<reputation>50</reputation>
+
+		<visual>actors\mega\ecolog_mega</visual>
+		<snd_config>characters_voice\human_03\ecolog\</snd_config>
+		<crouch_type>1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_l85 \n
+			ammo_5.56x45_ss190 \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+		</supplies>
+		
+		#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>ecolog_01_hello_first</start_dialog>
+		<!-- <start_dialog>ecolog_01_hello_second</start_dialog> -->
+		<actor_dialog>ecolog_01_tell_first</actor_dialog>
+		<actor_dialog>ecolog_v_tainike_tell_second</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- uchenyy v temnoy doline - v zelenom kostyume -->
+	<specific_character id="ecolog_v_doline" team_default = "1">
+		<name>ecolog_02_name</name>
+		<icon>ui_npc_u_stalker_ecolog_military</icon>
+		<map_icon x="0" y="6"></map_icon>
+		<bio>ecolog_bio</bio>
+
+		<class>aes_x</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		
+		<rank>24</rank>
+		<reputation>50</reputation>
+
+		<visual>actors\mega\ecolog_mega</visual>
+		<snd_config>characters_voice\human_03\ecolog\</snd_config>
+		<crouch_type>1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_l85 \n
+			ammo_5.56x45_ss190 \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+		</supplies>
+		
+		#include "gameplay\character_criticals_3.xml"
+		<start_dialog>ecolog_02_hello_first</start_dialog>
+		<!-- <start_dialog>ecolog_02_hello_second</start_dialog>
+		<start_dialog>ecolog_02_hello_third</start_dialog> -->
+		<actor_dialog>ecolog_02_tell_first</actor_dialog>
+		<actor_dialog>ecolog_02_tell_sixth</actor_dialog>
+		<actor_dialog>ecolog_02_tell_second</actor_dialog>
+		<actor_dialog>ecolog_02_tell_third</actor_dialog>
+		<actor_dialog>ecolog_02_tell_fourth</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+		<!-- <actor_dialog>ecolog_02_tell_fifth</actor_dialog> -->
+	</specific_character>
+
+
+
+<!-- soldat nashedshiy uchenogo - zelenaya bandana, zelenyy kamuflyaj, lico raskrasheno -->
+	<specific_character id="agr_soldier_guard" team_default = "1">
+		<name>GENERATE_NAME_private</name>
+		<icon>ui_npc_u_soldier_bandana</icon>
+		<map_icon x="1" y="2"></map_icon>
+		<bio>sim_soldier_regular_bio</bio>
+
+		<class>agr_Soldier_regular</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		
+		<rank>827</rank>
+		<reputation>-9</reputation>
+
+		<visual>actors\soldier\soldier_bandana</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>	
+
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml" 
+    </specific_character>
+
+
+
+<!-- vtoroy soldat nashedshiy uchenogo - zelenaya bandana, zelenyy kamuflyaj, lico ne raskrasheno -->
+	<specific_character id="agr_soldier_guard_2" team_default = "1">
+		<name>GENERATE_NAME_private</name>
+		<icon>ui_npc_u_soldier_bandana_6</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_soldier_regular_bio</bio>
+
+		<class>agr_Soldier_regular</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		
+		<rank>900</rank>
+		<reputation>-29</reputation>
+
+		<visual>actors\soldier\soldier_bandana_6</visual>
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml" 
+    </specific_character>
+
+
+
+<!-- zombirovannyy dolgovec atakuyuschiy zastavu dolga na svalke -->
+	<specific_character id="zombied_dolg" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_zombie2</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>sim_zombied_veteran_bio</bio>
+
+		<class>yan_Zombied</class>
+		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+	
+		<rank>100</rank>
+		<reputation>20</reputation>
+
+		<visual>actors\stalker_zombi\stalker_zombie2</visual>
+		<snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+		</supplies>
+
+		#include "gameplay\character_criticals_1.xml"
+	</specific_character>
+
+
+
+<!-- trupy uchenyh - uchenyy v zelenom kostyume -->
+	<specific_character id="ecolog_dead" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ecolog_military</icon>
+		<map_icon x="0" y="6"></map_icon>
+		<bio>ecolog_bio</bio>
+
+		<class>aes_x</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		
+		<rank>175</rank>
+		<reputation>80</reputation>
+
+		<visual>actors\mega\ecolog_mega</visual>
+		<snd_config>characters_voice\human_03\ecolog\</snd_config>
+		<crouch_type>1</crouch_type>
+		<supplies>
+			[spawn] \n
+		</supplies>
+		
+		#include "gameplay\character_criticals_3.xml"
+	</specific_character>
+
+
+
+<!-- stalker, rasskazyvayuschiy o Serege Man'yake - neytral v shapke i odetom kapyushone -->
+	<specific_character id="neytral_drug_seregi" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>neytral_bio</bio>
+
+		<class>aes_x</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>957</rank>
+		<reputation>-11</reputation>
+		<money min="1200" max="18600" infinitive="0"></money>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>actors\neytral\stalker_neytral_balon_8</visual>
+		
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+		<start_dialog>neytral_01_hello</start_dialog>
+		<actor_dialog>neytral_01_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- specnazovec -->
+		<specific_character id="u_agr_specnaz_partul" team_default = "1">
+		<name>GENERATE_NAME_private</name>
+		<icon>ui_npc_u_soldier_spetsnaz</icon>
+		<bio>specnaz_bio</bio>
+		
+		<class>aes_x</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		
+		<rank>947</rank>
+		<reputation>-4</reputation>
+		
+		<snd_config>characters_voice\human_02\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<visual>actors\soldier\soldier_spetsnaz</visual>
+		<supplies>
+			[spawn] \n
+			wpn_aks74_m1_camo1 \n
+			ammo_5.45x39_fmj \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>		
+		
+		#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- Serega Man'yak - neytral v shapke i odetom kapyushone -->
+	<specific_character id="neytral_serega_manyak" team_default = "1">
+		<name>neytral_02_name</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>neytral_bio</bio>
+
+		<class>aes_x</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>759</rank>
+		<reputation>-11</reputation>
+		<money min="1200" max="18600" infinitive="0"></money>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>actors\mega\serega_maniyak</visual>
+		
+		<supplies>
+			[spawn] \n
+			wpn_aks74_m1_camo1 \n
+			ammo_5.45x39_fmj \n
+			wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+		<start_dialog>serega_manyak_hello</start_dialog>
+		<actor_dialog>serega_manyak_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- poiskovik - zelenaya bandana, zelenyy kamuflyaj, lico raskrasheno -->
+	<specific_character id="x16_soldier_searcher" team_default = "1">
+		<name>GENERATE_NAME_private</name>
+		<icon>ui_npc_u_soldier_bandana</icon>
+		<map_icon x="1" y="2"></map_icon>
+		<bio>sim_soldier_regular_bio</bio>
+
+		<class>megadeath_mod</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		
+		<rank>827</rank>
+		<reputation>-9</reputation>
+		
+		<visual>actors\soldier\soldier_bandana</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>	
+
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- informator svobody - s ballolnami, protivogaz neytralov -->
+	<specific_character id="yan_svoboda_informator" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_hood_9</icon>
+		<map_icon x="5" y="0"></map_icon>
+		<bio>svoboda_bio</bio>
+		
+		<class>aes_x</class>
+		<community>freedom</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+
+		<rank>890</rank>
+		<reputation>0</reputation>
+		<money min="1200" max="18600" infinitive="0"></money>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>actors\svoboda\stalker_sv_hood_91</visual>
+		<supplies>
+			[spawn] \n
+			wpn_wincheaster1300 \n
+			ammo_12x70_buck \n
+			wpn_m16a1_sk1 \n
+			ammo_5.56x45_ss190 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+		<start_dialog>yan_svoboda_informator_hello</start_dialog>
+		<actor_dialog>yan_svoboda_informator_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- razvedchik dolga v kostyuma svobody - s ryukzakom, maska, lico s polosami -->
+	<specific_character id="mil_dolg_recon" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_hood_9</icon>
+		<map_icon x="5" y="0"></map_icon>
+		<bio>dolg_bio</bio>
+		
+		<class>aes_x</class>
+		<community>dolg</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		
+		<rank>740</rank>
+		<reputation>0</reputation>
+		<money min="1200" max="18600" infinitive="0"></money>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>actors\svoboda\stalker_sv_rukzak_3</visual>
+		<supplies>
+			[spawn] \n
+			wpn_abakan \n
+			ammo_5.45x39_fmj \n
+            wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"		
+		</supplies>
+
+		<start_dialog>mil_dolg_recon_hello</start_dialog>
+		<actor_dialog>mil_dolg_recon_tell</actor_dialog>
+		<actor_dialog>mil_dolg_recon_tell_second</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- soldat-zalojnik - zelenaya bandana, zelenyy kamuflyaj, lico raskrasheno -->
+	<specific_character id="mil_soldier_hostage" team_default = "1">
+		<name>GENERATE_NAME_private</name>
+		<icon>ui_npc_u_soldier_bandana</icon>
+		<map_icon x="1" y="2"></map_icon>
+		<bio>sim_soldier_regular_bio</bio>
+
+		<class>aes_x</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		
+		<rank>827</rank>
+		<reputation>-9</reputation>
+		
+		<visual>actors\soldier\soldier_bandana</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>	
+
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+
+<!-- ranenyy stalker iz gruppy Bespredela - s ryukzakom, protivogaz kak u dolga -->
+	<specific_character id="mil_svoboda_wounded" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_hood_9</icon>
+		<map_icon x="5" y="0"></map_icon>
+		<bio>mil_Svoboda_specnaz_bio</bio>
+
+		<team>Svoboda_specnaz</team>
+
+		<snd_config>characters_voice\human_03\freedom\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<class>megadeath_mod</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<rank>679</rank>
+		<reputation>110</reputation>
+
+		<visual>actors\svoboda\stalker_sv_hood_9</visual>
+		<supplies>
+			[spawn] \n
+			wpn_wincheaster1300 \n
+			ammo_12x70_buck \n
+			wpn_m16a1_sk1 \n
+			ammo_5.56x45_ss190 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"		
+		</supplies>
+		
+		#include "gameplay\character_criticals_5.xml"
+
+		<start_dialog>mil_svoboda_wounded_hello</start_dialog>
+		<actor_dialog>mil_svoboda_wounded_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- rukovoditel' rasstrela - s ballolnami -->
+	<specific_character id="mil_dolg_killer_commander" team_default = "1">
+		<name>killer_commander_name</name>
+		<icon>ui_npc_u_stalker_do_balon_1</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>Сталкер группировки "Свобода". Детальная информация отсутствует.</bio>
+
+		<class>megadeath_mod</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+		<money min="1600" max="12000" infinitive="0"></money>
+
+		<rank>670</rank>
+		<reputation>0</reputation>
+ 
+		<visual>actors\dolg\stalker_do_balon_1</visual>
+		<snd_config>characters_voice\human_01\freedom\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_abakan \n
+			ammo_5.45x39_fmj \n
+			wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+			pda_04 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+		#include "gameplay\character_criticals_6.xml"
+
+		<start_dialog>mil_dolg_killer_hello</start_dialog>
+		<actor_dialog>mil_dolg_killer_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+
+
+
+<!-- rasstrelivayuschiy 1 - s ballolnami, v protivogaze -->
+	<specific_character id="mil_dolg_killer_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_antigas</icon>
+		<map_icon x="4" y="0"></map_icon>
+		<bio>Сталкер группировки "Свобода". Детальная информация отсутствует.</bio>
+
+		<class>megadeath_mod</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+		<money min="2000" max="15000" infinitive="0"></money>
+
+		<rank>624</rank>
+		<reputation>40</reputation>
+
+		<visual>actors\dolg\stalker_do_antigas</visual>
+		<snd_config>characters_voice\human_03\freedom\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_abakan \n
+			ammo_5.45x39_fmj \n
+            wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>		
+
+		#include "gameplay\character_criticals_6.xml"			
+		
+		<start_dialog>mil_dolg_killer_hello</start_dialog>
+		<actor_dialog>mil_dolg_killer_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- rasstrelivayuschiy 2 - s ballolnami, v protivogaze -->
+	<specific_character id="mil_dolg_killer_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_mask</icon>
+		<map_icon x="4" y="0"></map_icon>
+		<bio>Сталкер группировки "Свобода". Детальная информация отсутствует.</bio>
+
+		<class>megadeath_mod</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+		<money min="1200" max="16000" infinitive="0"></money>
+		
+		<rank>710</rank>
+		<reputation>20</reputation>
+
+		<panic_threshold>0.0</panic_threshold>
+
+		<visual>actors\dolg\stalker_do_mask</visual>
+		<snd_config>characters_voice\human_01\freedom\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_abakan \n
+			ammo_5.45x39_fmj \n
+			wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+		#include "gameplay\character_criticals_6.xml"
+		
+		<start_dialog>mil_dolg_killer_hello</start_dialog>
+		<actor_dialog>mil_dolg_killer_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- otdyhayuschie u gruzovika, ryadom s rasstrelom - ekzoskelet dolga -->
+	<specific_character id="mil_dolg_killer_sit" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
+		<map_icon x="4" y="0"></map_icon>
+		<bio>Сталкер группировки "Свобода". Детальная информация отсутствует.</bio>
+
+		<class>megadeath_mod</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+		<money min="2000" max="15000" infinitive="0"></money>
+		
+		<rank>914</rank>
+		<reputation>60</reputation>
+
+		<visual>actors\dolg\stalker_do_exoskeleton</visual>
+		<snd_config>characters_voice\human_03\freedom\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n	
+			wpn_abakan \n
+			ammo_5.45x39_fmj \n
+            wpn_sayga12k_sk1 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>			
+
+		#include "gameplay\character_criticals_2.xml"
+		
+		<start_dialog>mil_dolg_killer_hello</start_dialog>
+		<actor_dialog>mil_dolg_killer_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- Kostya Bespredel - SEVA svobody -->
+	<specific_character id="mil_svoboda_bespredel" team_default = "1">
+		<name>bespredel_name</name>		
+		<icon>ui_npc_u_stalker_sv_nauchniy</icon>
+		<map_icon x="5" y="0"></map_icon>
+		<bio>mil_Svoboda_master_Ugrumiy_bio</bio>
+		
+		<class>megadeath_mod</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<snd_config>characters_voice\human_03\freedom\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<rank>902</rank>
+		<reputation>113</reputation>
+
+		<visual>actors\mega\kostya_bespredel</visual>
+		<supplies>
+			[spawn] \n
+			wpn_m16a1_sk1 \n
+			ammo_5.56x45_ss190 \n
+			wpn_wincheaster1300 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"		
+		</supplies>
+
+			#include "gameplay\character_criticals_5.xml"
+			
+		<start_dialog>yan_svoboda_bespredel_hello</start_dialog>
+		<actor_dialog>yan_svoboda_bespredel_tell</actor_dialog>
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- ohrannik 1 Kosti Bespredela - ekzoskelet -->
+	<specific_character id="mil_svoboda_guard_1_bespredel" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_exoskeleton</icon>
+		<map_icon x="5" y="0"></map_icon>
+		<bio>Сталкер группировки "Свобода". Детальная информация отсутствует.</bio>
+		
+		<class>megadeath_mod</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<rank>910</rank>
+		<reputation>125</reputation>
+
+		<visual>actors\svoboda\stalker_sv_exoskeleton</visual>
+		<supplies>
+			[spawn] \n
+			wpn_m16a1_sk1 \n
+			ammo_5.56x45_ss190 \n
+			wpn_wincheaster1300 \n
+			ammo_12x70_buck \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"		
+		</supplies>
+
+			#include "gameplay\character_criticals_2.xml"
+			#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+
+
+<!-- ohrannik 2 Kosti Bespredela - s ballolnami, protivogaz neytralov -->
+	<specific_character id="mil_svoboda_guard_2_bespredel" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_hood_9</icon>
+		<map_icon x="5" y="0"></map_icon>
+		<bio>Сталкер группировки "Свобода". Детальная информация отсутствует.</bio>
+		
+		<class>megadeath_mod</class>
+		<community>freedom</community>
+
+		<rank>907</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\svoboda\stalker_sv_hood_91</visual>
+		<supplies>
+			[spawn] \n
+			wpn_sr25_mk11_mod0_sk1 \n
+			ammo_7.62x51_fmj \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"		
+		</supplies>
+			
+			#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- ohrannik 3 Kosti Bespredela - s ryukzakom, kapyushon snyat, shapka na lice, bronya legkaya -->
+	<specific_character id="mil_svoboda_guard_3_bespredel" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_hood_9</icon>
+		<map_icon x="5" y="0"></map_icon>
+		<bio>Сталкер группировки "Свобода". Детальная информация отсутствует.</bio>
+		
+		<class>megadeath_mod</class>
+		<community>freedom</community>
+		
+		<rank>900</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\svoboda\stalker_sv_rukzak_2</visual>
+		<supplies>
+			[spawn] \n
+			wpn_wincheaster1300 \n
+			ammo_12x70_buck \n
+			wpn_m16a1_sk1 \n
+			ammo_5.56x45_ss190 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"		
+		</supplies>
+					
+			#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- naemniki -->
+	<specific_character id="ros_killer_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<bio>esc_specnaz_killer_bio</bio>
+
+		<class>megadeath_mod</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		
+		<rank>599</rank>
+		<reputation>-109</reputation>
+	
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>0</crouch_type>
+		
+		<visual>actors\mega\naemnik</visual>
+		<supplies>
+			[spawn] \n
+			wpn_spas12 \n
+			ammo_12x70_buck \n
+			wpn_g36 \n
+			ammo_5.56x45_ss190 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+			#include "gameplay\character_criticals_4.xml"
+		<start_dialog>hello_dialog</start_dialog>
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- neytral'nyy stalker podzyvayuschiy v zasadu -->
+	<specific_character id="ros_neytral_zasada" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_hood_4</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>gar_seryi_bio</bio>
+
+		<class>megadeath_mod</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>811</rank>
+		<reputation>-18</reputation>
+		<money min="1200" max="18600" infinitive="0"></money>
+		
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>actors\neytral\stalker_neytral_hood_4</visual>
+		<supplies>
+			[spawn] \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+			wpn_bm16 \n
+			ammo_12x70_kart \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+
+<!-- specnazovec s KPK v zasade na dikoy territorii -->
+		<specific_character id="ros_specnaz_zasada_pda" team_default = "1">
+		<name>GENERATE_NAME_private</name>
+		<icon>ui_npc_u_soldier_spetsnaz</icon>
+		<bio>bio</bio>
+		
+		<class>megadeath_mod</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		
+		<rank>913</rank>
+		<reputation>-4</reputation>
+		
+		<snd_config>characters_voice\human_02\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<visual>actors\soldier\soldier_spetsnaz</visual>
+		<supplies>
+			[spawn] \n
+			wpn_aks74_m1_camo1 \n
+			ammo_5.45x39_ap \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+			pda_05 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>		
+		
+		#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_dialogs.xml" 
+	</specific_character>
+</xml>

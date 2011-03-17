@@ -1,0 +1,86 @@
+--специально отключил лечение аптечками в конфигах... Для проверки... 
+--При первых 3 аптечках - ничего (так и надо!). Следующие (да 6 аптечек) - ЛЕЧЕНИЕ актора на 0.3!!! 
+-- Потом, постепенное уменьшение здоровья от аптечек... сперва мало, потом много... но уменьшается...
+
+local med_cnt = 0	--счётчик для аптечек
+local text_h5 = "%c[255,255,216,0]The effectiveness of dispensary fell by 30%.%c[default]"
+local text_h10 = "%c[255,255,106,160]The effectiveness of dispensary fell by 50%.%c[default]"
+local text_h15 = "%c[255,255,0,0]The effectiveness of dispensary fell by 70%.%c[default]"
+local text_death = "%c[255,255,0,0]Extremely high probability of dying from an overdose of lekartstv.%c[default]"
+
+  function med_count()
+	med_cnt = med_cnt+1
+	--news_manager.send_tip(db.actor,db.actor.health, nil, nil, 10000)
+	news_manager.send_tip(db.actor,"Number of kits used - "..med_cnt, nil, nil, 2000)
+    if med_cnt == 3 then 
+	news_manager.send_tip(db.actor,text_h5, nil, nil, 10000) 
+	end
+	if med_cnt == 6 then  
+	news_manager.send_tip(db.actor,text_h10, nil, nil, 10000)
+	end
+	if med_cnt == 9 then 
+	news_manager.send_tip(db.actor,text_h15, nil, nil, 10000)
+	end
+	if med_cnt == 12 then
+	news_manager.send_tip(db.actor,text_death, nil, nil, 10000)
+	end
+
+  end
+  
+ 
+   
+function use_medkit(p_obj)
+--local a = "Количeство использованных аптечек:\\n"..med_cnt..
+   if (p_obj and p_obj:section() == "medkit") and db.actor:eat("medkit") then
+ med_count()
+  if med_cnt>=3 and med_cnt<6 then
+ db.actor.health=-0.1 
+end 
+  if med_cnt>=6 and med_cnt<9   then
+  db.actor.health=-0.2
+end
+  if med_cnt>=9 and med_cnt<12 then
+  db.actor.health=-0.3
+end
+ if med_cnt>=12 then
+  db.actor.health=-0.55
+ end
+end
+
+if (p_obj and p_obj:section() == "medkit_army") and db.actor:eat("medkit_army") then
+ med_count()
+  if med_cnt>=3 and med_cnt<6 then
+ db.actor.health=-0.6 
+end 
+  if med_cnt>=6 and med_cnt<9   then
+  db.actor.health=-0.7
+end
+  if med_cnt>=9 and med_cnt<12 then
+  db.actor.health=-0.8
+end
+ if med_cnt>=12 then
+  db.actor.health=-1.2
+  end
+end
+
+if (p_obj and p_obj:section() == "medkit_scientic") and db.actor:eat("medkit_scientic") then
+ med_count()
+ if med_cnt>=3 and med_cnt<6 then
+ db.actor.health=-0.6 
+end 
+  if med_cnt>=6 and med_cnt<9   then
+  db.actor.health=-0.7
+end
+  if med_cnt>=9 and med_cnt<12 then
+  db.actor.health=-0.8
+end
+ if med_cnt>=12 then
+  db.actor.health=-1.2
+  end
+end
+
+if (p_obj and p_obj:section() == "voda") and db.actor:eat("voda") then
+ news_manager.send_tip(db.actor,"The effectiveness of first aid kits restored", nil, nil, 10000) 
+ med_cnt = 0
+end
+end

@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<string_table>
+
+	<string id="aem_start_421">
+		<text>Well, what now? Will the arena matches stop, you will close shop, and leave to search for happiness in different parts of the world? </text>
+		</string>
+	<string id="aem_start_4211">
+		<text>Hold on, Marked One. Don't jump to conclusions, that was only one tournament out of many.</text>
+		</string>
+	<string id="aem_start_42111">
+		<text>Strange, but that's what I thought from the start. Well, open up those cards.</text>
+		</string>
+	<string id="aem_start_421111">
+		<text>So here's the deal. This time you won and became the champion of the Arena, but that's not a permanent title and it doesn't give any guarantee that you won't win your way into a box in the next tournament. Tournaments are arranged more-or-less regularly. Once or twice daily. Matches happen from 22:00 to 06:00, you'll be notified when they start through messages I'll send through the public channel of your PDA. While you're a champion, you have full access to all announced fights; that means you can personally decide what to use during the fights and in what order you'll fight in. We still have some rules concerning explosives. Grenades, RG-6's, RPG-7's, Gauss Rifles, and any other heavy weapons are barred. That's pretty much it. The Arena still needs to be cleaned up a little, so you can go to the bar and have a nice drink. Just don't miss the next fight. See you soon, hopefully.</text>
+		</string>
+	<string id="aem_start_4211111">
+		<text>Good stuff.</text>
+		</string>
+	<string id="aem_start_31">
+		<text>Well hello there, champ!</text>
+		</string>
+	<string id="aem_start_311">
+		<text>Hello. What's new here today?</text>
+		</string>
+	<string id="aem_start_3111">
+		<text>Eh, you're impatient...we don't even have that many contestants yet. Come back a little later.</text>
+		</string>
+	<string id="aem_start_31111">
+		<text>Good deal.</text>
+		</string>
+	<string id="aem_start_611">
+		<text>Congratulations. You guessed right.</text>
+		</string>
+	<string id="aem_start_621">
+		<text>It was not fate. Don't worry, next time might be luckier.</text>
+		</string>
+	<string id="aem_start_631">
+		<text>Here's your hard-earned cash.</text>
+		</string>
+	<string id="aem_start_641">
+		<text>Great battle! You deserve a reward.</text>
+		</string>
+	<string id="aem_start_651">
+		<text>Your victory will not be counted.</text>
+		</string>
+	<string id="aem_start_661">
+		<text>You'll be fined for violating the rules of the match.</text>
+		</string>
+	<string id="aem_start_711">
+		<text>Hello there, champion! So you decided to come on back to the arena, huh? I didn't find a worthy enough opponent to steal your title, but don't relax yet. Why don't we put on a show today? How about you wax two-or-three mutants? I caught some fresh ones specially for you.</text>
+		</string>
+	<string id="aem_start_721">
+		<text>Marked One, listen. You've got a problem. Warring factions have decided to unite against a common enemy.</text>
+		</string>
+	<string id="aem_start_7211">
+		<text>And how is that a problem?</text>
+		</string>
+	<string id="aem_start_72111">
+		<text>The problem is that the enemy I'm referring to...is you. Remember how many people you've sent to the other side? Well, the guys who are still left are refusing to fight you...alone.</text>
+		</string>
+	<string id="aem_start_731">
+		<text>Hey there, Marked One. We've been getting full on mutants lately, we're almost running out of room in the pens. And as if on purpose, nobody wants to fight them. Maybe you could free up some space for us?</text>
+		</string>
+	<string id="aem_start_7311">
+		<text>We'll see.</text>
+		</string>
+	<string id="aem_start_73111">
+		<text>Just think about it. The work's good. You'll help us, entertain the spectators, and you'll earn some cash at the same time.</text>
+		</string>
+	<string id="aem_start_741">
+		<text>Great, Marked One. The Arena's open again, so quickly pick a match. Our schedule's quite full today.</text>
+		</string>
+	<string id="aem_start_81">
+		<text>Greetings, Stalker.</text>
+		</string>
+	<string id="aem_start_91">
+		<text>Hello, Marked One!</text>
+		</string>
+
+	<string id="aem_extra_0">
+		<text>I've got a request.</text>
+		</string>
+	<string id="aem_extra_1">
+		<text>Depends on what kind.</text>
+		</string>
+	<string id="aem_extra_2">
+		<text>Could you include me in your notification list again?</text>
+		</string>
+	<string id="aem_extra_21">
+		<text>Whatever you say.</text>
+		</string>
+	<string id="aem_extra_3">
+		<text>Could you please stop sending me those messages?</text>
+		</string>
+	<string id="aem_extra_31">
+		<text>No doubt about it. Deleting your PDA from the contact list.</text>
+		</string>
+	<string id="aem_extra_4">
+		<text>Could you possibly turn on a few more lights in the arena?</text>
+		</string>
+	<string id="aem_extra_41">
+		<text>I'll see what I can do.</text>
+		</string>
+	<string id="aem_extra_5">
+		<text>Please turn the lights back the way they were.</text>
+		</string>
+	<string id="aem_extra_51">
+		<text>Turn them on, turn them off. Make up your damn mind already, heh.</text>
+		</string>
+	<string id="aem_extra_6">
+		<text>DELETE MOD</text>
+		</string>
+	<string id="aem_extra_61">
+		<text>Are you sure?</text>
+		</string>
+	<string id="aem_extra_611">
+		<text>Yes</text>
+		</string>
+	<string id="aem_extra_612">
+		<text>No</text>
+		</string>
+	<string id="aem_extra_9">
+		<text>Forget it.</text>
+		</string>
+
+	<string id="aem_job_quest">
+		<text>Well, what kind of fights you got today?</text>
+		</string>
+	<string id="aem_job_closed">
+		<text>None right now, wait until we open.</text>
+		</string>
+	<string id="aem_job_done">
+		<text>That's all for today. No more people want to fight today.</text>
+		</string>
+	<string id="aem_job_select">
+		<text>Choose.</text>
+		</string>
+	<string id="aem_job_reject">
+		<text>Maybe some other time.</text>
+		</string>
+	<string id="aem_job_group_reject">
+		<text>I changed my mind.</text>
+		</string>
+	<string id="aem_job_time_quest">
+		<text>If you're absolutely sure of your abilities, might I suggest a timed match? These battles usually don't last long and demand some mastery in the art of death. There's a possibility of getting bonuses or even doubling your winnings if you win within the smallest amount of time. Remember one iron rule, you CANNOT kill your opponent after the timer runs out. If you do, you'll be fined the same amount as the winnings. I think you'll agree, it's better to stay with your own ass intact and with no prize than having to pay what you were supposed to win. And I need as many living contestants for other matches, too, so you'll help me by following that rule. Well, what do you say? Should I turn on that stopwatch?   </text>
+		</string>
+	<string id="aem_job_time_5">
+		<text>Five seconds.</text>
+		</string>
+	<string id="aem_job_time_10">
+		<text>Ten seconds.</text>
+		</string>
+	<string id="aem_job_time_15">
+		<text>Fifteen seconds.</text>
+		</string>
+	<string id="aem_job_time_20">
+		<text>Twenty seconds.</text>
+		</string>
+	<string id="aem_job_time_30">
+		<text>Thirty seconds.</text>
+		</string>
+	<string id="aem_job_time_40">
+		<text>Forty seconds.</text>
+		</string>
+	<string id="aem_job_time_50">
+		<text>Fifty seconds.</text>
+		</string>
+	<string id="aem_job_time_60">
+		<text>One minute.</text>
+		</string>
+	<string id="aem_job_time_unlimited">
+		<text>No.</text>
+		</string>
+	<string id="aem_job_time_reject">
+		<text>I changed my mind.</text>
+		</string>
+	<string id="aem_job_stake_quest">
+		<text>Who are you placing your bets on?</text>
+		</string>
+	<string id="aem_job_stake_vs">
+		<text>Against.</text>
+		</string>
+	<string id="aem_job_stake_reject">
+		<text>Nobody. I changed my mind.</text>
+		</string>
+	<string id="aem_job_stake_money">
+		<text>How much?</text>
+		</string>
+	<string id="aem_job_stake_money_tm">
+		<text>Ruble.</text>
+		</string>
+	<string id="aem_job_stake_money_empty">
+		<text>Maybe another time, my pockets are empty.</text>
+		</string>
+	<string id="aem_job_stake_money_reject">
+		<text>Eh, I don't care for that guy.</text>
+		</string>
+	<string id="aem_job_stake_ready">
+		<text>All bets have been registered. No more will be accepted.</text>
+		</string>
+	<string id="aem_job_stake_go">
+		<text>Let's roll.</text>
+		</string>
+	<string id="aem_job_extra">
+		<text>Totalizator.</text>
+		</string>
+	<string id="aem_job_extra_info">
+		<text>Want to earn some cash without risking your own ass? Then you've come to the right address. You can place bets in two modes: battles against mutants and faction tournaments. It's simple. Just tell me who you're placing your bet on, hand me the cash, and stomp on over to watch the fight. If whoever you're betting on wins, you get your money back with interest. If you guessed wrong, then at least you got to watch an intense battle with the satisfaction of not getting shot at. What's your choice?</text>
+		</string>
+	<string id="aem_job_extra_reject">
+		<text>I changed my mind.</text>
+		</string>
+
+	<string id="aem_team_military">
+		<text>On the soldiers.</text>
+		</string>
+	<string id="aem_team_military1">
+		<text>Military</text>
+		</string>
+	<string id="aem_team_military2">
+		<text>Military.</text>
+		</string>
+	<string id="aem_team_killer">
+		<text>Mercenaries.</text>
+		</string>
+	<string id="aem_team_killer1">
+		<text>Mercenaries</text>
+		</string>
+	<string id="aem_team_killer2">
+		<text>Mercenaries.</text>
+		</string>
+	<string id="aem_team_freedom">
+		<text>On Freedom.</text>
+		</string>
+	<string id="aem_team_freedom1">
+		<text>Freedomers</text>
+		</string>
+	<string id="aem_team_freedom2">
+		<text>Freedomers.</text>
+		</string>
+	<string id="aem_team_dolg">
+		<text>On Duty.</text>
+		</string>
+	<string id="aem_team_dolg1">
+		<text>Dutyers</text>
+		</string>
+	<string id="aem_team_dolg2">
+		<text>Dutyers.</text>
+		</string>
+	<string id="aem_team_neutral">
+		<text>On the loners.</text>
+		</string>
+	<string id="aem_team_neutral1">
+		<text>Loners</text>
+		</string>
+	<string id="aem_team_neutral2">
+		<text>Loners.</text>
+		</string>
+	<string id="aem_team_bandit">
+		<text>On the Bandits.</text>
+		</string>
+	<string id="aem_team_bandit1">
+		<text>Bandits</text>
+		</string>
+	<string id="aem_team_bandit2">
+		<text>Bandits.</text>
+		</string>
+	<string id="aem_team_pseudodog">
+		<text>On the dogs.</text>
+		</string>
+	<string id="aem_team_pseudodog1">
+		<text>Dogs</text>
+		</string>
+	<string id="aem_team_pseudodog2">
+		<text>Dogs.</text>
+		</string>
+	<string id="aem_team_boar">
+		<text>On the boars.</text>
+		</string>
+	<string id="aem_team_boar1">
+		<text>Boars.</text>
+		</string>
+	<string id="aem_team_boar2">
+		<text>Boars.</text>
+		</string>
+	<string id="aem_team_snork">
+		<text>On the Snorks.</text>
+		</string>
+	<string id="aem_team_snork1">
+		<text>Snorks</text>
+		</string>
+	<string id="aem_team_snork2">
+		<text>Snorks.</text>
+		</string>
+	<string id="aem_team_bloodsucker">
+		<text>On the Bloodsucker.</text>
+		</string>
+	<string id="aem_team_bloodsucker1">
+		<text>Bloodsucker</text>
+		</string>
+	<string id="aem_team_bloodsucker2">
+		<text>Bloodsucker.</text>
+		</string>
+	<string id="aem_team_zombie">
+		<text>On the lost ones.</text>
+		</string>
+	<string id="aem_team_zombie1">
+		<text>Zombies</text>
+		</string>
+	<string id="aem_team_zombie2">
+		<text>Zombies.</text>
+		</string>
+	<string id="aem_team_chimera">
+		<text>On the Chimera.</text>
+		</string>
+	<string id="aem_team_chimera1">
+		<text>Chimera</text>
+		</string>
+	<string id="aem_team_chimera2">
+		<text>Chimeras.</text>
+		</string>
+	<string id="aem_team_burer">
+		<text>On the Burer.</text>
+		</string>
+	<string id="aem_team_burer1">
+		<text>Burer</text>
+		</string>
+	<string id="aem_team_burer2">
+		<text>Burer.</text>
+		</string>
+	<string id="aem_team_gigant">
+		<text>On the Pseudogiant.</text>
+		</string>
+	<string id="aem_team_gigant1">
+		<text>Psuedogiant</text>
+		</string>
+	<string id="aem_team_gigant2">
+		<text>pseudogiant.</text>
+		</string>
+
+	<string id="aem_mutants">
+		<text>Mutans.</text>
+		</string>
+	<string id="aem_mutants_info">
+		<text>Finally, Duty's started delivering live mutants to the arena again. Even some rare ones, too. Choose. Who will be your next victim?</text>
+		</string>
+	<string id="aem_military">
+		<text>Battle with the Military.</text>
+		</string>
+	<string id="aem_military_info">
+		<text>The first thing that comes to mind is "what the freaking hell are these guys doing in the bar?" Still, thanks to their many connections, the Dutyers can even allow this for themselves. There aren't many doubts as to the professionalism of these soldiers. They all have alot of experience behind their shoulders, which they got even before the Zone came to be. Some of these guys have been around during Afghanistan, Georgia, and Chechnya, and they've even spent a few years raiding in the Zone, so they're still sharp. They're armed with the best guns their Russian government can produce. </text>
+		</string>
+	<string id="aem_killer">
+		<text>Match with Mercenaries.</text>
+		</string>
+	<string id="aem_killer_info">
+		<text>Mercenaries are a very organized paramilitary group made up of many different private contractors. They carry imported guns, so they're not short on cash. Rumor says that they work for foreign interests and governments, in addition to Russian, Ukrainian, and possibly even Georgian clients. I'd call them a side-effect of Ukraine's government trying so hard to join NATO. Many locals try to keep as far away from them as they can, but to the military, they are like a sharp bone in their throats. They give the mercs the highest priority if they spot them, which kind of makes me respect the soldiers. The firepower of the mercs is hard to ignore, which is why some groupings even have contacts among them. </text>
+		</string>
+	<string id="aem_freedom">
+		<text>Fight with Freedom.</text>
+		</string>
+	<string id="aem_freedom_info">
+		<text>Freedomers are the arch enemies of Duty. They have alot of former Dutyers among their ranks, ones that rejected the "we are the last hope of humanity" ideology of that faction. That's one of the reasons why relations between the two factions are very tense, to put it softly. Even though Duty considers Freedom to be nothing more than a gaggle of stoned anarchists, Freedom still put up a hard fight. Freedom is definately more organized than that, and their guns and armor aren't that bad, either. Duty had many of their best fighters cross over, so their experience in battle is something to be respected. At the moment, there's a cease-fire between the two factions, but it's pretty shaky.</text>
+		</string>
+	<string id="aem_dolg">
+		<text>Fight with Duty.</text>
+		</string>
+	<string id="aem_dolg_info">
+		<text>The Duty faction is our self-declared police force. It's thanks to them that we have fights to the death in our humble arena, in addition to them capturing mutants for me. Members of this faction regularly participate in arena matches to sharpen their skills and practice for future raids into the deepest reaches of the Zone. They are armed with the same gear as our government's Spetsnaz, with the best Warsaw Pact firearms available.</text>
+		</string>
+	<string id="aem_neutral">
+		<text>Battle with Loners.</text>
+		</string>
+	<string id="aem_neutral_info">
+		<text>The usual loners, ones that either stay away from or have yet to join any faction. You might see some familiar faces among them, even recognize the guy you shared a bottle with a few weeks ago. It's a good way to make some enemies or thin out your competition for artifacts. They're armed with a myriad of guns. Warsaw Pact guns, imported rifles, you name it, but I've yet to see them armed with anything that makes me jealous.</text>
+		</string>
+	<string id="aem_bandit">
+		<text>Fight with Bandits.</text>
+		</string>
+	<string id="aem_bandit_info">
+		<text>The usual party of Death-Row prisoners captured in the Dark Valley. They've been given rented guns, arena weapons, so don't think for one moment that they'll be shooting at you from rusted double-barrels and Makarovs they took from dead cops they killed back in '75.</text>
+		</string>
+	<string id="aem_special">
+		<text>Fight against the "Zoner Team."</text>
+		</string>
+	<string id="aem_special_info">
+		<text>Every faction is represented in this team. The number of opponents is slightly higher than usual, and all of them are dead-set on making you pay for all of their comrades that you killed.</text>
+		</string>
+	<string id="aem_special_1">
+		<text>I get it.</text>
+		</string>
+	<string id="aem_special_warning">
+		<text>You don't have that many chances of coming back. Are you sure you want to accept their challenge?</text>
+		</string>
+	<string id="aem_special_continue">
+		<text>I've been through worse. Announce the match.</text>
+		</string>
+	<string id="aem_stakes">
+		<text>Battle with mutants.</text>
+		</string>
+	<string id="aem_stakes_info">
+		<text>Here Stalkers from different factions kill off two mutants, or vice-versa, depends on how lucky they are. Which battle will we watch today?</text>
+		</string>
+	<string id="aem_turnament">
+		<text>Faction tournament.</text>
+		</string>
+	<string id="aem_turnament_info">
+		<text>This is a tournament between factions. Each one tries to prove that they're better than the other. Small conflicts and disagreements between them are also solved here with minimal casualties. The rules are simple: there are a few teams, they kill each other until only one, the strongest, is left standing. Shall we begin?</text>
+		</string>
+
+	<string id="aem_mutants_dog">
+		<text>Dogs.</text>
+		</string>
+	<string id="aem_mutants_boar">
+		<text>Boars.</text>
+		</string>
+	<string id="aem_mutants_tushkano">
+		<text>Rodents.</text>
+		</string>
+	<string id="aem_mutants_snork">
+		<text>Snorks.</text>
+		</string>
+	<string id="aem_mutants_bloodsucker">
+		<text>Bloodsucker.</text>
+		</string>
+	<string id="aem_mutants_zombie">
+		<text>Controller and zombie.</text>
+		</string>
+	<string id="aem_mutants_chimera">
+		<text>Chimera.</text>
+		</string>
+	<string id="aem_mutants_burer">
+		<text>Burer.</text>
+		</string>
+	<string id="aem_mutants_gigant">
+		<text>Pseudogiant.</text>
+		</string>
+	<string id="aem_fight_1on1">
+		<text>One on one.</text>
+		</string>
+	<string id="aem_fight_1on2">
+		<text>One versus two.</text>
+		</string>
+	<string id="aem_fight_1on3">
+		<text>One versus three.</text>
+		</string>
+	<string id="aem_fight_1on6">
+		<text>One versus six. A bloodbath, in other words.</text>
+		</string>
+
+	<string id="aem_msg_done">
+		<text>The arena will now close for cleaning and maintenance. No more matches today.</text>
+		</string>
+	<string id="aem_msg_close">
+		<text>The time for matches is over. Whoever didn't make it on time, too bad.</text>
+		</string>
+	<string id="aem_msg_open">
+		<text>And now the Arena opens again! Who wants to be the first to donate a litre of blood?</text>
+		</string>
+	<string id="aem_msg_3h">
+		<text>Anyone willing to participate in a match in the arena: come to the bar area immediately. First match begins in three hours.</text>
+		</string>
+	<string id="aem_msg_6h">
+		<text>Six hours left until the Arena opens.</text>
+		</string>
+	<string id="aem_msg_12h">
+		<text>Twelve hours left until the Arena opens.</text>
+		</string>
+	<string id="aem_msg_24h">
+		<text>A reminder to everyone: matches will resume in the Arena in exactly 24 hours.</text>
+		</string>
+	<string id="aem_msg_48h">
+		<text>The Arena will open in 48 hours, volunteers for matches are still being accepted.</text>
+		</string>
+	<string id="aem_msg_72h">
+		<text>Approximate time until the Arena's next opening is three days.</text>
+		</string>
+
+	<string id="aem_barman">
+		<text>Barman</text>
+		</string>
+	<string id="aem_admin">
+		<text>Arena administrator</text>
+		</string>
+	<string id="aem_arny_dead">
+		<text>Fellas! Some piece of shit has killed off Arnie! If someone finds this swine, please shoot him down where he stands. Reward guaranteed. The Arena is now closed for an undecided period of time, pay attention to the announcements.</text>
+		</string>
+	<string id="aem_restore">
+		<text>We are pleased to announce that we have found a new Arena administrator. The Arena is open once again.</text>
+		</string>
+	<string id="aem_barm_1">
+		<text>What the hell is this?! Some asshole killed the Arena administrator again! Can someone please stop this crazed animal already?</text>
+		</string>
+	<string id="aem_barm_2">
+		<text>Listen up, you bastard! If I find out what your name is, you're better off shooting yourself! Don't wait until my guys find your sorry ass, they'll cut you for a long, long time.</text>
+		</string>
+	<string id="aem_barm_3">
+		<text>All Stalkers in the bar! The Arena owner has been killed. Find the killer, it's about damn time we stop this shit once and for all.</text>
+		</string>
+	<string id="aem_barm_4">
+		<text>Fellas, the guy in charge of the Arena has been killed once again. The killer is still nearby. Find him, but don't kill him. Just shoot his kneecaps out and throw him in a fire. Duty will then hang the remains of this piece of excrement by the main gate.</text>
+		</string>
+	<string id="aem_arny_spread_out">
+		<text>There's a little problem...Arnie somehow got himself into an anomaly while drunk. In short, he got ripped up, not even any bones left. So, you all probably understand, fellas, that there will be no more fights at the Arena until we find a new administrator. When we do, I'll let you know.</text>
+		</string>
+	<string id="aem_admin_spread_out">
+		<text>Goddammit, the new Arena administrator has disappeared. If someone manages to catch the scent of alcohol that he probably reeks of right now, and finds that drunk son of a bitch, immediately drag him back to the bar. I'll pay you, but I doubt you'll find him anyway. The Arena will be closed until we either find the administrator or someone to replace him.</text>
+		</string>
+	<string id="aem_drunk_1">
+		<text>I went to the bar to drink vodka. No loitering until I'm back.</text>
+		</string>
+	<string id="aem_drunk_2">
+		<text>I went to the bar to drink all your money...losers.</text>
+		</string>
+	<string id="aem_drunk_3">
+		<text>If someone needs me, search for me at the bar. I'll warn you now, though. There won't be any conversation unless you've got a bottle with you.</text>
+		</string>
+	<string id="aem_drunk_4">
+		<text>Man, day after day it's all the same...just vodka, vodka, vodka. Anyway, I'm off to the bar.</text>
+		</string>
+</string_table>
