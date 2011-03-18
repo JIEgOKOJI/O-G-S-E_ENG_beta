@@ -43,7 +43,7 @@
 	</string>	
 	
 	<string id="companion_release_dialog_1">
-		<text>Thank you to. Good luck!</text>
+		<text>Thank you too. Good luck!</text>
 	</string>
 
 	<string id="companion_hire_dialog_0">
@@ -67,11 +67,11 @@
 	</string>
 
 	<string id="companion_hire_dialog_5">
-		<text>Sorry, but I just can't. I'm tired dangle in the Zone, I need a break.</text>
+		<text>Sorry, but I just can't. I'm tired dangle in the Zone, I need to take a break.</text>
 	</string>
 
 	<string id="companion_hire_dialog_6">
-		<text>No, kid, are you still green to walk Zone with me. You don't gonna make it, no offense.</text>
+		<text>No, kid, you are still green to work together with me. You don't gonna make it, no offense.</text>
 	</string>
 
 	<string id="companion_hire_dialog_7">
@@ -403,7 +403,7 @@
 	</string>
 
 	<string id="companion_management_dialog_freedom_10">
-		<text>Don't play chicken, take a break, but let badasses came closer before hit'em.</text>
+		<text>Don't be a chicken, take a break, but let badasses came closer before hit'em.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_11">
