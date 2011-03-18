@@ -239,13 +239,13 @@
 		<text>Select from the list subject to parse the parts.</text>
 	</string>
 	<string id="ui_remkit_invalid_item">
-		<text>Nothing doing - the thing is broken in the trash. Select the item in best condition.</text>
+		<text>Can't do.Select item in better condition.</text>
 	</string>
 	<string id="ui_remkit_item_not_repaireble">
 		<text>Item can not be repaired or it is impossible to repair.</text>
 	</string>
 	<string id="ui_remkit_item_not_wanted">
-		<text>Item is not in need of repair.</text>
+		<text>Item is don't need repairs.</text>
 	</string>
 	<string id="ui_remkit_repair_success">
 		<text>You managed to improve the condition of the subject.</text>
