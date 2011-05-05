@@ -131,7 +131,7 @@
 		<text>Ask Barkeep for a job</text>
 	</string>
 	<string id="yan_scientist_job">
-		<text>Help for the scientists</text>
+		<text>Help the scientists</text>
 	</string>
 	<string id="yan_scientist_job_text">
 		<text>Offer help to the scientists</text>
@@ -162,21 +162,21 @@
 		<text>Find artifacts, "Dummy"</text>
 	</string>
 	<string id="escape_trader_artnabor_1">
-		<text>Bring the empties merchant</text>
+		<text>Bring the artifacts to the merchant</text>
 	</string>
 <!-- DotPack -->
 
 	<string id="tolik_vodka">
-		<text>Bring a bottle of vodka for Tolik</text>
+		<text>Bring a bottle of vodka to Tolik</text>
 	</string>
 		<string id="get_vodka">
 		<text>Get a bottle of vodka for Tolik</text>
 	</string>
 			<string id="find_vodka">
-		<text>Find bottle of vodka for Tolik.</text>
+		<text>Find a bottle of vodka for Tolik.</text>
 	</string>
 				<string id="go_with_vodka">
-		<text>Bring a bottle of vodka for Tolik.</text>
+		<text>Bring a bottle of vodka to Tolik.</text>
 	</string>
 
 
