@@ -63,27 +63,27 @@
 	</string>
 
 	<string id="companion_hire_dialog_4">
-		<text>No way, go to hell, man, with you no one ever returned back. Look for "lockpicks" elsewhere.</text>
+		<text>No way, go to hell, man! No one ever returned back after leaving with you! Look for "lockpicks" elsewhere.</text>
 	</string>
 
 	<string id="companion_hire_dialog_5">
-		<text>Sorry, but I just can't. I'm tired dangle in the Zone, I need to take a break.</text>
+		<text>Sorry, but I just can't. I'm tired dangling in the Zone, I need to take a break.</text>
 	</string>
 
 	<string id="companion_hire_dialog_6">
-		<text>No, kid, you are still green to work together with me. You don't gonna make it, no offense.</text>
+		<text>No, kid, you are still too green to work together with me. You ain't gonna make it, no offense.</text>
 	</string>
 
 	<string id="companion_hire_dialog_7">
-		<text>Sorry, I'm afraid to go with you. You're travelling in such Zone corners, where I would not last an hour. Is that the pick will work ... it is better to myself here so far, in shallow water. Maybe find some stuff, and stay alive.</text>
+		<text>Sorry, I'm afraid to go with you. You're travelling in such corners of the Zone, where I would not last an hour. I don't think the pick will work ... it is better for me here so far, in shallow waters. Just finding some stuff by chance, and staying alive.</text>
 	</string>
 
 	<string id="companion_hire_dialog_8">
-		<text>No, you already have enough people with you, don't wander around the Zone in crowds, she does not like this.</text>
+		<text>No, you already have enough people with you. Don't wander around the Zone in crowds, you know, She does not like this.</text>
 	</string>
 
 	<string id="companion_hire_dialog_9">
-		<text>Not be offended, but as long as you're not from ours faction - we have no business with you. </text>
+		<text>Do not be offended, but as long as you're not from our faction - we have no business with you. </text>
 	</string>
 
 	<string id="companion_management_dialog_0">
@@ -107,7 +107,7 @@
 	</string>
 
 	<string id="companion_management_dialog_5">
-		<text>Come follow me and try to lead enemy more closely.</text>
+		<text>Come follow me and try to lead enemy closer.</text>
 	</string>
 
 	<string id="companion_management_dialog_6">
@@ -127,7 +127,7 @@
 	</string>
 
 	<string id="companion_management_dialog_10">
-		<text>Wait here and try to lead enemy more closely.</text>
+		<text>Wait here and try to lead enemy closer.</text>
 	</string>
 
 	<string id="companion_management_dialog_11">
@@ -147,7 +147,7 @@
 	</string>
 
 	<string id="companion_management_dialog_15">
-		<text>Sneak and try to lead enemy more closely.</text>
+		<text>Sneak and try to lead enemy closer.</text>
 	</string>
 
 	<string id="companion_management_dialog_16">
@@ -167,7 +167,7 @@
 	</string>
 
 	<string id="companion_management_dialog_20">
-		<text>Hide here and try to lead enemy more closely.</text>
+		<text>Hide here and try to lead enemy closer.</text>
 	</string>
 
 	<string id="companion_management_dialog_21">
@@ -181,11 +181,11 @@
 	</string>	
 	
 	<string id="companion_release_dialog_dolg_1">
-		<text>Glory to Duty!</text>
+		<text>Glory to the Duty!</text>
 	</string>
 
 	<string id="companion_hire_dialog_dolg_0">
-		<text>Hey fighter, let's travel toghether?</text>
+		<text>Hey fighter, let's travel together?</text>
 	</string>	
 	
 	<string id="companion_hire_dialog_dolg_1">
@@ -197,23 +197,23 @@
 	</string>
 
 	<string id="companion_hire_dialog_dolg_3">
-		<text>Sorry, I will not. The soldiers told odd things about you...</text>
+		<text>Sorry, I will not. The soldiers tell odd things about you...</text>
 	</string>
 
 	<string id="companion_hire_dialog_dolg_4">
-		<text>No way, you have a scary reputation. Every time you returning your partner would't.</text>
+		<text>No way, you have a scary reputation. Every time you're returning back, your partner is no longer with you.</text>
 	</string>
 
 	<string id="companion_hire_dialog_dolg_5">
-		<text>Sorry, but I can't. I need a break after the attacks, tired already killing monsters.</text>
+		<text>Sorry, but I can't. I need a break after the attacks, tired already of killing monsters.</text>
 	</string>
 
 	<string id="companion_hire_dialog_dolg_6">
-		<text>Your experience is not enough to go with me in the Zone. Learn first to fight monsters well, and get a higher rank.</text>
+		<text>Your experience is not enough to go with me into the Zone. Learn first to fight monsters well, and get a higher rank.</text>
 	</string>
 
 	<string id="companion_hire_dialog_dolg_7">
-		<text>No offence but no. Experience I have is not enough to compete with you - you're a seasoned fighter, I am greenhorn in comparison with you.</text>
+		<text>No offence but I say "no". Experience I have is not enough to compete with you - you're a seasoned fighter, I am just a greenhorn in comparison with you.</text>
 	</string>
 
 	<string id="companion_hire_dialog_dolg_8">
@@ -221,7 +221,7 @@
 	</string>
 
 	<string id="companion_hire_dialog_dolg_9">
-		<text>Not be offended, but as long as you're not from ours faction - we have no business with you.</text>
+		<text>Do not be offended, but as long as you're not from our faction - we have no business with you.</text>
 	</string>
 
 	<string id="companion_management_dialog_dolg_0">
@@ -229,7 +229,7 @@
 	</string>
 
 	<string id="companion_management_dialog_dolg_1">
-		<text>Sir yes sir!</text>
+		<text>Sir, yes sir!</text>
 	</string>
 
 	<string id="companion_management_dialog_dolg_2">
@@ -315,11 +315,11 @@
 	<!-- COMPANION FREEDOM -->
 	
 	<string id="companion_release_dialog_freedom_0">
-		<text>Thanks, man. Good spent time, by I need hit the road alone!</text>
+		<text>Thanks, man. Good spent time, but I need to hit the road alone!</text>
 	</string>	
 	
 	<string id="companion_release_dialog_freedom_1">
-		<text>Bye dude, Freedom rules!</text>
+		<text>Bye, dude, Freedom rules!</text>
 	</string>
 
 	<string id="companion_hire_dialog_freedom_0">
@@ -335,43 +335,43 @@
 	</string>
 
 	<string id="companion_hire_dialog_freedom_3">
-		<text>Damn no, I'm chiken out to go with you, maniac.</text>
+		<text>Damn no, I'm chicken out to go with you, maniac.</text>
 	</string>
 
 	<string id="companion_hire_dialog_freedom_4">
-		<text>Get lost, man, there is a lot of guys goes with you already - and I never saw they returns.</text>
+		<text>Get lost, man, there were a lot of guys to go with you already - and I never saw them return.</text>
 	</string>
 
 	<string id="companion_hire_dialog_freedom_5">
-		<text>Sorry I can't. I've conk out alredy, need some rest, take a dope, relax. Do you have some? Nope? Sad...</text>
+		<text>Sorry, I can't. I've conked out already, need some rest, take a dope, relax. Do you have some? Nope? Sad...</text>
 	</string>
 
 	<string id="companion_hire_dialog_freedom_6">
-		<text>No, man, you still a rookie. Get harder first.</text>
+		<text>No, man, you're still a rookie. Get harder first.</text>
 	</string>
 
 	<string id="companion_hire_dialog_freedom_7">
-		<text>Damn no, I'm chiken out to go with ya - you exploring such depths, I still wondering how you make it out in one piece.</text>
+		<text>Damn no, I'm chiken out to go with ya - you exploring such depths, I'm still wondering how you make it out in one piece.</text>
 	</string>
 
 	<string id="companion_hire_dialog_freedom_8">
-		<text>No, man, you have enough guys already, one high is too low for three.</text>
+		<text>No, man, you have enough guys already, one "high" is too small for three.</text>
 	</string>
 
 	<string id="companion_hire_dialog_freedom_9">
-		<text>No, man, no offence, but as long as you're not from ours faction - we have no business with you.</text>
+		<text>No, man, no offence, but as long as you're not from our faction - we have no business with you.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_0">
-		<text>Listen up, man, need chitchap some by tactics.</text>
+		<text>Listen up, man, we need to chitchat a bit about tactics.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_1">
-		<text>Yep, listening.</text>
+		<text>Yep, I'm listening.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_2">
-		<text>Follow me man.</text>
+		<text>Follow me, man.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_3">
@@ -383,7 +383,7 @@
 	</string>
 
 	<string id="companion_management_dialog_freedom_5">
-		<text>Don't play chicken, and let badasses came closer before hit'em.</text>
+		<text>Don't play chicken, and let badasses come closer before hit'em.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_6">
@@ -391,7 +391,7 @@
 	</string>	
 	
 	<string id="companion_management_dialog_freedom_7">
-		<text>Sit take break, I need to check something.</text>
+		<text>Sit, take a break, I need to check something.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_8">
@@ -399,11 +399,11 @@
 	</string>
 
 	<string id="companion_management_dialog_freedom_9">
-		<text>Take break but stay alert if something happens.</text>
+		<text>Take break, but stay alert if something happens.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_10">
-		<text>Don't be a chicken, take a break, but let badasses came closer before hit'em.</text>
+		<text>Don't be a chicken, take a break, but let badasses come closer before hit'em.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_11">
@@ -423,7 +423,7 @@
 	</string>
 
 	<string id="companion_management_dialog_freedom_15">
-		<text>All is fine, just don't kick up a fuss and let badasses came closer before hit'em.</text>
+		<text>Everything's fine, just don't kick up a fuss and let badasses come closer before hit'em.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_16">
@@ -443,11 +443,11 @@
 	</string>
 
 	<string id="companion_management_dialog_freedom_20">
-		<text>Hide silently, and let badasses came closer before hit'em.</text>
+		<text>Hide silently, and let badasses come closer before hit'em.</text>
 	</string>
 
 	<string id="companion_management_dialog_freedom_21">
-		<text>Hide as silent as you can be to the last moment.</text>
+		<text>Hide as silently as you can to the last moment.</text>
 	</string>	
 	
 	<!-- COMPANION BANDIT -->
@@ -465,19 +465,19 @@
 	</string>	
 	
 	<string id="companion_hire_dialog_bandit_1">
-		<text>You has a point there, yep.</text>
+		<text>You've a point there, yep.</text>
 	</string>
 
 	<string id="companion_hire_dialog_bandit_2">
-		<text>No, i'm enough to be gang myself.</text>
+		<text>No, I'd rather be a gang by myself.</text>
 	</string>
 
 	<string id="companion_hire_dialog_bandit_3">
-		<text>Fuck you, only suckers goes with you.</text>
+		<text>Fuck you, only suckers go with you.</text>
 	</string>
 
 	<string id="companion_hire_dialog_bandit_4">
-		<text>Get lost badass, you always rat out bros under fire.</text>
+		<text>Get lost, badass, you always rat out bros' under fire.</text>
 	</string>
 
 	<string id="companion_hire_dialog_bandit_5">
@@ -485,11 +485,11 @@
 	</string>
 
 	<string id="companion_hire_dialog_bandit_6">
-		<text>You not so tough, jerk. First make yourself, then return.</text>
+		<text>You're not tough enough, jerk. First make yourself a man, then return.</text>
 	</string>
 
 	<string id="companion_hire_dialog_bandit_7">
-		<text>Sorry, you're tough bro', makin' hardballs, I can't get over with - can only stay lookout, at best.</text>
+		<text>Sorry, you're tough bro', makin' hardballs, I can't get over with you - only stay a lookout, at best.</text>
 	</string>
 
 	<string id="companion_hire_dialog_bandit_8">
@@ -505,7 +505,7 @@
 	</string>
 
 	<string id="companion_management_dialog_bandit_1">
-		<text>What da fuck you need?</text>
+		<text>What da fuck ya need?</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_2">
@@ -513,35 +513,35 @@
 	</string>
 
 	<string id="companion_management_dialog_bandit_3">
-		<text>Yep, and what if some problems around?</text>
+		<text>Yep, and what if some problems happen around?</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_4">
-		<text>Hold your jaw, if problems - just draws gun and making holes in jerks.</text>
+		<text>Hold your jaw, if there are problems - just draw out a gun and make holes in the jerks.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_5">
-		<text>Go after me, and if some problems - let'em get closer.</text>
+		<text>Go after me, if any problems happen - let'em get closer.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_6">
-		<text>Go after me and don't make noise. And hide you fuckin' gun already!</text>
+		<text>Go after me and don't make noise. And hide your fuckin' gun already!</text>
 	</string>	
 	
 	<string id="companion_management_dialog_bandit_7">
-		<text>Stay here, get it? I'm check then back.</text>
+		<text>Stay here, get it? I'll check out and get back.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_8">
-		<text>Yep, and what if some problems around?</text>
+		<text>Yep, and what if some problems happen around?</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_9">
-		<text>Hold your jaw, if problems - just draws gun and making holes in jerks.</text>
+		<text>Hold your jaw, if there are problems - just draw out a gun and make holes in the jerks.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_10">
-		<text>Stay here i'm tellin' ya, if problems - let'em get closer.</text>
+		<text>Stay here i'm tellin' ya, if any problems happen - let'em get closer.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_11">
@@ -553,15 +553,15 @@
 	</string>
 
 	<string id="companion_management_dialog_bandit_13">
-		<text>Yep, and what if some problems around?</text>
+		<text>Yep, and what if some problems happen around?</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_14">
-		<text>Hold your jaw, if problems - just draws gun and making holes in jerks.</text>
+		<text>Hold your jaw, if there are problems - just draw out a gun and make holes in the jerks.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_15">
-		<text>Keep quiet i'm tellin' ya, don't get it? If problems - let'em get closer.</text>
+		<text>Keep quiet i'm tellin' ya, don't get it? If any problems happen - let'em get closer.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_16">
@@ -573,15 +573,15 @@
 	</string>
 
 	<string id="companion_management_dialog_bandit_18">
-		<text>Yep, and what if some problems around?</text>
+		<text>Yep, and what if some problems happen around?</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_19">
-		<text>Hold your jaw, if problems - just draws gun and making holes in jerks.</text>
+		<text>Hold your jaw, if there are problems - just draw out a gun and make holes in the jerks.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_20">
-		<text>Hide there sayin' ya, if problems - let'em get closer.</text>
+		<text>Hide there sayin' ya, if any problems happen - let'em get closer.</text>
 	</string>
 
 	<string id="companion_management_dialog_bandit_21">
