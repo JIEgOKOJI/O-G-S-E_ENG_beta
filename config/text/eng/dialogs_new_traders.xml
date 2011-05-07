@@ -2,63 +2,63 @@
 <string_table>
 
 <string id="military_trader_who">
-		<text>Holy smoke! And who are you? Answer me!</text>
+		<text>Holy shoot! And who are you? Answer me!</text>
 	</string>
 	<string id="military_trader_about">
-		<text>Curb your enthusiasm, a stalker, I ... Trader. Call me "Military Trader". Who I really am, it's not your bussines ... I have to say, I'm not interested with your relationship with military and other stalker's clan's .I trade gear and equipment of the military. Oh yeah, one more thing, you can find trader like me , don't afraid they have nothing personal with their clan enemies , they traders just like me! Well, we'll be busy with it or how?</text>
+		<text>Curb your enthusiasm, stalker, I am... A trader. Call me "Military Trader". Who I really am, is not of your concern... I have to say, I'm not interested in your relationship with the military and other stalker clans .I trade gear and equipment of the military. Oh yeah, one more thing, you may meet other traders like me , don't be afraid: they have nothing against their clan enemies , they're traders just like me! Well, we're going to do business or what?</text>
 	</string>
 	<string id="military_trader_buy">
-		<text>Will.</text>
+		<text>Let's get to business.</text>
 	</string>
 	
 	<string id="bandit_trader_0">
-		<text>Hi man, you must be a "merchant", true?</text>
+		<text>Hi man, you must be a "merchant", is that true?</text>
 	</string>
 	<string id="bandit_trader_1">
-		<text>Well ... so if you want it, then "yes. " . I'm selling them weapons, equipment, and sometimes all sorts of rubbish, which my mates bring to me. Don't be confused with my neutrality - we have deal that merchant are not conflicting with other clan's.About bandits they protect me, and I give them equipment and provision. Got it? So, you're in case? Take what you want, and get out of here. I'm don't wanna see your fancy face anymore</text>
+		<text>Well ... if you want it, then "yes". I'm selling weapons, equipment, and sometimes all sorts of rubbish my mates bring to me. Don't be confused with my neutrality - we have a deal that merchants are not conflicting any other clans. About bandits... They protect me, and I give them equipment and provision. Got it? So, are you in? Take what you want, and get out of here. I don't wanna see your fancy face just for chit-chat.</text>
 	</string>
 	<string id="bandit_trader_2">
-		<text>In the case, in the case.</text>
+		<text>Ok, I'm in.</text>
 	</string>
 
       <string id="merc_trader_lc_info_0">
-		<text>Listen, tell me how to get here at the Wild Territory?</text>
+		<text>Listen, can you tell me how to get from here to the Wild Territory?</text>
 	</string>
 	<string id="merc_trader_lc_info_1">
-		<text>At the Wild Territory is best to get through the dead city, I'll send the coordinates to your PDA. By this way, you will be going on mercs teritory, beware of snipers in the city!</text>
+		<text>The best way to the Wild Territory is through the Dead City, I'll send the coordinates to your PDA. It's the mercs territory, so beware of snipers in the city!</text>
 	</string>
 	<string id="merc_trader_0">
 		<text>Hello, mercenary.</text>
 	</string>
 	<string id="merc_trader_1">
-		<text>I am not a mercenary, and you know it, if not, then go down to my ... Hmm ... colleagues, they explain to you. I suggest that products of mercenaries, you are interested in something, stalker?</text>
+		<text>I am not a mercenary, and you know it, if you don't - then go down to my ... Hmm ... colleagues, and they will explain it to you. I offer some mercenaries' stuff, you are interested in something, stalker?</text>
 	</string>
 	<string id="merc_trader_2">
-		<text>Yes, of course.</text>
+		<text>Yes, of course I am.</text>
 	</string>
 
 	<string id="monlit_trader_lc_info_0">
-		<text>You're here, you see, long ago! Not podskazhesh any way shortly, with the radar in the south zone? And then through the warehouses do not always want to walk, not quiet there ...</text>
+		<text>You've been here for long, I suppose! Can you prompt me any shorter way from the Radar to the south of the Zone? I wouldn't like to take the path through the warehouses all the time, it's not quiet there...</text>
 	</string>
 	<string id="monlit_trader_lc_info_1">
-		<text>Prompt, I'm interested in keeping customers, heh, heh! Areas to the south there are two paths: one will lead you to the dark valley, and the other at Jantar - dangerous place here, so you should strictly surveyors stake! Will a huckster, passed on my regards!</text>
+		<text>Sure I can, I'm interested in keeping my customers alive, heh, heh! There are two paths to the southern areas: one will lead you to the Dark Valley, and the other to Jantar - dangerous place there, so you should strictly watch out! By the way, when you see the Huckster, give him my regards!</text>
 		<action>ogsm_freeplay.set_lc6_rad_xy</action>
 	</string>
 
 	<string id="monlit_trader_0">
-		<text>You must be a trader Monolith?</text>
+		<text>You must be a trader of Monolith?</text>
 	</string>
 	<string id="monlit_trader_1">
-		<text>It is true stalker. I Sell the equipment group Monolith. About how I was allowed to stay here, do not even ask. Just hint that Monolith - not those "fanatics" that they seem. They have their own ... patrons.</text>
+		<text>It is true stalker. I sell the equipment for and of Monolith Worshippers. About how I was allowed to stay here, do not even ask. Just a hint: that Monolith followers are not quite those "fanatics" that they seem. They have their own ... patrons.</text>
 	</string>
 	<string id="monlit_trader_2">
-		<text>And what about radiation? Radar immediately at hand!</text>
+		<text>And what about Radar's emission? The Radar is just "next door" from here!</text>
 	</string>
 	<string id="monlit_trader_3">
-		<text>I have a special hat from the "friends" of the hill. Do not try to force me away - he still self-destruct as soon as you try to remove it, at the same time and you will tear off your hands. Oh believe me, its technology "friends" know how to defend. By the way, my ... employer has asked me to tell you that you have been careful reactor. He is with you may contact, and yet asked me to convey: "Not everything that we obviously is indeed the case ..."</text>
+		<text>I have a special balaclava from the "friends" among the "big wigs" here. Do not try to take it from me by force though - it will self-destruct as soon as you try to remove it, additionally tearing off your hands. Oh, believe me, "friends" know how to defend their technology. By the way, my ... employer has asked me to tell you that you should be careful near the reactor. He may contact you himself in future, and yet he asked me to convey his message to you: "Not everything that seems obvious to us is obvious indeed"...</text>
 	</string>
 	<string id="monlit_trader_4">
-		<text>Fuck you all make out!</text>
+		<text>Fuck you all! I'll make it out!</text>
 	</string>
 
 </string_table>
